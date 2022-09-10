@@ -6,14 +6,14 @@
         <description>Recent content in Coordinates on 駆け出しバイオインフォマティシャンのtech blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Fri, 06 Apr 2012 00:00:00 +0000</lastBuildDate><atom:link href="https://snitch0.github.io/categories/coordinates/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 06 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://snitch0.github.io/categories/coordinates/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Hello, Quarto</title>
-        <link>https://snitch0.github.io/p/hello-quarto/</link>
-        <pubDate>Fri, 06 Apr 2012 00:00:00 +0000</pubDate>
+        <link>https://snitch0.github.io/p/quarto-test/</link>
+        <pubDate>Wed, 06 Apr 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://snitch0.github.io/p/hello-quarto/</guid>
+        <guid>https://snitch0.github.io/p/quarto-test/</guid>
         <description>&lt;h2 id=&#34;polar-axis&#34;&gt;Polar Axis&lt;/h2&gt;
-&lt;p&gt;For a demonstration of a line plot on a polar axis, see &lt;a class=&#34;link&#34; href=&#34;#fig-polar&#34; &gt;Figure 1&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;For a demonstration of a line plot on a polar axis, see &lt;strong&gt;?@fig-polar&lt;/strong&gt;.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -21,29 +21,12 @@
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pip&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;nbclient&lt;/span&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# !pip install nbclient&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;sys&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sys&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;executable&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;pre&gt;&lt;code&gt;Requirement already satisfied: nbclient in /home/oodake/.pyenv/versions/3.10.6/lib/python3.10/site-packages (0.6.8)
-Requirement already satisfied: nbformat&amp;gt;=5.0 in /home/oodake/.pyenv/versions/3.10.6/lib/python3.10/site-packages (from nbclient) (5.4.0)
-Requirement already satisfied: nest-asyncio in /home/oodake/.pyenv/versions/3.10.6/lib/python3.10/site-packages (from nbclient) (1.5.5)
-Requirement already satisfied: traitlets&amp;gt;=5.2.2 in /home/oodake/.pyenv/versions/3.10.6/lib/python3.10/site-packages (from nbclient) (5.3.0)
-Requirement already satisfied: jupyter-client&amp;gt;=6.1.5 in /home/oodake/.pyenv/versions/3.10.6/lib/python3.10/site-packages (from nbclient) (7.3.4)
-Requirement already satisfied: tornado&amp;gt;=6.0 in /home/oodake/.pyenv/versions/3.10.6/lib/python3.10/site-packages (from jupyter-client&amp;gt;=6.1.5-&amp;gt;nbclient) (6.2)
-Requirement already satisfied: pyzmq&amp;gt;=23.0 in /home/oodake/.pyenv/versions/3.10.6/lib/python3.10/site-packages (from jupyter-client&amp;gt;=6.1.5-&amp;gt;nbclient) (23.2.1)
-Requirement already satisfied: jupyter-core&amp;gt;=4.9.2 in /home/oodake/.pyenv/versions/3.10.6/lib/python3.10/site-packages (from jupyter-client&amp;gt;=6.1.5-&amp;gt;nbclient) (4.11.1)
-Requirement already satisfied: entrypoints in /home/oodake/.pyenv/versions/3.10.6/lib/python3.10/site-packages (from jupyter-client&amp;gt;=6.1.5-&amp;gt;nbclient) (0.4)
-Requirement already satisfied: python-dateutil&amp;gt;=2.8.2 in /home/oodake/.pyenv/versions/3.10.6/lib/python3.10/site-packages (from jupyter-client&amp;gt;=6.1.5-&amp;gt;nbclient) (2.8.2)
-Requirement already satisfied: jsonschema&amp;gt;=2.6 in /home/oodake/.pyenv/versions/3.10.6/lib/python3.10/site-packages (from nbformat&amp;gt;=5.0-&amp;gt;nbclient) (4.16.0)
-Requirement already satisfied: fastjsonschema in /home/oodake/.pyenv/versions/3.10.6/lib/python3.10/site-packages (from nbformat&amp;gt;=5.0-&amp;gt;nbclient) (2.16.1)
-
-Requirement already satisfied: pyrsistent!=0.17.0,!=0.17.1,!=0.17.2,&amp;gt;=0.14.0 in /home/oodake/.pyenv/versions/3.10.6/lib/python3.10/site-packages (from jsonschema&amp;gt;=2.6-&amp;gt;nbformat&amp;gt;=5.0-&amp;gt;nbclient) (0.18.1)
-Requirement already satisfied: attrs&amp;gt;=17.4.0 in /home/oodake/.pyenv/versions/3.10.6/lib/python3.10/site-packages (from jsonschema&amp;gt;=2.6-&amp;gt;nbformat&amp;gt;=5.0-&amp;gt;nbclient) (22.1.0)
-Requirement already satisfied: six&amp;gt;=1.5 in /home/oodake/.pyenv/versions/3.10.6/lib/python3.10/site-packages (from python-dateutil&amp;gt;=2.8.2-&amp;gt;jupyter-client&amp;gt;=6.1.5-&amp;gt;nbclient) (1.16.0)
-
-/home/oodake/.pyenv/versions/3.10.6/bin/python3
+&lt;/div&gt;&lt;pre&gt;&lt;code&gt;/home/oodake/.pyenv/versions/3.10.6/bin/python3
 &lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -71,7 +54,28 @@ Requirement already satisfied: six&amp;gt;=1.5 in /home/oodake/.pyenv/versions/3
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;plt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;/div&gt;&lt;p&gt;&lt;!-- raw HTML omitted --&gt;aaaaaaaaaa太文字太文字&lt;!-- raw HTML omitted --&gt;あああああ&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;img src=&#34;https://snitch0.github.io/p/quarto-test/index_files/figure-gfm/cell-3-output-1.png&#34;
+	width=&#34;899&#34;
+	height=&#34;878&#34;
+	srcset=&#34;https://snitch0.github.io/p/quarto-test/index_files/figure-gfm/cell-3-output-1_hu7823765c3756b1bc165cc82517475f01_131288_480x0_resize_box_3.png 480w, https://snitch0.github.io/p/quarto-test/index_files/figure-gfm/cell-3-output-1_hu7823765c3756b1bc165cc82517475f01_131288_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;102&#34;
+		data-flex-basis=&#34;245px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://snitch0.github.io/img/avatar.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
 </description>
         </item>
         
