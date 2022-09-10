@@ -31,3 +31,5 @@ assets/jsconfig.json
 
 archive/
 _backup_config.yaml
+
+.vscode/
