@@ -1,0 +1,182 @@
+baseurl = "https://snitch0.github.io/"
+languageCode = "ja"
+theme = "hugo-theme-stack"
+paginate = 5
+title = "Snitch biotech blog"
+publishDir = "docs"
+disqusShortname = "hugo-theme-stack"
+DefaultContentLanguage = "ja"
+hasCJKLanguage = false
+ignoreFiles = [ "\\.qmd$", "\\.ipynb$" ]
+
+[languages.ja]
+languageName = "日本語"
+title = "駆け出しバイオインフォマティシャンのtech blog"
+weight = 1
+
+[languages.en]
+languageName = "English"
+title = "KAKEDASHI Bioinformatitian's tech blog"
+weight = 2
+
+[permalinks]
+post = "/p/:slug/"
+page = "/:slug/"
+
+[params]
+mainSections = [ "post" ]
+featuredImageField = "image"
+rssFullContent = true
+
+  [params.footer]
+  since = 2_020
+
+  [params.dateFormat]
+  published = "Jan 02, 2006"
+  lastUpdated = "Jan 02, 2006 15:04 MST"
+
+  [params.sidebar]
+  emoji = "🧬"
+  subtitle = "Python, R, Linux, Genomics, Transcriptomics and Microbiology."
+
+[params.sidebar.avatar]
+enabled = true
+local = true
+src = "img/avatar.png"
+
+  [params.article]
+  math = true
+  toc = true
+  readingTime = true
+
+    [params.article.license]
+    enabled = true
+    default = "Licensed under CC BY-NC-SA 4.0"
+
+  [params.comments]
+  enabled = false
+  provider = "disqus"
+
+    [params.comments.disqusjs]
+
+    [params.comments.utterances]
+    issueTerm = "pathname"
+
+    [params.comments.remark42]
+
+    [params.comments.vssue]
+    autoCreateIssue = false
+
+    [params.comments.waline]
+    emoji = [ "https://unpkg.com/@waline/emojis@1.0.1/weibo" ]
+    requiredMeta = [ "name", "email", "url" ]
+
+      [params.comments.waline.locale]
+      admin = "Admin"
+
+    [params.comments.twikoo]
+
+    [params.comments.cactus]
+    defaultHomeserverUrl = "https://matrix.cactus.chat:8448"
+    serverName = "cactus.chat"
+    siteName = ""
+
+    [params.comments.giscus]
+    reactionsEnabled = 1
+    emitMetadata = 0
+
+    [params.comments.gitalk]
+
+    [params.comments.cusdis]
+
+[[params.widgets.homepage]]
+type = "search"
+
+[[params.widgets.homepage]]
+type = "archives"
+
+  [params.widgets.homepage.params]
+  limit = 5
+
+[[params.widgets.homepage]]
+type = "categories"
+
+  [params.widgets.homepage.params]
+  limit = 10
+
+[[params.widgets.homepage]]
+type = "tag-cloud"
+
+  [params.widgets.homepage.params]
+  limit = 10
+
+[[params.widgets.page]]
+type = "toc"
+
+[params.opengraph.twitter]
+site = "snitch0"
+card = "summary_large_image"
+
+[params.defaultImage.opengraph]
+enabled = true
+local = false
+src = "img/avatar.png"
+
+  [params.colorScheme]
+  toggle = true
+  default = "auto"
+
+[params.imageProcessing.cover]
+enabled = true
+
+[params.imageProcessing.content]
+enabled = true
+
+[menu]
+main = [ ]
+
+  [[menu.social]]
+  identifier = "github"
+  name = "GitHub"
+  url = "https://github.com/snitch0"
+
+    [menu.social.params]
+    icon = "brand-github"
+
+  [[menu.social]]
+  identifier = "twitter"
+  name = "Twitter"
+  url = "https://twitter.com/excel2rlang"
+
+    [menu.social.params]
+    icon = "brand-twitter"
+
+[related]
+includeNewer = true
+threshold = 60
+toLower = false
+
+  [[related.indices]]
+  name = "tags"
+  weight = 100
+
+  [[related.indices]]
+  name = "categories"
+  weight = 200
+
+[markup.goldmark.renderer]
+unsafe = true
+
+[markup.tableOfContents]
+endLevel = 4
+ordered = true
+startLevel = 2
+
+[markup.highlight]
+noClasses = false
+codeFences = true
+guessSyntax = true
+lineNoStart = 1
+lineNos = true
+lineNumbersInTable = true
+tabWidth = 4

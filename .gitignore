@@ -28,3 +28,6 @@ resources
 
 assets/jsconfig.json
 .DS_Store
+
+archive/
+_backup_config.yaml
