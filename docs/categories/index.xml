@@ -54,6 +54,22 @@
         <guid>https://snitch0.github.io/categories/%D8%AA%D8%AC%D8%B1%D8%A8%D8%A9-%D9%85%D8%B9-%D9%81%D8%B1%D8%A7%D8%BA%D8%A7%D8%AA/</guid>
         <description></description>
         </item>
+        <item>
+        <title>Coordinates</title>
+        <link>https://snitch0.github.io/categories/coordinates/</link>
+        <pubDate>Fri, 06 Apr 2012 00:00:00 +0000</pubDate>
+        
+        <guid>https://snitch0.github.io/categories/coordinates/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Matplotlib</title>
+        <link>https://snitch0.github.io/categories/matplotlib/</link>
+        <pubDate>Fri, 06 Apr 2012 00:00:00 +0000</pubDate>
+        
+        <guid>https://snitch0.github.io/categories/matplotlib/</guid>
+        <description></description>
+        </item>
         
     </channel>
 </rss>
