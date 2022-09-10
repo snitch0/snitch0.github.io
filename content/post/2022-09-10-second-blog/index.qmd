@@ -9,7 +9,7 @@ tags:
   - blog
   - about
 format: hugo
-slug:
+slug: first-post
 html-math-method: webtex
 ---
 

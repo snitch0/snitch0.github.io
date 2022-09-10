@@ -1,0 +1,15 @@
+---
+title: Hello, Quarto
+description:
+author: Snitch
+date: "2022-0-"
+categories:
+  -
+  -
+tags:
+  -
+format: hugo
+slug:
+jupyter: python3
+html-math-method: webtex
+---

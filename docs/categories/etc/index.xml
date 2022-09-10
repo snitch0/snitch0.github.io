@@ -8,10 +8,10 @@
         <language>ja</language>
         <lastBuildDate>Sat, 10 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://snitch0.github.io/categories/etc/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Quartoを使った2ndブログを作ってみた</title>
-        <link>https://snitch0.github.io/p/quarto%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F2nd%E3%83%96%E3%83%AD%E3%82%B0%E3%82%92%E4%BD%9C%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F/</link>
+        <link>https://snitch0.github.io/p/first-post/</link>
         <pubDate>Sat, 10 Sep 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://snitch0.github.io/p/quarto%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F2nd%E3%83%96%E3%83%AD%E3%82%B0%E3%82%92%E4%BD%9C%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F/</guid>
+        <guid>https://snitch0.github.io/p/first-post/</guid>
         <description>&lt;h1 id=&#34;動機&#34;&gt;動機&lt;/h1&gt;
 &lt;p&gt;私はexcel2rlang.comというRプログラミング解説ブログを管理しているヒトです。猫の名前をお借りして、スニッチという名前でやっています🐈‍⬛&lt;/p&gt;
 &lt;p&gt;メインブログではR関連でまとまった内容を時間をかけて推敲しながら作っていく方針だったのですが、&lt;strong&gt;Rとは関係の無い話や、ライトな話題を吐き出しにくい&lt;/strong&gt;ことや、&lt;strong&gt;Wordpressとphpというフレームワークが気に入らない&lt;/strong&gt;ことなどの不満を常に抱えていました。&lt;/p&gt;
