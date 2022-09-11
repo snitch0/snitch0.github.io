@@ -1,1 +1,13 @@
 /* Place your custom SCSS in HUGO_SITE_FOLDER/assets/scss/custom.scss */
+.codeblock--name {
+    width: fit-content;
+    margin: 1rem 0 0;
+    padding: 0.4rem;
+    font-size: 1.2rem;
+    color: rgb(255, 255, 255);
+    background-color: #058eff;
+  }
+
+  .codeblock--name + .codeblock--content {
+    margin-top: 0;
+  }
