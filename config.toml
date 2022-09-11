@@ -8,6 +8,7 @@ disqusShortname = "hugo-theme-stack"
 DefaultContentLanguage = "ja"
 hasCJKLanguage = false
 ignoreFiles = [ "\\.qmd$", "\\.ipynb$" ]
+favicon = "/img/favicon.ico"
 googleAnalytics = "G-ZQBVMRWEHP"
 
 [languages.ja]
