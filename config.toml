@@ -179,7 +179,7 @@ codeFences = true
 guessSyntax = true
 lineNoStart = 1
 lineNos = true
-lineNumbersInTable = true
+lineNumbersInTable = false
 tabWidth = 4
 
 custom_css = "css/copy-to-clipboard.css"
