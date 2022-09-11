@@ -8,6 +8,7 @@ disqusShortname = "hugo-theme-stack"
 DefaultContentLanguage = "ja"
 hasCJKLanguage = false
 ignoreFiles = [ "\\.qmd$", "\\.ipynb$" ]
+googleAnalytics = "4054695416"
 
 [languages.ja]
 languageName = "日本語"
