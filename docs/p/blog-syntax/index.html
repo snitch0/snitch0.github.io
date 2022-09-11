@@ -6,7 +6,7 @@
 <link rel='canonical' href='https://snitch0.github.io/p/blog-syntax/'>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-<link rel="stylesheet" href="/scss/style.min.97308ca25e754c02c7bb752d7e1f14cd83230358a24521253a0d07234e34760c.css"><meta property='og:title' content='Quarto(とHugo)のSyntax'>
+<link rel="stylesheet" href="/scss/style.min.f588b70813a4cf2131849aac3a5434a61fa1fb87e5425f03884d29170627726a.css"><meta property='og:title' content='Quarto(とHugo)のSyntax'>
 <meta property='og:description' content='Markdown and shortcodes.'>
 <meta property='og:url' content='https://snitch0.github.io/p/blog-syntax/'>
 <meta property='og:site_name' content='駆け出しバイオインフォマティシャンのtech blog'>
@@ -15,6 +15,32 @@
     <meta name="twitter:creator" content="@snitch0"><meta name="twitter:title" content="Quarto(とHugo)のSyntax">
 <meta name="twitter:description" content="Markdown and shortcodes."><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://snitch0.github.io/img/avatar.png' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQBVMRWEHP"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZQBVMRWEHP', { 'anonymize_ip': false });
+}
+</script>
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQBVMRWEHP"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZQBVMRWEHP', { 'anonymize_ip': false });
+}
+</script>
+
+
     </head>
     <body class="
     article-page
@@ -414,101 +440,49 @@
 <p>quartoの実行結果がネイティブに動くのは素晴らしいなあ。</p>
 <p>codeタグのcssは改良の余地がありそう。</p>
 <h4 id="markdown-simple-code-block">Markdown simple code block</h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">mtcars</span> <span class="o">|&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">cyl</span><span class="p">)</span> <span class="o">|&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">summarise</span><span class="p">(</span><span class="nf">mean</span><span class="p">(</span><span class="n">mpg</span><span class="p">))</span>
-</span></span></code></pre></td></tr></table>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="n">mtcars</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">cyl</span><span class="p">)</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl">  <span class="nf">summarise</span><span class="p">(</span><span class="nf">mean</span><span class="p">(</span><span class="n">mpg</span><span class="p">))</span></span></span></code></pre></div>
+    </div>
 </div>
-</div><h4 id="hugo-hilighting-shortcode">Hugo hilighting shortcode</h4>
+<h4 id="hugo-hilighting-shortcode">Hugo hilighting shortcode</h4>
 <p>Hugoのショートコードはquartoのレンダリング時に若干崩壊するようだ。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="cp">&lt;!doctype html&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;en&#34;</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;utf-8&#34;</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Example HTML5 Document<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Test<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span></span></span></code></pre></td></tr></table>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="ln">1</span><span class="cl"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="cp">&lt;!doctype html&gt;</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;en&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;utf-8&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Example HTML5 Document<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Test<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span></span></span></code></pre></div></span></span></code></pre></div>
+    </div>
 </div>
-</div>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">\<span class="cp">&lt;!doctype html\&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;en&#34;</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;utf-8&#34;</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">Example HTML5 Document
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">Test
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span></span></span></code></pre></td></tr></table>
-</div>
-</div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="ln"> 1</span><span class="cl">\<span class="cp">&lt;!doctype html\&gt;</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;en&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;utf-8&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">Example HTML5 Document
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">Test
+</span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span></span></span></code></pre></div>
 <h4 id="quarto-code-chunk">Quarto code chunk</h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span></span></span></code></pre></div>
+    </div>
 </div>
-</div><pre><code> 次のパッケージを付け加えます: 'dplyr'
+<pre><code> 次のパッケージを付け加えます: 'dplyr'
 
  以下のオブジェクトは 'package:stats' からマスクされています:
 
@@ -518,21 +492,14 @@
 
     intersect, setdiff, setequal, union
 </code></pre>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">mtcars</span> <span class="o">|&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">cyl</span><span class="p">)</span> <span class="o">|&gt;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nf">summarise</span><span class="p">(</span><span class="nf">mean</span><span class="p">(</span><span class="n">mpg</span><span class="p">))</span>
-</span></span></code></pre></td></tr></table>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">mtcars</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">cyl</span><span class="p">)</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">
+</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="nf">summarise</span><span class="p">(</span><span class="nf">mean</span><span class="p">(</span><span class="n">mpg</span><span class="p">))</span></span></span></code></pre></div>
+    </div>
 </div>
-</div><pre><code># A tibble: 3 × 2
+<pre><code># A tibble: 3 × 2
     cyl `mean(mpg)`
   &lt;dbl&gt;       &lt;dbl&gt;
 1     4        26.7
@@ -540,68 +507,40 @@
 3     8        15.1
 </code></pre>
 <h4 id="quarto-code-chunk-with-plot">Quarto code chunk with plot</h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">pacman</span><span class="o">::</span><span class="nf">p_load</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">mtcars</span> <span class="o">|&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">mpg</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">hp</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="n">cyl</span><span class="p">))</span> <span class="o">+</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">geom_point</span><span class="p">()</span>
-</span></span></code></pre></td></tr></table>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">pacman</span><span class="o">::</span><span class="nf">p_load</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="n">mtcars</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">mpg</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">hp</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="n">cyl</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl">    <span class="nf">geom_point</span><span class="p">()</span></span></span></code></pre></div>
+    </div>
 </div>
-</div><img src="index_files/figure-gfm/unnamed-chunk-2-1.png" width="768" />
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">seaborn.objects</span> <span class="k">as</span> <span class="nn">so</span>
-</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">palmerpenguins</span> <span class="kn">import</span> <span class="n">load_penguins</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">penguins</span> <span class="o">=</span> <span class="n">load_penguins</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="p">(</span>
-</span></span><span class="line"><span class="cl">    <span class="n">so</span><span class="o">.</span><span class="n">Plot</span><span class="p">(</span><span class="n">penguins</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&#34;bill_length_mm&#34;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&#34;bill_depth_mm&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">so</span><span class="o">.</span><span class="n">Dot</span><span class="p">())</span>
-</span></span><span class="line"><span class="cl">    <span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
+<img src="index_files/figure-gfm/unnamed-chunk-2-1.png" width="768" />
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kn">import</span> <span class="nn">seaborn.objects</span> <span class="k">as</span> <span class="nn">so</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="kn">from</span> <span class="nn">palmerpenguins</span> <span class="kn">import</span> <span class="n">load_penguins</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="n">penguins</span> <span class="o">=</span> <span class="n">load_penguins</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="p">(</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">    <span class="n">so</span><span class="o">.</span><span class="n">Plot</span><span class="p">(</span><span class="n">penguins</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&#34;bill_length_mm&#34;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&#34;bill_depth_mm&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">    <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">so</span><span class="o">.</span><span class="n">Dot</span><span class="p">())</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">    <span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="p">)</span></span></span></code></pre></div>
+    </div>
 </div>
-</div><img src="index_files/figure-gfm/unnamed-chunk-4-1.png" width="614" />
+<img src="index_files/figure-gfm/unnamed-chunk-4-1.png" width="614" />
 <h4 id="diff">Diff</h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-diff" data-lang="diff"><span class="line"><span class="cl">[dependencies.bevy]
-</span></span><span class="line"><span class="cl">git = &#34;https://github.com/bevyengine/bevy&#34;
-</span></span><span class="line"><span class="cl">rev = &#34;11f52b8c72fc3a568e8bb4a4cd1f3eb025ac2e13&#34;
-</span></span><span class="line"><span class="cl"><span class="gd">- features = [&#34;dynamic&#34;]
-</span></span></span><span class="line"><span class="cl"><span class="gd"></span><span class="gi">+ features = [&#34;jpeg&#34;, &#34;dynamic&#34;]
-</span></span></span></code></pre></td></tr></table>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-diff" data-lang="diff"><span class="line"><span class="ln">1</span><span class="cl">[dependencies.bevy]
+</span></span><span class="line"><span class="ln">2</span><span class="cl">git = &#34;https://github.com/bevyengine/bevy&#34;
+</span></span><span class="line"><span class="ln">3</span><span class="cl">rev = &#34;11f52b8c72fc3a568e8bb4a4cd1f3eb025ac2e13&#34;
+</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="gd">- features = [&#34;dynamic&#34;]
+</span></span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="gd"></span><span class="gi">+ features = [&#34;jpeg&#34;, &#34;dynamic&#34;]
+</span></span></span></code></pre></div>
+    </div>
 </div>
-</div><h2 id="list-types">List Types</h2>
+<h2 id="list-types">List Types</h2>
 <h4 id="ordered-list">Ordered List</h4>
 <ol>
 <li>First item</li>
@@ -631,31 +570,19 @@
 </li>
 </ul>
 <h2 id="other-elements-----abbr-sub-sup-kbd-mark">Other Elements &mdash; abbr, sub, sup, kbd, mark</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">abbr</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Graphics Interchange Format&#34;</span><span class="p">&gt;</span>GIF<span class="p">&lt;/</span><span class="nt">abbr</span><span class="p">&gt;</span> is a bitmap image format.
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">H<span class="p">&lt;</span><span class="nt">sub</span><span class="p">&gt;</span>2<span class="p">&lt;/</span><span class="nt">sub</span><span class="p">&gt;</span>O
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">X<span class="p">&lt;</span><span class="nt">sup</span><span class="p">&gt;</span>n<span class="p">&lt;/</span><span class="nt">sup</span><span class="p">&gt;</span> + Y<span class="p">&lt;</span><span class="nt">sup</span><span class="p">&gt;</span>n<span class="p">&lt;/</span><span class="nt">sup</span><span class="p">&gt;</span> = Z<span class="p">&lt;</span><span class="nt">sup</span><span class="p">&gt;</span>n<span class="p">&lt;/</span><span class="nt">sup</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Press <span class="p">&lt;</span><span class="nt">kbd</span><span class="p">&gt;&lt;</span><span class="nt">kbd</span><span class="p">&gt;</span>CTRL<span class="p">&lt;/</span><span class="nt">kbd</span><span class="p">&gt;</span>+<span class="p">&lt;</span><span class="nt">kbd</span><span class="p">&gt;</span>ALT<span class="p">&lt;/</span><span class="nt">kbd</span><span class="p">&gt;</span>+<span class="p">&lt;</span><span class="nt">kbd</span><span class="p">&gt;</span>Delete<span class="p">&lt;/</span><span class="nt">kbd</span><span class="p">&gt;&lt;/</span><span class="nt">kbd</span><span class="p">&gt;</span> to end the session.
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Most <span class="p">&lt;</span><span class="nt">mark</span><span class="p">&gt;</span>salamanders<span class="p">&lt;/</span><span class="nt">mark</span><span class="p">&gt;</span> are nocturnal, and hunt for insects, worms, and other small creatures.
-</span></span></code></pre></td></tr></table>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="ln">1</span><span class="cl"><span class="p">&lt;</span><span class="nt">abbr</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Graphics Interchange Format&#34;</span><span class="p">&gt;</span>GIF<span class="p">&lt;/</span><span class="nt">abbr</span><span class="p">&gt;</span> is a bitmap image format.
+</span></span><span class="line"><span class="ln">2</span><span class="cl">
+</span></span><span class="line"><span class="ln">3</span><span class="cl">H<span class="p">&lt;</span><span class="nt">sub</span><span class="p">&gt;</span>2<span class="p">&lt;/</span><span class="nt">sub</span><span class="p">&gt;</span>O
+</span></span><span class="line"><span class="ln">4</span><span class="cl">
+</span></span><span class="line"><span class="ln">5</span><span class="cl">X<span class="p">&lt;</span><span class="nt">sup</span><span class="p">&gt;</span>n<span class="p">&lt;/</span><span class="nt">sup</span><span class="p">&gt;</span> + Y<span class="p">&lt;</span><span class="nt">sup</span><span class="p">&gt;</span>n<span class="p">&lt;/</span><span class="nt">sup</span><span class="p">&gt;</span> = Z<span class="p">&lt;</span><span class="nt">sup</span><span class="p">&gt;</span>n<span class="p">&lt;/</span><span class="nt">sup</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl">
+</span></span><span class="line"><span class="ln">7</span><span class="cl">Press <span class="p">&lt;</span><span class="nt">kbd</span><span class="p">&gt;&lt;</span><span class="nt">kbd</span><span class="p">&gt;</span>CTRL<span class="p">&lt;/</span><span class="nt">kbd</span><span class="p">&gt;</span>+<span class="p">&lt;</span><span class="nt">kbd</span><span class="p">&gt;</span>ALT<span class="p">&lt;/</span><span class="nt">kbd</span><span class="p">&gt;</span>+<span class="p">&lt;</span><span class="nt">kbd</span><span class="p">&gt;</span>Delete<span class="p">&lt;/</span><span class="nt">kbd</span><span class="p">&gt;&lt;/</span><span class="nt">kbd</span><span class="p">&gt;</span> to end the session.
+</span></span><span class="line"><span class="ln">8</span><span class="cl">
+</span></span><span class="line"><span class="ln">9</span><span class="cl">Most <span class="p">&lt;</span><span class="nt">mark</span><span class="p">&gt;</span>salamanders<span class="p">&lt;/</span><span class="nt">mark</span><span class="p">&gt;</span> are nocturnal, and hunt for insects, worms, and other small creatures.</span></span></code></pre></div>
+    </div>
 </div>
-</div><p><abbr title="Graphics Interchange Format">GIF</abbr> is a bitmap image format.</p>
+<p><abbr title="Graphics Interchange Format">GIF</abbr> is a bitmap image format.</p>
 <p>H<sub>2</sub>O</p>
 <p>X<sup>n</sup> + Y<sup>n</sup> = Z<sup>n</sup></p>
 <p>Press <kbd><kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>Delete</kbd></kbd> to end the session.</p>
@@ -763,6 +690,28 @@
     
 
     
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">関連するコンテンツ</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/python-and-quarto/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">QuartoでPythonを使うときの注意とか</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
 
      
     
@@ -974,6 +923,6 @@
         document.head.appendChild(customFont);
     }());
 </script>
-
+<script src="/js/copy-to-clipboard.js"></script>
     </body>
 </html>
