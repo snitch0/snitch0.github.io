@@ -6,7 +6,47 @@
         <description>Recent content in Tags on 駆け出しバイオインフォマティシャンのtech blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Sat, 10 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://snitch0.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 11 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://snitch0.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Hugo</title>
+        <link>https://snitch0.github.io/tags/hugo/</link>
+        <pubDate>Sun, 11 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://snitch0.github.io/tags/hugo/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Markdown</title>
+        <link>https://snitch0.github.io/tags/markdown/</link>
+        <pubDate>Sun, 11 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://snitch0.github.io/tags/markdown/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Python</title>
+        <link>https://snitch0.github.io/tags/python/</link>
+        <pubDate>Sun, 11 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://snitch0.github.io/tags/python/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>quarto</title>
+        <link>https://snitch0.github.io/tags/quarto/</link>
+        <pubDate>Sun, 11 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://snitch0.github.io/tags/quarto/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>R</title>
+        <link>https://snitch0.github.io/tags/r/</link>
+        <pubDate>Sun, 11 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://snitch0.github.io/tags/r/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>about</title>
         <link>https://snitch0.github.io/tags/about/</link>
         <pubDate>Sat, 10 Sep 2022 00:00:00 +0000</pubDate>
