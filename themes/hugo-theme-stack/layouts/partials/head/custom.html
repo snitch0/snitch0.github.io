@@ -4,3 +4,5 @@
 {{ range .Site.Params.custom_js -}}
     <script type="text/javascript" src="{{ . | absURL }}"></script>
 {{- end }}
+
+{{ if not .Site.IsServer }}{{ template "_internal/google_analytics.html" . }}{{ end }}
