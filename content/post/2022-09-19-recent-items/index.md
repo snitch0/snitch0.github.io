@@ -1,0 +1,187 @@
+---
+title: 最近買ったもの(2022-9月)
+description: 今月はKeychronキーボードとの出会いの月
+author: Snitch
+date: "2022-09-19"
+categories:
+  - etc
+  - gadgets
+  - books
+tags:
+  - etc
+  - keychron
+  - books
+  - statistics
+  - phylosophy
+format: hugo
+slug: "items-22-09"
+jupyter: python3
+html-math-method: webtex
+---
+
+
+
+# 書籍
+
+## データ分析のための数理モデル入門　本質をとらえた分析のために\[ 江崎貴裕 \]
+
+<!-- START MoshimoAffiliateEasyLink -->
+<script type="text/javascript">
+(function(b,c,f,g,a,d,e){b.MoshimoAffiliateObject=a;
+b[a]=b[a]||function(){arguments.currentScript=c.currentScript
+||c.scripts[c.scripts.length-2];(b[a].q=b[a].q||[]).push(arguments)};
+c.getElementById(a)||(d=c.createElement(f),d.src=g,
+d.id=a,e=c.getElementsByTagName("body")[0],e.appendChild(d))})
+(window,document,"script","//dn.msmstatic.com/site/cardlink/bundle.js?20220329","msmaflink");
+msmaflink({"n":"データ分析のための数理モデル入門 本質をとらえた分析のために [ 江崎貴裕 ]","b":"","t":"","d":"https:\/\/thumbnail.image.rakuten.co.jp","c_p":"\/@0_mall\/book\/cabinet\/2494","p":["\/9784802612494.jpg","\/9784802612494_2.jpg","\/9784802612494_3.jpg"],"u":{"u":"https:\/\/item.rakuten.co.jp\/book\/16275581\/","t":"rakuten","r_v":""},"v":"2.1","b_l":[{"id":1,"u_tx":"楽天市場で見る","u_bc":"#f76956","u_url":"https:\/\/item.rakuten.co.jp\/book\/16275581\/","a_id":3291267,"p_id":54,"pl_id":27059,"pc_id":54,"s_n":"rakuten","u_so":1},{"u_bc":"#87c209","u_tx":"Amazonで見る","u_url":"https:\/\/www.amazon.co.jp\/dp\/B0897SS2JP","s_n":"custom_2","u_so":2,"a_id":0,"p_id":0,"pc_id":0,"pl_id":0}],"eid":"qWrBP","s":"s"});
+</script>
+
+<div id="msmaflink-qWrBP">
+
+リンク
+
+</div>
+
+<!-- MoshimoAffiliateEasyLink END -->
+
+⭐⭐⭐⭐(星4)
+
+ソシム社のデータ分析シリーズの一冊目。めちゃくちゃTwitter上で評判が良かったので気にはなっていたが、youtubeでとても勉強させてもらっている[アイシア・ソリッドさん](https://twitter.com/AIcia_Solid)(のマスター)がシリーズ4冊目をこの頃出版されたということなので、Kindleセールにてまとめ買いをした。
+めっちゃわかりやすい説明をしてくれるアイシアさんがシリーズ全作オススメされているので、きっと参考になるだろうと思いつつ、Amazonレビューもそれなりに高く、読む前の期待値としては高め。
+
+結論から言うと、データ分析に少なからず関わる機会がある初学者にはとてもお勧め。よく使う統計手法には慣れている中級者以上でも、視野を広げたいのならとてもお勧め。
+数式的な理解がないと満足出来ない人にはお勧めできない。なぜなら本書では数式が全くといって良いほど出てこないから。
+
+タイトル通り本書は数式モデルについて解説しているが、多項式モデルや一般線形モデルに限らず、統計モデルや確率モデルにもしっかり触れられており、最後には時系列モデルや機械学習モデルにも触れられている。難解な数式はほとんど無く、メリットデメリットが例示付きでとにかく浅く広く解説されている。
+
+私的には聞いたことはあるけど使ったこと無いモデルとか、まるで聞いたことないモデルまで、様々なモデルの存在を知ることができ、本当に買って良かったと思う。
+
+星5にならなかった理由だが、これはおそらく自分の性格の問題だ。本当に全てが浅く紹介されているだけなので、それぞれのモデルについて深く知りたいなら別の参考書をあたる必要がある。その「なんとなく分かった気になっておいて、とりあえず前に進む」というのが最初のうちはなかなか出来なかったので、全然読み進められなかった。。
+しかし、適宜たくさんの参考書が筆者により紹介されているし、たしかに一部の参考書を引いてみるととても分かりやすかった。
+
+この一冊で数理モデルを扱えるようになるわけでは無いが、この一冊から入門し、全体を俯瞰したのちに細かい分野を別の参考書で補う勉強スタイルが非常に効率的かも。
+
+## 分析者のためのデータ解釈学入門　データの本質をとらえる技術\[ 江崎貴裕 \]
+
+⭐⭐⭐⭐⭐(星5)
+
+<!-- START MoshimoAffiliateEasyLink -->
+<script type="text/javascript">
+(function(b,c,f,g,a,d,e){b.MoshimoAffiliateObject=a;
+b[a]=b[a]||function(){arguments.currentScript=c.currentScript
+||c.scripts[c.scripts.length-2];(b[a].q=b[a].q||[]).push(arguments)};
+c.getElementById(a)||(d=c.createElement(f),d.src=g,
+d.id=a,e=c.getElementsByTagName("body")[0],e.appendChild(d))})
+(window,document,"script","//dn.msmstatic.com/site/cardlink/bundle.js?20220329","msmaflink");
+msmaflink({"n":"分析者のためのデータ解釈学入門　データの本質をとらえる技術 [ 江崎貴裕 ]","b":"","t":"","d":"https:\/\/thumbnail.image.rakuten.co.jp","c_p":"","p":["\/@0_mall\/book\/cabinet\/2906\/9784802612906.jpg"],"u":{"u":"https:\/\/item.rakuten.co.jp\/book\/16508794\/","t":"rakuten","r_v":""},"v":"2.1","b_l":[{"id":1,"u_tx":"楽天市場で見る","u_bc":"#f76956","u_url":"https:\/\/item.rakuten.co.jp\/book\/16508794\/","a_id":3291267,"p_id":54,"pl_id":27059,"pc_id":54,"s_n":"rakuten","u_so":1},{"id":2,"u_tx":"Amazonで見る","u_bc":"#87c209","u_url":"https:\/\/www.amazon.co.jp\/dp\/4802612907","a_id":0,"p_id":0,"pl_id":0,"pc_id":0,"s_n":"custom_2","u_so":2}],"eid":"8V8Kk","s":"s"});
+</script>
+
+<div id="msmaflink-8V8Kk">
+
+リンク
+
+</div>
+
+<!-- MoshimoAffiliateEasyLink END -->
+
+これも前述と同じ江崎先生による書籍で、ソシムデータ分析シリーズの二作目。
+
+正直この本は傑作級に素晴らしい。これまでに読んだ[^1]どの統計書よりも分かりやすく、かつ網羅的に「統計学を使う上での注意点」が網羅されている。仮説検定法に潜む問題や機械学習における過学習の問題など有名どころはもちろん、サンプルサイズと効果量の話とか、様々なバイアスの話とか、、、学生の時に習った(であろう)重要ポイントがくまなく言及されている。
+
+会社の人たちに「黙ってこれ読んでから質問してくれ」と言いたいレベルで、本書の内容はデータ分析に携わる人なら必ず知っておくべき内容ばかりが詰まってる。
+
+「数理モデル」と同様、本書にも数式はほぼ登場しないが、前書よりも一つ一つのイシューに対する説明がより丁寧になっている。「数理モデル」は一通りサーっと読み通してから、引っかかる部分があれば追加で勉強、というスタイルだが、本書はこの一冊をとにかくじっくり熟読すれば様々なバイアスの存在・問題点を学ぶことが出来る。
+
+## ニーチェが京都にやってきて17歳の私に哲学のこと教えてくれた。\[ 原田まりる \]
+
+<!-- START MoshimoAffiliateEasyLink -->
+<script type="text/javascript">
+(function(b,c,f,g,a,d,e){b.MoshimoAffiliateObject=a;
+b[a]=b[a]||function(){arguments.currentScript=c.currentScript
+||c.scripts[c.scripts.length-2];(b[a].q=b[a].q||[]).push(arguments)};
+c.getElementById(a)||(d=c.createElement(f),d.src=g,
+d.id=a,e=c.getElementsByTagName("body")[0],e.appendChild(d))})
+(window,document,"script","//dn.msmstatic.com/site/cardlink/bundle.js?20220329","msmaflink");
+msmaflink({"n":"ニーチェが京都にやってきて17歳の私に哲学のこと教えてくれた。 [ 原田まりる ]","b":"","t":"","d":"https:\/\/thumbnail.image.rakuten.co.jp","c_p":"","p":["\/@0_mall\/book\/cabinet\/9653\/9784478069653.jpg"],"u":{"u":"https:\/\/item.rakuten.co.jp\/book\/14398470\/","t":"rakuten","r_v":""},"v":"2.1","b_l":[{"id":1,"u_tx":"楽天市場で見る","u_bc":"#f76956","u_url":"https:\/\/item.rakuten.co.jp\/book\/14398470\/","a_id":3291267,"p_id":54,"pl_id":27059,"pc_id":54,"s_n":"rakuten","u_so":1},{"id":2,"u_tx":"Amazonで見る","u_bc":"#87c209","u_url":"https:\/\/www.amazon.co.jp\/dp\/B01LX0F0ZY","a_id":0,"p_id":0,"pl_id":0,"pc_id":0,"s_n":"custom_2","u_so":2}],"eid":"35jQL","s":"s"});
+</script>
+
+<div id="msmaflink-35jQL">
+
+リンク
+
+</div>
+
+<!-- MoshimoAffiliateEasyLink END -->
+
+⭐⭐⭐(星3)
+
+これは期待してなかったけど、意外になかなか面白かった本。
+
+Kindleのまとめ買いセール\[^2\]の数合わせで購入。「若者ウケを狙った寒いなりきりラノベかなぁ...」と思いきやちょっと違った。
+
+ストーリーはこうだ。失恋をした女子高生のもとへ転生したニーチェがやってきて、「祝福できないくらいならいっそ呪ってしまえ」と言いながら彼女に哲学を説く。
+
+その後キルケゴールやサルトルといった歴史上の哲学者もニーチェと同じように転生者として登場し、それぞれの哲学を彼女に説く。様々な哲学の考え方を知るに従い、失恋や自身の親との関係などで抱えていたもやもやしたものに気持ちの区切りを付けることができるようになり、成長していくという話。
+
+はじめはなろう系の異世界転生のような月並みのストーリーとして読んでいたのだが、読み始めてすぐその間違いに気がつく。この本は小説として読むのではなく、**会話形式でそれぞれの哲学者の考えを子供にも分かるように説明した極めて平易な哲学書**と解釈するのが正しいのだ。そう考えると極めて読みやすく、分かりやすい。というか哲学書はこうやって説明してくれればいいんだ、とはっとした。
+
+Amazonレビューは星4.5と比較的高いが、皆ストーリーを面白いと言っているわけではないので私と同じ感想なんだと思う。
+
+「子供にも分かるように」とは言ったが、正直高校生には難しいかも。人生経験的に共感できるポイントが少なそう。社会人なら共感ポイントが多く、むしろ救われる気持ちにすらなるかもしれないと思う。
+
+# ガジェット
+
+実は自分、結構ガジェット好きです。結構ガジェット系youtuberの動画をずっと見ちゃう。
+
+## Keychron K2 non-backlight red
+
+<!-- START MoshimoAffiliateEasyLink -->
+<script type="text/javascript">
+(function(b,c,f,g,a,d,e){b.MoshimoAffiliateObject=a;
+b[a]=b[a]||function(){arguments.currentScript=c.currentScript
+||c.scripts[c.scripts.length-2];(b[a].q=b[a].q||[]).push(arguments)};
+c.getElementById(a)||(d=c.createElement(f),d.src=g,
+d.id=a,e=c.getElementsByTagName("body")[0],e.appendChild(d))})
+(window,document,"script","//dn.msmstatic.com/site/cardlink/bundle.js?20220329","msmaflink");
+msmaflink({"n":"Keychron K2 V2 ノンバックライト Mac英語配列 有線 \/ Bluetooth 5.1 ワイヤレス 両対応 テンキーレス ホットスワップ Keychron 赤軸 84キー メカニカルキーボード キークロン (Bluetoothキーボード) US配列","b":"","t":"","d":"https:\/\/thumbnail.image.rakuten.co.jp","c_p":"\/@0_mall\/kitcut\/cabinet\/item\/148","p":["\/p-397218.jpg","\/r-397233.jpg","\/r-397234.jpg"],"u":{"u":"https:\/\/item.rakuten.co.jp\/kitcut\/506660\/","t":"rakuten","r_v":""},"v":"2.1","b_l":[{"id":1,"u_tx":"楽天市場で見る","u_bc":"#f76956","u_url":"https:\/\/item.rakuten.co.jp\/kitcut\/506660\/","a_id":3291267,"p_id":54,"pl_id":27059,"pc_id":54,"s_n":"rakuten","u_so":1},{"id":2,"u_tx":"keychron.jpで見る","u_bc":"#87c209","u_url":"https:\/\/keychron.jp\/products\/keychron-k2-non-backlight-wireless-mechanical-keyboard","a_id":0,"p_id":0,"pl_id":0,"pc_id":0,"s_n":"custom_2","u_so":2}],"eid":"9fY1y","s":"s"});
+</script>
+
+<div id="msmaflink-9fY1y">
+
+リンク
+
+</div>
+
+<!-- MoshimoAffiliateEasyLink END -->
+
+🌟🌟🌟(星3兆個)
+
+![image of keychron k2](https://cdn.shopify.com/s/files/1/0599/4977/7066/t/3/assets/keychronk2nonbacklightversionmechanicalkeyboardredbluebrownswitchformacwindowssystem--edited-1639627405156-1647402368049.jpg?v=1647402369)
+
+Keychronは香港のメーカーで、アメリカのキーボード大好きyoutuberにも人気があるらしい。
+
+きっかけはtakuyaさんのNeovim動画で、**むっちゃかっけぇ**と思ったとき。
+
+{{< youtube ajmK0ZNcM4Q >}}
+
+調べてみたら100ドルを切る値段でありながら、HHKBなどの超高級キーボード並に打鍵感が良いらしいとのこと。
+
+keychronというメーカーを調べてみると、主にキー数の違いによって様々なバージョンのキーボードがあるらしい。詳しい違いについては[やまかふぇさん](https://www.youtube.com/channel/UCLu5Kn5DOX0OvlrTY_SzFKg)の動画が詳しい。
+見比べた中では最初に見たkeychron "K2"が一番良く、カーソルキーやInsキーがうまいこと収まっているところに惚れた。
+通常版でも良かったが、別にキーボードが光る必要は無いと思ってる人なのでnon-backlightにした。
+
+意外とネット通販でも通常価格で販売されていて、在庫さえあればどこでも買えそう。しかし、謎のkyochron.jpという公式っぽいサイトを見つけたので、ここで買ってみた。
+
+このサイトで購入した人がほぼ見当たらず、しかも謎に通常販売価格より1000円以上安く(自分が購入したときは9300円、現在は10400円)、発送も香港からということで不安しかなかった。
+怖かったのでPaypalで購入し、メールアドレスも捨てアドで登録。6-9日くらいは到着に要すると書いてあったが10日立っても届かず、不安しかなかった(チャットサポートも不通)。
+が、結局11日目で佐川急便到着。疑ってすまなかった。。
+
+感想は最高。打鍵感が本当に気持ちいい。高級キーボードの「スコスコ感」ってこれかぁ。
+
+HHKBなら最低でも3万円くらいは積まないといけないが、keychronは1万円で入門できて非常にお手軽。おすすめ。
+
+なお気に入りすぎて純正パームレストも購入した。(これは楽天スーパーセール時にヤマダだかコジマだかのショップにて購入)
+
+{{< tweet 1568487075569369089 >}}
+
+[^1]: ぶっちゃけ統計学勉強中なので5冊も読んでないけど･･･

@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://snitch0.github.io/</loc>
-    <lastmod>2022-09-12T00:00:00+00:00</lastmod>
+    <lastmod>2022-09-19T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -15,8 +15,14 @@
                 href="https://snitch0.github.io/"
                 />
   </url><url>
+    <loc>https://snitch0.github.io/tags/books/</loc>
+    <lastmod>2022-09-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://snitch0.github.io/categories/books/</loc>
+    <lastmod>2022-09-19T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://snitch0.github.io/categories/</loc>
-    <lastmod>2022-09-12T00:00:00+00:00</lastmod>
+    <lastmod>2022-09-19T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -28,8 +34,42 @@
                 href="https://snitch0.github.io/categories/"
                 />
   </url><url>
+    <loc>https://snitch0.github.io/tags/etc/</loc>
+    <lastmod>2022-09-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://snitch0.github.io/categories/etc/</loc>
+    <lastmod>2022-09-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://snitch0.github.io/categories/gadgets/</loc>
+    <lastmod>2022-09-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://snitch0.github.io/tags/keychron/</loc>
+    <lastmod>2022-09-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://snitch0.github.io/tags/phylosophy/</loc>
+    <lastmod>2022-09-19T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://snitch0.github.io/post/</loc>
-    <lastmod>2022-09-12T00:00:00+00:00</lastmod>
+    <lastmod>2022-09-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://snitch0.github.io/tags/statistics/</loc>
+    <lastmod>2022-09-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://snitch0.github.io/tags/</loc>
+    <lastmod>2022-09-19T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://snitch0.github.io/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://snitch0.github.io/tags/"
+                />
+  </url><url>
+    <loc>https://snitch0.github.io/p/items-22-09/</loc>
+    <lastmod>2022-09-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://snitch0.github.io/tags/python/</loc>
     <lastmod>2022-09-12T00:00:00+00:00</lastmod>
@@ -42,19 +82,6 @@
   </url><url>
     <loc>https://snitch0.github.io/p/python-subprocess/</loc>
     <lastmod>2022-09-12T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://snitch0.github.io/tags/</loc>
-    <lastmod>2022-09-12T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://snitch0.github.io/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="https://snitch0.github.io/tags/"
-                />
   </url><url>
     <loc>https://snitch0.github.io/tags/hugo/</loc>
     <lastmod>2022-09-11T00:00:00+00:00</lastmod>
@@ -96,9 +123,6 @@
     <lastmod>2022-09-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://snitch0.github.io/tags/blog/</loc>
-    <lastmod>2022-09-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://snitch0.github.io/categories/etc/</loc>
     <lastmod>2022-09-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://snitch0.github.io/page/</loc>
