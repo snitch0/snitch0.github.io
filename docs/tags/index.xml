@@ -6,7 +6,39 @@
         <description>Recent content in Tags on 駆け出しバイオインフォマティシャンのtech blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Mon, 19 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://snitch0.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 21 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://snitch0.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>formatter</title>
+        <link>https://snitch0.github.io/tags/formatter/</link>
+        <pubDate>Wed, 21 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://snitch0.github.io/tags/formatter/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>linter</title>
+        <link>https://snitch0.github.io/tags/linter/</link>
+        <pubDate>Wed, 21 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://snitch0.github.io/tags/linter/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Python</title>
+        <link>https://snitch0.github.io/tags/python/</link>
+        <pubDate>Wed, 21 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://snitch0.github.io/tags/python/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>vscode</title>
+        <link>https://snitch0.github.io/tags/vscode/</link>
+        <pubDate>Wed, 21 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://snitch0.github.io/tags/vscode/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>books</title>
         <link>https://snitch0.github.io/tags/books/</link>
         <pubDate>Mon, 19 Sep 2022 00:00:00 +0000</pubDate>
@@ -44,14 +76,6 @@
         <pubDate>Mon, 19 Sep 2022 00:00:00 +0000</pubDate>
         
         <guid>https://snitch0.github.io/tags/statistics/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Python</title>
-        <link>https://snitch0.github.io/tags/python/</link>
-        <pubDate>Mon, 12 Sep 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://snitch0.github.io/tags/python/</guid>
         <description></description>
         </item>
         <item>

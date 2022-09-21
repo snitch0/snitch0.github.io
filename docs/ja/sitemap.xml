@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://snitch0.github.io/</loc>
-    <lastmod>2022-09-19T00:00:00+00:00</lastmod>
+    <lastmod>2022-09-21T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -15,14 +15,8 @@
                 href="https://snitch0.github.io/"
                 />
   </url><url>
-    <loc>https://snitch0.github.io/tags/books/</loc>
-    <lastmod>2022-09-19T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://snitch0.github.io/categories/books/</loc>
-    <lastmod>2022-09-19T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://snitch0.github.io/categories/</loc>
-    <lastmod>2022-09-19T00:00:00+00:00</lastmod>
+    <lastmod>2022-09-21T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -33,6 +27,49 @@
                 hreflang="ja"
                 href="https://snitch0.github.io/categories/"
                 />
+  </url><url>
+    <loc>https://snitch0.github.io/tags/formatter/</loc>
+    <lastmod>2022-09-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://snitch0.github.io/tags/linter/</loc>
+    <lastmod>2022-09-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://snitch0.github.io/post/</loc>
+    <lastmod>2022-09-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://snitch0.github.io/tags/python/</loc>
+    <lastmod>2022-09-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://snitch0.github.io/categories/python/</loc>
+    <lastmod>2022-09-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://snitch0.github.io/p/python-linter-formatter/</loc>
+    <lastmod>2022-09-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://snitch0.github.io/tags/</loc>
+    <lastmod>2022-09-21T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://snitch0.github.io/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://snitch0.github.io/tags/"
+                />
+  </url><url>
+    <loc>https://snitch0.github.io/tags/vscode/</loc>
+    <lastmod>2022-09-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://snitch0.github.io/categories/vscode/</loc>
+    <lastmod>2022-09-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://snitch0.github.io/tags/books/</loc>
+    <lastmod>2022-09-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://snitch0.github.io/categories/books/</loc>
+    <lastmod>2022-09-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://snitch0.github.io/tags/etc/</loc>
     <lastmod>2022-09-19T00:00:00+00:00</lastmod>
@@ -49,33 +86,11 @@
     <loc>https://snitch0.github.io/tags/phylosophy/</loc>
     <lastmod>2022-09-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://snitch0.github.io/post/</loc>
-    <lastmod>2022-09-19T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://snitch0.github.io/tags/statistics/</loc>
     <lastmod>2022-09-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://snitch0.github.io/tags/</loc>
-    <lastmod>2022-09-19T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://snitch0.github.io/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="https://snitch0.github.io/tags/"
-                />
-  </url><url>
     <loc>https://snitch0.github.io/p/items-22-09/</loc>
     <lastmod>2022-09-19T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://snitch0.github.io/tags/python/</loc>
-    <lastmod>2022-09-12T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://snitch0.github.io/categories/python/</loc>
-    <lastmod>2022-09-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://snitch0.github.io/tags/subprocess/</loc>
     <lastmod>2022-09-12T00:00:00+00:00</lastmod>
