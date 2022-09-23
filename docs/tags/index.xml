@@ -6,7 +6,47 @@
         <description>Recent content in Tags on 駆け出しバイオインフォマティシャンのtech blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Wed, 21 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://snitch0.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 22 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://snitch0.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>conda</title>
+        <link>https://snitch0.github.io/tags/conda/</link>
+        <pubDate>Thu, 22 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://snitch0.github.io/tags/conda/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>quarto</title>
+        <link>https://snitch0.github.io/tags/quarto/</link>
+        <pubDate>Thu, 22 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://snitch0.github.io/tags/quarto/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>R</title>
+        <link>https://snitch0.github.io/tags/r/</link>
+        <pubDate>Thu, 22 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://snitch0.github.io/tags/r/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>rmarkdown</title>
+        <link>https://snitch0.github.io/tags/rmarkdown/</link>
+        <pubDate>Thu, 22 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://snitch0.github.io/tags/rmarkdown/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>vscode</title>
+        <link>https://snitch0.github.io/tags/vscode/</link>
+        <pubDate>Thu, 22 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://snitch0.github.io/tags/vscode/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>formatter</title>
         <link>https://snitch0.github.io/tags/formatter/</link>
         <pubDate>Wed, 21 Sep 2022 00:00:00 +0000</pubDate>
@@ -28,14 +68,6 @@
         <pubDate>Wed, 21 Sep 2022 00:00:00 +0000</pubDate>
         
         <guid>https://snitch0.github.io/tags/python/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>vscode</title>
-        <link>https://snitch0.github.io/tags/vscode/</link>
-        <pubDate>Wed, 21 Sep 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://snitch0.github.io/tags/vscode/</guid>
         <description></description>
         </item>
         <item>
@@ -100,22 +132,6 @@
         <pubDate>Sun, 11 Sep 2022 00:00:00 +0000</pubDate>
         
         <guid>https://snitch0.github.io/tags/markdown/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>quarto</title>
-        <link>https://snitch0.github.io/tags/quarto/</link>
-        <pubDate>Sun, 11 Sep 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://snitch0.github.io/tags/quarto/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>R</title>
-        <link>https://snitch0.github.io/tags/r/</link>
-        <pubDate>Sun, 11 Sep 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://snitch0.github.io/tags/r/</guid>
         <description></description>
         </item>
         <item>

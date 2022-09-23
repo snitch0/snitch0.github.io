@@ -6,7 +6,149 @@
         <description>Recent content in R on 駆け出しバイオインフォマティシャンのtech blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Sun, 11 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://snitch0.github.io/tags/r/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 22 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://snitch0.github.io/tags/r/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>VSCodeでconda環境のRをradianとともに使う</title>
+        <link>https://snitch0.github.io/p/r-vscode-conda/</link>
+        <pubDate>Thu, 22 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://snitch0.github.io/p/r-vscode-conda/</guid>
+        <description>&lt;h1 id=&#34;この記事について&#34;&gt;この記事について&lt;/h1&gt;
+&lt;p&gt;しばらく前に会社の計算サーバーでVSCode×conda×rmd/qmdの環境を試行錯誤して構築することができた。&lt;/p&gt;
+&lt;p&gt;作っただけで満足してしまってその後はjupyter notebookしか使わないという暴挙にでてしまっていたが、これからはquarto活用を推進していこうという気になったので、改めて環境を見直した。&lt;/p&gt;
+&lt;h2 id=&#34;この記事を読んでできるようになること&#34;&gt;この記事を読んでできるようになること&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;VSCode-R(REditorSupport)を介してrmd/qmdのチャンクをインタラクティブモードで実行する際、指定したconda環境を使うようになります。&lt;/li&gt;
+&lt;li&gt;また、ターミナルには&lt;code&gt;radian&lt;/code&gt;が使用されるようになります。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;誰向けか&#34;&gt;誰向けか&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Rのバージョンを使い分けたい人&lt;/li&gt;
+&lt;li&gt;Rのバージョン管理にcondaを使っている人&lt;/li&gt;
+&lt;li&gt;わけあってRのアップデートを気軽にはできない場合&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;方法&#34;&gt;方法&lt;/h1&gt;
+&lt;h2 id=&#34;クレジット&#34;&gt;クレジット&lt;/h2&gt;
+&lt;p&gt;最初に、この解決法を知るに至った、神的なGitHub issueをクレジットしておきたい。&lt;/p&gt;
+&lt;p&gt;自分はこちらのイシュー(Rとradianをconda環境指定しつつvscode-Rで使うにはどうしたら良いか)についていたelsherbiniさんのスクリプトで成功した。&lt;/p&gt;
+&lt;iframe class=&#34;hatenablogcard&#34; style=&#34;width:100%;height:155px;&#34; src=&#34;https://hatenablog-parts.com/embed?url=%e2%80%9chttps%3a%2f%2fgithub.com%2fREditorSupport%2fvscode-R%2fissues%2f1130%23issuecomment-1156774237%e2%80%9d&#34; width=&#34;300&#34; height=&#34;150&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34;&gt;&lt;/iframe&gt;
+
+&lt;h2 id=&#34;最小構成のconda環境&#34;&gt;最小構成のconda環境&lt;/h2&gt;
+&lt;p&gt;まず環境を作る。これさえあればとりあえずはvscodeでの解析環境が作れる。&lt;/p&gt;
+&lt;div&gt;
+    &lt;div class=&#34;codeblock--content&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;mamba create -n r42 &lt;span class=&#34;s2&#34;&gt;&amp;#34;r-base==4.2&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 完了後&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;mamba activate r42
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;mamba install radian&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;radianを使う気が無いなら省略してもOK。&lt;/p&gt;
+&lt;p&gt;もしjupyter Notebook環境も作りたいなら、以下のものも用意しておく。&lt;/p&gt;
+&lt;div&gt;
+    &lt;div class=&#34;codeblock--content&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;mamba install r-irkernel jupyterlab&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;conda-forgeレポジトリにはRパッケージも存在しており、コマンドライン上でパッケージをインストールすることは可能だ。&lt;/p&gt;
+&lt;p&gt;&lt;mark&gt;しかし、この後インストールが必須な&lt;code&gt;languageserver&lt;/code&gt;をcondaでインストールしてしまうと、依存関係の設定ミスにより強制的にR4.1にダウングレードされてしまうので注意が必要だ&lt;/mark&gt;。
+基本的にRのパッケージはR内でインストールする方が良さそうだ。&lt;/p&gt;
+&lt;div&gt;
+    &lt;div class=&#34;codeblock--content&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;radian&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;br&gt;
+&lt;div&gt;
+    &lt;div class=&#34;codeblock--content&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;R&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;version&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;4.2.1&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;2022-06-23&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;--&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Funny-Looking Kid&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Platform&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x86_64&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;linux&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;gnu &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;64&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;install.packages&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;languageserver&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;最低限必要なパッケージはこの&lt;code&gt;languageserver&lt;/code&gt;パッケージだけ。&lt;/p&gt;
+&lt;h2 id=&#34;起動用シェルスクリプトを作成&#34;&gt;起動用シェルスクリプトを作成&lt;/h2&gt;
+&lt;p&gt;Windowsだと&lt;code&gt;ps1&lt;/code&gt;ファイルか何かを使うのだと思うが、Linux/Mac環境しか試してないので不明。&lt;/p&gt;
+&lt;p&gt;以下の内容を適当な場所へ保存。ファイル名は何でも良い。&lt;/p&gt;
+&lt;div&gt;
+    &lt;div class=&#34;codeblock--name&#34;&gt;$HOME/.config/R/vscode-r-conda.sh&lt;/div&gt;
+    
+    &lt;div class=&#34;codeblock--content&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#!/bin/bash
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# conda環境名はここで指定する&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;R_ENV&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;r42
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;\_\_&lt;/span&gt;conda_setup&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;![(\&amp;#39;](https://latex.codecogs.com/svg.latex?%28%27 &amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;&amp;#34;)HOME/mambaforge/bin/conda&amp;#39;&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;shell.zsh&amp;#39;&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;hook&amp;#39;&lt;/span&gt; 2&lt;span class=&#34;se&#34;&gt;\&amp;gt;&lt;/span&gt; /dev/null&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;if \[ ![? -eq 0 \]; then  eval \&amp;#34;](https://latex.codecogs.com/svg.latex?%3F%20-eq%200%20%5D%3B%20then%20%20eval%20%22 &amp;#34;&lt;/span&gt;? -eq &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;then&lt;/span&gt;  &lt;span class=&#34;nb&#34;&gt;eval&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\_\_&lt;/span&gt;conda_setup&lt;span class=&#34;s2&#34;&gt;&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;else
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;if \[ -f &amp;#34;&lt;/span&gt;!&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;HOME/mambaforge/etc/profile.d/conda.sh&lt;span class=&#34;se&#34;&gt;\&amp;#34;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;then&lt;/span&gt;  . &lt;span class=&#34;se&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;](&lt;/span&gt;https://latex.codecogs.com/svg.latex?HOME%2Fmambaforge%2Fetc%2Fprofile.d%2Fconda.sh%22%20%5D%3B%20then%20%20.%20%22 &lt;span class=&#34;s2&#34;&gt;&amp;#34;HOME/mambaforge/etc/profile.d/conda.sh&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;then&lt;/span&gt;  . &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;HOME/mambaforge/etc/profile.d/conda.sh&lt;span class=&#34;s2&#34;&gt;&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;else
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;export PATH=&amp;#34;&lt;/span&gt;!&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;HOME/mambaforge/bin:&lt;span class=&#34;o&#34;&gt;](&lt;/span&gt;https://latex.codecogs.com/svg.latex?HOME%2Fmambaforge%2Fbin%3A &lt;span class=&#34;s2&#34;&gt;&amp;#34;HOME/mambaforge/bin:&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;PATH&lt;span class=&#34;s2&#34;&gt;&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;fi
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;fi
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;unset \_\_conda_setup
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;16&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;17&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;if \[ -f &amp;#34;&lt;/span&gt;!&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;HOME/mambaforge/etc/profile.d/mamba.sh&lt;span class=&#34;se&#34;&gt;\&amp;#34;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;then&lt;/span&gt;  . &lt;span class=&#34;se&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;](&lt;/span&gt;https://latex.codecogs.com/svg.latex?HOME%2Fmambaforge%2Fetc%2Fprofile.d%2Fmamba.sh%22%20%5D%3B%20then%20%20.%20%22 &lt;span class=&#34;s2&#34;&gt;&amp;#34;HOME/mambaforge/etc/profile.d/mamba.sh&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;then&lt;/span&gt;  . &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;HOME/mambaforge/etc/profile.d/mamba.sh&lt;span class=&#34;s2&#34;&gt;&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;18&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;fi
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;19&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;mamba deactivate &amp;amp;&amp;amp; mamba activate \$R_ENV
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;21&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;22&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;radian&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;一応実行可能になってるか確認する。&lt;/p&gt;
+&lt;div&gt;
+    &lt;div class=&#34;codeblock--content&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;chmod +x /home/snitch/.config/R/vscode-r-conda.sh
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;/home/snitch/.config/R/vscode-r-conda.sh&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;正常にconda環境のRがradianで立ち上がればOK。&lt;/p&gt;
+&lt;h2 id=&#34;vscodeに登録&#34;&gt;VSCodeに登録&lt;/h2&gt;
+&lt;p&gt;最後にVSCodeの登録をする。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://snitch0.github.io/p/r-vscode-conda/vscode_ss.webp&#34;
+	width=&#34;484&#34;
+	height=&#34;129&#34;
+	srcset=&#34;https://snitch0.github.io/p/r-vscode-conda/vscode_ss_huc7a9c3be8daf1e7db0035e7f4e5465c9_3864_480x0_resize_q75_h2_box_2.webp 480w, https://snitch0.github.io/p/r-vscode-conda/vscode_ss_huc7a9c3be8daf1e7db0035e7f4e5465c9_3864_1024x0_resize_q75_h2_box_2.webp 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;vscode screen shot&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;375&#34;
+		data-flex-basis=&#34;900px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;作業完了実行確認&#34;&gt;作業完了、実行確認&lt;/h2&gt;
+&lt;p&gt;ここまでやれば、conda環境がVSCodeの実行環境になったはず。このqmdファイルで実行できるか試してみる。&lt;/p&gt;
+&lt;div&gt;
+    &lt;div class=&#34;codeblock--content&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;plot(iris)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://snitch0.github.io/p/r-vscode-conda/radian_complete.webp&#34;
+	width=&#34;847&#34;
+	height=&#34;626&#34;
+	srcset=&#34;https://snitch0.github.io/p/r-vscode-conda/radian_complete_huf134f05ca67618118876ee863bf127a5_29248_480x0_resize_q75_h2_box_2.webp 480w, https://snitch0.github.io/p/r-vscode-conda/radian_complete_huf134f05ca67618118876ee863bf127a5_29248_1024x0_resize_q75_h2_box_2.webp 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;radian works in vscode&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;135&#34;
+		data-flex-basis=&#34;324px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;バッチリ✴️&lt;/p&gt;
+&lt;p&gt;もしもバージョン変更をしたくなったら、conda環境を作り直してからシェルスクリプトの仮想環境名を変更するだけで良いので、超簡単。&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;自分の場合は数十人で使っている共有サーバーなので二三年に一度しかアプデできないし、LinuxのOS的な問題でRバージョンを上げられないという悲しい状況です。&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+        </item>
+        <item>
         <title>Quarto(とHugo)のSyntax</title>
         <link>https://snitch0.github.io/p/blog-syntax/</link>
         <pubDate>Sun, 11 Sep 2022 00:00:00 +0000</pubDate>

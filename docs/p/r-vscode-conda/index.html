@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='先人の知恵さまさま🙏'><title>VSCodeでconda環境のRをradianとともに使う</title>
+
+<link rel='canonical' href='https://snitch0.github.io/p/r-vscode-conda/'>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<link rel="stylesheet" href="/scss/style.min.f588b70813a4cf2131849aac3a5434a61fa1fb87e5425f03884d29170627726a.css"><meta property='og:title' content='VSCodeでconda環境のRをradianとともに使う'>
+<meta property='og:description' content='先人の知恵さまさま🙏'>
+<meta property='og:url' content='https://snitch0.github.io/p/r-vscode-conda/'>
+<meta property='og:site_name' content='駆け出しバイオインフォマティシャンのtech blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='vscode' /><meta property='article:tag' content='r' /><meta property='article:tag' content='conda' /><meta property='article:tag' content='quarto' /><meta property='article:tag' content='rmarkdown' /><meta property='article:published_time' content='2022-09-22T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-09-22T00:00:00&#43;00:00'/><meta property='og:image' content='https://snitch0.github.io/img/avatar.png' />
+<meta name="twitter:site" content="@snitch0">
+    <meta name="twitter:creator" content="@snitch0"><meta name="twitter:title" content="VSCodeでconda環境のRをradianとともに使う">
+<meta name="twitter:description" content="先人の知恵さまさま🙏"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://snitch0.github.io/img/avatar.png' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQBVMRWEHP"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZQBVMRWEHP', { 'anonymize_ip': false });
+}
+</script>
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQBVMRWEHP"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZQBVMRWEHP', { 'anonymize_ip': false });
+}
+</script>
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="メニューを開く・閉じる">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+
+                    
+                        
+                        <img src="/img/avatar_hu10b6227cc83a47f8ae030658c6c3875a_295203_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🧬</span>
+                
+            </figure>
+            
+        
+
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">駆け出しバイオインフォマティシャンのtech blog</a></h1>
+            <h2 class="site-description">Python, R, Linux, Genomics, Transcriptomics and Microbiology.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a
+                        href='https://github.com/snitch0'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a
+                        href='https://twitter.com/excel2rlang'
+                        target="_blank"
+                        title="Twitter"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://snitch0.github.io/" selected>日本語</option>
+                        
+                            <option value="https://snitch0.github.io/en/" >English</option>
+                        
+                    </select>
+                </li>
+            
+
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>ダークモード</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/vscode/" >
+                VSCode
+            </a>
+        
+            <a href="/categories/r/" >
+                R
+            </a>
+        
+            <a href="/categories/conda/" >
+                conda
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/r-vscode-conda/">VSCodeでconda環境のRをradianとともに使う</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            先人の知恵さまさま🙏
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 22, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    読了時間: 1分
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="この記事について">この記事について</h1>
+<p>しばらく前に会社の計算サーバーでVSCode×conda×rmd/qmdの環境を試行錯誤して構築することができた。</p>
+<p>作っただけで満足してしまってその後はjupyter notebookしか使わないという暴挙にでてしまっていたが、これからはquarto活用を推進していこうという気になったので、改めて環境を見直した。</p>
+<h2 id="この記事を読んでできるようになること">この記事を読んでできるようになること</h2>
+<ul>
+<li>VSCode-R(REditorSupport)を介してrmd/qmdのチャンクをインタラクティブモードで実行する際、指定したconda環境を使うようになります。</li>
+<li>また、ターミナルには<code>radian</code>が使用されるようになります。</li>
+</ul>
+<h2 id="誰向けか">誰向けか</h2>
+<ul>
+<li>Rのバージョンを使い分けたい人</li>
+<li>Rのバージョン管理にcondaを使っている人</li>
+<li>わけあってRのアップデートを気軽にはできない場合<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></li>
+</ul>
+<h1 id="方法">方法</h1>
+<h2 id="クレジット">クレジット</h2>
+<p>最初に、この解決法を知るに至った、神的なGitHub issueをクレジットしておきたい。</p>
+<p>自分はこちらのイシュー(Rとradianをconda環境指定しつつvscode-Rで使うにはどうしたら良いか)についていたelsherbiniさんのスクリプトで成功した。</p>
+<iframe class="hatenablogcard" style="width:100%;height:155px;" src="https://hatenablog-parts.com/embed?url=%e2%80%9chttps%3a%2f%2fgithub.com%2fREditorSupport%2fvscode-R%2fissues%2f1130%23issuecomment-1156774237%e2%80%9d" width="300" height="150" frameborder="0" scrolling="no"></iframe>
+
+<h2 id="最小構成のconda環境">最小構成のconda環境</h2>
+<p>まず環境を作る。これさえあればとりあえずはvscodeでの解析環境が作れる。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">mamba create -n r42 <span class="s2">&#34;r-base==4.2&#34;</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="c1"># 完了後</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">mamba activate r42
+</span></span><span class="line"><span class="ln">4</span><span class="cl">mamba install radian</span></span></code></pre></div>
+    </div>
+</div>
+<p>radianを使う気が無いなら省略してもOK。</p>
+<p>もしjupyter Notebook環境も作りたいなら、以下のものも用意しておく。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">mamba install r-irkernel jupyterlab</span></span></code></pre></div>
+    </div>
+</div>
+<p>conda-forgeレポジトリにはRパッケージも存在しており、コマンドライン上でパッケージをインストールすることは可能だ。</p>
+<p><mark>しかし、この後インストールが必須な<code>languageserver</code>をcondaでインストールしてしまうと、依存関係の設定ミスにより強制的にR4.1にダウングレードされてしまうので注意が必要だ</mark>。
+基本的にRのパッケージはR内でインストールする方が良さそうだ。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">radian</span></span></code></pre></div>
+    </div>
+</div>
+<br>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">R</span> <span class="n">version</span> <span class="m">4.2.1</span> <span class="p">(</span><span class="m">2022-06-23</span><span class="p">)</span> <span class="o">--</span> <span class="s">&#34;Funny-Looking Kid&#34;</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">Platform</span><span class="o">:</span> <span class="n">x86_64</span><span class="o">-</span><span class="n">pc</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="nf">gnu </span><span class="p">(</span><span class="m">64</span><span class="o">-</span><span class="n">bit</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">
+</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="n">R</span><span class="o">&gt;</span> <span class="nf">install.packages</span><span class="p">(</span><span class="s">&#34;languageserver&#34;</span><span class="p">)</span></span></span></code></pre></div>
+    </div>
+</div>
+<p>最低限必要なパッケージはこの<code>languageserver</code>パッケージだけ。</p>
+<h2 id="起動用シェルスクリプトを作成">起動用シェルスクリプトを作成</h2>
+<p>Windowsだと<code>ps1</code>ファイルか何かを使うのだと思うが、Linux/Mac環境しか試してないので不明。</p>
+<p>以下の内容を適当な場所へ保存。ファイル名は何でも良い。</p>
+<div>
+    <div class="codeblock--name">$HOME/.config/R/vscode-r-conda.sh</div>
+    
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="c1"># conda環境名はここで指定する</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="nv">R_ENV</span><span class="o">=</span>r42
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="se">\_\_</span>conda_setup<span class="o">=</span><span class="s2">&#34;![(\&#39;](https://latex.codecogs.com/svg.latex?%28%27 &#34;</span><span class="o">(</span><span class="s1">&#39;&#34;)HOME/mambaforge/bin/conda&#39;</span> <span class="s1">&#39;shell.zsh&#39;</span> <span class="s1">&#39;hook&#39;</span> 2<span class="se">\&gt;</span> /dev/null<span class="o">)</span><span class="s2">&#34;
+</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="s2">if \[ ![? -eq 0 \]; then  eval \&#34;](https://latex.codecogs.com/svg.latex?%3F%20-eq%200%20%5D%3B%20then%20%20eval%20%22 &#34;</span>? -eq <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>  <span class="nb">eval</span> <span class="s2">&#34;&#34;</span><span class="o">)</span><span class="se">\_\_</span>conda_setup<span class="s2">&#34;
+</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="s2">else
+</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="s2">if \[ -f &#34;</span>!<span class="o">[</span>HOME/mambaforge/etc/profile.d/conda.sh<span class="se">\&#34;</span> <span class="se">\]</span><span class="p">;</span> <span class="k">then</span>  . <span class="se">\&#34;</span><span class="o">](</span>https://latex.codecogs.com/svg.latex?HOME%2Fmambaforge%2Fetc%2Fprofile.d%2Fconda.sh%22%20%5D%3B%20then%20%20.%20%22 <span class="s2">&#34;HOME/mambaforge/etc/profile.d/conda.sh&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>  . <span class="s2">&#34;&#34;</span><span class="o">)</span>HOME/mambaforge/etc/profile.d/conda.sh<span class="s2">&#34;
+</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="s2">else
+</span></span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="s2">export PATH=&#34;</span>!<span class="o">[</span>HOME/mambaforge/bin:<span class="o">](</span>https://latex.codecogs.com/svg.latex?HOME%2Fmambaforge%2Fbin%3A <span class="s2">&#34;HOME/mambaforge/bin:&#34;</span><span class="o">)</span>PATH<span class="s2">&#34;
+</span></span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="s2">fi
+</span></span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="s2">fi
+</span></span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="s2">unset \_\_conda_setup
+</span></span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="s2">if \[ -f &#34;</span>!<span class="o">[</span>HOME/mambaforge/etc/profile.d/mamba.sh<span class="se">\&#34;</span> <span class="se">\]</span><span class="p">;</span> <span class="k">then</span>  . <span class="se">\&#34;</span><span class="o">](</span>https://latex.codecogs.com/svg.latex?HOME%2Fmambaforge%2Fetc%2Fprofile.d%2Fmamba.sh%22%20%5D%3B%20then%20%20.%20%22 <span class="s2">&#34;HOME/mambaforge/etc/profile.d/mamba.sh&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>  . <span class="s2">&#34;&#34;</span><span class="o">)</span>HOME/mambaforge/etc/profile.d/mamba.sh<span class="s2">&#34;
+</span></span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="s2">fi
+</span></span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="ln">20</span><span class="cl"><span class="s2">mamba deactivate &amp;&amp; mamba activate \$R_ENV
+</span></span></span><span class="line"><span class="ln">21</span><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="ln">22</span><span class="cl"><span class="s2">radian</span></span></span></code></pre></div>
+    </div>
+</div>
+<p>一応実行可能になってるか確認する。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">chmod +x /home/snitch/.config/R/vscode-r-conda.sh
+</span></span><span class="line"><span class="ln">2</span><span class="cl">/home/snitch/.config/R/vscode-r-conda.sh</span></span></code></pre></div>
+    </div>
+</div>
+<p>正常にconda環境のRがradianで立ち上がればOK。</p>
+<h2 id="vscodeに登録">VSCodeに登録</h2>
+<p>最後にVSCodeの登録をする。</p>
+<p><img src="/p/r-vscode-conda/vscode_ss.webp"
+	width="484"
+	height="129"
+	srcset="/p/r-vscode-conda/vscode_ss_huc7a9c3be8daf1e7db0035e7f4e5465c9_3864_480x0_resize_q75_h2_box_2.webp 480w, /p/r-vscode-conda/vscode_ss_huc7a9c3be8daf1e7db0035e7f4e5465c9_3864_1024x0_resize_q75_h2_box_2.webp 1024w"
+	loading="lazy"
+	
+		alt="vscode screen shot"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="375"
+		data-flex-basis="900px"
+	
+></p>
+<h2 id="作業完了実行確認">作業完了、実行確認</h2>
+<p>ここまでやれば、conda環境がVSCodeの実行環境になったはず。このqmdファイルで実行できるか試してみる。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">plot(iris)</span></span></code></pre></div>
+    </div>
+</div>
+<p><img src="/p/r-vscode-conda/radian_complete.webp"
+	width="847"
+	height="626"
+	srcset="/p/r-vscode-conda/radian_complete_huf134f05ca67618118876ee863bf127a5_29248_480x0_resize_q75_h2_box_2.webp 480w, /p/r-vscode-conda/radian_complete_huf134f05ca67618118876ee863bf127a5_29248_1024x0_resize_q75_h2_box_2.webp 1024w"
+	loading="lazy"
+	
+		alt="radian works in vscode"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="135"
+		data-flex-basis="324px"
+	
+></p>
+<p>バッチリ✴️</p>
+<p>もしもバージョン変更をしたくなったら、conda環境を作り直してからシェルスクリプトの仮想環境名を変更するだけで良いので、超簡単。</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>自分の場合は数十人で使っている共有サーバーなので二三年に一度しかアプデできないし、LinuxのOS的な問題でRバージョンを上げられないという悲しい状況です。&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/vscode/">vscode</a>
+        
+            <a href="/tags/r/">R</a>
+        
+            <a href="/tags/conda/">conda</a>
+        
+            <a href="/tags/quarto/">quarto</a>
+        
+            <a href="/tags/rmarkdown/">rmarkdown</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">関連するコンテンツ</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/python-linter-formatter/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Pythonのlinterとformatter事情(@VisualStudioCode)</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/blog-syntax/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Quarto(とHugo)のSyntax</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/python-and-quarto/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">QuartoでPythonを使うときの注意とか</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 駆け出しバイオインフォマティシャンのtech blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        テーマ <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> は <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> によって設計されています。
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目次</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#この記事を読んでできるようになること">この記事を読んでできるようになること</a></li>
+    <li><a href="#誰向けか">誰向けか</a></li>
+  </ol>
+
+  <ol>
+    <li><a href="#クレジット">クレジット</a></li>
+    <li><a href="#最小構成のconda環境">最小構成のconda環境</a></li>
+    <li><a href="#起動用シェルスクリプトを作成">起動用シェルスクリプトを作成</a></li>
+    <li><a href="#vscodeに登録">VSCodeに登録</a></li>
+    <li><a href="#作業完了実行確認">作業完了、実行確認</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<script src="/js/copy-to-clipboard.js"></script>
+    </body>
+</html>
