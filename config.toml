@@ -4,7 +4,7 @@ theme = "hugo-theme-stack"
 paginate = 5
 title = "Snitch biotech blog"
 publishDir = "docs"
-disqusShortname = "hugo-theme-stack"
+disqusShortname = "qu-kechu-shibaioinhuomateishiyannotech-blog"
 DefaultContentLanguage = "ja"
 hasCJKLanguage = false
 ignoreFiles = [ "\\.qmd$", "\\.ipynb$" ]
@@ -56,7 +56,7 @@ src = "img/avatar.png"
     default = "Licensed under CC BY-NC-SA 4.0"
 
   [params.comments]
-  enabled = false
+  enabled = true
   provider = "disqus"
 
     [params.comments.disqusjs]
