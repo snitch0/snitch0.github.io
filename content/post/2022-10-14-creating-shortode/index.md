@@ -8,7 +8,7 @@ categories:
 tags:
   - hugo
 format: hugo
-slug:
+slug: creating-hugo-shortcode
 jupyter: python3
 html-math-method: webtex
 ---

@@ -1,0 +1,57 @@
+---
+title: Pythonのdplyr的なやつの新しいやつが来た(redframes)
+description: 今度こそ使い物になるか?
+author: Snitch
+date: "2022-09-27"
+categories:
+  - Python
+  - dataframe
+  - dplyr
+tags:
+  - python
+  - dataframe
+  - dplyr
+  - redframe
+  - siuba
+  - datar
+format: hugo
+slug: python-redframes
+jupyter: python3
+html-math-method: webtex
+---
+
+#
+
+
+```{python}
+from siuba import *
+from siuba import _ as X
+from siuba.data import mtcars
+
+(mtcars
+  >> group_by(_.cyl)
+  >> summarize(avg_hp = X.hp.mean())
+  )
+```
+
+
+
+```{python}
+import redframes as rf
+
+print(f"{type(mtcars)}")
+mtcars_ = rf.DataFrame(mtcars.to_dict())
+print(f"{type(mtcars_)}")
+```
+
+
+
+```{python}
+(
+    mtcars_
+    .group("cyl")
+    .summarize({
+        "avg_hp": ("hp", rf.stat.mean)
+    })
+)
+```

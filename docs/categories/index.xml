@@ -6,20 +6,36 @@
         <description>Recent content in Categories on 駆け出しバイオインフォマティシャンのtech blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Thu, 22 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://snitch0.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 23 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://snitch0.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>R</title>
+        <link>https://snitch0.github.io/categories/r/</link>
+        <pubDate>Sun, 23 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://snitch0.github.io/categories/r/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Statistics</title>
+        <link>https://snitch0.github.io/categories/statistics/</link>
+        <pubDate>Sun, 23 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://snitch0.github.io/categories/statistics/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Hugo</title>
+        <link>https://snitch0.github.io/categories/hugo/</link>
+        <pubDate>Fri, 14 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://snitch0.github.io/categories/hugo/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>conda</title>
         <link>https://snitch0.github.io/categories/conda/</link>
         <pubDate>Thu, 22 Sep 2022 00:00:00 +0000</pubDate>
         
         <guid>https://snitch0.github.io/categories/conda/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>R</title>
-        <link>https://snitch0.github.io/categories/r/</link>
-        <pubDate>Thu, 22 Sep 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://snitch0.github.io/categories/r/</guid>
         <description></description>
         </item>
         <item>
