@@ -79,7 +79,7 @@ calc_binomial <- function(n, p) {
     theme_bw() +
     ggtitle(glue::glue("n = {n}, p = {p}")) +
 annotate("text",
-    x = val_mean + 20, y = max(y),
+    x = val_mean + 10, y = max(y),
     label = glue::glue("Mean = {val_mean}, Variance = {val_var}"))
 }
 ```
@@ -93,5 +93,30 @@ calc_binomial(900, 1/3)
 ```
 
 ## (3)
+
+正確な硬貨を8回投げた時の表の出る回数は二項分布に従う。
+
+```{r}
+calc_binomial(8, 0.5) +
+xlim(c(0, 20))
+```
+
+## (4)
+
+二項分布の式、とは以下である。
+
+$$
+P(x) = {}_nC_x\cdot p^x(1-p)^{n-x}
+$$
+
+### (a)
+
+$$
+\begin{eqnarray}
+
+P &=& {}_6C_2\cdot \left( \frac{1}{6} \right)^2\left( \frac{5}{6} \right)^4 \\
+&\simeq& 0.2009
+\end{eqnarray}
+$$
 
 少しずつ書き進めます。

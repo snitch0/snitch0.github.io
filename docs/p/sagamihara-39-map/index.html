@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='2022年相模原サンキューキャンペーンのやつ'><title>pdfファイルの住所情報を抽出してGoogleMapに表示させる</title>
+
+<link rel='canonical' href='https://snitch0.github.io/p/sagamihara-39-map/'>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<link rel="stylesheet" href="/scss/style.min.c4d17cd807bf79ef26402db60a58852a744df74aee6a4930f96937370e71559f.css"><meta property='og:title' content='pdfファイルの住所情報を抽出してGoogleMapに表示させる'>
+<meta property='og:description' content='2022年相模原サンキューキャンペーンのやつ'>
+<meta property='og:url' content='https://snitch0.github.io/p/sagamihara-39-map/'>
+<meta property='og:site_name' content='駆け出しバイオインフォマティシャンのtech blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='python' /><meta property='article:tag' content='R' /><meta property='article:tag' content='API' /><meta property='article:tag' content='geocoding' /><meta property='article:tag' content='ローカルネタ' /><meta property='article:published_time' content='2022-10-26T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-10-26T00:00:00&#43;00:00'/><meta property='og:image' content='https://snitch0.github.io/img/avatar.png' />
+<meta name="twitter:site" content="@snitch0">
+    <meta name="twitter:creator" content="@snitch0"><meta name="twitter:title" content="pdfファイルの住所情報を抽出してGoogleMapに表示させる">
+<meta name="twitter:description" content="2022年相模原サンキューキャンペーンのやつ"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://snitch0.github.io/img/avatar.png' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQBVMRWEHP"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZQBVMRWEHP', { 'anonymize_ip': false });
+}
+</script>
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQBVMRWEHP"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZQBVMRWEHP', { 'anonymize_ip': false });
+}
+</script>
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="メニューを開く・閉じる">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+
+                    
+                        
+                        <img src="/img/avatar_hu10b6227cc83a47f8ae030658c6c3875a_295203_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🧬</span>
+                
+            </figure>
+            
+        
+
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">駆け出しバイオインフォマティシャンのtech blog</a></h1>
+            <h2 class="site-description">Python, R, Linux, Genomics, Transcriptomics and Microbiology.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a
+                        href='https://github.com/snitch0'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a
+                        href='https://twitter.com/excel2rlang'
+                        target="_blank"
+                        title="Twitter"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://snitch0.github.io/" selected>日本語</option>
+                        
+                            <option value="https://snitch0.github.io/en/" >English</option>
+                        
+                    </select>
+                </li>
+            
+
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>ダークモード</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/python/" >
+                Python
+            </a>
+        
+            <a href="/categories/r/" >
+                R
+            </a>
+        
+            <a href="/categories/geocoding/" >
+                geocoding
+            </a>
+        
+            <a href="/categories/googleapi/" >
+                GoogleAPI
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/sagamihara-39-map/">pdfファイルの住所情報を抽出してGoogleMapに表示させる</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            2022年相模原サンキューキャンペーンのやつ
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Oct 26, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    読了時間: 3分
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="はじめに">はじめに</h2>
+<p>メインブログでは久しぶりの投稿です😄 (と言いつつサブブログにアップするかも)
+試しに解説したQuartoブログの執筆が非常に快適なため、いずれ全ての記事をサブブログに移行することを検討中です。</p>
+<p>いずれ時間ができたらQuartoとHugoで静的ブログを開設する方法についても解説記事をアップしたいと思います💡</p>
+<p>さて、今回は相模原市の39キャンペーン加盟店のマップをRとPythonで作成します!</p>
+<h3 id="相模原市39キャンペーンとは">相模原市39キャンペーンとは</h3>
+<p>年に一度相模原市が開催しているキャンペーンで、15,000円以上の消費をすれば市から3,900円がキャッシュバックされるという神キャンペーン!😇
+しかも家族の頭数の分だけ申請可能で、誰の買い物でもOKという、<del>ガバガバ</del>神仕様。😇😇</p>
+<p>しかし、非常に残念なことに加盟店一覧情報はpdfファイルに書かれた情報しかありません･･･　このご時世にいくらなんでもお役所仕事すぎるだろ･･･ってことで私が代わりにマップを作って差し上げることにします。</p>
+<p><img src="/p/sagamihara-39-map/sagamiharapdf.png"
+	width="316"
+	height="261"
+	srcset="/p/sagamihara-39-map/sagamiharapdf_hu4eefeb073254455663c3eac7738ee5c8_25118_480x0_resize_box_3.png 480w, /p/sagamihara-39-map/sagamiharapdf_hu4eefeb073254455663c3eac7738ee5c8_25118_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="pdfにべた貼りされた住所たち･･･こんなん見て誰が場所把握できるん?"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="121"
+		data-flex-basis="290px"
+	
+></p>
+<h2 id="方針">方針</h2>
+<p>今回の方針では、①pdfファイルから表データをスクレイピング、②抽出した住所データから緯度・経度情報をGoogleMapAPIを使って取得、③GoogleMapにプロット
+という流れでやっていきます。</p>
+<p>序盤のスクレイピングですが、便利なWebツールとか、似たようなライブラリ・パッケージが山ほどありますので、正直なんでも良いです🤚今回は結果がpandas.DataFrameとして返ってくる<code>camelot</code>が便利そうだったので、これを採用しました。</p>
+<p>自分はあんまり地図データの取り回しをやったこと無かったのですが、<a class="link" href="https://suryu.me/"  target="_blank" rel="noopener"
+    >瓜生さん</a>の地図データ可視化のお話を昔から見させていただいた身からすれば「これはRの守備範囲だろうな」と、あまり下調べもせずRでの実装をすることにしました。</p>
+<h2 id="作り方">作り方</h2>
+<h3 id="pdfファイルから表データをスクレイピング">pdfファイルから表データをスクレイピング</h3>
+<p><a class="link" href="https://camelot-py.readthedocs.io/en/master/"  target="_blank" rel="noopener"
+    >camelot</a>は今回調べて初めて使いましたが、非常にシンプルなAPIで使用できる上、<a class="link" href="https://camelot-py.readthedocs.io/en/master/user/advanced.html#"  target="_blank" rel="noopener"
+    >かなり詳細な設定もできる模様</a>。かなりテーブル抽出に特化していますが、非常に素晴らしいライブラリだと思います🚰</p>
+<p>ファイル書き出しの際は、一ページに存在する表がバラバラに返ってくるため、大量のファイルに分割して書き出すことになります。どうせR側でこのあと<code>purrr::map_dfr()</code>でもすれば結合できるので、気にしない😉</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kn">import</span> <span class="nn">camelot</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="k">def</span> <span class="nf">extract_table</span><span class="p">(</span><span class="n">pdfpath</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">    <span class="c1"># ファイル名から区名を取得する</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">    <span class="n">ward</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">pdfpath</span><span class="p">)</span><span class="o">.</span><span class="n">name</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">
+</span></span><span class="line"><span class="ln">10</span><span class="cl">    <span class="c1"># テーブルを抽出する</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">    <span class="n">tables</span> <span class="o">=</span> <span class="n">camelot</span><span class="o">.</span><span class="n">read_pdf</span><span class="p">(</span><span class="n">pdfpath</span><span class="p">,</span> <span class="n">pages</span><span class="o">=</span><span class="s2">&#34;all&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">
+</span></span><span class="line"><span class="ln">13</span><span class="cl">    <span class="c1"># 書き出し</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">table</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tqdm</span><span class="p">(</span><span class="n">tables</span><span class="p">)):</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl">        <span class="n">table</span>\
+</span></span><span class="line"><span class="ln">16</span><span class="cl">        <span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;data/</span><span class="si">{</span><span class="n">ward</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">.csv&#34;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl">
+</span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&#34;中央区.pdf&#34;</span><span class="p">,</span> <span class="s2">&#34;南区.pdf&#34;</span><span class="p">,</span> <span class="s2">&#34;緑区.pdf&#34;</span><span class="p">]:</span>
+</span></span><span class="line"><span class="ln">19</span><span class="cl">    <span class="n">extract_table</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></span></span></code></pre></div>
+    </div>
+</div>
+<p>抽出できたので、とりあえずファイルを読んでみます。以降の解析はRを使うことにします。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">pacman</span><span class="o">::</span><span class="nf">p_load</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="nf">read_csv</span><span class="p">(</span><span class="s">&#34;data/中央区.pdf_0.csv&#34;</span><span class="p">)</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>New names:
+Rows: 24 Columns: 7
+── Column specification
+────────────────────────────────────────────────────────
+Delimiter: &quot;,&quot; chr (7): ...1, 事業所（店舗等）名, 事業種別, 事業内容,
+事業所所在地, 電話番号, PR・オトク情報...
+ℹ Use `spec()` to retrieve the full column specification for this data. ℹ
+Specify the column types or set `show_col_types = FALSE` to quiet this message.
+• `` -&gt; `...1`
+
+# A tibble: 24 × 7
+   ...1  `事業所（店舗等）名` 事業種別   事業内容        事業…¹  電話…²  PR・…³
+   &lt;chr&gt; &lt;chr&gt;                &lt;chr&gt;      &lt;chr&gt;           &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;
+ 1 相生  GOGO                 飲食業     &quot;お酒飲みなが…  相生3-… 080-47…  &lt;NA&gt;
+ 2 &lt;NA&gt;  U-Select相模原中央   小売業     &quot;自動車(中古車… 相生2-… 042-75…  &lt;NA&gt;
+ 3 &lt;NA&gt;  うなぎ処いわき       飲食業     &quot;飲食業&quot;        相生2-… 042-75…  &lt;NA&gt;
+ 4 &lt;NA&gt;  （有）菅原塗装工房   その他     &quot;住宅塗装&quot;      相生3-… 042-70…  &lt;NA&gt;
+ 5 &lt;NA&gt;  セブンイレブン相生店 小売業     &quot;コンビニエン…  相生4-… 042-75…  &lt;NA&gt;
+ 6 &lt;NA&gt;  せんざん相模原店     飲食業     &quot;和食、海鮮料…  相生1-1 042-77…  &lt;NA&gt;
+ 7 &lt;NA&gt;  ソニック相模原       小売業     &quot;家電販売、電…  相生4-… 042-75… &quot;お見…
+ 8 &lt;NA&gt;  蕎麦とそばまえgenten 飲食業     &quot;手打ち蕎麦屋…  相生1-… 042-76…  &lt;NA&gt;
+ 9 &lt;NA&gt;  パティスリーフレジェ 小売業     &quot;手作りケーキ…  相生3-… 042-75… &quot;手作…
+10 &lt;NA&gt;  ヘアーサロン セオ    サービス業 &quot;理容業 カット… 相生4-… 042-75…  &lt;NA&gt;
+# … with 14 more rows, and abbreviated variable names ¹​事業所所在地, ²​電話番号,
+#   ³​`PR・オトク情報`
+# ℹ Use `print(n = ...)` to see more rows
+</code></pre>
+<p>ちゃんと抽出できているようです。元々のデータでは一列目が結合されたセルになっているため、完全な表にしたいのならパディングをすべきですが、まあ使わないので放っておきます。</p>
+<h3 id="抽出したデータをきれいにする">抽出したデータをきれいにする</h3>
+<p>とりあえず、データを全部結合してみます。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">df_joined</span> <span class="o">&lt;-</span> <span class="n">fs</span><span class="o">::</span><span class="nf">dir_ls</span><span class="p">(</span><span class="s">&#34;data&#34;</span><span class="p">)</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">  <span class="nf">suppressMessages</span><span class="p">(</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">    <span class="nf">map_dfr</span><span class="p">(</span><span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">      <span class="nf">read_csv</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">show_col_types</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl">      <span class="nf">select</span><span class="p">(</span><span class="m">2</span><span class="o">:</span><span class="nf">ncol</span><span class="p">(</span><span class="n">.)</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl">    <span class="p">})</span>
+</span></span><span class="line"><span class="ln">7</span><span class="cl">  <span class="p">)</span>
+</span></span><span class="line"><span class="ln">8</span><span class="cl"><span class="n">df_joined</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="ln">9</span><span class="cl">  <span class="nf">head</span><span class="p">()</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>data/中央区.pdf_0.csv  data/中央区.pdf_1.csv  data/中央区.pdf_10.csv data/中央区.pdf_11.csv
+data/中央区.pdf_12.csv data/中央区.pdf_13.csv
+</code></pre>
+<p>結合は問題なくできています。事業社所在地の住所をGoogleGeometryAPIに投げれば緯度と経度が出せそうですが、できるなら「神奈川県相模原市??区」もついていた方が正確な検索結果を得られそうです。</p>
+<p>適当にこれをコーディングしてみます。今回はファイル名から区名を取り出しつつ、結合してみます。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="n">df_joined</span> <span class="o">&lt;-</span> <span class="n">fs</span><span class="o">::</span><span class="nf">dir_ls</span><span class="p">(</span><span class="s">&#34;data&#34;</span><span class="p">)</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">  <span class="nf">map_dfr</span><span class="p">(</span><span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">    <span class="c1"># &#34;緑区.pdf_0.csv&#34;から&#34;緑区&#34;を取り出す</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="n">wald_name</span> <span class="o">=</span> <span class="n">fs</span><span class="o">::</span><span class="nf">path_file</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">      <span class="nf">str_split</span><span class="p">(</span><span class="s">&#34;\\.&#34;</span><span class="p">)</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">      <span class="nf">pluck</span><span class="p">(</span><span class="m">1</span><span class="p">)</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">      <span class="nf">pluck</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">  <span class="nf">read_csv</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">show_col_types</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">col_names</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">    <span class="n">magrittr</span><span class="o">::</span><span class="nf">set_colnames</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;area&#34;</span><span class="p">,</span> <span class="s">&#34;事業所名&#34;</span><span class="p">,</span> <span class="s">&#34;事業種別&#34;</span><span class="p">,</span> <span class="s">&#34;事業内容&#34;</span><span class="p">,</span> <span class="s">&#34;事業所所在地&#34;</span><span class="p">,</span> <span class="s">&#34;電話番号&#34;</span><span class="p">,</span> <span class="s">&#34;PR&#34;</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">    <span class="nf">select</span><span class="p">(</span><span class="m">2</span><span class="o">:</span><span class="nf">ncol</span><span class="p">(</span><span class="n">.)</span><span class="p">)</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">    <span class="nf">mutate</span><span class="p">(</span><span class="n">adress</span> <span class="o">=</span> <span class="n">glue</span><span class="o">::</span><span class="nf">glue</span><span class="p">(</span><span class="s">&#34;神奈川県相模原市{wald_name}{事業所所在地}&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">  <span class="p">})</span></span></span></code></pre></div>
+    </div>
+</div>
+<p>プレビューしてみる。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">df_joined</span> <span class="o">|&gt;</span> <span class="nf">head</span><span class="p">()</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code># A tibble: 6 × 7
+  事業所名             事業種別 事業内容           事業所…¹ 電話…²  PR    adress
+  &lt;chr&gt;                &lt;chr&gt;    &lt;chr&gt;              &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;glue&gt;
+1 事業所（店舗等）名   事業種別 &quot;事業内容&quot;         事業所…  電話番… PR・… 神奈…
+2 GOGO                 飲食業   &quot;お酒飲みながら色… 相生3-4… 080-47… &lt;NA&gt;  神奈…
+3 U-Select相模原中央   小売業   &quot;自動車(中古車)の… 相生2-1… 042-75… &lt;NA&gt;  神奈…
+4 うなぎ処いわき       飲食業   &quot;飲食業&quot;           相生2-1… 042-75… &lt;NA&gt;  神奈…
+5 （有）菅原塗装工房   その他   &quot;住宅塗装&quot;         相生3-1… 042-70… &lt;NA&gt;  神奈…
+6 セブンイレブン相生店 小売業   &quot;コンビニエンスス… 相生4-1… 042-75… &lt;NA&gt;  神奈…
+# … with abbreviated variable names ¹​事業所所在地, ²​電話番号
+</code></pre>
+<p>途切れているので住所だけを抽出。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">df_joined</span> <span class="o">|&gt;</span> <span class="nf">select</span><span class="p">(</span><span class="n">adress</span><span class="p">)</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code># A tibble: 2,021 × 1
+   adress
+   &lt;glue&gt;
+ 1 神奈川県相模原市中央区事業所所在地
+ 2 神奈川県相模原市中央区相生3-4-20
+ 3 神奈川県相模原市中央区相生2-1-1
+ 4 神奈川県相模原市中央区相生2-16-6
+ 5 神奈川県相模原市中央区相生3-13-10-1F-1
+ 6 神奈川県相模原市中央区相生4-1-15
+ 7 神奈川県相模原市中央区相生1-1
+ 8 神奈川県相模原市中央区相生4-11-15
+ 9 神奈川県相模原市中央区相生1-1-18　1F
+10 神奈川県相模原市中央区相生3-14-14
+# … with 2,011 more rows
+# ℹ Use `print(n = ...)` to see more rows
+</code></pre>
+<p>よさそうです👌</p>
+<h3 id="googlegeocodingapiを使って住所から緯度経度を出す">GoogleGeocodingAPIを使って住所から緯度・経度を出す</h3>
+<blockquote class="md-hint info">
+<p>ℹ️Info</p>
+<p>GoogleGeocodingAPIは従量課金の有料サービスです。<a class="link" href="https://developers.google.com/maps/documentation/geocoding/usage-and-billing"  target="_blank" rel="noopener"
+    >1,000クエリで5.00USDとのこと</a>ですので、今回のケースを有料でAPI叩いた場合約10USDくらい必要になります。
+私は今回90日限定のフリー体験の範囲内で試しました。また、新規登録時に無料クレジットが300USDもらえたので、当分お金の心配はいらないのかなと思います。</p>
+<p>使い方は<a class="link" href="https://cloud.google.com/?hl=ja"  target="_blank" rel="noopener"
+    >Google cloud</a>でアカウントを作成し、<strong>コンソール</strong>に行き、プロジェクトを新規作成、プロジェクトを開いて<strong>ライブラリ</strong>に飛ぶとGoogle geocoding APIが有効化できます。APIキーは認証情報から確認できます。</p>
+</blockquote>
+<p>最初は<a class="link" href="https://www.geocoding.jp/api/"  target="_blank" rel="noopener"
+    >geocoding.jp</a>を使う以下のようなコードを書きましたが、10秒に1回のクエリに制限する必要があったため、GoogleのAPIを使うことにしました。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="n">pacman</span><span class="o">::</span><span class="nf">p_load</span><span class="p">(</span><span class="n">rvest</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="n">get_position</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">adress</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">  <span class="n">url</span> <span class="o">&lt;-</span> <span class="nf">paste0</span><span class="p">(</span><span class="s">&#34;https://www.geocoding.jp/api/?v=1.1&amp;q=&#34;</span><span class="p">,</span> <span class="n">adress</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">  <span class="n">lat</span> <span class="o">&lt;-</span> <span class="nf">read_html</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">    <span class="nf">html_nodes</span><span class="p">(</span><span class="s">&#34;lat&#34;</span><span class="p">)</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">    <span class="nf">html_text</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">  <span class="n">lng</span> <span class="o">&lt;-</span> <span class="nf">read_html</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">    <span class="nf">html_nodes</span><span class="p">(</span><span class="s">&#34;lat&#34;</span><span class="p">)</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">    <span class="nf">html_text</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">  <span class="n">lat</span> <span class="o">&lt;-</span> <span class="nf">if_else</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">lat</span><span class="p">),</span> <span class="s">&#34;0&#34;</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">  <span class="n">lng</span> <span class="o">&lt;-</span> <span class="nf">if_else</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">lng</span><span class="p">),</span> <span class="s">&#34;0&#34;</span><span class="p">,</span> <span class="n">lng</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">  <span class="c1"># wait</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl">  <span class="nf">Sys.sleep</span><span class="p">(</span><span class="m">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl">  <span class="nf">return</span><span class="p">(</span><span class="nf">tibble</span><span class="p">(</span><span class="n">lat</span> <span class="o">=</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lng</span> <span class="o">=</span> <span class="n">lng</span><span class="p">))</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="ln">18</span><span class="cl">
+</span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="n">get_position_vec</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">adress_vec</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">20</span><span class="cl">  <span class="n">adress_vec</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="ln">21</span><span class="cl">  <span class="nf">map_dfr</span><span class="p">(</span><span class="nf">\</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span> <span class="nf">get_position</span><span class="p">(</span><span class="n">vec</span><span class="p">))</span>
+</span></span><span class="line"><span class="ln">22</span><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+    </div>
+</div>
+<p>で、以下が本題。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">ggmap</span><span class="p">)</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>Google's Terms of Service: https://cloud.google.com/maps-platform/terms/.
+
+Please cite ggmap if you use it! See citation(&quot;ggmap&quot;) for details.
+</code></pre>
+<p>Google cloud platformからAPIキーを取得します。とりあえず今回はgeocoding APIだけ取得すればOKです。</p>
+<p>ここにAPIキーをハードコードするわけにはいかないので別ファイルから読み込んでますが、<code>register_google(key = ******)</code>に直接入力して問題ありません👍</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="c1"># APIキーはGCPから取得したもの</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">key</span> <span class="o">&lt;-</span> <span class="nf">readChar</span><span class="p">(</span><span class="s">&#34;API.key&#34;</span><span class="p">,</span> <span class="nf">file.info</span><span class="p">(</span><span class="s">&#34;API.key&#34;</span><span class="p">)</span><span class="o">$</span><span class="n">size</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="nf">register_google</span><span class="p">(</span><span class="n">key</span> <span class="o">=</span> <span class="n">key</span><span class="p">)</span></span></span></code></pre></div>
+    </div>
+</div>
+<p><code>ggmap</code>パッケージは<code>mutate_geocode()</code>関数でお手軽に住所検索ができます。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">df_geo</span> <span class="o">&lt;-</span> <span class="n">df_joined</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="nf">mutate_geocode</span><span class="p">(</span><span class="n">adress</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="n">df_geo</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">    <span class="nf">write_csv</span><span class="p">(</span><span class="s">&#34;sagamihara_geodata.csv&#34;</span><span class="p">)</span></span></span></code></pre></div>
+    </div>
+</div>
+<p>計算が無駄にならないように書き出しておいて・・・。</p>
+<p>できあがったファイルをみると、<code>lon</code>と<code>lat</code>という列が追加されています!　これが経度緯度のようです。
+ここまで来ればあとはGooglemapに書き出すだけ😉</p>
+<p>RでGoogleMapにピンを立てる方法はちょっと分からなかったので、GoogleMapにオリジナルマップを作成する戦法をとりました。</p>
+<h3 id="googlemapにピンたてる">GoogleMapにピンたてる</h3>
+<p><a class="link" href="https://mymaps.google.com/"  target="_blank" rel="noopener"
+    >Googleのマイマップ</a>にいきます。</p>
+<p>ここで新しい地図の作成⇒レイヤのインポートを選択し、先ほど出力したファイルを食わせます。</p>
+<p><img src="/p/sagamihara-39-map/googleimport.png"
+	width="516"
+	height="416"
+	srcset="/p/sagamihara-39-map/googleimport_hufb5423e4eabf192cb5a36635d67fb0f5_19310_480x0_resize_box_3.png 480w, /p/sagamihara-39-map/googleimport_hufb5423e4eabf192cb5a36635d67fb0f5_19310_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="lonとlat列が自動的に選択される"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="124"
+		data-flex-basis="297px"
+	
+></p>
+<p>するとマーカーのタイトルを選ぶよう言われるので、とりあえず事業所名にでも設定しておきます。
+こうしてできたのが以下です!</p>
+<iframe src="https://www.google.com/maps/d/u/3/embed?mid=11zsk8DfDq288lFFTM5kz70uumV82pD4&ehbc=2E312F" width="640" height="480"></iframe>
+<p>マイマップの埋め込みリンクを取得して貼り付ければ、こんな感じでブログに載せられるので便利ですね。</p>
+<h2 id="まとめ">まとめ</h2>
+<p>今回は以下の作業をプログラミングでやってみました。</p>
+<ol>
+<li>pdf内にしかない住所情報を取得</li>
+<li>GoogleGeocodingAPIを使って住所から座標を取得</li>
+</ol>
+<p>Googleマップと組み合わせると地図データは色々遊べそうで、面白いですね😄</p>
+<p>相模原市にお住まいの方は、サンキューキャンペーンがあと一ヶ月あまりです!頑張って15,000円使いましょう!!</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/python/">Python</a>
+        
+            <a href="/tags/r/">R</a>
+        
+            <a href="/tags/api/">API</a>
+        
+            <a href="/tags/geocoding/">geocoding</a>
+        
+            <a href="/tags/%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%83%8D%E3%82%BF/">ローカルネタ</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">関連するコンテンツ</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/blog-syntax/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Quarto(とHugo)のSyntax</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/python-and-quarto/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">QuartoでPythonを使うときの注意とか</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/basic-statistics-6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">宮川公男「基礎統計学」第五版 第六章主な確率分布 練習問題の解法</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/python-linter-formatter/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Pythonのlinterとformatter事情(@VisualStudioCode)</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/r-vscode-conda/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">VSCodeでconda環境のRをradianとともに使う</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "qu-kechu-shibaioinhuomateishiyannotech-blog" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 駆け出しバイオインフォマティシャンのtech blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        テーマ <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> は <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> によって設計されています。
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目次</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#はじめに">はじめに</a>
+      <ol>
+        <li><a href="#相模原市39キャンペーンとは">相模原市39キャンペーンとは</a></li>
+      </ol>
+    </li>
+    <li><a href="#方針">方針</a></li>
+    <li><a href="#作り方">作り方</a>
+      <ol>
+        <li><a href="#pdfファイルから表データをスクレイピング">pdfファイルから表データをスクレイピング</a></li>
+        <li><a href="#抽出したデータをきれいにする">抽出したデータをきれいにする</a></li>
+        <li><a href="#googlegeocodingapiを使って住所から緯度経度を出す">GoogleGeocodingAPIを使って住所から緯度・経度を出す</a></li>
+        <li><a href="#googlemapにピンたてる">GoogleMapにピンたてる</a></li>
+      </ol>
+    </li>
+    <li><a href="#まとめ">まとめ</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<script src="/js/copy-to-clipboard.js"></script>
+    </body>
+</html>

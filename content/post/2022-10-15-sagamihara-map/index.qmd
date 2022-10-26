@@ -1,0 +1,188 @@
+---
+title: Hello, Quarto
+description: "aa"
+author: Snitch
+date: "2022-0-"
+categories:
+  - "a"
+tags:
+  - "ac"
+format: hugo
+slug: sagamihara-39-map
+html-math-method: webtex
+---
+
+## はじめに
+
+久しぶりの投稿です😄
+
+今回は相模原市の39キャンペーン加盟店のマップをRとPythonで作成します。
+
+### 相模原市39キャンペーンとは
+
+年に一度相模原市が開催しているキャンペーンで、15,000円以上の消費をすれば市から3,900円がキャッシュバックされるという神キャンペーン!😇
+しかも家族の頭数の分だけ申請可能で、誰の買い物でもOKという、~~ガバガバ~~神仕様。😇😇
+
+しかし、非常に残念なことに加盟店一覧情報はpdfファイルに書かれた情報しかありません･･･　このご時世にいくらなんでもお役所仕事すぎるだろ･･･ってことで私が代わりにマップを作って差し上げることにします。
+
+## 方針
+
+今回の方針では、①pdfファイルから表データをスクレイピング、②抽出した住所データから緯度・経度情報をGoogleMapAPIを使って取得、③GoogleMapにプロット
+という流れでやっていきます。
+
+序盤のスクレイピングですが、便利なWebツールとか、似たようなライブラリ・パッケージが山ほどありますので、正直なんでも良いです🤚今回は結果がpandas.DataFrameとして返ってくる`camelot`が便利そうだったので、これを採用しました。
+
+自分はあんまり地図データの取り回しをやったこと無かったのですが、Rによる瓜生さんの地図データ可視化のお話を昔から見させていただいた身からすれば「これはRの守備範囲だろうな」と、あまり下調べもせずRでの実装をすることにしました。
+
+## 作り方
+
+### pdfファイルから表データをスクレイピング
+
+[camelot](https://camelot-py.readthedocs.io/en/master/)は今回調べて初めて使いましたが、非常にシンプルなAPIで使用できる上、[かなり詳細な設定もできる模様](https://camelot-py.readthedocs.io/en/master/user/advanced.html#)。かなりテーブル抽出に特化していますが、非常に素晴らしいライブラリだと思います🚰
+
+ファイル書き出しの際は、一ページに存在する表がバラバラに返ってくるため、大量のファイルに分割して書き出すことになります。どうせR側でこのあと`purrr::map_dfr()`でもすれば結合できるので、気にしない😉
+
+```{python}
+#| eval: false
+import camelot
+import pandas as pd
+from pathlib import Path
+from tqdm import tqdm
+
+def extract_table(pdfpath: str):
+    # ファイル名から区名を取得する
+    ward = Path(pdfpath).name
+
+    # テーブルを抽出する
+    tables = camelot.read_pdf(pdfpath, pages="all")
+
+    # 書き出し
+    for index, table in enumerate(tqdm(tables)):
+        table\
+        .to_csv(f"data/{ward}_{index}.csv", index=False)
+
+for p in ["中央区.pdf", "南区.pdf", "緑区.pdf"]:
+    extract_table(p)
+```
+
+抽出できたので、とりあえずファイルを読んでみます。以降の解析はRを使うことにします。
+
+```{r}
+pacman::p_load(tidyverse)
+
+read_csv("data/中央区.pdf_0.csv")
+```
+
+ちゃんと抽出できているようです。元々のデータでは一列目が結合されたセルになっているため、完全な表にしたいのならパディングをすべきですが、まあ使わないので放っておきます。
+
+### 抽出したデータをきれいにする
+
+とりあえず、データを全部結合してみます。
+
+```{r}
+df_joined <- fs::dir_ls("data") |>
+    suppressMessages(
+    map_dfr(function(x) {
+        read_csv(x, show_col_types = FALSE) %>%
+        select(2:ncol(.))
+    })
+    )
+df_joined |>
+    head()
+```
+
+結合は問題なくできています。事業社所在地の住所をGoogleGeometryAPIに投げれば緯度と経度が出せそうですが、できるなら「神奈川県相模原市??区」もついていた方が正確な検索結果を得られそうです。
+
+適当にこれをコーディングしてみます。今回はファイル名から区名を取り出しつつ、結合してみます。
+
+```{r}
+#| output: false
+df_joined <- fs::dir_ls("data") |>
+    map_dfr(function(x) {
+        # "緑区.pdf_0.csv"から"緑区"を取り出す
+        wald_name = fs::path_file(x) |>
+            str_split("\\.") |>
+            pluck(1) |>
+            pluck(1)
+
+        read_csv(x, show_col_types = FALSE, col_names = FALSE) |>
+            magrittr::set_colnames(c("area", "事業所名", "事業種別", "事業内容", "事業所所在地", "電話番号", "PR")) %>%
+            select(2:ncol(.)) |>
+            mutate(adress = glue::glue("神奈川県相模原市{wald_name}{事業所所在地}"))
+    })
+```
+
+```{r}
+df_joined |> head()
+```
+
+```{r}
+df_joined |> select(adress)
+```
+
+よさそうです👌
+
+### GoogleGeocodingAPIを使って住所から緯度・経度を出す
+
+{{% hint info %}}
+GoogleGeocodingAPIは従量課金の有料サービスです。[1,000クエリで5.00USDとのこと](https://developers.google.com/maps/documentation/geocoding/usage-and-billing)ですので、今回のケースを有料でAPI叩いた場合約10USDくらい必要になります。
+私は今回90日限定のフリー体験の範囲内で試しました。また、新規登録時に無料クレジットが300USDもらえたので、当分お金の心配はいらないのかなと思います。
+
+使い方は[Google cloud](https://cloud.google.com/?hl=ja)でアカウントを作成し、**コンソール**に行き、プロジェクトを新規作成、プロジェクトを開いて**ライブラリ**に飛ぶとGoogle geocoding APIが有効化できます。APIキーは認証情報から確認できます。
+{{% /hint %}}
+
+最初は[geocoding.jp](https://www.geocoding.jp/api/)を使う以下のようなコードを書きましたが、10秒に1回のクエリに制限しないとアクセス制限がかかるのでやめました。
+
+```{r}
+pacman::p_load(rvest)
+
+get_position <- function(adress) {
+    url <- paste0("https://www.geocoding.jp/api/?v=1.1&q=", adress)
+
+    lat <- read_html(url) |>
+        html_nodes("lat") |>
+        html_text()
+    lng <- read_html(url) |>
+        html_nodes("lat") |>
+        html_text()
+    lat <- if_else(is.na(lat), "0", lat)
+    lng <- if_else(is.na(lng), "0", lng)
+    # wait
+    Sys.sleep(10)
+    return(tibble(lat = lat, lng = lng))
+}
+
+get_position_vec <- function(adress_vec) {
+    adress_vec |>
+    map_dfr(\(vec) get_position(vec))
+}
+```
+
+で、以下が本題。
+
+```{r}
+library(ggmap)
+```
+
+```{r}
+# APIキーはGCPから取得したもの
+key <- readChar("API.key", file.info("API.key")$size)
+register_google(key = key)
+```
+
+試してみます。
+
+```{r}
+df_joined[1:10, ] |>
+    mutate_geocode(adress)
+```
+
+
+```{r}
+df_geo <- df_joined |>
+    mutate_geocode(adress)
+
+df_geo |>
+    # write_tsv("geodata.tsv")
+    write_csv("sagamihara_geodata.csv")
+```

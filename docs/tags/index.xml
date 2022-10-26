@@ -6,12 +6,44 @@
         <description>Recent content in Tags on 駆け出しバイオインフォマティシャンのtech blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Sun, 23 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://snitch0.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 26 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://snitch0.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>API</title>
+        <link>https://snitch0.github.io/tags/api/</link>
+        <pubDate>Wed, 26 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://snitch0.github.io/tags/api/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>geocoding</title>
+        <link>https://snitch0.github.io/tags/geocoding/</link>
+        <pubDate>Wed, 26 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://snitch0.github.io/tags/geocoding/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Python</title>
+        <link>https://snitch0.github.io/tags/python/</link>
+        <pubDate>Wed, 26 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://snitch0.github.io/tags/python/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>R</title>
         <link>https://snitch0.github.io/tags/r/</link>
-        <pubDate>Sun, 23 Oct 2022 00:00:00 +0000</pubDate>
+        <pubDate>Wed, 26 Oct 2022 00:00:00 +0000</pubDate>
         
         <guid>https://snitch0.github.io/tags/r/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>ローカルネタ</title>
+        <link>https://snitch0.github.io/tags/%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%83%8D%E3%82%BF/</link>
+        <pubDate>Wed, 26 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://snitch0.github.io/tags/%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%83%8D%E3%82%BF/</guid>
         <description></description>
         </item>
         <item>
@@ -84,14 +116,6 @@
         <pubDate>Wed, 21 Sep 2022 00:00:00 +0000</pubDate>
         
         <guid>https://snitch0.github.io/tags/linter/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Python</title>
-        <link>https://snitch0.github.io/tags/python/</link>
-        <pubDate>Wed, 21 Sep 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://snitch0.github.io/tags/python/</guid>
         <description></description>
         </item>
         <item>
