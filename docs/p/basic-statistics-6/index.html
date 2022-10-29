@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="ja" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='　'><title>宮川公男「基本統計学」第五版 第六章主な確率分布 練習問題の解法</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='　'><title>宮川公男「基礎統計学」第五版 第六章主な確率分布 練習問題の解法</title>
 
 <link rel='canonical' href='https://snitch0.github.io/p/basic-statistics-6/'>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-<link rel="stylesheet" href="/scss/style.min.c4d17cd807bf79ef26402db60a58852a744df74aee6a4930f96937370e71559f.css"><meta property='og:title' content='宮川公男「基本統計学」第五版 第六章主な確率分布 練習問題の解法'>
+<link rel="stylesheet" href="/scss/style.min.c4d17cd807bf79ef26402db60a58852a744df74aee6a4930f96937370e71559f.css"><meta property='og:title' content='宮川公男「基礎統計学」第五版 第六章主な確率分布 練習問題の解法'>
 <meta property='og:description' content='　'>
 <meta property='og:url' content='https://snitch0.github.io/p/basic-statistics-6/'>
 <meta property='og:site_name' content='駆け出しバイオインフォマティシャンのtech blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='statistics' /><meta property='article:tag' content='R' /><meta property='article:tag' content='基本統計学' /><meta property='article:published_time' content='2022-10-23T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-10-23T00:00:00&#43;00:00'/><meta property='og:image' content='https://snitch0.github.io/img/avatar.png' />
 <meta name="twitter:site" content="@snitch0">
-    <meta name="twitter:creator" content="@snitch0"><meta name="twitter:title" content="宮川公男「基本統計学」第五版 第六章主な確率分布 練習問題の解法">
+    <meta name="twitter:creator" content="@snitch0"><meta name="twitter:title" content="宮川公男「基礎統計学」第五版 第六章主な確率分布 練習問題の解法">
 <meta name="twitter:description" content="　"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://snitch0.github.io/img/avatar.png' />
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQBVMRWEHP"></script>
@@ -314,7 +314,7 @@ if (!doNotTrack) {
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/basic-statistics-6/">宮川公男「基本統計学」第五版 第六章主な確率分布 練習問題の解法</a>
+            <a href="/p/basic-statistics-6/">宮川公男「基礎統計学」第五版 第六章主な確率分布 練習問題の解法</a>
         </h2>
     
         
@@ -352,7 +352,7 @@ if (!doNotTrack) {
 
 
                 <time class="article-time--reading">
-                    読了時間: 1分
+                    読了時間: 5分
                 </time>
             </div>
         
@@ -443,7 +443,7 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="ln">13</span><span class="cl">    <span class="nf">theme_bw</span><span class="p">()</span> <span class="o">+</span>
 </span></span><span class="line"><span class="ln">14</span><span class="cl">    <span class="nf">ggtitle</span><span class="p">(</span><span class="n">glue</span><span class="o">::</span><span class="nf">glue</span><span class="p">(</span><span class="s">&#34;n = {n}, p = {p}&#34;</span><span class="p">))</span> <span class="o">+</span>
 </span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="nf">annotate</span><span class="p">(</span><span class="s">&#34;text&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">16</span><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="n">val_mean</span> <span class="o">+</span> <span class="m">20</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="nf">max</span><span class="p">(</span><span class="n">y</span><span class="p">),</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="n">val_mean</span> <span class="o">+</span> <span class="m">10</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="nf">max</span><span class="p">(</span><span class="n">y</span><span class="p">),</span>
 </span></span><span class="line"><span class="ln">17</span><span class="cl">    <span class="n">label</span> <span class="o">=</span> <span class="n">glue</span><span class="o">::</span><span class="nf">glue</span><span class="p">(</span><span class="s">&#34;Mean = {val_mean}, Variance = {val_var}&#34;</span><span class="p">))</span>
 </span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="p">}</span></span></span></code></pre></div>
     </div>
@@ -469,6 +469,492 @@ if (!doNotTrack) {
 </div>
 <img src="index_files/figure-gfm/unnamed-chunk-6-4.png" width="768" />
 <h2 id="3">(3)</h2>
+<p>正確な硬貨を8回投げた時の表の出る回数は二項分布に従う。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">calc_binomial</span><span class="p">(</span><span class="m">8</span><span class="p">,</span> <span class="m">0.5</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="nf">xlim</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">20</span><span class="p">))</span></span></span></code></pre></div>
+    </div>
+</div>
+<img src="index_files/figure-gfm/unnamed-chunk-7-1.png" width="768" />
+<h2 id="4">(4)</h2>
+<p>二項分布の式、とは以下である。</p>
+<p><img src="https://latex.codecogs.com/svg.latex?P%28x%29%20%3D%20%7B%7D_nC_x%5Ccdot%20p%5Ex%281-p%29%5E%7Bn-x%7D"
+	
+	
+	
+	loading="lazy"
+	
+		alt="P(x) = {}\_nC_x\cdot p^x(1-p)^{n-x}"
+	
+	
+></p>
+<h3 id="a">(a)</h3>
+<p>$$
+$$</p>
+<h3 id="b">(b)</h3>
+<p>「たかだか２回」が解釈不能なので飛ばす。</p>
+<h3 id="c">(c)</h3>
+<p>$$
+$$</p>
+<h3 id="d">(d)</h3>
+<p>正確な硬貨を9回投げるとき、たかだか3回表が出る確率ってほんとなんなんだろう。3回以下なのか。</p>
+<h2 id="5">5)</h2>
+<p>普通に二項分布として計算する。</p>
+<p>たかだかは例によってよく分からないので飛ばす。</p>
+<p>$$
+$$</p>
+<h2 id="6">6)</h2>
+<p>たかだか問題によりパス。</p>
+<h2 id="7">7)</h2>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="m">1</span> <span class="o">-</span> <span class="p">((</span> <span class="m">3</span> <span class="o">/</span> <span class="m">4</span> <span class="p">)</span> <span class="n">^</span> <span class="m">10</span> <span class="o">+</span> <span class="m">10</span> <span class="o">*</span> <span class="m">3</span> <span class="n">^</span> <span class="m">9</span> <span class="o">/</span> <span class="m">4</span> <span class="n">^</span> <span class="m">10</span> <span class="o">+</span> <span class="m">45</span> <span class="o">*</span> <span class="m">3</span> <span class="n">^</span> <span class="m">8</span> <span class="o">/</span> <span class="m">4</span> <span class="n">^</span> <span class="m">10</span><span class="p">)</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>[1] 0.4744072
+</code></pre>
+<p>0, 1, 2回生じる確率を二項分布の式から計算し、余事象の確率を計算する。</p>
+<p>0.4744</p>
+<h2 id="8">8)</h2>
+<p>不良が<img src="https://latex.codecogs.com/svg.latex?%5Cfrac%7B102%7D%7B1000%7D"
+	
+	
+	
+	loading="lazy"
+	
+		alt="\frac{102}{1000}"
+	
+	
+>の確率で存在する二項分布を考える。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="p">(</span><span class="m">898</span> <span class="o">/</span> <span class="m">1000</span><span class="p">)</span><span class="n">^10</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>[1] 0.3410071
+</code></pre>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="m">10</span> <span class="o">*</span> <span class="p">(</span><span class="m">102</span> <span class="o">/</span> <span class="m">1000</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="m">898</span> <span class="o">/</span> <span class="m">1000</span><span class="p">)</span> <span class="n">^</span> <span class="m">9</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>[1] 0.3873354
+</code></pre>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="m">45</span> <span class="o">*</span> <span class="p">(</span><span class="m">102</span> <span class="o">/</span> <span class="m">1000</span><span class="p">)</span> <span class="n">^</span> <span class="m">2</span> <span class="o">*</span> <span class="p">(</span><span class="m">898</span> <span class="o">/</span> <span class="m">1000</span><span class="p">)</span> <span class="n">^</span> <span class="m">8</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>[1] 0.197981
+</code></pre>
+<h2 id="9">9)</h2>
+<h3 id="a-1">(a)</h3>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">prod</span><span class="p">(</span><span class="m">7</span><span class="o">:</span><span class="m">10</span><span class="p">)</span> <span class="o">/</span> <span class="nf">prod</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">)</span> <span class="o">*</span> <span class="m">2</span> <span class="n">^6</span> <span class="o">/</span> <span class="m">3</span> <span class="n">^</span> <span class="m">10</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>[1] 0.2276076
+</code></pre>
+<h3 id="b-1">(b)</h3>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">prod</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">8</span><span class="p">,</span> <span class="m">9</span><span class="p">,</span> <span class="m">10</span><span class="p">))</span> <span class="o">/</span> <span class="nf">prod</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">)</span> <span class="o">*</span> <span class="m">8</span> <span class="o">/</span> <span class="m">3</span> <span class="n">^</span> <span class="m">10</span> <span class="o">+</span> <span class="m">9</span> <span class="o">*</span> <span class="m">10</span> <span class="o">/</span> <span class="m">2</span> <span class="o">*</span> <span class="m">4</span> <span class="o">/</span> <span class="m">3</span> <span class="n">^</span> <span class="m">10</span> <span class="o">+</span> <span class="m">10</span> <span class="o">/</span> <span class="m">3</span> <span class="n">^</span> <span class="m">10</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>[1] 0.01947535
+</code></pre>
+<h2 id="10">10)</h2>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="m">98</span> <span class="n">^</span> <span class="m">9</span> <span class="o">*</span> <span class="m">2</span> <span class="o">/</span> <span class="m">100</span> <span class="n">^</span> <span class="m">10</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>[1] 0.01667496
+</code></pre>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="m">9</span> <span class="o">*</span> <span class="m">8</span> <span class="o">/</span> <span class="m">2</span> <span class="o">*</span> <span class="m">98</span> <span class="n">^</span> <span class="m">7</span> <span class="o">*</span> <span class="m">2</span> <span class="n">^</span> <span class="m">3</span> <span class="o">/</span> <span class="m">100</span> <span class="n">^</span> <span class="m">10</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>[1] 0.0002500202
+</code></pre>
+<h2 id="11">11)</h2>
+<p>ポワソン分布の式は以下。</p>
+<p><img src="https://latex.codecogs.com/svg.latex?P%28x%29%20%3D%20%5Cfrac%7Bm%20%5E%20xe%5E%7B-m%7D%7D%7Bx%21%7D%2C%20m%20%3D%20np"
+	
+	
+	
+	loading="lazy"
+	
+		alt="P(x) = \frac{m ^ xe^{-m}}{x!}, m = np"
+	
+	
+></p>
+<p><img src="https://latex.codecogs.com/svg.latex?n%20%3D%2010%2C%20p%20%3D%20%5Cfrac%7B8%7D%7B400%7D"
+	
+	
+	
+	loading="lazy"
+	
+		alt="n = 10, p = \frac{8}{400}"
+	
+	
+></p>
+<p>の時の<img src="https://latex.codecogs.com/svg.latex?P%280%29"
+	
+	
+	
+	loading="lazy"
+	
+		alt="P(0)"
+	
+	
+>を求めれば良い。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">exp</span><span class="p">(</span><span class="m">-0.1</span><span class="p">)</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>[1] 0.9048374
+</code></pre>
+<p>これを二項分布で計算すると、</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="p">(</span><span class="m">0.98</span><span class="p">)</span> <span class="n">^</span> <span class="m">5</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>[1] 0.9039208
+</code></pre>
+<p>となり、おおよそ近い。</p>
+<h2 id="12">12)</h2>
+<p>超幾何分布で考える。今気づいたけど、<code>choose()</code>関数でコンビネーション計算できるみたい。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">choose</span><span class="p">(</span><span class="m">60</span><span class="p">,</span> <span class="m">2</span><span class="p">)</span> <span class="o">*</span> <span class="nf">choose</span><span class="p">(</span><span class="m">30</span><span class="p">,</span> <span class="m">2</span><span class="p">)</span> <span class="o">/</span> <span class="nf">choose</span><span class="p">(</span><span class="m">90</span><span class="p">,</span> <span class="m">4</span><span class="p">)</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>[1] 0.3013279
+</code></pre>
+<p>二項分布ならば以下。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">choose</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="m">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="m">2</span> <span class="o">/</span> <span class="m">3</span><span class="p">)</span> <span class="n">^</span> <span class="m">2</span> <span class="o">*</span> <span class="p">(</span><span class="m">1</span> <span class="o">/</span> <span class="m">3</span><span class="p">)</span> <span class="n">^</span> <span class="m">2</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>[1] 0.2962963
+</code></pre>
+<p>近からず遠からず。Nが少々少なかったか。</p>
+<h2 id="13">13)</h2>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">m</span> <span class="o">=</span> <span class="m">100</span> <span class="o">*</span> <span class="m">0.02</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="m">4</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="n">m</span> <span class="n">^</span> <span class="n">x</span> <span class="o">*</span> <span class="nf">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m</span><span class="p">)</span> <span class="o">/</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>[1] 0.09022352
+</code></pre>
+<h2 id="14">14)</h2>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">m</span> <span class="o">=</span> <span class="m">200</span> <span class="o">*</span> <span class="m">0.03</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="m">5</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="n">m</span> <span class="n">^</span> <span class="n">x</span> <span class="o">*</span> <span class="nf">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m</span><span class="p">)</span> <span class="o">/</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>[1] 0.1606231
+</code></pre>
+<h2 id="15">15)</h2>
+<p>動物園の入場者数は4人と比べたら相当多いはず。そのため、ポアソン分布が使えると考える。</p>
+<p>ポワソン分布の期待値は<img src="https://latex.codecogs.com/svg.latex?m"
+	
+	
+	
+	loading="lazy"
+	
+		alt="m"
+	
+	
+>であり、それが4なのだから、確率の計算が可能。</p>
+<p>期待値の性質を使うというアイデアは一瞬分からなかったけど、とても便利な性質だなあ。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">m</span> <span class="o">=</span> <span class="m">4</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="n">m</span> <span class="n">^</span> <span class="n">x</span> <span class="o">*</span> <span class="nf">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m</span><span class="p">)</span> <span class="o">/</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>[1] 0.07326256 0.14652511 0.15629345
+</code></pre>
+<h2 id="16">16)</h2>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">p</span> <span class="o">=</span> <span class="m">1</span> <span class="o">/</span> <span class="m">10000</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">n</span> <span class="o">=</span> <span class="m">20000</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="n">m</span> <span class="o">=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">p</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">
+</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="n">m</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>[1] 2
+</code></pre>
+<p><img src="https://latex.codecogs.com/svg.latex?%5Cfrac%7B2%5Exe%5E%7B-2%7D%7D%7Bx%21%7D"
+	
+	
+	
+	loading="lazy"
+	
+		alt="\frac{2^xe^{-2}}{x!}"
+	
+	
+></p>
+<h2 id="17">17)</h2>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">n</span> <span class="o">=</span> <span class="m">200</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">p</span> <span class="o">=</span> <span class="m">0.02</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">
+</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="m">4</span> <span class="n">^</span> <span class="m">2</span> <span class="o">*</span> <span class="nf">exp</span><span class="p">(</span><span class="m">-4</span><span class="p">)</span> <span class="o">/</span> <span class="nf">factorial</span><span class="p">(</span><span class="m">2</span><span class="p">)</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>[1] 0.1465251
+</code></pre>
+<h2 id="18">18)</h2>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">p</span> <span class="o">=</span> <span class="m">0.012</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">n</span> <span class="o">=</span> <span class="m">300</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">
+</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="m">3.6</span> <span class="n">^</span> <span class="m">2</span> <span class="o">*</span> <span class="nf">exp</span><span class="p">(</span><span class="m">-3.6</span><span class="p">)</span> <span class="o">/</span> <span class="nf">factorial</span><span class="p">(</span><span class="m">2</span><span class="p">)</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>[1] 0.1770577
+</code></pre>
+<h2 id="19">19)</h2>
+<p>一冊の本で、一ページあたりの誤植数の期待値が0.05であるポアソン分布を考える。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="m">0.05</span> <span class="n">^</span> <span class="n">x</span> <span class="o">*</span> <span class="nf">exp</span><span class="p">(</span><span class="m">-0.05</span><span class="p">)</span> <span class="o">/</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>[1] 0.951229425 0.047561471 0.001189037
+</code></pre>
+<h2 id="20">20)</h2>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="m">4</span> <span class="n">^</span> <span class="m">1</span> <span class="o">*</span> <span class="nf">exp</span><span class="p">(</span><span class="m">-4</span><span class="p">)</span> <span class="o">/</span> <span class="nf">factorial</span><span class="p">(</span><span class="m">1</span><span class="p">)</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>[1] 0.07326256
+</code></pre>
+<p>例のごとく、たかだか問題は飛ばす。</p>
+<h2 id="21">21)</h2>
+<p>m = 5と指定されたポアソン分布。</p>
+<h3 id="a-2">(a)</h3>
+<p>今更だけど、ポワソン分布の関数を作ろう。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">poisson_func</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="n">m</span> <span class="n">^</span> <span class="n">x</span> <span class="o">*</span> <span class="nf">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m</span><span class="p">)</span> <span class="o">/</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+    </div>
+</div>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">poisson_func</span><span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="m">0</span><span class="p">)</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>[1] 0.006737947
+</code></pre>
+<h3 id="b-2">(b)</h3>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">poisson_func</span><span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="m">2</span><span class="p">)</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>[1] 0.08422434
+</code></pre>
+<h3 id="c-1">(c)</h3>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">poisson_func</span><span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="m">5</span><span class="p">)</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>[1] 0.1754674
+</code></pre>
+<h2 id="22">22)</h2>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="m">1</span> <span class="o">-</span> <span class="nf">sum</span><span class="p">(</span><span class="nf">poisson_func</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="o">:</span><span class="m">5</span><span class="p">)))</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>[1] 0.2148696
+</code></pre>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="m">1</span> <span class="o">-</span> <span class="nf">sum</span><span class="p">(</span><span class="nf">poisson_func</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="o">:</span><span class="m">1</span><span class="p">)))</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>[1] 0.9084218
+</code></pre>
+<p>ところで、これは確率密度関数がプロットしたらイメージわきやすい気がした。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="nf">tibble</span><span class="p">(</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="m">1</span><span class="o">:</span><span class="m">20</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl">    <span class="n">p</span> <span class="o">=</span> <span class="nf">poisson_func</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="m">20</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="p">)</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="ln">7</span><span class="cl">    <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">p</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="ln">8</span><span class="cl">    <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="ln">9</span><span class="cl">    <span class="nf">geom_line</span><span class="p">()</span></span></span></code></pre></div>
+    </div>
+</div>
+<img src="index_files/figure-gfm/unnamed-chunk-35-1.png" width="768" />
+<h2 id="23">23)</h2>
+<h3 id="a-3">(a)</h3>
+<p>確率は単純にポワソン分布の式に代入すればよい。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">poisson_func</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">))</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code> [1] 0.1493612051 0.2240418077 0.2240418077 0.1680313557 0.1008188134
+ [6] 0.0504094067 0.0216040315 0.0081015118 0.0027005039 0.0008101512
+</code></pre>
+<p>平均値、すなわち期待値は確率に確率変数を乗算してから合計を計算すればよい。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">sum</span><span class="p">(</span><span class="nf">poisson_func</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span> <span class="o">*</span> <span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>[1] 2.996693
+</code></pre>
+<p>確かに3に近い値となった。</p>
+<p>多分手計算の都合で10までとしているのだが、とても大きい値まで計算するとどうか。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">sum</span><span class="p">(</span><span class="nf">poisson_func</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="m">100</span><span class="p">)</span> <span class="o">*</span> <span class="m">1</span><span class="o">:</span><span class="m">100</span><span class="p">)</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>[1] 3
+</code></pre>
+<p>これ以上はオーバーフローしてしまうようだ。</p>
+<h3 id="b-3">(b)</h3>
+<p>分散は二乗の期待値引く期待値の二乗で求める。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">sum</span><span class="p">(</span><span class="nf">poisson_func</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span><span class="n">^2</span><span class="p">)</span> <span class="o">-</span> <span class="nf">sum</span><span class="p">(</span><span class="nf">poisson_func</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span> <span class="o">*</span> <span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span><span class="n">^2</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>[1] 2.982299
+</code></pre>
+<p>これも大体3に近い。</p>
+<p>同じように大きい数字まで計算してみる。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">sum</span><span class="p">(</span><span class="nf">poisson_func</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="m">100</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span><span class="n">^2</span><span class="p">)</span> <span class="o">-</span> <span class="nf">sum</span><span class="p">(</span><span class="nf">poisson_func</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="m">100</span><span class="p">)</span> <span class="o">*</span> <span class="m">1</span><span class="o">:</span><span class="m">100</span><span class="p">)</span><span class="n">^2</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>[1] 2.963084
+</code></pre>
+<p>うーん　これが計算の限界か。コンピュータ上だと桁数の多い小数が計算できないというのは本当だったのか。</p>
+<h2 id="24">24)</h2>
+<p>正規分布の確率密度関数でも、自作関数を作ってみよう。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">normal_function</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="nf">exp</span><span class="p">(</span><span class="o">-</span><span class="n">z</span> <span class="n">^</span> <span class="m">2</span> <span class="o">/</span> <span class="m">2</span><span class="p">)</span> <span class="o">/</span> <span class="nf">sqrt</span><span class="p">(</span><span class="m">2</span> <span class="o">*</span> <span class="kc">pi</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+    </div>
+</div>
+<p>一応プロットして確認する。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">tibble</span><span class="p">(</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="m">-1000</span><span class="o">:</span><span class="m">1000</span><span class="o">*</span><span class="m">0.01</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">    <span class="n">p</span> <span class="o">=</span> <span class="nf">normal_function</span><span class="p">(</span><span class="m">-1000</span><span class="o">:</span><span class="m">1000</span><span class="o">*</span><span class="m">0.01</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">    <span class="p">)</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl">    <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">p</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl">    <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="ln">7</span><span class="cl">    <span class="nf">geom_line</span><span class="p">()</span></span></span></code></pre></div>
+    </div>
+</div>
+<img src="index_files/figure-gfm/unnamed-chunk-42-1.png" width="768" />
+<p>ちゃんと標準正規分布になっているようだ。いったんデータフレームにいれておく。</p>
+<p>積分値が欲しいが、この積分値を求めるのは結構しんどい。マクローリン展開しないといけない?</p>
+<p>と、調べてみるとRの標準関数でやる補法があるらしい。正規分布の密度(density)をintegral関数に与える。integral関数なんて・・・Rを五年以上やってて初めて聞いた・・・</p>
+<h3 id="a-4">(a)</h3>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm</span><span class="p">,</span> <span class="m">-1</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>0.6826895 with absolute error &lt; 7.6e-15
+</code></pre>
+<p>わーほんとに求まったすごい。</p>
+<h3 id="bf">(b)&hellip;(f)</h3>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">calc_normal_sum</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="p">{</span><span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm</span><span class="p">,</span> <span class="o">-</span><span class="n">z</span><span class="p">,</span> <span class="n">z</span><span class="p">)}</span></span></span></code></pre></div>
+    </div>
+</div>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">1.96</span><span class="p">,</span> <span class="m">2.33</span><span class="p">,</span> <span class="m">2.58</span><span class="p">)</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="nf">map</span><span class="p">(</span><span class="nf">\</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">calc_normal_sum</span><span class="p">(</span><span class="n">x</span><span class="p">))</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>[[1]]
+0.9544997 with absolute error &lt; 1.8e-11
+
+[[2]]
+0.9973002 with absolute error &lt; 9.3e-07
+
+[[3]]
+0.9500042 with absolute error &lt; 1e-11
+
+[[4]]
+0.9801938 with absolute error &lt; 1.2e-09
+
+[[5]]
+0.99012 with absolute error &lt; 1.9e-08
+</code></pre>
+<h2 id="25">25)</h2>
+<p>確率密度関数の積分値から確率を求める問題。</p>
+<p>Rではqnorm()がそれを実現してくれる。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">qnorm</span><span class="p">(</span><span class="m">0.95</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>[1] 1.644854
+</code></pre>
+<p>ここで、0.95とは以下の部分の面積である。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="nf">tibble</span><span class="p">(</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="m">-1000</span><span class="o">:</span><span class="m">1000</span><span class="o">*</span><span class="m">0.01</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">    <span class="n">p</span> <span class="o">=</span> <span class="nf">normal_function</span><span class="p">(</span><span class="m">-1000</span><span class="o">:</span><span class="m">1000</span><span class="o">*</span><span class="m">0.01</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">df_norm</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="n">df_norm</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">    <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">p</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">    <span class="nf">geom_line</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">    <span class="nf">geom_area</span><span class="p">(</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">        <span class="n">data</span> <span class="o">=</span> <span class="n">df_norm</span> <span class="o">|&gt;</span> <span class="nf">filter</span><span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="m">1.644854</span><span class="p">),</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">        <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">p</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">    <span class="p">)</span></span></span></code></pre></div>
+    </div>
+</div>
+<img src="index_files/figure-gfm/unnamed-chunk-47-1.png" width="768" />
+<p>この点に注意して計算する。</p>
+<h3 id="a-5">(a)</h3>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">qnorm</span><span class="p">(</span><span class="m">0.45</span> <span class="o">+</span> <span class="m">0.5</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>[1] 1.644854
+</code></pre>
+<h3 id="b-4">(b)</h3>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">qnorm</span><span class="p">(</span><span class="m">0.96</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>[1] 1.750686
+</code></pre>
+<h3 id="c-2">(c)</h3>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">qnorm</span><span class="p">(</span><span class="m">0.07</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>[1] -1.475791
+</code></pre>
+<h3 id="d-1">(d)</h3>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">qnorm</span><span class="p">(</span><span class="m">0.65</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>[1] 0.3853205
+</code></pre>
+<h3 id="e">(e)</h3>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">qnorm</span><span class="p">(</span><span class="m">0.03</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>[1] -1.880794
+</code></pre>
+<h3 id="f">(f)</h3>
+<div>
+    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">qnorm</span><span class="p">(</span><span class="m">0.3</span> <span class="o">+</span> <span class="m">0.5</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span></span></span></code></pre></div>
+    </div>
+</div>
+<pre><code>[1] 0.8416212
+</code></pre>
 <p>少しずつ書き進めます。</p>
 
 </section>
@@ -761,6 +1247,65 @@ if (!doNotTrack) {
     <li><a href="#1">(1)</a></li>
     <li><a href="#2">(2)</a></li>
     <li><a href="#3">(3)</a></li>
+    <li><a href="#4">(4)</a>
+      <ol>
+        <li><a href="#a">(a)</a></li>
+        <li><a href="#b">(b)</a></li>
+        <li><a href="#c">(c)</a></li>
+        <li><a href="#d">(d)</a></li>
+      </ol>
+    </li>
+    <li><a href="#5">5)</a></li>
+    <li><a href="#6">6)</a></li>
+    <li><a href="#7">7)</a></li>
+    <li><a href="#8">8)</a></li>
+    <li><a href="#9">9)</a>
+      <ol>
+        <li><a href="#a-1">(a)</a></li>
+        <li><a href="#b-1">(b)</a></li>
+      </ol>
+    </li>
+    <li><a href="#10">10)</a></li>
+    <li><a href="#11">11)</a></li>
+    <li><a href="#12">12)</a></li>
+    <li><a href="#13">13)</a></li>
+    <li><a href="#14">14)</a></li>
+    <li><a href="#15">15)</a></li>
+    <li><a href="#16">16)</a></li>
+    <li><a href="#17">17)</a></li>
+    <li><a href="#18">18)</a></li>
+    <li><a href="#19">19)</a></li>
+    <li><a href="#20">20)</a></li>
+    <li><a href="#21">21)</a>
+      <ol>
+        <li><a href="#a-2">(a)</a></li>
+        <li><a href="#b-2">(b)</a></li>
+        <li><a href="#c-1">(c)</a></li>
+      </ol>
+    </li>
+    <li><a href="#22">22)</a></li>
+    <li><a href="#23">23)</a>
+      <ol>
+        <li><a href="#a-3">(a)</a></li>
+        <li><a href="#b-3">(b)</a></li>
+      </ol>
+    </li>
+    <li><a href="#24">24)</a>
+      <ol>
+        <li><a href="#a-4">(a)</a></li>
+        <li><a href="#bf">(b)&hellip;(f)</a></li>
+      </ol>
+    </li>
+    <li><a href="#25">25)</a>
+      <ol>
+        <li><a href="#a-5">(a)</a></li>
+        <li><a href="#b-4">(b)</a></li>
+        <li><a href="#c-2">(c)</a></li>
+        <li><a href="#d-1">(d)</a></li>
+        <li><a href="#e">(e)</a></li>
+        <li><a href="#f">(f)</a></li>
+      </ol>
+    </li>
   </ol>
 </nav>
         </div>
