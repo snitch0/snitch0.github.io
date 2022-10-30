@@ -6,7 +6,7 @@
 <link rel='canonical' href='https://snitch0.github.io/p/basic-statistics-6/'>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-<link rel="stylesheet" href="/scss/style.min.c4d17cd807bf79ef26402db60a58852a744df74aee6a4930f96937370e71559f.css"><meta property='og:title' content='宮川公男「基礎統計学」第五版 第六章主な確率分布 練習問題の解法'>
+<link rel="stylesheet" href="/scss/style.min.166e50762c31dd8a348d1fc30cc66f5d382f492f64bdaa992f19b9a1c36b66bb.css"><meta property='og:title' content='宮川公男「基礎統計学」第五版 第六章主な確率分布 練習問題の解法'>
 <meta property='og:description' content='　'>
 <meta property='og:url' content='https://snitch0.github.io/p/basic-statistics-6/'>
 <meta property='og:site_name' content='駆け出しバイオインフォマティシャンのtech blog'>
@@ -352,7 +352,7 @@ if (!doNotTrack) {
 
 
                 <time class="article-time--reading">
-                    読了時間: 7分
+                    読了時間: 8分
                 </time>
             </div>
         
@@ -368,37 +368,76 @@ if (!doNotTrack) {
     
     <h2 id="prep">prep</h2>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">pacman</span><span class="o">::</span><span class="nf">p_load</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">pacman</span><span class="o">::</span><span class="nf">p_load</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <h2 id="1">(1)</h2>
 <p>二項分布の確率は<code>dbinom()</code>関数で生成できる。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">df_1</span> <span class="o">&lt;-</span> <span class="nf">tibble</span><span class="p">(</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="nf">dbinom</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">6</span><span class="p">,</span> <span class="n">prob</span> <span class="o">=</span> <span class="m">0.25</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="p">)</span>
-</span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="n">df_1</span> <span class="o">|&gt;</span>
-</span></span><span class="line"><span class="ln">7</span><span class="cl">    <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span> <span class="o">+</span>
-</span></span><span class="line"><span class="ln">8</span><span class="cl">    <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span>
-</span></span><span class="line"><span class="ln">9</span><span class="cl">    <span class="nf">geom_line</span><span class="p">()</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">df_1</span> <span class="o">&lt;-</span> <span class="nf">tibble</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="nf">dbinom</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">6</span><span class="p">,</span> <span class="n">prob</span> <span class="o">=</span> <span class="m">0.25</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">df_1</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">geom_line</span><span class="p">()</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <img src="index_files/figure-gfm/unnamed-chunk-2-1.png" width="768" />
 <p>平均値と標準偏差を確率分布から求める。</p>
 <p>標準偏差を求める関数を作っておく。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">glue</span><span class="o">::</span><span class="nf">glue</span><span class="p">(</span><span class="s">&#34;mean is {sum(df_1$x * df_1$y)}&#34;</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">glue</span><span class="o">::</span><span class="nf">glue</span><span class="p">(</span><span class="s">&#34;mean is {sum(df_1$x * df_1$y)}&#34;</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>mean is 1.5
 </code></pre>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">val_mean</span> <span class="o">&lt;-</span> <span class="nf">sum</span><span class="p">(</span><span class="n">df_1</span><span class="o">$</span><span class="n">x</span> <span class="o">*</span> <span class="n">df_1</span><span class="o">$</span><span class="n">y</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">val_var</span> <span class="o">&lt;-</span> <span class="nf">sum</span><span class="p">((</span><span class="n">df_1</span><span class="o">$</span><span class="n">x</span><span class="p">)</span><span class="n">^2</span> <span class="o">*</span> <span class="n">df_1</span><span class="o">$</span><span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="n">val_mean^2</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">
-</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="n">glue</span><span class="o">::</span><span class="nf">glue</span><span class="p">(</span><span class="s">&#34;variance is {val_var}&#34;</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">val_mean</span> <span class="o">&lt;-</span> <span class="nf">sum</span><span class="p">(</span><span class="n">df_1</span><span class="o">$</span><span class="n">x</span> <span class="o">*</span> <span class="n">df_1</span><span class="o">$</span><span class="n">y</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">val_var</span> <span class="o">&lt;-</span> <span class="nf">sum</span><span class="p">((</span><span class="n">df_1</span><span class="o">$</span><span class="n">x</span><span class="p">)</span><span class="n">^2</span> <span class="o">*</span> <span class="n">df_1</span><span class="o">$</span><span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="n">val_mean^2</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">glue</span><span class="o">::</span><span class="nf">glue</span><span class="p">(</span><span class="s">&#34;variance is {val_var}&#34;</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>variance is 1.125
@@ -414,13 +453,27 @@ if (!doNotTrack) {
 	
 >であることを利用した計算結果と一致する。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">glue</span><span class="o">::</span><span class="nf">glue</span><span class="p">(</span><span class="s">&#34;np = {6 * 0.25}&#34;</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">glue</span><span class="o">::</span><span class="nf">glue</span><span class="p">(</span><span class="s">&#34;np = {6 * 0.25}&#34;</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>np = 1.5
 </code></pre>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">glue</span><span class="o">::</span><span class="nf">glue</span><span class="p">(</span><span class="s">&#34;npq = {6 * 0.25 * 0.75}&#34;</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">glue</span><span class="o">::</span><span class="nf">glue</span><span class="p">(</span><span class="s">&#34;npq = {6 * 0.25 * 0.75}&#34;</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>npq = 1.125
@@ -428,51 +481,111 @@ if (!doNotTrack) {
 <h2 id="2">(2)</h2>
 <p>nとpが与えられた時の二項分布の平均と分散を求める関数を作成してみる。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="n">calc_binomial</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln"> 2</span><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="nf">seq</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="nf">dbinom</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="n">val_mean</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    <span class="n">val_var</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="n">val_mean</span> <span class="n">^</span> <span class="m">2</span>
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl">    <span class="nf">tibble</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">)</span> <span class="o">|&gt;</span>
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl">    <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span> <span class="o">+</span>
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl">    <span class="nf">geom_line</span><span class="p">()</span> <span class="o">+</span>
-</span></span><span class="line"><span class="ln">10</span><span class="cl">    <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span>
-</span></span><span class="line"><span class="ln">11</span><span class="cl">    <span class="nf">geom_segment</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">val_mean</span><span class="p">,</span> <span class="n">xend</span> <span class="o">=</span> <span class="n">val_mean</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">12</span><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span> <span class="n">yend</span> <span class="o">=</span> <span class="nf">dbinom</span><span class="p">(</span><span class="n">val_mean</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">)))</span> <span class="o">+</span>
-</span></span><span class="line"><span class="ln">13</span><span class="cl">    <span class="nf">theme_bw</span><span class="p">()</span> <span class="o">+</span>
-</span></span><span class="line"><span class="ln">14</span><span class="cl">    <span class="nf">ggtitle</span><span class="p">(</span><span class="n">glue</span><span class="o">::</span><span class="nf">glue</span><span class="p">(</span><span class="s">&#34;n = {n}, p = {p}&#34;</span><span class="p">))</span> <span class="o">+</span>
-</span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="nf">annotate</span><span class="p">(</span><span class="s">&#34;text&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">16</span><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="n">val_mean</span> <span class="o">+</span> <span class="m">10</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="nf">max</span><span class="p">(</span><span class="n">y</span><span class="p">),</span>
-</span></span><span class="line"><span class="ln">17</span><span class="cl">    <span class="n">label</span> <span class="o">=</span> <span class="n">glue</span><span class="o">::</span><span class="nf">glue</span><span class="p">(</span><span class="s">&#34;Mean = {val_mean}, Variance = {val_var}&#34;</span><span class="p">))</span>
-</span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">calc_binomial</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="nf">seq</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="nf">dbinom</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">val_mean</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">val_var</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="n">val_mean</span> <span class="n">^</span> <span class="m">2</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">tibble</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">)</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">geom_line</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">geom_segment</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">val_mean</span><span class="p">,</span> <span class="n">xend</span> <span class="o">=</span> <span class="n">val_mean</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span> <span class="n">yend</span> <span class="o">=</span> <span class="nf">dbinom</span><span class="p">(</span><span class="n">val_mean</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">)))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">theme_bw</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">ggtitle</span><span class="p">(</span><span class="n">glue</span><span class="o">::</span><span class="nf">glue</span><span class="p">(</span><span class="s">&#34;n = {n}, p = {p}&#34;</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">annotate</span><span class="p">(</span><span class="s">&#34;text&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="n">val_mean</span> <span class="o">+</span> <span class="m">10</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="nf">max</span><span class="p">(</span><span class="n">y</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">label</span> <span class="o">=</span> <span class="n">glue</span><span class="o">::</span><span class="nf">glue</span><span class="p">(</span><span class="s">&#34;Mean = {val_mean}, Variance = {val_var}&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">calc_binomial</span><span class="p">(</span><span class="m">50</span><span class="p">,</span> <span class="m">0.5</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">calc_binomial</span><span class="p">(</span><span class="m">50</span><span class="p">,</span> <span class="m">0.5</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <img src="index_files/figure-gfm/unnamed-chunk-6-1.png" width="768" />
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">calc_binomial</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">0.2</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">calc_binomial</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">0.2</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <img src="index_files/figure-gfm/unnamed-chunk-6-2.png" width="768" />
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">calc_binomial</span><span class="p">(</span><span class="m">400</span><span class="p">,</span> <span class="m">0.2</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">calc_binomial</span><span class="p">(</span><span class="m">400</span><span class="p">,</span> <span class="m">0.2</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <img src="index_files/figure-gfm/unnamed-chunk-6-3.png" width="768" />
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">calc_binomial</span><span class="p">(</span><span class="m">900</span><span class="p">,</span> <span class="m">1</span><span class="o">/</span><span class="m">3</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">calc_binomial</span><span class="p">(</span><span class="m">900</span><span class="p">,</span> <span class="m">1</span><span class="o">/</span><span class="m">3</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <img src="index_files/figure-gfm/unnamed-chunk-6-4.png" width="768" />
 <h2 id="3">(3)</h2>
 <p>正確な硬貨を8回投げた時の表の出る回数は二項分布に従う。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">calc_binomial</span><span class="p">(</span><span class="m">8</span><span class="p">,</span> <span class="m">0.5</span><span class="p">)</span> <span class="o">+</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="nf">xlim</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">20</span><span class="p">))</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">calc_binomial</span><span class="p">(</span><span class="m">8</span><span class="p">,</span> <span class="m">0.5</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">xlim</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">20</span><span class="p">))</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <img src="index_files/figure-gfm/unnamed-chunk-7-1.png" width="768" />
@@ -507,7 +620,14 @@ $$</p>
 <p>たかだか問題によりパス。</p>
 <h2 id="7">7)</h2>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="m">1</span> <span class="o">-</span> <span class="p">((</span> <span class="m">3</span> <span class="o">/</span> <span class="m">4</span> <span class="p">)</span> <span class="n">^</span> <span class="m">10</span> <span class="o">+</span> <span class="m">10</span> <span class="o">*</span> <span class="m">3</span> <span class="n">^</span> <span class="m">9</span> <span class="o">/</span> <span class="m">4</span> <span class="n">^</span> <span class="m">10</span> <span class="o">+</span> <span class="m">45</span> <span class="o">*</span> <span class="m">3</span> <span class="n">^</span> <span class="m">8</span> <span class="o">/</span> <span class="m">4</span> <span class="n">^</span> <span class="m">10</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="m">1</span> <span class="o">-</span> <span class="p">((</span> <span class="m">3</span> <span class="o">/</span> <span class="m">4</span> <span class="p">)</span> <span class="n">^</span> <span class="m">10</span> <span class="o">+</span> <span class="m">10</span> <span class="o">*</span> <span class="m">3</span> <span class="n">^</span> <span class="m">9</span> <span class="o">/</span> <span class="m">4</span> <span class="n">^</span> <span class="m">10</span> <span class="o">+</span> <span class="m">45</span> <span class="o">*</span> <span class="m">3</span> <span class="n">^</span> <span class="m">8</span> <span class="o">/</span> <span class="m">4</span> <span class="n">^</span> <span class="m">10</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 0.4744072
@@ -526,19 +646,40 @@ $$</p>
 	
 >の確率で存在する二項分布を考える。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="p">(</span><span class="m">898</span> <span class="o">/</span> <span class="m">1000</span><span class="p">)</span><span class="n">^10</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="p">(</span><span class="m">898</span> <span class="o">/</span> <span class="m">1000</span><span class="p">)</span><span class="n">^10</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 0.3410071
 </code></pre>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="m">10</span> <span class="o">*</span> <span class="p">(</span><span class="m">102</span> <span class="o">/</span> <span class="m">1000</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="m">898</span> <span class="o">/</span> <span class="m">1000</span><span class="p">)</span> <span class="n">^</span> <span class="m">9</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="m">10</span> <span class="o">*</span> <span class="p">(</span><span class="m">102</span> <span class="o">/</span> <span class="m">1000</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="m">898</span> <span class="o">/</span> <span class="m">1000</span><span class="p">)</span> <span class="n">^</span> <span class="m">9</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 0.3873354
 </code></pre>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="m">45</span> <span class="o">*</span> <span class="p">(</span><span class="m">102</span> <span class="o">/</span> <span class="m">1000</span><span class="p">)</span> <span class="n">^</span> <span class="m">2</span> <span class="o">*</span> <span class="p">(</span><span class="m">898</span> <span class="o">/</span> <span class="m">1000</span><span class="p">)</span> <span class="n">^</span> <span class="m">8</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="m">45</span> <span class="o">*</span> <span class="p">(</span><span class="m">102</span> <span class="o">/</span> <span class="m">1000</span><span class="p">)</span> <span class="n">^</span> <span class="m">2</span> <span class="o">*</span> <span class="p">(</span><span class="m">898</span> <span class="o">/</span> <span class="m">1000</span><span class="p">)</span> <span class="n">^</span> <span class="m">8</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 0.197981
@@ -546,27 +687,55 @@ $$</p>
 <h2 id="9">9)</h2>
 <h3 id="a-1">(a)</h3>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">prod</span><span class="p">(</span><span class="m">7</span><span class="o">:</span><span class="m">10</span><span class="p">)</span> <span class="o">/</span> <span class="nf">prod</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">)</span> <span class="o">*</span> <span class="m">2</span> <span class="n">^6</span> <span class="o">/</span> <span class="m">3</span> <span class="n">^</span> <span class="m">10</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">prod</span><span class="p">(</span><span class="m">7</span><span class="o">:</span><span class="m">10</span><span class="p">)</span> <span class="o">/</span> <span class="nf">prod</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">)</span> <span class="o">*</span> <span class="m">2</span> <span class="n">^6</span> <span class="o">/</span> <span class="m">3</span> <span class="n">^</span> <span class="m">10</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 0.2276076
 </code></pre>
 <h3 id="b-1">(b)</h3>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">prod</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">8</span><span class="p">,</span> <span class="m">9</span><span class="p">,</span> <span class="m">10</span><span class="p">))</span> <span class="o">/</span> <span class="nf">prod</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">)</span> <span class="o">*</span> <span class="m">8</span> <span class="o">/</span> <span class="m">3</span> <span class="n">^</span> <span class="m">10</span> <span class="o">+</span> <span class="m">9</span> <span class="o">*</span> <span class="m">10</span> <span class="o">/</span> <span class="m">2</span> <span class="o">*</span> <span class="m">4</span> <span class="o">/</span> <span class="m">3</span> <span class="n">^</span> <span class="m">10</span> <span class="o">+</span> <span class="m">10</span> <span class="o">/</span> <span class="m">3</span> <span class="n">^</span> <span class="m">10</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">prod</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">8</span><span class="p">,</span> <span class="m">9</span><span class="p">,</span> <span class="m">10</span><span class="p">))</span> <span class="o">/</span> <span class="nf">prod</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">)</span> <span class="o">*</span> <span class="m">8</span> <span class="o">/</span> <span class="m">3</span> <span class="n">^</span> <span class="m">10</span> <span class="o">+</span> <span class="m">9</span> <span class="o">*</span> <span class="m">10</span> <span class="o">/</span> <span class="m">2</span> <span class="o">*</span> <span class="m">4</span> <span class="o">/</span> <span class="m">3</span> <span class="n">^</span> <span class="m">10</span> <span class="o">+</span> <span class="m">10</span> <span class="o">/</span> <span class="m">3</span> <span class="n">^</span> <span class="m">10</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 0.01947535
 </code></pre>
 <h2 id="10">10)</h2>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="m">98</span> <span class="n">^</span> <span class="m">9</span> <span class="o">*</span> <span class="m">2</span> <span class="o">/</span> <span class="m">100</span> <span class="n">^</span> <span class="m">10</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="m">98</span> <span class="n">^</span> <span class="m">9</span> <span class="o">*</span> <span class="m">2</span> <span class="o">/</span> <span class="m">100</span> <span class="n">^</span> <span class="m">10</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 0.01667496
 </code></pre>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="m">9</span> <span class="o">*</span> <span class="m">8</span> <span class="o">/</span> <span class="m">2</span> <span class="o">*</span> <span class="m">98</span> <span class="n">^</span> <span class="m">7</span> <span class="o">*</span> <span class="m">2</span> <span class="n">^</span> <span class="m">3</span> <span class="o">/</span> <span class="m">100</span> <span class="n">^</span> <span class="m">10</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="m">9</span> <span class="o">*</span> <span class="m">8</span> <span class="o">/</span> <span class="m">2</span> <span class="o">*</span> <span class="m">98</span> <span class="n">^</span> <span class="m">7</span> <span class="o">*</span> <span class="m">2</span> <span class="n">^</span> <span class="m">3</span> <span class="o">/</span> <span class="m">100</span> <span class="n">^</span> <span class="m">10</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 0.0002500202
@@ -604,14 +773,28 @@ $$</p>
 	
 >を求めれば良い。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">exp</span><span class="p">(</span><span class="m">-0.1</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">exp</span><span class="p">(</span><span class="m">-0.1</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 0.9048374
 </code></pre>
 <p>これを二項分布で計算すると、</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="p">(</span><span class="m">0.98</span><span class="p">)</span> <span class="n">^</span> <span class="m">5</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="p">(</span><span class="m">0.98</span><span class="p">)</span> <span class="n">^</span> <span class="m">5</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 0.9039208
@@ -620,14 +803,28 @@ $$</p>
 <h2 id="12">12)</h2>
 <p>超幾何分布で考える。今気づいたけど、<code>choose()</code>関数でコンビネーション計算できるみたい。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">choose</span><span class="p">(</span><span class="m">60</span><span class="p">,</span> <span class="m">2</span><span class="p">)</span> <span class="o">*</span> <span class="nf">choose</span><span class="p">(</span><span class="m">30</span><span class="p">,</span> <span class="m">2</span><span class="p">)</span> <span class="o">/</span> <span class="nf">choose</span><span class="p">(</span><span class="m">90</span><span class="p">,</span> <span class="m">4</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">choose</span><span class="p">(</span><span class="m">60</span><span class="p">,</span> <span class="m">2</span><span class="p">)</span> <span class="o">*</span> <span class="nf">choose</span><span class="p">(</span><span class="m">30</span><span class="p">,</span> <span class="m">2</span><span class="p">)</span> <span class="o">/</span> <span class="nf">choose</span><span class="p">(</span><span class="m">90</span><span class="p">,</span> <span class="m">4</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 0.3013279
 </code></pre>
 <p>二項分布ならば以下。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">choose</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="m">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="m">2</span> <span class="o">/</span> <span class="m">3</span><span class="p">)</span> <span class="n">^</span> <span class="m">2</span> <span class="o">*</span> <span class="p">(</span><span class="m">1</span> <span class="o">/</span> <span class="m">3</span><span class="p">)</span> <span class="n">^</span> <span class="m">2</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">choose</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="m">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="m">2</span> <span class="o">/</span> <span class="m">3</span><span class="p">)</span> <span class="n">^</span> <span class="m">2</span> <span class="o">*</span> <span class="p">(</span><span class="m">1</span> <span class="o">/</span> <span class="m">3</span><span class="p">)</span> <span class="n">^</span> <span class="m">2</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 0.2962963
@@ -635,18 +832,36 @@ $$</p>
 <p>近からず遠からず。Nが少々少なかったか。</p>
 <h2 id="13">13)</h2>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">m</span> <span class="o">=</span> <span class="m">100</span> <span class="o">*</span> <span class="m">0.02</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="m">4</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="n">m</span> <span class="n">^</span> <span class="n">x</span> <span class="o">*</span> <span class="nf">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m</span><span class="p">)</span> <span class="o">/</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">m</span> <span class="o">=</span> <span class="m">100</span> <span class="o">*</span> <span class="m">0.02</span>
+</span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="m">4</span>
+</span></span><span class="line"><span class="cl"><span class="n">m</span> <span class="n">^</span> <span class="n">x</span> <span class="o">*</span> <span class="nf">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m</span><span class="p">)</span> <span class="o">/</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 0.09022352
 </code></pre>
 <h2 id="14">14)</h2>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">m</span> <span class="o">=</span> <span class="m">200</span> <span class="o">*</span> <span class="m">0.03</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="m">5</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="n">m</span> <span class="n">^</span> <span class="n">x</span> <span class="o">*</span> <span class="nf">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m</span><span class="p">)</span> <span class="o">/</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">m</span> <span class="o">=</span> <span class="m">200</span> <span class="o">*</span> <span class="m">0.03</span>
+</span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="m">5</span>
+</span></span><span class="line"><span class="cl"><span class="n">m</span> <span class="n">^</span> <span class="n">x</span> <span class="o">*</span> <span class="nf">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m</span><span class="p">)</span> <span class="o">/</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 0.1606231
@@ -665,20 +880,40 @@ $$</p>
 >であり、それが4なのだから、確率の計算が可能。</p>
 <p>期待値の性質を使うというアイデアは一瞬分からなかったけど、とても便利な性質だなあ。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">m</span> <span class="o">=</span> <span class="m">4</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">5</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="n">m</span> <span class="n">^</span> <span class="n">x</span> <span class="o">*</span> <span class="nf">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m</span><span class="p">)</span> <span class="o">/</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">m</span> <span class="o">=</span> <span class="m">4</span>
+</span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">m</span> <span class="n">^</span> <span class="n">x</span> <span class="o">*</span> <span class="nf">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m</span><span class="p">)</span> <span class="o">/</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 0.07326256 0.14652511 0.15629345
 </code></pre>
 <h2 id="16">16)</h2>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">p</span> <span class="o">=</span> <span class="m">1</span> <span class="o">/</span> <span class="m">10000</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">n</span> <span class="o">=</span> <span class="m">20000</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="n">m</span> <span class="o">=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">p</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl">
-</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="n">m</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">p</span> <span class="o">=</span> <span class="m">1</span> <span class="o">/</span> <span class="m">10000</span>
+</span></span><span class="line"><span class="cl"><span class="n">n</span> <span class="o">=</span> <span class="m">20000</span>
+</span></span><span class="line"><span class="cl"><span class="n">m</span> <span class="o">=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">p</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">m</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 2
@@ -695,20 +930,40 @@ $$</p>
 ></p>
 <h2 id="17">17)</h2>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">n</span> <span class="o">=</span> <span class="m">200</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">p</span> <span class="o">=</span> <span class="m">0.02</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">
-</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="m">4</span> <span class="n">^</span> <span class="m">2</span> <span class="o">*</span> <span class="nf">exp</span><span class="p">(</span><span class="m">-4</span><span class="p">)</span> <span class="o">/</span> <span class="nf">factorial</span><span class="p">(</span><span class="m">2</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">n</span> <span class="o">=</span> <span class="m">200</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span> <span class="o">=</span> <span class="m">0.02</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="m">4</span> <span class="n">^</span> <span class="m">2</span> <span class="o">*</span> <span class="nf">exp</span><span class="p">(</span><span class="m">-4</span><span class="p">)</span> <span class="o">/</span> <span class="nf">factorial</span><span class="p">(</span><span class="m">2</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 0.1465251
 </code></pre>
 <h2 id="18">18)</h2>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">p</span> <span class="o">=</span> <span class="m">0.012</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">n</span> <span class="o">=</span> <span class="m">300</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">
-</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="m">3.6</span> <span class="n">^</span> <span class="m">2</span> <span class="o">*</span> <span class="nf">exp</span><span class="p">(</span><span class="m">-3.6</span><span class="p">)</span> <span class="o">/</span> <span class="nf">factorial</span><span class="p">(</span><span class="m">2</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">p</span> <span class="o">=</span> <span class="m">0.012</span>
+</span></span><span class="line"><span class="cl"><span class="n">n</span> <span class="o">=</span> <span class="m">300</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="m">3.6</span> <span class="n">^</span> <span class="m">2</span> <span class="o">*</span> <span class="nf">exp</span><span class="p">(</span><span class="m">-3.6</span><span class="p">)</span> <span class="o">/</span> <span class="nf">factorial</span><span class="p">(</span><span class="m">2</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 0.1770577
@@ -716,15 +971,30 @@ $$</p>
 <h2 id="19">19)</h2>
 <p>一冊の本で、一ページあたりの誤植数の期待値が0.05であるポアソン分布を考える。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="m">0.05</span> <span class="n">^</span> <span class="n">x</span> <span class="o">*</span> <span class="nf">exp</span><span class="p">(</span><span class="m">-0.05</span><span class="p">)</span> <span class="o">/</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="m">0.05</span> <span class="n">^</span> <span class="n">x</span> <span class="o">*</span> <span class="nf">exp</span><span class="p">(</span><span class="m">-0.05</span><span class="p">)</span> <span class="o">/</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 0.951229425 0.047561471 0.001189037
 </code></pre>
 <h2 id="20">20)</h2>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="m">4</span> <span class="n">^</span> <span class="m">1</span> <span class="o">*</span> <span class="nf">exp</span><span class="p">(</span><span class="m">-4</span><span class="p">)</span> <span class="o">/</span> <span class="nf">factorial</span><span class="p">(</span><span class="m">1</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="m">4</span> <span class="n">^</span> <span class="m">1</span> <span class="o">*</span> <span class="nf">exp</span><span class="p">(</span><span class="m">-4</span><span class="p">)</span> <span class="o">/</span> <span class="nf">factorial</span><span class="p">(</span><span class="m">1</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 0.07326256
@@ -735,55 +1005,114 @@ $$</p>
 <h3 id="a-2">(a)</h3>
 <p>今更だけど、ポワソン分布の関数を作ろう。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">poisson_func</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="n">m</span> <span class="n">^</span> <span class="n">x</span> <span class="o">*</span> <span class="nf">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m</span><span class="p">)</span> <span class="o">/</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">poisson_func</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">m</span> <span class="n">^</span> <span class="n">x</span> <span class="o">*</span> <span class="nf">exp</span><span class="p">(</span><span class="o">-</span><span class="n">m</span><span class="p">)</span> <span class="o">/</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">poisson_func</span><span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="m">0</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">poisson_func</span><span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="m">0</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 0.006737947
 </code></pre>
 <h3 id="b-2">(b)</h3>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">poisson_func</span><span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="m">2</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">poisson_func</span><span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="m">2</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 0.08422434
 </code></pre>
 <h3 id="c-1">(c)</h3>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">poisson_func</span><span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="m">5</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">poisson_func</span><span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="m">5</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 0.1754674
 </code></pre>
 <h2 id="22">22)</h2>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="m">1</span> <span class="o">-</span> <span class="nf">sum</span><span class="p">(</span><span class="nf">poisson_func</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="o">:</span><span class="m">5</span><span class="p">)))</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="m">1</span> <span class="o">-</span> <span class="nf">sum</span><span class="p">(</span><span class="nf">poisson_func</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="o">:</span><span class="m">5</span><span class="p">)))</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 0.2148696
 </code></pre>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="m">1</span> <span class="o">-</span> <span class="nf">sum</span><span class="p">(</span><span class="nf">poisson_func</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="o">:</span><span class="m">1</span><span class="p">)))</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="m">1</span> <span class="o">-</span> <span class="nf">sum</span><span class="p">(</span><span class="nf">poisson_func</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="o">:</span><span class="m">1</span><span class="p">)))</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 0.9084218
 </code></pre>
 <p>ところで、これは確率密度関数がプロットしたらイメージわきやすい気がした。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl">
-</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="nf">tibble</span><span class="p">(</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="m">1</span><span class="o">:</span><span class="m">20</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">5</span><span class="cl">    <span class="n">p</span> <span class="o">=</span> <span class="nf">poisson_func</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="m">20</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="p">)</span> <span class="o">|&gt;</span>
-</span></span><span class="line"><span class="ln">7</span><span class="cl">    <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">p</span><span class="p">))</span> <span class="o">+</span>
-</span></span><span class="line"><span class="ln">8</span><span class="cl">    <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span>
-</span></span><span class="line"><span class="ln">9</span><span class="cl">    <span class="nf">geom_line</span><span class="p">()</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">tibble</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="m">1</span><span class="o">:</span><span class="m">20</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">p</span> <span class="o">=</span> <span class="nf">poisson_func</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="m">20</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">p</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">geom_line</span><span class="p">()</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <img src="index_files/figure-gfm/unnamed-chunk-35-1.png" width="768" />
@@ -791,7 +1120,14 @@ $$</p>
 <h3 id="a-3">(a)</h3>
 <p>確率は単純にポワソン分布の式に代入すればよい。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">poisson_func</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">))</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">poisson_func</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">))</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code> [1] 0.1493612051 0.2240418077 0.2240418077 0.1680313557 0.1008188134
@@ -799,7 +1135,14 @@ $$</p>
 </code></pre>
 <p>平均値、すなわち期待値は確率に確率変数を乗算してから合計を計算すればよい。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">sum</span><span class="p">(</span><span class="nf">poisson_func</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span> <span class="o">*</span> <span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">sum</span><span class="p">(</span><span class="nf">poisson_func</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span> <span class="o">*</span> <span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 2.996693
@@ -807,7 +1150,14 @@ $$</p>
 <p>確かに3に近い値となった。</p>
 <p>多分手計算の都合で10までとしているのだが、とても大きい値まで計算するとどうか。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">sum</span><span class="p">(</span><span class="nf">poisson_func</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="m">100</span><span class="p">)</span> <span class="o">*</span> <span class="m">1</span><span class="o">:</span><span class="m">100</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">sum</span><span class="p">(</span><span class="nf">poisson_func</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="m">100</span><span class="p">)</span> <span class="o">*</span> <span class="m">1</span><span class="o">:</span><span class="m">100</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 3
@@ -816,7 +1166,14 @@ $$</p>
 <h3 id="b-3">(b)</h3>
 <p>分散は二乗の期待値引く期待値の二乗で求める。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">sum</span><span class="p">(</span><span class="nf">poisson_func</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span><span class="n">^2</span><span class="p">)</span> <span class="o">-</span> <span class="nf">sum</span><span class="p">(</span><span class="nf">poisson_func</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span> <span class="o">*</span> <span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span><span class="n">^2</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">sum</span><span class="p">(</span><span class="nf">poisson_func</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span><span class="n">^2</span><span class="p">)</span> <span class="o">-</span> <span class="nf">sum</span><span class="p">(</span><span class="nf">poisson_func</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span> <span class="o">*</span> <span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span><span class="n">^2</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 2.982299
@@ -824,7 +1181,14 @@ $$</p>
 <p>これも大体3に近い。</p>
 <p>同じように大きい数字まで計算してみる。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">sum</span><span class="p">(</span><span class="nf">poisson_func</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="m">100</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span><span class="n">^2</span><span class="p">)</span> <span class="o">-</span> <span class="nf">sum</span><span class="p">(</span><span class="nf">poisson_func</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="m">100</span><span class="p">)</span> <span class="o">*</span> <span class="m">1</span><span class="o">:</span><span class="m">100</span><span class="p">)</span><span class="n">^2</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">sum</span><span class="p">(</span><span class="nf">poisson_func</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="m">100</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span><span class="n">^2</span><span class="p">)</span> <span class="o">-</span> <span class="nf">sum</span><span class="p">(</span><span class="nf">poisson_func</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="m">100</span><span class="p">)</span> <span class="o">*</span> <span class="m">1</span><span class="o">:</span><span class="m">100</span><span class="p">)</span><span class="n">^2</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 2.963084
@@ -833,20 +1197,42 @@ $$</p>
 <h2 id="24">24)</h2>
 <p>正規分布の確率密度関数でも、自作関数を作ってみよう。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">normal_function</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="nf">exp</span><span class="p">(</span><span class="o">-</span><span class="n">z</span> <span class="n">^</span> <span class="m">2</span> <span class="o">/</span> <span class="m">2</span><span class="p">)</span> <span class="o">/</span> <span class="nf">sqrt</span><span class="p">(</span><span class="m">2</span> <span class="o">*</span> <span class="kc">pi</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">normal_function</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">exp</span><span class="p">(</span><span class="o">-</span><span class="n">z</span> <span class="n">^</span> <span class="m">2</span> <span class="o">/</span> <span class="m">2</span><span class="p">)</span> <span class="o">/</span> <span class="nf">sqrt</span><span class="p">(</span><span class="m">2</span> <span class="o">*</span> <span class="kc">pi</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <p>一応プロットして確認する。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">tibble</span><span class="p">(</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="m">-1000</span><span class="o">:</span><span class="m">1000</span><span class="o">*</span><span class="m">0.01</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">    <span class="n">p</span> <span class="o">=</span> <span class="nf">normal_function</span><span class="p">(</span><span class="m">-1000</span><span class="o">:</span><span class="m">1000</span><span class="o">*</span><span class="m">0.01</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl">    <span class="p">)</span> <span class="o">|&gt;</span>
-</span></span><span class="line"><span class="ln">5</span><span class="cl">    <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">p</span><span class="p">))</span> <span class="o">+</span>
-</span></span><span class="line"><span class="ln">6</span><span class="cl">    <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span>
-</span></span><span class="line"><span class="ln">7</span><span class="cl">    <span class="nf">geom_line</span><span class="p">()</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">tibble</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="m">-1000</span><span class="o">:</span><span class="m">1000</span><span class="o">*</span><span class="m">0.01</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">p</span> <span class="o">=</span> <span class="nf">normal_function</span><span class="p">(</span><span class="m">-1000</span><span class="o">:</span><span class="m">1000</span><span class="o">*</span><span class="m">0.01</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">p</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">geom_line</span><span class="p">()</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <img src="index_files/figure-gfm/unnamed-chunk-42-1.png" width="768" />
@@ -855,7 +1241,14 @@ $$</p>
 <p>と、調べてみるとRの標準関数でやる補法があるらしい。正規分布の密度(density)をintegral関数に与える。integral関数なんて・・・Rを五年以上やってて初めて聞いた・・・</p>
 <h3 id="a-4">(a)</h3>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm</span><span class="p">,</span> <span class="m">-1</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm</span><span class="p">,</span> <span class="m">-1</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>0.6826895 with absolute error &lt; 7.6e-15
@@ -863,12 +1256,27 @@ $$</p>
 <p>わーほんとに求まったすごい。</p>
 <h3 id="bf">(b)&hellip;(f)</h3>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">calc_normal_sum</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="p">{</span><span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm</span><span class="p">,</span> <span class="o">-</span><span class="n">z</span><span class="p">,</span> <span class="n">z</span><span class="p">)}</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">calc_normal_sum</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="p">{</span><span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm</span><span class="p">,</span> <span class="o">-</span><span class="n">z</span><span class="p">,</span> <span class="n">z</span><span class="p">)}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">1.96</span><span class="p">,</span> <span class="m">2.33</span><span class="p">,</span> <span class="m">2.58</span><span class="p">)</span> <span class="o">|&gt;</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="nf">map</span><span class="p">(</span><span class="nf">\</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">calc_normal_sum</span><span class="p">(</span><span class="n">x</span><span class="p">))</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">1.96</span><span class="p">,</span> <span class="m">2.33</span><span class="p">,</span> <span class="m">2.58</span><span class="p">)</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">map</span><span class="p">(</span><span class="nf">\</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">calc_normal_sum</span><span class="p">(</span><span class="n">x</span><span class="p">))</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[[1]]
@@ -890,67 +1298,134 @@ $$</p>
 <p>確率密度関数の積分値から確率を求める問題。</p>
 <p>Rではqnorm()がそれを実現してくれる。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">qnorm</span><span class="p">(</span><span class="m">0.95</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">qnorm</span><span class="p">(</span><span class="m">0.95</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 1.644854
 </code></pre>
 <p>ここで、0.95とは以下の部分の面積である。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="nf">tibble</span><span class="p">(</span>
-</span></span><span class="line"><span class="ln"> 2</span><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="m">-1000</span><span class="o">:</span><span class="m">1000</span><span class="o">*</span><span class="m">0.01</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl">    <span class="n">p</span> <span class="o">=</span> <span class="nf">normal_function</span><span class="p">(</span><span class="m">-1000</span><span class="o">:</span><span class="m">1000</span><span class="o">*</span><span class="m">0.01</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">df_norm</span>
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="n">df_norm</span> <span class="o">|&gt;</span>
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl">    <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">p</span><span class="p">))</span> <span class="o">+</span>
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl">    <span class="nf">geom_line</span><span class="p">()</span> <span class="o">+</span>
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl">    <span class="nf">geom_area</span><span class="p">(</span>
-</span></span><span class="line"><span class="ln">10</span><span class="cl">        <span class="n">data</span> <span class="o">=</span> <span class="n">df_norm</span> <span class="o">|&gt;</span> <span class="nf">filter</span><span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="m">1.644854</span><span class="p">),</span>
-</span></span><span class="line"><span class="ln">11</span><span class="cl">        <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">p</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">12</span><span class="cl">    <span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">tibble</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="m">-1000</span><span class="o">:</span><span class="m">1000</span><span class="o">*</span><span class="m">0.01</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">p</span> <span class="o">=</span> <span class="nf">normal_function</span><span class="p">(</span><span class="m">-1000</span><span class="o">:</span><span class="m">1000</span><span class="o">*</span><span class="m">0.01</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">df_norm</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">df_norm</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">p</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">geom_line</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">geom_area</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">data</span> <span class="o">=</span> <span class="n">df_norm</span> <span class="o">|&gt;</span> <span class="nf">filter</span><span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="m">1.644854</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">p</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <img src="index_files/figure-gfm/unnamed-chunk-47-1.png" width="768" />
 <p>この点に注意して計算する。</p>
 <h3 id="a-5">(a)</h3>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">qnorm</span><span class="p">(</span><span class="m">0.45</span> <span class="o">+</span> <span class="m">0.5</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">qnorm</span><span class="p">(</span><span class="m">0.45</span> <span class="o">+</span> <span class="m">0.5</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 1.644854
 </code></pre>
 <h3 id="b-4">(b)</h3>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">qnorm</span><span class="p">(</span><span class="m">0.96</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">qnorm</span><span class="p">(</span><span class="m">0.96</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 1.750686
 </code></pre>
 <h3 id="c-2">(c)</h3>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">qnorm</span><span class="p">(</span><span class="m">0.07</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">qnorm</span><span class="p">(</span><span class="m">0.07</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] -1.475791
 </code></pre>
 <h3 id="d-1">(d)</h3>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">qnorm</span><span class="p">(</span><span class="m">0.65</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">qnorm</span><span class="p">(</span><span class="m">0.65</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 0.3853205
 </code></pre>
 <h3 id="e">(e)</h3>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">qnorm</span><span class="p">(</span><span class="m">0.03</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">qnorm</span><span class="p">(</span><span class="m">0.03</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] -1.880794
 </code></pre>
 <h3 id="f">(f)</h3>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">qnorm</span><span class="p">(</span><span class="m">0.3</span> <span class="o">+</span> <span class="m">0.5</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">qnorm</span><span class="p">(</span><span class="m">0.3</span> <span class="o">+</span> <span class="m">0.5</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 0.8416212
@@ -959,103 +1434,223 @@ $$</p>
 <h3 id="a-6">(a)</h3>
 <p><code>integrate()</code>関数を使えば確率密度関数の面積値を求めることが出来るが、標準正規分布でない場合は自作関数でwrapする必要があるのではないだろうか。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">dnorm_mod</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span><span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">mean</span> <span class="o">=</span> <span class="m">10</span><span class="p">,</span> <span class="n">sd</span> <span class="o">=</span> <span class="m">2</span><span class="p">)}</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm_mod</span><span class="p">,</span> <span class="o">-</span><span class="kc">Inf</span><span class="p">,</span> <span class="m">13</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">dnorm_mod</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span><span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">mean</span> <span class="o">=</span> <span class="m">10</span><span class="p">,</span> <span class="n">sd</span> <span class="o">=</span> <span class="m">2</span><span class="p">)}</span>
+</span></span><span class="line"><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm_mod</span><span class="p">,</span> <span class="o">-</span><span class="kc">Inf</span><span class="p">,</span> <span class="m">13</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>0.9331928 with absolute error &lt; 1.5e-05
 </code></pre>
 <h3 id="b-5">(b)</h3>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm_mod</span><span class="p">,</span> <span class="m">6</span><span class="p">,</span> <span class="kc">Inf</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm_mod</span><span class="p">,</span> <span class="m">6</span><span class="p">,</span> <span class="kc">Inf</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>0.9772499 with absolute error &lt; 1.1e-07
 </code></pre>
 <h3 id="c-3">(c)</h3>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm_mod</span><span class="p">,</span> <span class="m">6</span><span class="p">,</span> <span class="m">13</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm_mod</span><span class="p">,</span> <span class="m">6</span><span class="p">,</span> <span class="m">13</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>0.9104427 with absolute error &lt; 1.3e-13
 </code></pre>
 <h2 id="27">27)</h2>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">dnorm_mod</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span><span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">mean</span> <span class="o">=</span> <span class="m">57.4</span><span class="p">,</span> <span class="n">sd</span> <span class="o">=</span> <span class="m">8.4</span><span class="p">)}</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">dnorm_mod</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span><span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">mean</span> <span class="o">=</span> <span class="m">57.4</span><span class="p">,</span> <span class="n">sd</span> <span class="o">=</span> <span class="m">8.4</span><span class="p">)}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm_mod</span><span class="p">,</span> <span class="o">-</span><span class="kc">Inf</span><span class="p">,</span> <span class="m">70</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm_mod</span><span class="p">,</span> <span class="o">-</span><span class="kc">Inf</span><span class="p">,</span> <span class="m">70</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>0.9331928 with absolute error &lt; 1.5e-05
 </code></pre>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm_mod</span><span class="p">,</span> <span class="o">-</span><span class="kc">Inf</span><span class="p">,</span> <span class="m">51.1</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm_mod</span><span class="p">,</span> <span class="o">-</span><span class="kc">Inf</span><span class="p">,</span> <span class="m">51.1</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>0.2266274 with absolute error &lt; 9e-05
 </code></pre>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm_mod</span><span class="p">,</span> <span class="m">59.5</span><span class="p">,</span> <span class="m">76.3</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm_mod</span><span class="p">,</span> <span class="m">59.5</span><span class="p">,</span> <span class="m">76.3</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>0.3890692 with absolute error &lt; 4.3e-15
 </code></pre>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm_mod</span><span class="p">,</span> <span class="m">44.8</span><span class="p">,</span> <span class="m">74.2</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm_mod</span><span class="p">,</span> <span class="m">44.8</span><span class="p">,</span> <span class="m">74.2</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>0.9104427 with absolute error &lt; 1.3e-13
 </code></pre>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm_mod</span><span class="p">,</span> <span class="m">72.1</span><span class="p">,</span> <span class="kc">Inf</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm_mod</span><span class="p">,</span> <span class="m">72.1</span><span class="p">,</span> <span class="kc">Inf</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>0.04005916 with absolute error &lt; 5.9e-07
 </code></pre>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm_mod</span><span class="p">,</span> <span class="m">49</span><span class="p">,</span> <span class="kc">Inf</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm_mod</span><span class="p">,</span> <span class="m">49</span><span class="p">,</span> <span class="kc">Inf</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>0.8413447 with absolute error &lt; 0.00011
 </code></pre>
 <h2 id="28">28)</h2>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">dnorm_mod</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span><span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">mean</span> <span class="o">=</span> <span class="m">71.8</span><span class="p">,</span> <span class="n">sd</span> <span class="o">=</span> <span class="m">5.6</span><span class="p">)}</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">dnorm_mod</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span><span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">mean</span> <span class="o">=</span> <span class="m">71.8</span><span class="p">,</span> <span class="n">sd</span> <span class="o">=</span> <span class="m">5.6</span><span class="p">)}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="m">1</span> <span class="o">-</span> <span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm_mod</span><span class="p">,</span> <span class="m">78.8</span><span class="p">,</span> <span class="kc">Inf</span><span class="p">)</span><span class="n">[[1]]</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="m">1</span> <span class="o">-</span> <span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm_mod</span><span class="p">,</span> <span class="m">78.8</span><span class="p">,</span> <span class="kc">Inf</span><span class="p">)</span><span class="n">[[1]]</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 0.8943502
 </code></pre>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="m">1</span> <span class="o">-</span> <span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm_mod</span><span class="p">,</span> <span class="o">-</span><span class="kc">Inf</span><span class="p">,</span> <span class="m">60.6</span><span class="p">)</span><span class="n">[[1]]</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="m">1</span> <span class="o">-</span> <span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm_mod</span><span class="p">,</span> <span class="o">-</span><span class="kc">Inf</span><span class="p">,</span> <span class="m">60.6</span><span class="p">)</span><span class="n">[[1]]</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 0.9772499
 </code></pre>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm_mod</span><span class="p">,</span> <span class="m">74.6</span><span class="p">,</span> <span class="m">80.2</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm_mod</span><span class="p">,</span> <span class="m">74.6</span><span class="p">,</span> <span class="m">80.2</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>0.2417303 with absolute error &lt; 2.7e-15
 </code></pre>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm_mod</span><span class="p">,</span> <span class="m">63.4</span><span class="p">,</span> <span class="m">80.2</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm_mod</span><span class="p">,</span> <span class="m">63.4</span><span class="p">,</span> <span class="m">80.2</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>0.8663856 with absolute error &lt; 9.6e-15
 </code></pre>
 <h2 id="29">29)</h2>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">dnorm_mod</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span><span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">mean</span> <span class="o">=</span> <span class="m">520</span><span class="p">,</span> <span class="n">sd</span> <span class="o">=</span> <span class="m">10</span><span class="p">)}</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">dnorm_mod</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span><span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">mean</span> <span class="o">=</span> <span class="m">520</span><span class="p">,</span> <span class="n">sd</span> <span class="o">=</span> <span class="m">10</span><span class="p">)}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm_mod</span><span class="p">,</span> <span class="o">-</span><span class="kc">Inf</span><span class="p">,</span> <span class="m">500</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm_mod</span><span class="p">,</span> <span class="o">-</span><span class="kc">Inf</span><span class="p">,</span> <span class="m">500</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>0.02275013 with absolute error &lt; 4.6e-05
@@ -1121,20 +1716,42 @@ $$</p>
 <p>平均値は92.98となる。</p>
 <h2 id="32">32)</h2>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">dnorm_mod</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span><span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="m">60.5</span><span class="p">,</span> <span class="m">7.4</span><span class="p">)}</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm_mod</span><span class="p">,</span> <span class="m">70</span><span class="p">,</span> <span class="kc">Inf</span><span class="p">)</span><span class="n">[[1]]</span> <span class="o">*</span> <span class="m">100</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">dnorm_mod</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span><span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="m">60.5</span><span class="p">,</span> <span class="m">7.4</span><span class="p">)}</span>
+</span></span><span class="line"><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm_mod</span><span class="p">,</span> <span class="m">70</span><span class="p">,</span> <span class="kc">Inf</span><span class="p">)</span><span class="n">[[1]]</span> <span class="o">*</span> <span class="m">100</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 9.960881
 </code></pre>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm_mod</span><span class="p">,</span> <span class="o">-</span><span class="kc">Inf</span><span class="p">,</span> <span class="m">48</span><span class="p">)</span><span class="n">[[1]]</span> <span class="o">*</span> <span class="m">100</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm_mod</span><span class="p">,</span> <span class="o">-</span><span class="kc">Inf</span><span class="p">,</span> <span class="m">48</span><span class="p">)</span><span class="n">[[1]]</span> <span class="o">*</span> <span class="m">100</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 4.559159
 </code></pre>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm_mod</span><span class="p">,</span> <span class="m">56</span><span class="p">,</span> <span class="m">64</span><span class="p">)</span><span class="n">[[1]]</span> <span class="o">*</span> <span class="m">100</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="n">dnorm_mod</span><span class="p">,</span> <span class="m">56</span><span class="p">,</span> <span class="m">64</span><span class="p">)</span><span class="n">[[1]]</span> <span class="o">*</span> <span class="m">100</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 41.03259
@@ -1142,7 +1759,14 @@ $$</p>
 <h2 id="33">33)</h2>
 <p>正規分布において、面積値が0.9となる確率変数よりも多くの在庫を確保しておけばよい、と考える。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">qnorm</span><span class="p">(</span><span class="m">0.9</span><span class="p">,</span> <span class="m">250</span><span class="p">,</span> <span class="m">30</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">qnorm</span><span class="p">(</span><span class="m">0.9</span><span class="p">,</span> <span class="m">250</span><span class="p">,</span> <span class="m">30</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 288.4465
@@ -1150,7 +1774,14 @@ $$</p>
 <p>289以上の在庫があればよい。</p>
 <h2 id="34">34)</h2>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">qnorm</span><span class="p">(</span><span class="m">0.95</span><span class="p">,</span> <span class="m">340</span><span class="p">,</span> <span class="m">26</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">qnorm</span><span class="p">(</span><span class="m">0.95</span><span class="p">,</span> <span class="m">340</span><span class="p">,</span> <span class="m">26</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 382.7662
@@ -1159,7 +1790,14 @@ $$</p>
 <h2 id="35">35)</h2>
 <h3 id="a-7">(a)</h3>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="nf">\</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="m">300</span><span class="p">,</span> <span class="m">35</span><span class="p">),</span> <span class="m">320</span><span class="p">,</span> <span class="kc">Inf</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="nf">\</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="m">300</span><span class="p">,</span> <span class="m">35</span><span class="p">),</span> <span class="m">320</span><span class="p">,</span> <span class="kc">Inf</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>0.2838546 with absolute error &lt; 2.5e-05
@@ -1167,7 +1805,14 @@ $$</p>
 <p>28.4%</p>
 <h3 id="b-6">(b)</h3>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="nf">\</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="m">300</span><span class="p">,</span> <span class="m">35</span><span class="p">),</span> <span class="m">250</span><span class="p">,</span> <span class="m">350</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="nf">\</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="m">300</span><span class="p">,</span> <span class="m">35</span><span class="p">),</span> <span class="m">250</span><span class="p">,</span> <span class="m">350</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>0.8468725 with absolute error &lt; 9.4e-15
@@ -1175,7 +1820,14 @@ $$</p>
 <p>84.7%</p>
 <h3 id="c-4">(c)</h3>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">qnorm</span><span class="p">(</span><span class="m">0.75</span><span class="p">,</span> <span class="m">300</span><span class="p">,</span> <span class="m">35</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">qnorm</span><span class="p">(</span><span class="m">0.75</span><span class="p">,</span> <span class="m">300</span><span class="p">,</span> <span class="m">35</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 323.6071
@@ -1184,28 +1836,56 @@ $$</p>
 <h2 id="36">36)</h2>
 <h3 id="a-8">(a)</h3>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="nf">\</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="m">72.8</span><span class="p">,</span> <span class="m">15</span><span class="p">),</span> <span class="m">88</span><span class="p">,</span> <span class="kc">Inf</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="nf">\</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="m">72.8</span><span class="p">,</span> <span class="m">15</span><span class="p">),</span> <span class="m">88</span><span class="p">,</span> <span class="kc">Inf</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>0.1554505 with absolute error &lt; 2.2e-06
 </code></pre>
 <h3 id="b-7">(b)</h3>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="m">1</span> <span class="o">-</span> <span class="nf">integrate</span><span class="p">(</span><span class="nf">\</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="m">72.8</span><span class="p">,</span> <span class="m">15</span><span class="p">),</span> <span class="m">32</span><span class="p">,</span> <span class="kc">Inf</span><span class="p">)</span><span class="n">[[1]]</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="m">1</span> <span class="o">-</span> <span class="nf">integrate</span><span class="p">(</span><span class="nf">\</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="m">72.8</span><span class="p">,</span> <span class="m">15</span><span class="p">),</span> <span class="m">32</span><span class="p">,</span> <span class="kc">Inf</span><span class="p">)</span><span class="n">[[1]]</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 0.003264096
 </code></pre>
 <h3 id="c-5">(c)</h3>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">qnorm</span><span class="p">(</span><span class="m">0.88</span><span class="p">,</span> <span class="m">72.8</span><span class="p">,</span> <span class="m">15</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">qnorm</span><span class="p">(</span><span class="m">0.88</span><span class="p">,</span> <span class="m">72.8</span><span class="p">,</span> <span class="m">15</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 90.4248
 </code></pre>
 <h3 id="d-2">(d)</h3>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">qnorm</span><span class="p">(</span><span class="m">0.25</span><span class="p">,</span> <span class="m">72.8</span><span class="p">,</span> <span class="m">15</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">qnorm</span><span class="p">(</span><span class="m">0.25</span><span class="p">,</span> <span class="m">72.8</span><span class="p">,</span> <span class="m">15</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 62.68265
@@ -1213,35 +1893,72 @@ $$</p>
 <h2 id="37">37)</h2>
 <p>イメージするために、正規分布を図示してみる。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln"> 2</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="nf">tibble</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="m">1</span><span class="o">:</span><span class="m">2000</span> <span class="o">*</span> <span class="m">0.1</span><span class="p">)</span> <span class="o">|&gt;</span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="nf">mutate</span><span class="p">(</span>
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl">        <span class="n">dist_a</span> <span class="o">=</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="m">75</span><span class="p">,</span> <span class="m">15</span><span class="p">),</span>
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl">        <span class="n">dist_b</span> <span class="o">=</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span> <span class="m">10</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl">        <span class="p">)</span> <span class="o">|&gt;</span>
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl">    <span class="nf">pivot_longer</span><span class="p">(</span><span class="m">-1</span><span class="p">)</span> <span class="o">|&gt;</span>
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl">    <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">value</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="n">name</span><span class="p">))</span> <span class="o">+</span>
-</span></span><span class="line"><span class="ln">10</span><span class="cl">        <span class="nf">geom_line</span><span class="p">()</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">tibble</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="m">1</span><span class="o">:</span><span class="m">2000</span> <span class="o">*</span> <span class="m">0.1</span><span class="p">)</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">mutate</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">dist_a</span> <span class="o">=</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="m">75</span><span class="p">,</span> <span class="m">15</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">dist_b</span> <span class="o">=</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span> <span class="m">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">)</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">pivot_longer</span><span class="p">(</span><span class="m">-1</span><span class="p">)</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">value</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="n">name</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">geom_line</span><span class="p">()</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <img src="index_files/figure-gfm/unnamed-chunk-73-1.png" width="768" />
 <p>とは言っても、問題文をよく読むと二つの分布の関係性を気にする必要性は特になかった。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="nf">\</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="m">75</span><span class="p">,</span> <span class="m">15</span><span class="p">),</span> <span class="m">100</span><span class="p">,</span> <span class="kc">Inf</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="nf">\</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="m">75</span><span class="p">,</span> <span class="m">15</span><span class="p">),</span> <span class="m">100</span><span class="p">,</span> <span class="kc">Inf</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>0.04779035 with absolute error &lt; 7.9e-05
 </code></pre>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="nf">\</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span> <span class="m">10</span><span class="p">),</span> <span class="o">-</span><span class="kc">Inf</span><span class="p">,</span> <span class="m">75</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="nf">\</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span> <span class="m">10</span><span class="p">),</span> <span class="o">-</span><span class="kc">Inf</span><span class="p">,</span> <span class="m">75</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>0.006209665 with absolute error &lt; 2.3e-05
 </code></pre>
 <h2 id="38">38)</h2>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="m">2400</span> <span class="o">*</span> <span class="nf">integrate</span><span class="p">(</span><span class="nf">\</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="m">112</span><span class="p">,</span> <span class="m">12</span><span class="p">),</span> <span class="m">105</span><span class="p">,</span> <span class="m">125</span><span class="p">)</span><span class="n">[[1]]</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="m">2400</span> <span class="o">*</span> <span class="nf">integrate</span><span class="p">(</span><span class="nf">\</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="m">112</span><span class="p">,</span> <span class="m">12</span><span class="p">),</span> <span class="m">105</span><span class="p">,</span> <span class="m">125</span><span class="p">)</span><span class="n">[[1]]</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 1394.005
@@ -1261,80 +1978,163 @@ $$</p>
 ></p>
 <p>計算すると平均が80, 分散が8と分かる。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="nf">\</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="m">80</span><span class="p">,</span> <span class="m">8</span><span class="p">),</span> <span class="m">0.18</span> <span class="o">*</span> <span class="m">400</span><span class="p">,</span> <span class="kc">Inf</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="nf">\</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="m">80</span><span class="p">,</span> <span class="m">8</span><span class="p">),</span> <span class="m">0.18</span> <span class="o">*</span> <span class="m">400</span><span class="p">,</span> <span class="kc">Inf</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>0.8413447 with absolute error &lt; 8.3e-05
 </code></pre>
 <h2 id="40">40)</h2>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">choose</span><span class="p">(</span><span class="m">14</span><span class="p">,</span> <span class="m">4</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="m">1</span> <span class="o">/</span> <span class="m">2</span><span class="p">)</span> <span class="n">^</span> <span class="m">4</span> <span class="o">*</span> <span class="p">(</span><span class="m">1</span> <span class="o">/</span> <span class="m">2</span><span class="p">)</span> <span class="n">^</span> <span class="m">10</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">choose</span><span class="p">(</span><span class="m">14</span><span class="p">,</span> <span class="m">4</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="m">1</span> <span class="o">/</span> <span class="m">2</span><span class="p">)</span> <span class="n">^</span> <span class="m">4</span> <span class="o">*</span> <span class="p">(</span><span class="m">1</span> <span class="o">/</span> <span class="m">2</span><span class="p">)</span> <span class="n">^</span> <span class="m">10</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 0.06109619
 </code></pre>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">mu</span> <span class="o">=</span> <span class="m">14</span> <span class="o">*</span> <span class="p">(</span><span class="m">1</span> <span class="o">/</span> <span class="m">2</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">sigma</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span><span class="n">mu</span> <span class="o">*</span> <span class="p">(</span><span class="m">1</span> <span class="o">/</span> <span class="m">2</span><span class="p">))</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">
-</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="nf">dnorm</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">mu</span> <span class="o">=</span> <span class="m">14</span> <span class="o">*</span> <span class="p">(</span><span class="m">1</span> <span class="o">/</span> <span class="m">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">sigma</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span><span class="n">mu</span> <span class="o">*</span> <span class="p">(</span><span class="m">1</span> <span class="o">/</span> <span class="m">2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">dnorm</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>[1] 0.05895185
 </code></pre>
 <h2 id="41">41)</h2>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">mu</span> <span class="o">=</span> <span class="m">60</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">sigma</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span><span class="n">mu</span> <span class="o">*</span> <span class="p">(</span><span class="m">1</span> <span class="o">-</span> <span class="m">0.6</span><span class="p">))</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">
-</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="nf">\</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">),</span> <span class="o">-</span><span class="kc">Inf</span><span class="p">,</span> <span class="m">50</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">mu</span> <span class="o">=</span> <span class="m">60</span>
+</span></span><span class="line"><span class="cl"><span class="n">sigma</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span><span class="n">mu</span> <span class="o">*</span> <span class="p">(</span><span class="m">1</span> <span class="o">-</span> <span class="m">0.6</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="nf">\</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">),</span> <span class="o">-</span><span class="kc">Inf</span><span class="p">,</span> <span class="m">50</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>0.02061341 with absolute error &lt; 7.6e-05
 </code></pre>
 <h2 id="42">42)</h2>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="nf">\</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="m">1000</span> <span class="o">/</span> <span class="m">6</span><span class="p">,</span> <span class="nf">sqrt</span><span class="p">(</span><span class="m">1000</span> <span class="o">/</span> <span class="m">6</span> <span class="o">*</span> <span class="m">5</span> <span class="o">/</span> <span class="m">6</span><span class="p">)),</span> <span class="m">180</span><span class="p">,</span> <span class="kc">Inf</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="nf">\</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="m">1000</span> <span class="o">/</span> <span class="m">6</span><span class="p">,</span> <span class="nf">sqrt</span><span class="p">(</span><span class="m">1000</span> <span class="o">/</span> <span class="m">6</span> <span class="o">*</span> <span class="m">5</span> <span class="o">/</span> <span class="m">6</span><span class="p">)),</span> <span class="m">180</span><span class="p">,</span> <span class="kc">Inf</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>0.1289495 with absolute error &lt; 3.3e-09
 </code></pre>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="nf">\</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="m">1000</span> <span class="o">/</span> <span class="m">6</span><span class="p">,</span> <span class="nf">sqrt</span><span class="p">(</span><span class="m">1000</span> <span class="o">/</span> <span class="m">6</span> <span class="o">*</span> <span class="m">5</span> <span class="o">/</span> <span class="m">6</span><span class="p">)),</span> <span class="m">140</span><span class="p">,</span> <span class="m">200</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="nf">\</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="m">1000</span> <span class="o">/</span> <span class="m">6</span><span class="p">,</span> <span class="nf">sqrt</span><span class="p">(</span><span class="m">1000</span> <span class="o">/</span> <span class="m">6</span> <span class="o">*</span> <span class="m">5</span> <span class="o">/</span> <span class="m">6</span><span class="p">)),</span> <span class="m">140</span><span class="p">,</span> <span class="m">200</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>0.9858353 with absolute error &lt; 2.9e-09
 </code></pre>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="c1"># integrate(\(x) dbinom(x, 1000, 1 / 6), 140, 200)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># integrate(\(x) dbinom(x, 1000, 1 / 6), 140, 200)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <p><code>dbinom</code>はintegerしか引数にとれないらしい。integrateの計算がうまくいかなかった。</p>
 <h2 id="43">43)</h2>
 <p>やーっと練習問題も最後のページにたどり着いた。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="nf">\</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="m">0.36</span> <span class="o">*</span> <span class="m">400</span><span class="p">,</span> <span class="nf">sqrt</span><span class="p">(</span><span class="m">0.36</span> <span class="o">*</span> <span class="m">400</span> <span class="o">*</span> <span class="p">(</span><span class="m">1</span> <span class="o">-</span> <span class="m">0.36</span><span class="p">))),</span> <span class="m">125</span><span class="p">,</span> <span class="m">400</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="nf">\</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="m">0.36</span> <span class="o">*</span> <span class="m">400</span><span class="p">,</span> <span class="nf">sqrt</span><span class="p">(</span><span class="m">0.36</span> <span class="o">*</span> <span class="m">400</span> <span class="o">*</span> <span class="p">(</span><span class="m">1</span> <span class="o">-</span> <span class="m">0.36</span><span class="p">))),</span> <span class="m">125</span><span class="p">,</span> <span class="m">400</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>0.9761014 with absolute error &lt; 3.3e-05
 </code></pre>
 <h2 id="44">44)</h2>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="nf">\</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="m">800</span><span class="o">*</span><span class="m">0.02</span><span class="p">,</span> <span class="nf">sqrt</span><span class="p">(</span><span class="m">800</span><span class="o">*</span><span class="m">0.02</span><span class="o">*</span><span class="m">0.98</span><span class="p">)),</span> <span class="m">20</span><span class="p">,</span> <span class="kc">Inf</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="nf">\</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="m">800</span><span class="o">*</span><span class="m">0.02</span><span class="p">,</span> <span class="nf">sqrt</span><span class="p">(</span><span class="m">800</span><span class="o">*</span><span class="m">0.02</span><span class="o">*</span><span class="m">0.98</span><span class="p">)),</span> <span class="m">20</span><span class="p">,</span> <span class="kc">Inf</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>0.1562111 with absolute error &lt; 4.7e-05
 </code></pre>
 <h2 id="45">45)</h2>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="nf">\</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="m">0.4</span> <span class="o">*</span> <span class="m">400</span><span class="p">,</span> <span class="nf">sqrt</span><span class="p">(</span><span class="m">400</span><span class="o">*</span><span class="m">0.4</span><span class="o">*</span><span class="m">0.6</span><span class="p">)),</span> <span class="m">180</span><span class="p">,</span> <span class="kc">Inf</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="nf">\</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="m">0.4</span> <span class="o">*</span> <span class="m">400</span><span class="p">,</span> <span class="nf">sqrt</span><span class="p">(</span><span class="m">400</span><span class="o">*</span><span class="m">0.4</span><span class="o">*</span><span class="m">0.6</span><span class="p">)),</span> <span class="m">180</span><span class="p">,</span> <span class="kc">Inf</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>0.02061341 with absolute error &lt; 7.7e-05
 </code></pre>
 <h2 id="46">46)</h2>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="nf">\</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="m">1000</span><span class="o">*</span><span class="m">0.1</span><span class="p">,</span> <span class="nf">sqrt</span><span class="p">(</span><span class="m">1000</span><span class="o">*</span><span class="m">0.1</span><span class="o">*</span><span class="m">0.9</span><span class="p">)),</span> <span class="o">-</span><span class="kc">Inf</span><span class="p">,</span> <span class="m">80</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">integrate</span><span class="p">(</span><span class="nf">\</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="m">1000</span><span class="o">*</span><span class="m">0.1</span><span class="p">,</span> <span class="nf">sqrt</span><span class="p">(</span><span class="m">1000</span><span class="o">*</span><span class="m">0.1</span><span class="o">*</span><span class="m">0.9</span><span class="p">)),</span> <span class="o">-</span><span class="kc">Inf</span><span class="p">,</span> <span class="m">80</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>0.01750749 with absolute error &lt; 9.1e-05
@@ -1770,6 +2570,6 @@ $$</p>
         document.head.appendChild(customFont);
     }());
 </script>
-<script src="/js/copy-to-clipboard.js"></script>
+
     </body>
 </html>

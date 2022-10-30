@@ -6,7 +6,7 @@
 <link rel='canonical' href='https://snitch0.github.io/p/sagamihara-39-map/'>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-<link rel="stylesheet" href="/scss/style.min.c4d17cd807bf79ef26402db60a58852a744df74aee6a4930f96937370e71559f.css"><meta property='og:title' content='pdfファイルの住所情報を抽出してGoogleMapに表示させる'>
+<link rel="stylesheet" href="/scss/style.min.166e50762c31dd8a348d1fc30cc66f5d382f492f64bdaa992f19b9a1c36b66bb.css"><meta property='og:title' content='pdfファイルの住所情報を抽出してGoogleMapに表示させる'>
 <meta property='og:description' content='2022年相模原サンキューキャンペーンのやつ'>
 <meta property='og:url' content='https://snitch0.github.io/p/sagamihara-39-map/'>
 <meta property='og:site_name' content='駆け出しバイオインフォマティシャンのtech blog'>
@@ -360,7 +360,7 @@ if (!doNotTrack) {
 
 
                 <time class="article-time--reading">
-                    読了時間: 3分
+                    読了時間: 4分
                 </time>
             </div>
         
@@ -410,32 +410,66 @@ if (!doNotTrack) {
     >かなり詳細な設定もできる模様</a>。かなりテーブル抽出に特化していますが、非常に素晴らしいライブラリだと思います🚰</p>
 <p>ファイル書き出しの際は、一ページに存在する表がバラバラに返ってくるため、大量のファイルに分割して書き出すことになります。どうせR側でこのあと<code>purrr::map_dfr()</code>でもすれば結合できるので、気にしない😉</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kn">import</span> <span class="nn">camelot</span>
-</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="k">def</span> <span class="nf">extract_table</span><span class="p">(</span><span class="n">pdfpath</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl">    <span class="c1"># ファイル名から区名を取得する</span>
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl">    <span class="n">ward</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">pdfpath</span><span class="p">)</span><span class="o">.</span><span class="n">name</span>
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl">
-</span></span><span class="line"><span class="ln">10</span><span class="cl">    <span class="c1"># テーブルを抽出する</span>
-</span></span><span class="line"><span class="ln">11</span><span class="cl">    <span class="n">tables</span> <span class="o">=</span> <span class="n">camelot</span><span class="o">.</span><span class="n">read_pdf</span><span class="p">(</span><span class="n">pdfpath</span><span class="p">,</span> <span class="n">pages</span><span class="o">=</span><span class="s2">&#34;all&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">12</span><span class="cl">
-</span></span><span class="line"><span class="ln">13</span><span class="cl">    <span class="c1"># 書き出し</span>
-</span></span><span class="line"><span class="ln">14</span><span class="cl">    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">table</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tqdm</span><span class="p">(</span><span class="n">tables</span><span class="p">)):</span>
-</span></span><span class="line"><span class="ln">15</span><span class="cl">        <span class="n">table</span>\
-</span></span><span class="line"><span class="ln">16</span><span class="cl">        <span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;data/</span><span class="si">{</span><span class="n">ward</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">.csv&#34;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">17</span><span class="cl">
-</span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&#34;中央区.pdf&#34;</span><span class="p">,</span> <span class="s2">&#34;南区.pdf&#34;</span><span class="p">,</span> <span class="s2">&#34;緑区.pdf&#34;</span><span class="p">]:</span>
-</span></span><span class="line"><span class="ln">19</span><span class="cl">    <span class="n">extract_table</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">camelot</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">extract_table</span><span class="p">(</span><span class="n">pdfpath</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># ファイル名から区名を取得する</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ward</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">pdfpath</span><span class="p">)</span><span class="o">.</span><span class="n">name</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># テーブルを抽出する</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tables</span> <span class="o">=</span> <span class="n">camelot</span><span class="o">.</span><span class="n">read_pdf</span><span class="p">(</span><span class="n">pdfpath</span><span class="p">,</span> <span class="n">pages</span><span class="o">=</span><span class="s2">&#34;all&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 書き出し</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">table</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tqdm</span><span class="p">(</span><span class="n">tables</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">table</span>\
+</span></span><span class="line"><span class="cl">        <span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;data/</span><span class="si">{</span><span class="n">ward</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">.csv&#34;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&#34;中央区.pdf&#34;</span><span class="p">,</span> <span class="s2">&#34;南区.pdf&#34;</span><span class="p">,</span> <span class="s2">&#34;緑区.pdf&#34;</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">extract_table</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <p>抽出できたので、とりあえずファイルを読んでみます。以降の解析はRを使うことにします。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">pacman</span><span class="o">::</span><span class="nf">p_load</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl">
-</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="nf">read_csv</span><span class="p">(</span><span class="s">&#34;data/中央区.pdf_0.csv&#34;</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">pacman</span><span class="o">::</span><span class="nf">p_load</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">read_csv</span><span class="p">(</span><span class="s">&#34;data/中央区.pdf_0.csv&#34;</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>New names:
@@ -469,15 +503,30 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <h3 id="抽出したデータをきれいにする">抽出したデータをきれいにする</h3>
 <p>とりあえず、データを全部結合してみます。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">df_joined</span> <span class="o">&lt;-</span> <span class="n">fs</span><span class="o">::</span><span class="nf">dir_ls</span><span class="p">(</span><span class="s">&#34;data&#34;</span><span class="p">)</span> <span class="o">|&gt;</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl">  <span class="nf">suppressMessages</span><span class="p">(</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">    <span class="nf">map_dfr</span><span class="p">(</span><span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl">      <span class="nf">read_csv</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">show_col_types</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span> <span class="o">%&gt;%</span>
-</span></span><span class="line"><span class="ln">5</span><span class="cl">      <span class="nf">select</span><span class="p">(</span><span class="m">2</span><span class="o">:</span><span class="nf">ncol</span><span class="p">(</span><span class="n">.)</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">6</span><span class="cl">    <span class="p">})</span>
-</span></span><span class="line"><span class="ln">7</span><span class="cl">  <span class="p">)</span>
-</span></span><span class="line"><span class="ln">8</span><span class="cl"><span class="n">df_joined</span> <span class="o">|&gt;</span>
-</span></span><span class="line"><span class="ln">9</span><span class="cl">  <span class="nf">head</span><span class="p">()</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">df_joined</span> <span class="o">&lt;-</span> <span class="n">fs</span><span class="o">::</span><span class="nf">dir_ls</span><span class="p">(</span><span class="s">&#34;data&#34;</span><span class="p">)</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">suppressMessages</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">map_dfr</span><span class="p">(</span><span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">read_csv</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">show_col_types</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">select</span><span class="p">(</span><span class="m">2</span><span class="o">:</span><span class="nf">ncol</span><span class="p">(</span><span class="n">.)</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">df_joined</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">head</span><span class="p">()</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>data/中央区.pdf_0.csv  data/中央区.pdf_1.csv  data/中央区.pdf_10.csv data/中央区.pdf_11.csv
@@ -486,24 +535,50 @@ data/中央区.pdf_12.csv data/中央区.pdf_13.csv
 <p>結合は問題なくできています。事業社所在地の住所をGoogleGeometryAPIに投げれば緯度と経度が出せそうですが、できるなら「神奈川県相模原市??区」もついていた方が正確な検索結果を得られそうです。</p>
 <p>適当にこれをコーディングしてみます。今回はファイル名から区名を取り出しつつ、結合してみます。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="n">df_joined</span> <span class="o">&lt;-</span> <span class="n">fs</span><span class="o">::</span><span class="nf">dir_ls</span><span class="p">(</span><span class="s">&#34;data&#34;</span><span class="p">)</span> <span class="o">|&gt;</span>
-</span></span><span class="line"><span class="ln"> 2</span><span class="cl">  <span class="nf">map_dfr</span><span class="p">(</span><span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl">    <span class="c1"># &#34;緑区.pdf_0.csv&#34;から&#34;緑区&#34;を取り出す</span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="n">wald_name</span> <span class="o">=</span> <span class="n">fs</span><span class="o">::</span><span class="nf">path_file</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">|&gt;</span>
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl">      <span class="nf">str_split</span><span class="p">(</span><span class="s">&#34;\\.&#34;</span><span class="p">)</span> <span class="o">|&gt;</span>
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl">      <span class="nf">pluck</span><span class="p">(</span><span class="m">1</span><span class="p">)</span> <span class="o">|&gt;</span>
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl">      <span class="nf">pluck</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl">  <span class="nf">read_csv</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">show_col_types</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">col_names</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span> <span class="o">|&gt;</span>
-</span></span><span class="line"><span class="ln">10</span><span class="cl">    <span class="n">magrittr</span><span class="o">::</span><span class="nf">set_colnames</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;area&#34;</span><span class="p">,</span> <span class="s">&#34;事業所名&#34;</span><span class="p">,</span> <span class="s">&#34;事業種別&#34;</span><span class="p">,</span> <span class="s">&#34;事業内容&#34;</span><span class="p">,</span> <span class="s">&#34;事業所所在地&#34;</span><span class="p">,</span> <span class="s">&#34;電話番号&#34;</span><span class="p">,</span> <span class="s">&#34;PR&#34;</span><span class="p">))</span> <span class="o">%&gt;%</span>
-</span></span><span class="line"><span class="ln">11</span><span class="cl">    <span class="nf">select</span><span class="p">(</span><span class="m">2</span><span class="o">:</span><span class="nf">ncol</span><span class="p">(</span><span class="n">.)</span><span class="p">)</span> <span class="o">|&gt;</span>
-</span></span><span class="line"><span class="ln">12</span><span class="cl">    <span class="nf">mutate</span><span class="p">(</span><span class="n">adress</span> <span class="o">=</span> <span class="n">glue</span><span class="o">::</span><span class="nf">glue</span><span class="p">(</span><span class="s">&#34;神奈川県相模原市{wald_name}{事業所所在地}&#34;</span><span class="p">))</span>
-</span></span><span class="line"><span class="ln">13</span><span class="cl">  <span class="p">})</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">df_joined</span> <span class="o">&lt;-</span> <span class="n">fs</span><span class="o">::</span><span class="nf">dir_ls</span><span class="p">(</span><span class="s">&#34;data&#34;</span><span class="p">)</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">map_dfr</span><span class="p">(</span><span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># &#34;緑区.pdf_0.csv&#34;から&#34;緑区&#34;を取り出す</span>
+</span></span><span class="line"><span class="cl">    <span class="n">wald_name</span> <span class="o">=</span> <span class="n">fs</span><span class="o">::</span><span class="nf">path_file</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">str_split</span><span class="p">(</span><span class="s">&#34;\\.&#34;</span><span class="p">)</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">pluck</span><span class="p">(</span><span class="m">1</span><span class="p">)</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">pluck</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nf">read_csv</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">show_col_types</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">col_names</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">magrittr</span><span class="o">::</span><span class="nf">set_colnames</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;area&#34;</span><span class="p">,</span> <span class="s">&#34;事業所名&#34;</span><span class="p">,</span> <span class="s">&#34;事業種別&#34;</span><span class="p">,</span> <span class="s">&#34;事業内容&#34;</span><span class="p">,</span> <span class="s">&#34;事業所所在地&#34;</span><span class="p">,</span> <span class="s">&#34;電話番号&#34;</span><span class="p">,</span> <span class="s">&#34;PR&#34;</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">select</span><span class="p">(</span><span class="m">2</span><span class="o">:</span><span class="nf">ncol</span><span class="p">(</span><span class="n">.)</span><span class="p">)</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">mutate</span><span class="p">(</span><span class="n">adress</span> <span class="o">=</span> <span class="n">glue</span><span class="o">::</span><span class="nf">glue</span><span class="p">(</span><span class="s">&#34;神奈川県相模原市{wald_name}{事業所所在地}&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">})</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <p>プレビューしてみる。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">df_joined</span> <span class="o">|&gt;</span> <span class="nf">head</span><span class="p">()</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">df_joined</span> <span class="o">|&gt;</span> <span class="nf">head</span><span class="p">()</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code># A tibble: 6 × 7
@@ -519,7 +594,14 @@ data/中央区.pdf_12.csv data/中央区.pdf_13.csv
 </code></pre>
 <p>途切れているので住所だけを抽出。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">df_joined</span> <span class="o">|&gt;</span> <span class="nf">select</span><span class="p">(</span><span class="n">adress</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">df_joined</span> <span class="o">|&gt;</span> <span class="nf">select</span><span class="p">(</span><span class="n">adress</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code># A tibble: 2,021 × 1
@@ -551,33 +633,68 @@ data/中央区.pdf_12.csv data/中央区.pdf_13.csv
 <p>最初は<a class="link" href="https://www.geocoding.jp/api/"  target="_blank" rel="noopener"
     >geocoding.jp</a>を使う以下のようなコードを書きましたが、10秒に1回のクエリに制限する必要があったため、GoogleのAPIを使うことにしました。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="n">pacman</span><span class="o">::</span><span class="nf">p_load</span><span class="p">(</span><span class="n">rvest</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln"> 2</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="n">get_position</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">adress</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl">  <span class="n">url</span> <span class="o">&lt;-</span> <span class="nf">paste0</span><span class="p">(</span><span class="s">&#34;https://www.geocoding.jp/api/?v=1.1&amp;q=&#34;</span><span class="p">,</span> <span class="n">adress</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl">  <span class="n">lat</span> <span class="o">&lt;-</span> <span class="nf">read_html</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="o">|&gt;</span>
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl">    <span class="nf">html_nodes</span><span class="p">(</span><span class="s">&#34;lat&#34;</span><span class="p">)</span> <span class="o">|&gt;</span>
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl">    <span class="nf">html_text</span><span class="p">()</span>
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl">  <span class="n">lng</span> <span class="o">&lt;-</span> <span class="nf">read_html</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="o">|&gt;</span>
-</span></span><span class="line"><span class="ln">10</span><span class="cl">    <span class="nf">html_nodes</span><span class="p">(</span><span class="s">&#34;lat&#34;</span><span class="p">)</span> <span class="o">|&gt;</span>
-</span></span><span class="line"><span class="ln">11</span><span class="cl">    <span class="nf">html_text</span><span class="p">()</span>
-</span></span><span class="line"><span class="ln">12</span><span class="cl">  <span class="n">lat</span> <span class="o">&lt;-</span> <span class="nf">if_else</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">lat</span><span class="p">),</span> <span class="s">&#34;0&#34;</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">13</span><span class="cl">  <span class="n">lng</span> <span class="o">&lt;-</span> <span class="nf">if_else</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">lng</span><span class="p">),</span> <span class="s">&#34;0&#34;</span><span class="p">,</span> <span class="n">lng</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">14</span><span class="cl">  <span class="c1"># wait</span>
-</span></span><span class="line"><span class="ln">15</span><span class="cl">  <span class="nf">Sys.sleep</span><span class="p">(</span><span class="m">10</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">16</span><span class="cl">  <span class="nf">return</span><span class="p">(</span><span class="nf">tibble</span><span class="p">(</span><span class="n">lat</span> <span class="o">=</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lng</span> <span class="o">=</span> <span class="n">lng</span><span class="p">))</span>
-</span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="ln">18</span><span class="cl">
-</span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="n">get_position_vec</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">adress_vec</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">20</span><span class="cl">  <span class="n">adress_vec</span> <span class="o">|&gt;</span>
-</span></span><span class="line"><span class="ln">21</span><span class="cl">  <span class="nf">map_dfr</span><span class="p">(</span><span class="nf">\</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span> <span class="nf">get_position</span><span class="p">(</span><span class="n">vec</span><span class="p">))</span>
-</span></span><span class="line"><span class="ln">22</span><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">pacman</span><span class="o">::</span><span class="nf">p_load</span><span class="p">(</span><span class="n">rvest</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">get_position</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">adress</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">url</span> <span class="o">&lt;-</span> <span class="nf">paste0</span><span class="p">(</span><span class="s">&#34;https://www.geocoding.jp/api/?v=1.1&amp;q=&#34;</span><span class="p">,</span> <span class="n">adress</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">lat</span> <span class="o">&lt;-</span> <span class="nf">read_html</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">html_nodes</span><span class="p">(</span><span class="s">&#34;lat&#34;</span><span class="p">)</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">html_text</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="n">lng</span> <span class="o">&lt;-</span> <span class="nf">read_html</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">html_nodes</span><span class="p">(</span><span class="s">&#34;lat&#34;</span><span class="p">)</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">html_text</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="n">lat</span> <span class="o">&lt;-</span> <span class="nf">if_else</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">lat</span><span class="p">),</span> <span class="s">&#34;0&#34;</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">lng</span> <span class="o">&lt;-</span> <span class="nf">if_else</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">lng</span><span class="p">),</span> <span class="s">&#34;0&#34;</span><span class="p">,</span> <span class="n">lng</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># wait</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">Sys.sleep</span><span class="p">(</span><span class="m">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">return</span><span class="p">(</span><span class="nf">tibble</span><span class="p">(</span><span class="n">lat</span> <span class="o">=</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lng</span> <span class="o">=</span> <span class="n">lng</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">get_position_vec</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">adress_vec</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">adress_vec</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">map_dfr</span><span class="p">(</span><span class="nf">\</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span> <span class="nf">get_position</span><span class="p">(</span><span class="n">vec</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <p>で、以下が本題。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">ggmap</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">ggmap</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>Google's Terms of Service: https://cloud.google.com/maps-platform/terms/.
@@ -587,17 +704,36 @@ Please cite ggmap if you use it! See citation(&quot;ggmap&quot;) for details.
 <p>Google cloud platformからAPIキーを取得します。とりあえず今回はgeocoding APIだけ取得すればOKです。</p>
 <p>ここにAPIキーをハードコードするわけにはいかないので別ファイルから読み込んでますが、<code>register_google(key = ******)</code>に直接入力して問題ありません👍</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="c1"># APIキーはGCPから取得したもの</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">key</span> <span class="o">&lt;-</span> <span class="nf">readChar</span><span class="p">(</span><span class="s">&#34;API.key&#34;</span><span class="p">,</span> <span class="nf">file.info</span><span class="p">(</span><span class="s">&#34;API.key&#34;</span><span class="p">)</span><span class="o">$</span><span class="n">size</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="nf">register_google</span><span class="p">(</span><span class="n">key</span> <span class="o">=</span> <span class="n">key</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># APIキーはGCPから取得したもの</span>
+</span></span><span class="line"><span class="cl"><span class="n">key</span> <span class="o">&lt;-</span> <span class="nf">readChar</span><span class="p">(</span><span class="s">&#34;API.key&#34;</span><span class="p">,</span> <span class="nf">file.info</span><span class="p">(</span><span class="s">&#34;API.key&#34;</span><span class="p">)</span><span class="o">$</span><span class="n">size</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">register_google</span><span class="p">(</span><span class="n">key</span> <span class="o">=</span> <span class="n">key</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <p><code>ggmap</code>パッケージは<code>mutate_geocode()</code>関数でお手軽に住所検索ができます。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">df_geo</span> <span class="o">&lt;-</span> <span class="n">df_joined</span> <span class="o">|&gt;</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="nf">mutate_geocode</span><span class="p">(</span><span class="n">adress</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="n">df_geo</span> <span class="o">|&gt;</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl">    <span class="nf">write_csv</span><span class="p">(</span><span class="s">&#34;sagamihara_geodata.csv&#34;</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">df_geo</span> <span class="o">&lt;-</span> <span class="n">df_joined</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">mutate_geocode</span><span class="p">(</span><span class="n">adress</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">df_geo</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">write_csv</span><span class="p">(</span><span class="s">&#34;sagamihara_geodata.csv&#34;</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <p>計算が無駄にならないように書き出しておいて・・・。</p>
@@ -980,6 +1116,6 @@ Please cite ggmap if you use it! See citation(&quot;ggmap&quot;) for details.
         document.head.appendChild(customFont);
     }());
 </script>
-<script src="/js/copy-to-clipboard.js"></script>
+
     </body>
 </html>

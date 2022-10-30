@@ -6,7 +6,7 @@
 <link rel='canonical' href='https://snitch0.github.io/p/r-vscode-conda/'>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-<link rel="stylesheet" href="/scss/style.min.c4d17cd807bf79ef26402db60a58852a744df74aee6a4930f96937370e71559f.css"><meta property='og:title' content='VSCodeでconda環境のRをradianとともに使う'>
+<link rel="stylesheet" href="/scss/style.min.166e50762c31dd8a348d1fc30cc66f5d382f492f64bdaa992f19b9a1c36b66bb.css"><meta property='og:title' content='VSCodeでconda環境のRをradianとともに使う'>
 <meta property='og:description' content='先人の知恵さまさま🙏'>
 <meta property='og:url' content='https://snitch0.github.io/p/r-vscode-conda/'>
 <meta property='og:site_name' content='駆け出しバイオインフォマティシャンのtech blog'>
@@ -393,31 +393,65 @@ if (!doNotTrack) {
 <h2 id="最小構成のconda環境">最小構成のconda環境</h2>
 <p>まず環境を作る。これさえあればとりあえずはvscodeでの解析環境が作れる。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">mamba create -n r42 <span class="s2">&#34;r-base==4.2&#34;</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="c1"># 完了後</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">mamba activate r42
-</span></span><span class="line"><span class="ln">4</span><span class="cl">mamba install radian</span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mamba create -n r42 <span class="s2">&#34;r-base==4.2&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 完了後</span>
+</span></span><span class="line"><span class="cl">mamba activate r42
+</span></span><span class="line"><span class="cl">mamba install radian</span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <p>radianを使う気が無いなら省略してもOK。</p>
 <p>もしjupyter Notebook環境も作りたいなら、以下のものも用意しておく。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">mamba install r-irkernel jupyterlab</span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mamba install r-irkernel jupyterlab</span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <p>conda-forgeレポジトリにはRパッケージも存在しており、コマンドライン上でパッケージをインストールすることは可能だ。</p>
 <p><mark>しかし、この後インストールが必須な<code>languageserver</code>をcondaでインストールしてしまうと、依存関係の設定ミスにより強制的にR4.1にダウングレードされてしまうので注意が必要だ</mark>。
 基本的にRのパッケージはR内でインストールする方が良さそうだ。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">radian</span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">radian</span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <br>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">R</span> <span class="n">version</span> <span class="m">4.2.1</span> <span class="p">(</span><span class="m">2022-06-23</span><span class="p">)</span> <span class="o">--</span> <span class="s">&#34;Funny-Looking Kid&#34;</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">Platform</span><span class="o">:</span> <span class="n">x86_64</span><span class="o">-</span><span class="n">pc</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="nf">gnu </span><span class="p">(</span><span class="m">64</span><span class="o">-</span><span class="n">bit</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">
-</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="n">R</span><span class="o">&gt;</span> <span class="nf">install.packages</span><span class="p">(</span><span class="s">&#34;languageserver&#34;</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">R</span> <span class="n">version</span> <span class="m">4.2.1</span> <span class="p">(</span><span class="m">2022-06-23</span><span class="p">)</span> <span class="o">--</span> <span class="s">&#34;Funny-Looking Kid&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">Platform</span><span class="o">:</span> <span class="n">x86_64</span><span class="o">-</span><span class="n">pc</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="nf">gnu </span><span class="p">(</span><span class="m">64</span><span class="o">-</span><span class="n">bit</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">R</span><span class="o">&gt;</span> <span class="nf">install.packages</span><span class="p">(</span><span class="s">&#34;languageserver&#34;</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <p>最低限必要なパッケージはこの<code>languageserver</code>パッケージだけ。</p>
@@ -427,34 +461,70 @@ if (!doNotTrack) {
 <div>
     <div class="codeblock--name">$HOME/.config/R/vscode-r-conda.sh</div>
     
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="cp">#!/bin/bash
-</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="cp"></span>
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="c1"># conda環境名はここで指定する</span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="nv">R_ENV</span><span class="o">=</span>r42
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="se">\_\_</span>conda_setup<span class="o">=</span><span class="s2">&#34;![(\&#39;](https://latex.codecogs.com/svg.latex?%28%27 &#34;</span><span class="o">(</span><span class="s1">&#39;&#34;)HOME/mambaforge/bin/conda&#39;</span> <span class="s1">&#39;shell.zsh&#39;</span> <span class="s1">&#39;hook&#39;</span> 2<span class="se">\&gt;</span> /dev/null<span class="o">)</span><span class="s2">&#34;
-</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="s2">if \[ ![? -eq 0 \]; then  eval \&#34;](https://latex.codecogs.com/svg.latex?%3F%20-eq%200%20%5D%3B%20then%20%20eval%20%22 &#34;</span>? -eq <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>  <span class="nb">eval</span> <span class="s2">&#34;&#34;</span><span class="o">)</span><span class="se">\_\_</span>conda_setup<span class="s2">&#34;
-</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="s2">else
-</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="s2">if \[ -f &#34;</span>!<span class="o">[</span>HOME/mambaforge/etc/profile.d/conda.sh<span class="se">\&#34;</span> <span class="se">\]</span><span class="p">;</span> <span class="k">then</span>  . <span class="se">\&#34;</span><span class="o">](</span>https://latex.codecogs.com/svg.latex?HOME%2Fmambaforge%2Fetc%2Fprofile.d%2Fconda.sh%22%20%5D%3B%20then%20%20.%20%22 <span class="s2">&#34;HOME/mambaforge/etc/profile.d/conda.sh&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>  . <span class="s2">&#34;&#34;</span><span class="o">)</span>HOME/mambaforge/etc/profile.d/conda.sh<span class="s2">&#34;
-</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="s2">else
-</span></span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="s2">export PATH=&#34;</span>!<span class="o">[</span>HOME/mambaforge/bin:<span class="o">](</span>https://latex.codecogs.com/svg.latex?HOME%2Fmambaforge%2Fbin%3A <span class="s2">&#34;HOME/mambaforge/bin:&#34;</span><span class="o">)</span>PATH<span class="s2">&#34;
-</span></span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="s2">fi
-</span></span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="s2">fi
-</span></span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="s2">unset \_\_conda_setup
-</span></span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="s2">
-</span></span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="s2">if \[ -f &#34;</span>!<span class="o">[</span>HOME/mambaforge/etc/profile.d/mamba.sh<span class="se">\&#34;</span> <span class="se">\]</span><span class="p">;</span> <span class="k">then</span>  . <span class="se">\&#34;</span><span class="o">](</span>https://latex.codecogs.com/svg.latex?HOME%2Fmambaforge%2Fetc%2Fprofile.d%2Fmamba.sh%22%20%5D%3B%20then%20%20.%20%22 <span class="s2">&#34;HOME/mambaforge/etc/profile.d/mamba.sh&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>  . <span class="s2">&#34;&#34;</span><span class="o">)</span>HOME/mambaforge/etc/profile.d/mamba.sh<span class="s2">&#34;
-</span></span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="s2">fi
-</span></span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="s2">
-</span></span></span><span class="line"><span class="ln">20</span><span class="cl"><span class="s2">mamba deactivate &amp;&amp; mamba activate \$R_ENV
-</span></span></span><span class="line"><span class="ln">21</span><span class="cl"><span class="s2">
-</span></span></span><span class="line"><span class="ln">22</span><span class="cl"><span class="s2">radian</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="c1"># conda環境名はここで指定する</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">R_ENV</span><span class="o">=</span>r42
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="se">\_\_</span>conda_setup<span class="o">=</span><span class="s2">&#34;![(\&#39;](https://latex.codecogs.com/svg.latex?%28%27 &#34;</span><span class="o">(</span><span class="s1">&#39;&#34;)HOME/mambaforge/bin/conda&#39;</span> <span class="s1">&#39;shell.zsh&#39;</span> <span class="s1">&#39;hook&#39;</span> 2<span class="se">\&gt;</span> /dev/null<span class="o">)</span><span class="s2">&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">if \[ ![? -eq 0 \]; then  eval \&#34;](https://latex.codecogs.com/svg.latex?%3F%20-eq%200%20%5D%3B%20then%20%20eval%20%22 &#34;</span>? -eq <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>  <span class="nb">eval</span> <span class="s2">&#34;&#34;</span><span class="o">)</span><span class="se">\_\_</span>conda_setup<span class="s2">&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">else
+</span></span></span><span class="line"><span class="cl"><span class="s2">if \[ -f &#34;</span>!<span class="o">[</span>HOME/mambaforge/etc/profile.d/conda.sh<span class="se">\&#34;</span> <span class="se">\]</span><span class="p">;</span> <span class="k">then</span>  . <span class="se">\&#34;</span><span class="o">](</span>https://latex.codecogs.com/svg.latex?HOME%2Fmambaforge%2Fetc%2Fprofile.d%2Fconda.sh%22%20%5D%3B%20then%20%20.%20%22 <span class="s2">&#34;HOME/mambaforge/etc/profile.d/conda.sh&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>  . <span class="s2">&#34;&#34;</span><span class="o">)</span>HOME/mambaforge/etc/profile.d/conda.sh<span class="s2">&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">else
+</span></span></span><span class="line"><span class="cl"><span class="s2">export PATH=&#34;</span>!<span class="o">[</span>HOME/mambaforge/bin:<span class="o">](</span>https://latex.codecogs.com/svg.latex?HOME%2Fmambaforge%2Fbin%3A <span class="s2">&#34;HOME/mambaforge/bin:&#34;</span><span class="o">)</span>PATH<span class="s2">&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">fi
+</span></span></span><span class="line"><span class="cl"><span class="s2">fi
+</span></span></span><span class="line"><span class="cl"><span class="s2">unset \_\_conda_setup
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">if \[ -f &#34;</span>!<span class="o">[</span>HOME/mambaforge/etc/profile.d/mamba.sh<span class="se">\&#34;</span> <span class="se">\]</span><span class="p">;</span> <span class="k">then</span>  . <span class="se">\&#34;</span><span class="o">](</span>https://latex.codecogs.com/svg.latex?HOME%2Fmambaforge%2Fetc%2Fprofile.d%2Fmamba.sh%22%20%5D%3B%20then%20%20.%20%22 <span class="s2">&#34;HOME/mambaforge/etc/profile.d/mamba.sh&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>  . <span class="s2">&#34;&#34;</span><span class="o">)</span>HOME/mambaforge/etc/profile.d/mamba.sh<span class="s2">&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">fi
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">mamba deactivate &amp;&amp; mamba activate \$R_ENV
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">radian</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <p>一応実行可能になってるか確認する。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">chmod +x /home/snitch/.config/R/vscode-r-conda.sh
-</span></span><span class="line"><span class="ln">2</span><span class="cl">/home/snitch/.config/R/vscode-r-conda.sh</span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">chmod +x /home/snitch/.config/R/vscode-r-conda.sh
+</span></span><span class="line"><span class="cl">/home/snitch/.config/R/vscode-r-conda.sh</span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <p>正常にconda環境のRがradianで立ち上がればOK。</p>
@@ -477,7 +547,14 @@ if (!doNotTrack) {
 <h2 id="作業完了実行確認">作業完了、実行確認</h2>
 <p>ここまでやれば、conda環境がVSCodeの実行環境になったはず。このqmdファイルで実行できるか試してみる。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">plot(iris)</span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">plot(iris)</span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <p><img src="/p/r-vscode-conda/radian_complete.webp"
@@ -845,6 +922,6 @@ if (!doNotTrack) {
         document.head.appendChild(customFont);
     }());
 </script>
-<script src="/js/copy-to-clipboard.js"></script>
+
     </body>
 </html>

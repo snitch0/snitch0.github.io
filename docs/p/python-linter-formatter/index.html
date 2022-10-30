@@ -6,7 +6,7 @@
 <link rel='canonical' href='https://snitch0.github.io/p/python-linter-formatter/'>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-<link rel="stylesheet" href="/scss/style.min.c4d17cd807bf79ef26402db60a58852a744df74aee6a4930f96937370e71559f.css"><meta property='og:title' content='Pythonのlinterとformatter事情(@VisualStudioCode)'>
+<link rel="stylesheet" href="/scss/style.min.166e50762c31dd8a348d1fc30cc66f5d382f492f64bdaa992f19b9a1c36b66bb.css"><meta property='og:title' content='Pythonのlinterとformatter事情(@VisualStudioCode)'>
 <meta property='og:description' content='flake8とblackが良さそうだけど、今後に期待なのかしら'>
 <meta property='og:url' content='https://snitch0.github.io/p/python-linter-formatter/'>
 <meta property='og:site_name' content='駆け出しバイオインフォマティシャンのtech blog'>
@@ -387,12 +387,24 @@ mypyは型チェックするのに必須。</p>
 <p>現状あまり選択肢があるわけではないが、blackが割と厳しめでよさそう。</p>
 <p>使ってみたら一行あたりの文字数制限がblackとflake8で食い違ってしまったので、flake8の実行オプションを設定してやる必要があるのと、エディタの縦線の位置をずらしてあげる。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="ln">1</span><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="nt">&#34;python.linting.flake8Enabled&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">    <span class="nt">&#34;python.linting.flake8Args&#34;</span><span class="p">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl">        <span class="s2">&#34;--max-line-length&#34;</span><span class="p">,</span> <span class="s2">&#34;88&#34;</span><span class="p">,</span> <span class="s2">&#34;--ignore=E203,W503,W504&#34;</span>
-</span></span><span class="line"><span class="ln">5</span><span class="cl">    <span class="p">],</span>
-</span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;python.linting.flake8Enabled&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;python.linting.flake8Args&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;--max-line-length&#34;</span><span class="p">,</span> <span class="s2">&#34;88&#34;</span><span class="p">,</span> <span class="s2">&#34;--ignore=E203,W503,W504&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <p>コレに関しては以下の記事を参考にさせていただいた。</p>
@@ -402,28 +414,56 @@ mypyは型チェックするのに必須。</p>
 <p>結局あれこれいじってこうなった。</p>
 <p>WSL2の設定ファイルなのでスリムだが、気づけばpython系とneovim系ぐらいしか設定してないのか。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="ln"> 1</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl">    <span class="nt">&#34;python.linting.flake8Enabled&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="nt">&#34;python.linting.flake8Args&#34;</span><span class="p">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl">        <span class="s2">&#34;--max-line-length&#34;</span><span class="p">,</span> <span class="s2">&#34;88&#34;</span><span class="p">,</span> <span class="s2">&#34;--ignore=E203,W503,W504&#34;</span>
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl">    <span class="p">],</span>
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl">    <span class="nt">&#34;python.linting.mypyEnabled&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl">    <span class="nt">&#34;python.languageServer&#34;</span><span class="p">:</span> <span class="s2">&#34;Pylance&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl">    <span class="nt">&#34;python.analysis.completeFunctionParens&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">10</span><span class="cl">    <span class="nt">&#34;python.analysis.logLevel&#34;</span><span class="p">:</span> <span class="s2">&#34;Warning&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">11</span><span class="cl">    <span class="nt">&#34;python.linting.banditEnabled&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">12</span><span class="cl">    <span class="nt">&#34;python.testing.pytestEnabled&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">13</span><span class="cl">    <span class="nt">&#34;[python]&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="ln">14</span><span class="cl">        <span class="nt">&#34;editor.defaultFormatter&#34;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">15</span><span class="cl">        <span class="nt">&#34;editor.formatOnSave&#34;</span><span class="p">:</span> <span class="kc">true</span>
-</span></span><span class="line"><span class="ln">16</span><span class="cl">    <span class="p">},</span>
-</span></span><span class="line"><span class="ln">17</span><span class="cl">    <span class="nt">&#34;python.formatting.provider&#34;</span><span class="p">:</span> <span class="s2">&#34;black&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">18</span><span class="cl">    <span class="nt">&#34;python.analysis.typeCheckingMode&#34;</span><span class="p">:</span> <span class="s2">&#34;basic&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">19</span><span class="cl">    <span class="nt">&#34;vscode-neovim.mouseSelectionStartVisualMode&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">20</span><span class="cl">    <span class="nt">&#34;vscode-neovim.neovimInitVimPaths.linux&#34;</span><span class="p">:</span> <span class="s2">&#34;~/.config/nvim/init.lua&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">21</span><span class="cl">    <span class="nt">&#34;editor.lineNumbers&#34;</span><span class="p">:</span> <span class="s2">&#34;relative&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">22</span><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;python.linting.flake8Enabled&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;python.linting.flake8Args&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;--max-line-length&#34;</span><span class="p">,</span> <span class="s2">&#34;88&#34;</span><span class="p">,</span> <span class="s2">&#34;--ignore=E203,W503,W504&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;python.linting.mypyEnabled&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;python.languageServer&#34;</span><span class="p">:</span> <span class="s2">&#34;Pylance&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;python.analysis.completeFunctionParens&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;python.analysis.logLevel&#34;</span><span class="p">:</span> <span class="s2">&#34;Warning&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;python.linting.banditEnabled&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;python.testing.pytestEnabled&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;[python]&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;editor.defaultFormatter&#34;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;editor.formatOnSave&#34;</span><span class="p">:</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;python.formatting.provider&#34;</span><span class="p">:</span> <span class="s2">&#34;black&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;python.analysis.typeCheckingMode&#34;</span><span class="p">:</span> <span class="s2">&#34;basic&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;vscode-neovim.mouseSelectionStartVisualMode&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;vscode-neovim.neovimInitVimPaths.linux&#34;</span><span class="p">:</span> <span class="s2">&#34;~/.config/nvim/init.lua&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;editor.lineNumbers&#34;</span><span class="p">:</span> <span class="s2">&#34;relative&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 
@@ -762,6 +802,6 @@ mypyは型チェックするのに必須。</p>
         document.head.appendChild(customFont);
     }());
 </script>
-<script src="/js/copy-to-clipboard.js"></script>
+
     </body>
 </html>

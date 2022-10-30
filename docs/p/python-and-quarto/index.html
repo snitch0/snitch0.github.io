@@ -6,7 +6,7 @@
 <link rel='canonical' href='https://snitch0.github.io/p/python-and-quarto/'>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-<link rel="stylesheet" href="/scss/style.min.c4d17cd807bf79ef26402db60a58852a744df74aee6a4930f96937370e71559f.css"><meta property='og:title' content='QuartoでPythonを使うときの注意とか'>
+<link rel="stylesheet" href="/scss/style.min.166e50762c31dd8a348d1fc30cc66f5d382f492f64bdaa992f19b9a1c36b66bb.css"><meta property='og:title' content='QuartoでPythonを使うときの注意とか'>
 <meta property='og:description' content='意外と複雑な仕様?😈'>
 <meta property='og:url' content='https://snitch0.github.io/p/python-and-quarto/'>
 <meta property='og:site_name' content='駆け出しバイオインフォマティシャンのtech blog'>
@@ -364,7 +364,7 @@ if (!doNotTrack) {
 
 
                 <time class="article-time--reading">
-                    読了時間: 1分
+                    読了時間: 2分
                 </time>
             </div>
         
@@ -382,8 +382,16 @@ if (!doNotTrack) {
 <p>Quartoは以下のようにRでもPythonでも一つのファイルでレンダリングできるのが素晴らしい✨</p>
 <p>しかし、Python単独なら特に難しいことは無いが、RとPythonが共存すると<strong>ある問題</strong>が生じる。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">result</span> <span class="o">=</span> <span class="nf">lm</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">iris</span><span class="p">,</span> <span class="n">Sepal.Width</span> <span class="o">~</span> <span class="n">Sepal.Length</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="nf">summary</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">result</span> <span class="o">=</span> <span class="nf">lm</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">iris</span><span class="p">,</span> <span class="n">Sepal.Width</span> <span class="o">~</span> <span class="n">Sepal.Length</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">summary</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>Call:
@@ -405,18 +413,36 @@ Multiple R-squared:  0.01382,   Adjusted R-squared:  0.007159
 F-statistic: 2.074 on 1 and 148 DF,  p-value: 0.1519
 </code></pre>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
-</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">linear_model</span>
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="n">iris</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SepalLength&#39;</span><span class="p">,</span> <span class="s1">&#39;SepalWidth&#39;</span><span class="p">,</span> <span class="s1">&#39;PetalLength&#39;</span><span class="p">,</span> <span class="s1">&#39;PetalWidth&#39;</span><span class="p">])</span>
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl">
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="n">df</span><span class="p">[</span><span class="s2">&#34;Name&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl">
-</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="n">model</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">LinearRegression</span><span class="p">()</span>
-</span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="n">ft</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s2">&#34;SepalLength&#34;</span><span class="p">]],</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&#34;SepalWidth&#34;</span><span class="p">]])</span>
-</span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Intercept: </span><span class="si">{</span><span class="n">ft</span><span class="o">.</span><span class="n">intercept_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.6</span><span class="si">}</span><span class="s2">, Coef: </span><span class="si">{</span><span class="n">ft</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.6</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">linear_model</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">iris</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SepalLength&#39;</span><span class="p">,</span> <span class="s1">&#39;SepalWidth&#39;</span><span class="p">,</span> <span class="s1">&#39;PetalLength&#39;</span><span class="p">,</span> <span class="s1">&#39;PetalWidth&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="p">[</span><span class="s2">&#34;Name&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">model</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">LinearRegression</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">ft</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s2">&#34;SepalLength&#34;</span><span class="p">]],</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&#34;SepalWidth&#34;</span><span class="p">]])</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Intercept: </span><span class="si">{</span><span class="n">ft</span><span class="o">.</span><span class="n">intercept_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.6</span><span class="si">}</span><span class="s2">, Coef: </span><span class="si">{</span><span class="n">ft</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.6</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <pre><code>Intercept: 3.41895, Coef: -0.0618848
@@ -425,24 +451,48 @@ F-statistic: 2.074 on 1 and 148 DF,  p-value: 0.1519
 <p>Pythonを使うなら、おそらくこれが一番明快でおすすめの方法になる。</p>
 <p>qmdのyamlヘッダにて<code>engine: jupyter</code>を選択しておく方法。たとえば、以下のようにする。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;QuartoでPythonを使うときの注意とか&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="w"></span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">意外と複雑な仕様?😈</span><span class="w">
-</span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="w"></span><span class="nt">author</span><span class="p">:</span><span class="w"> </span><span class="l">Snitch</span><span class="w">
-</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="w"></span><span class="nt">date</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;2022-09-11&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="w"></span><span class="nt">categories</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="w">  </span>- <span class="l">Quarto</span><span class="w">
-</span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="w">  </span>- <span class="l">R</span><span class="w">
-</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="w">  </span>- <span class="l">Python</span><span class="w">
-</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="w">  </span>- <span class="l">Reticulate</span><span class="w">
-</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="w">  </span>- <span class="l">Linux</span><span class="w">
-</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="w"></span><span class="nt">tags</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="w">  </span>- <span class="l">quarto</span><span class="w">
-</span></span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="w">  </span>- <span class="l">R</span><span class="w">
-</span></span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="w">  </span>- <span class="l">Python</span><span class="w">
-</span></span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="w"></span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l">hugo</span><span class="w">
-</span></span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="w"></span><span class="nt">slug</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;python-and-quarto&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="w"></span><span class="nt">jupyter</span><span class="p">:</span><span class="w"> </span><span class="l">python3</span><span class="w">
-</span></span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="w"></span><span class="nt">html-math-method</span><span class="p">:</span><span class="w"> </span><span class="l">webtex</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;QuartoでPythonを使うときの注意とか&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">意外と複雑な仕様?😈</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">author</span><span class="p">:</span><span class="w"> </span><span class="l">Snitch</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">date</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;2022-09-11&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">categories</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">Quarto</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">R</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">Python</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">Reticulate</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">Linux</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">tags</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">quarto</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">R</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">Python</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l">hugo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">slug</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;python-and-quarto&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">jupyter</span><span class="p">:</span><span class="w"> </span><span class="l">python3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">html-math-method</span><span class="p">:</span><span class="w"> </span><span class="l">webtex</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <p>一部はhugo関係のものもあるが、<code>jupyter</code>や<code>html-math-method</code>
@@ -463,7 +513,14 @@ F-statistic: 2.074 on 1 and 148 DF,  p-value: 0.1519
     >shared libraryを作らないpyenvはそれを必須とするreticulateと相性が悪いらしい</a>。このページに書かれた手順を試してはみたが、やはり同じエラーが出るだけだった。</p>
 <p>諦めてmambaforgeに専用の仮想環境を用意してやったところ、うまく動作した。</p>
 <div>
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">mamba create -n pyr <span class="nv">python</span><span class="o">=</span>3.10</span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mamba create -n pyr <span class="nv">python</span><span class="o">=</span>3.10</span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <h3 id="reticulate_python環境変数に注意する"><code>RETICULATE_PYTHON</code>環境変数に注意する</h3>
@@ -472,7 +529,14 @@ F-statistic: 2.074 on 1 and 148 DF,  p-value: 0.1519
 <div>
     <div class="codeblock--name">.Renviron</div>
     
-    <div class="codeblock--content"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl"><span class="nv">RETICULATE_PYTHON</span><span class="o">=</span><span class="s2">&#34;~/mambaforge/envs/pyr/bin/python&#34;</span></span></span></code></pre></div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">RETICULATE_PYTHON</span><span class="o">=</span><span class="s2">&#34;~/mambaforge/envs/pyr/bin/python&#34;</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 </div>
 <p>他にも<code>.Rprofile</code>に<code>Sys.setenv(RETICULATE_PYTHON=)</code>などと定義してやる方法もあるらしいが、なんとなくOS側で定義されていた方が安心な気がする。</p>
@@ -826,6 +890,6 @@ F-statistic: 2.074 on 1 and 148 DF,  p-value: 0.1519
         document.head.appendChild(customFont);
     }());
 </script>
-<script src="/js/copy-to-clipboard.js"></script>
+
     </body>
 </html>
