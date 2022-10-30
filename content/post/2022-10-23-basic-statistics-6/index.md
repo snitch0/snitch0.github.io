@@ -644,4 +644,409 @@ qnorm(0.3 + 0.5, 0, 1)
 
     [1] 0.8416212
 
-少しずつ書き進めます。
+## 26)
+
+### (a)
+
+`integrate()`関数を使えば確率密度関数の面積値を求めることが出来るが、標準正規分布でない場合は自作関数でwrapする必要があるのではないだろうか。
+
+``` r
+dnorm_mod <- function(x) {dnorm(x = x, mean = 10, sd = 2)}
+integrate(dnorm_mod, -Inf, 13)
+```
+
+    0.9331928 with absolute error < 1.5e-05
+
+### (b)
+
+``` r
+integrate(dnorm_mod, 6, Inf)
+```
+
+    0.9772499 with absolute error < 1.1e-07
+
+### (c)
+
+``` r
+integrate(dnorm_mod, 6, 13)
+```
+
+    0.9104427 with absolute error < 1.3e-13
+
+## 27)
+
+``` r
+dnorm_mod <- function(x) {dnorm(x = x, mean = 57.4, sd = 8.4)}
+```
+
+``` r
+integrate(dnorm_mod, -Inf, 70)
+```
+
+    0.9331928 with absolute error < 1.5e-05
+
+``` r
+integrate(dnorm_mod, -Inf, 51.1)
+```
+
+    0.2266274 with absolute error < 9e-05
+
+``` r
+integrate(dnorm_mod, 59.5, 76.3)
+```
+
+    0.3890692 with absolute error < 4.3e-15
+
+``` r
+integrate(dnorm_mod, 44.8, 74.2)
+```
+
+    0.9104427 with absolute error < 1.3e-13
+
+``` r
+integrate(dnorm_mod, 72.1, Inf)
+```
+
+    0.04005916 with absolute error < 5.9e-07
+
+``` r
+integrate(dnorm_mod, 49, Inf)
+```
+
+    0.8413447 with absolute error < 0.00011
+
+## 28)
+
+``` r
+dnorm_mod <- function(x) {dnorm(x = x, mean = 71.8, sd = 5.6)}
+```
+
+``` r
+1 - integrate(dnorm_mod, 78.8, Inf)[[1]]
+```
+
+    [1] 0.8943502
+
+``` r
+1 - integrate(dnorm_mod, -Inf, 60.6)[[1]]
+```
+
+    [1] 0.9772499
+
+``` r
+integrate(dnorm_mod, 74.6, 80.2)
+```
+
+    0.2417303 with absolute error < 2.7e-15
+
+``` r
+integrate(dnorm_mod, 63.4, 80.2)
+```
+
+    0.8663856 with absolute error < 9.6e-15
+
+## 29)
+
+``` r
+dnorm_mod <- function(x) {dnorm(x = x, mean = 520, sd = 10)}
+```
+
+``` r
+integrate(dnorm_mod, -Inf, 500)
+```
+
+    0.02275013 with absolute error < 4.6e-05
+
+## 30)
+
+確率と平均値から正規分布の標準偏差を求める問題。
+
+[参考ページ](https://www.nagwa.com/en/explainers/853196168317/)と同じように解く。
+
+この問題はRプログラミングで解くのは難しい。(多分)
+
+正規化する。
+
+![P(X \leq 86.4 ) = P(Z \leq \frac{86.4 - 78.0}{\sigma}) = 0.8](https://latex.codecogs.com/svg.latex?P%28X%20%5Cleq%2086.4%20%29%20%3D%20P%28Z%20%5Cleq%20%5Cfrac%7B86.4%20-%2078.0%7D%7B%5Csigma%7D%29%20%3D%200.8 "P(X \leq 86.4 ) = P(Z \leq \frac{86.4 - 78.0}{\sigma}) = 0.8")
+
+標準正規分布表より、面積値が(0.5 - 0.2 = 0.3)となるようなところを探すと![Z \simeq 0.84](https://latex.codecogs.com/svg.latex?Z%20%5Csimeq%200.84 "Z \simeq 0.84")なので、
+
+![\frac{86.4 - 78.0}{\sigma} = 0.84](https://latex.codecogs.com/svg.latex?%5Cfrac%7B86.4%20-%2078.0%7D%7B%5Csigma%7D%20%3D%200.84 "\frac{86.4 - 78.0}{\sigma} = 0.84")
+
+![\sigma = 10](https://latex.codecogs.com/svg.latex?%5Csigma%20%3D%2010 "\sigma = 10")
+
+## 31)
+
+先ほどと似たような形で、![\frac{120.5 - \mu}{21.5} = 1.28](https://latex.codecogs.com/svg.latex?%5Cfrac%7B120.5%20-%20%5Cmu%7D%7B21.5%7D%20%3D%201.28 "\frac{120.5 - \mu}{21.5} = 1.28")を考える。
+
+1.28は確率面積値が0.4となる値を正規分布表から求めたもの。
+
+平均値は92.98となる。
+
+## 32)
+
+``` r
+dnorm_mod <- function(x) {dnorm(x, 60.5, 7.4)}
+integrate(dnorm_mod, 70, Inf)[[1]] * 100
+```
+
+    [1] 9.960881
+
+``` r
+integrate(dnorm_mod, -Inf, 48)[[1]] * 100
+```
+
+    [1] 4.559159
+
+``` r
+integrate(dnorm_mod, 56, 64)[[1]] * 100
+```
+
+    [1] 41.03259
+
+## 33)
+
+正規分布において、面積値が0.9となる確率変数よりも多くの在庫を確保しておけばよい、と考える。
+
+``` r
+qnorm(0.9, 250, 30)
+```
+
+    [1] 288.4465
+
+289以上の在庫があればよい。
+
+## 34)
+
+``` r
+qnorm(0.95, 340, 26)
+```
+
+    [1] 382.7662
+
+383個用意しておけばよい。
+
+## 35)
+
+### (a)
+
+``` r
+integrate(\(x) dnorm(x, 300, 35), 320, Inf)
+```
+
+    0.2838546 with absolute error < 2.5e-05
+
+28.4%
+
+### (b)
+
+``` r
+integrate(\(x) dnorm(x, 300, 35), 250, 350)
+```
+
+    0.8468725 with absolute error < 9.4e-15
+
+84.7%
+
+### (c)
+
+``` r
+qnorm(0.75, 300, 35)
+```
+
+    [1] 323.6071
+
+323.6時間
+
+## 36)
+
+### (a)
+
+``` r
+integrate(\(x) dnorm(x, 72.8, 15), 88, Inf)
+```
+
+    0.1554505 with absolute error < 2.2e-06
+
+### (b)
+
+``` r
+1 - integrate(\(x) dnorm(x, 72.8, 15), 32, Inf)[[1]]
+```
+
+    [1] 0.003264096
+
+### (c)
+
+``` r
+qnorm(0.88, 72.8, 15)
+```
+
+    [1] 90.4248
+
+### (d)
+
+``` r
+qnorm(0.25, 72.8, 15)
+```
+
+    [1] 62.68265
+
+## 37)
+
+イメージするために、正規分布を図示してみる。
+
+``` r
+library(tidyverse)
+
+tibble(x = 1:2000 * 0.1) |>
+    mutate(
+        dist_a = dnorm(x, 75, 15),
+        dist_b = dnorm(x, 100, 10)
+        ) |>
+    pivot_longer(-1) |>
+    ggplot(aes(x = x, y = value, col = name)) +
+        geom_line()
+```
+
+<img src="index_files/figure-gfm/unnamed-chunk-73-1.png" width="768" />
+
+とは言っても、問題文をよく読むと二つの分布の関係性を気にする必要性は特になかった。
+
+``` r
+integrate(\(x) dnorm(x, 75, 15), 100, Inf)
+```
+
+    0.04779035 with absolute error < 7.9e-05
+
+``` r
+integrate(\(x) dnorm(x, 100, 10), -Inf, 75)
+```
+
+    0.006209665 with absolute error < 2.3e-05
+
+## 38)
+
+``` r
+2400 * integrate(\(x) dnorm(x, 112, 12), 105, 125)[[1]]
+```
+
+    [1] 1394.005
+
+回答と計算が少し違うが、おそらく正規分布表を使った事による誤差と思われる。
+
+## 39)
+
+正規分布の平均・分散が以下で求められることを利用する。
+
+![\mu = np, \sigma = \sqrt{np(1-p)}](https://latex.codecogs.com/svg.latex?%5Cmu%20%3D%20np%2C%20%5Csigma%20%3D%20%5Csqrt%7Bnp%281-p%29%7D "\mu = np, \sigma = \sqrt{np(1-p)}")
+
+計算すると平均が80, 分散が8と分かる。
+
+``` r
+integrate(\(x) dnorm(x, 80, 8), 0.18 * 400, Inf)
+```
+
+    0.8413447 with absolute error < 8.3e-05
+
+## 40)
+
+``` r
+choose(14, 4) * (1 / 2) ^ 4 * (1 / 2) ^ 10
+```
+
+    [1] 0.06109619
+
+``` r
+mu = 14 * (1 / 2)
+sigma = sqrt(mu * (1 / 2))
+
+dnorm(4, mu, sigma)
+```
+
+    [1] 0.05895185
+
+## 41)
+
+``` r
+mu = 60
+sigma = sqrt(mu * (1 - 0.6))
+
+integrate(\(x) dnorm(x, mu, sigma), -Inf, 50)
+```
+
+    0.02061341 with absolute error < 7.6e-05
+
+## 42)
+
+``` r
+integrate(\(x) dnorm(x, 1000 / 6, sqrt(1000 / 6 * 5 / 6)), 180, Inf)
+```
+
+    0.1289495 with absolute error < 3.3e-09
+
+``` r
+integrate(\(x) dnorm(x, 1000 / 6, sqrt(1000 / 6 * 5 / 6)), 140, 200)
+```
+
+    0.9858353 with absolute error < 2.9e-09
+
+``` r
+# integrate(\(x) dbinom(x, 1000, 1 / 6), 140, 200)
+```
+
+`dbinom`はintegerしか引数にとれないらしい。integrateの計算がうまくいかなかった。
+
+## 43)
+
+やーっと練習問題も最後のページにたどり着いた。
+
+``` r
+integrate(\(x) dnorm(x, 0.36 * 400, sqrt(0.36 * 400 * (1 - 0.36))), 125, 400)
+```
+
+    0.9761014 with absolute error < 3.3e-05
+
+## 44)
+
+``` r
+integrate(\(x) dnorm(x, 800*0.02, sqrt(800*0.02*0.98)), 20, Inf)
+```
+
+    0.1562111 with absolute error < 4.7e-05
+
+## 45)
+
+``` r
+integrate(\(x) dnorm(x, 0.4 * 400, sqrt(400*0.4*0.6)), 180, Inf)
+```
+
+    0.02061341 with absolute error < 7.7e-05
+
+## 46)
+
+``` r
+integrate(\(x) dnorm(x, 1000*0.1, sqrt(1000*0.1*0.9)), -Inf, 80)
+```
+
+    0.01750749 with absolute error < 9.1e-05
+
+## 47)
+
+割愛(ネットにいくらでも解説落ちてるので)
+
+## 48)
+
+割愛(ネットにいくらでも解説落ちてるので)
+
+## 49)
+
+割愛(ネットにいくらでも解説落ちてるので)
+
+長かった。
+
+## 所感
+
+実際的な問題文が多かったので、正規分布を実際の出来事にあてはめるとどうなるか、というイメージを身体で覚えた感じがする。
+
+にしても問題多かった・・。

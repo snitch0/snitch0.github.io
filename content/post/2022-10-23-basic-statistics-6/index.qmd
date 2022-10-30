@@ -544,5 +544,305 @@ qnorm(0.03, 0, 1)
 qnorm(0.3 + 0.5, 0, 1)
 ```
 
+## 26)
 
-少しずつ書き進めます。
+### (a)
+
+`integrate()`関数を使えば確率密度関数の面積値を求めることが出来るが、標準正規分布でない場合は自作関数でwrapする必要があるのではないだろうか。
+
+```{r}
+dnorm_mod <- function(x) {dnorm(x = x, mean = 10, sd = 2)}
+integrate(dnorm_mod, -Inf, 13)
+```
+
+### (b)
+
+```{r}
+integrate(dnorm_mod, 6, Inf)
+```
+
+### (c)
+
+```{r}
+integrate(dnorm_mod, 6, 13)
+```
+
+## 27)
+
+```{r}
+dnorm_mod <- function(x) {dnorm(x = x, mean = 57.4, sd = 8.4)}
+```
+
+```{r}
+integrate(dnorm_mod, -Inf, 70)
+integrate(dnorm_mod, -Inf, 51.1)
+integrate(dnorm_mod, 59.5, 76.3)
+integrate(dnorm_mod, 44.8, 74.2)
+integrate(dnorm_mod, 72.1, Inf)
+integrate(dnorm_mod, 49, Inf)
+```
+
+
+## 28)
+
+```{r}
+dnorm_mod <- function(x) {dnorm(x = x, mean = 71.8, sd = 5.6)}
+```
+
+```{r}
+1 - integrate(dnorm_mod, 78.8, Inf)[[1]]
+1 - integrate(dnorm_mod, -Inf, 60.6)[[1]]
+integrate(dnorm_mod, 74.6, 80.2)
+integrate(dnorm_mod, 63.4, 80.2)
+```
+
+## 29)
+
+```{r}
+dnorm_mod <- function(x) {dnorm(x = x, mean = 520, sd = 10)}
+```
+
+```{r}
+integrate(dnorm_mod, -Inf, 500)
+```
+
+## 30)
+
+確率と平均値から正規分布の標準偏差を求める問題。
+
+[参考ページ](https://www.nagwa.com/en/explainers/853196168317/)と同じように解く。
+
+この問題はRプログラミングで解くのは難しい。(多分)
+
+正規化する。
+
+$$
+P(X \leq 86.4 ) = P(Z \leq \frac{86.4 - 78.0}{\sigma}) = 0.8
+$$
+
+標準正規分布表より、面積値が(0.5 - 0.2 = 0.3)となるようなところを探すと$Z \simeq 0.84$なので、
+
+$$
+\frac{86.4 - 78.0}{\sigma} = 0.84
+$$
+$$
+\sigma = 10
+$$
+
+## 31)
+
+先ほどと似たような形で、$\frac{120.5 - \mu}{21.5} = 1.28$を考える。
+
+1.28は確率面積値が0.4となる値を正規分布表から求めたもの。
+
+平均値は92.98となる。
+
+## 32)
+
+```{r}
+dnorm_mod <- function(x) {dnorm(x, 60.5, 7.4)}
+integrate(dnorm_mod, 70, Inf)[[1]] * 100
+integrate(dnorm_mod, -Inf, 48)[[1]] * 100
+integrate(dnorm_mod, 56, 64)[[1]] * 100
+```
+
+## 33)
+
+正規分布において、面積値が0.9となる確率変数よりも多くの在庫を確保しておけばよい、と考える。
+
+```{r}
+qnorm(0.9, 250, 30)
+```
+
+289以上の在庫があればよい。
+
+## 34)
+
+```{r}
+qnorm(0.95, 340, 26)
+```
+
+383個用意しておけばよい。
+
+## 35)
+
+### (a)
+
+```{r}
+integrate(\(x) dnorm(x, 300, 35), 320, Inf)
+```
+
+28.4%
+
+### (b)
+
+```{r}
+integrate(\(x) dnorm(x, 300, 35), 250, 350)
+```
+
+84.7%
+
+### (c)
+
+```{r}
+qnorm(0.75, 300, 35)
+```
+
+323.6時間
+
+## 36)
+
+### (a)
+
+```{r}
+integrate(\(x) dnorm(x, 72.8, 15), 88, Inf)
+```
+
+### (b)
+
+```{r}
+1 - integrate(\(x) dnorm(x, 72.8, 15), 32, Inf)[[1]]
+```
+
+### (c)
+
+```{r}
+qnorm(0.88, 72.8, 15)
+```
+
+### (d)
+
+```{r}
+qnorm(0.25, 72.8, 15)
+```
+
+## 37)
+
+イメージするために、正規分布を図示してみる。
+
+```{r}
+library(tidyverse)
+
+tibble(x = 1:2000 * 0.1) |>
+    mutate(
+        dist_a = dnorm(x, 75, 15),
+        dist_b = dnorm(x, 100, 10)
+        ) |>
+    pivot_longer(-1) |>
+    ggplot(aes(x = x, y = value, col = name)) +
+        geom_line()
+```
+
+とは言っても、問題文をよく読むと二つの分布の関係性を気にする必要性は特になかった。
+
+```{r}
+integrate(\(x) dnorm(x, 75, 15), 100, Inf)
+```
+
+```{r}
+integrate(\(x) dnorm(x, 100, 10), -Inf, 75)
+```
+
+## 38)
+
+```{r}
+2400 * integrate(\(x) dnorm(x, 112, 12), 105, 125)[[1]]
+```
+
+回答と計算が少し違うが、おそらく正規分布表を使った事による誤差と思われる。
+
+## 39)
+
+正規分布の平均・分散が以下で求められることを利用する。
+
+$$
+\mu = np, \sigma = \sqrt{np(1-p)}
+$$
+
+計算すると平均が80, 分散が8と分かる。
+
+```{r}
+integrate(\(x) dnorm(x, 80, 8), 0.18 * 400, Inf)
+```
+
+## 40)
+
+```{r}
+choose(14, 4) * (1 / 2) ^ 4 * (1 / 2) ^ 10
+```
+
+```{r}
+mu = 14 * (1 / 2)
+sigma = sqrt(mu * (1 / 2))
+
+dnorm(4, mu, sigma)
+```
+
+## 41)
+
+```{r}
+mu = 60
+sigma = sqrt(mu * (1 - 0.6))
+
+integrate(\(x) dnorm(x, mu, sigma), -Inf, 50)
+```
+
+## 42)
+
+```{r}
+integrate(\(x) dnorm(x, 1000 / 6, sqrt(1000 / 6 * 5 / 6)), 180, Inf)
+```
+
+```{r}
+integrate(\(x) dnorm(x, 1000 / 6, sqrt(1000 / 6 * 5 / 6)), 140, 200)
+# integrate(\(x) dbinom(x, 1000, 1 / 6), 140, 200)
+```
+
+`dbinom`はintegerしか引数にとれないらしい。integrateの計算がうまくいかなかった。
+
+## 43)
+
+やーっと練習問題も最後のページにたどり着いた。
+
+```{r}
+integrate(\(x) dnorm(x, 0.36 * 400, sqrt(0.36 * 400 * (1 - 0.36))), 125, 400)
+```
+
+## 44)
+
+```{r}
+integrate(\(x) dnorm(x, 800*0.02, sqrt(800*0.02*0.98)), 20, Inf)
+```
+
+## 45)
+
+```{r}
+integrate(\(x) dnorm(x, 0.4 * 400, sqrt(400*0.4*0.6)), 180, Inf)
+```
+
+## 46)
+
+```{r}
+integrate(\(x) dnorm(x, 1000*0.1, sqrt(1000*0.1*0.9)), -Inf, 80)
+```
+
+## 47)
+
+割愛(ネットにいくらでも解説落ちてるので)
+
+## 48)
+
+割愛(ネットにいくらでも解説落ちてるので)
+
+## 49)
+
+割愛(ネットにいくらでも解説落ちてるので)
+
+
+長かった。
+
+## 所感
+
+実際的な問題文が多かったので、正規分布を実際の出来事にあてはめるとどうなるか、というイメージを身体で覚えた感じがする。
+
+にしても問題多かった・・。
