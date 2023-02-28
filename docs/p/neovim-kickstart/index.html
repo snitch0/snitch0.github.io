@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='大丈夫、1分で環境構築できるから'><title>nvim-kickstartで2023年のモダンなNeovim開発環境を手軽に作る</title>
+
+<link rel='canonical' href='https://snitch0.github.io/p/neovim-kickstart/'>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<link rel="stylesheet" href="/scss/style.min.cf4cd41a644fec1332c40d7a20a0bf7353a75574ef8d810c6ccbca13c1bb3c5c.css"><meta property='og:title' content='nvim-kickstartで2023年のモダンなNeovim開発環境を手軽に作る'>
+<meta property='og:description' content='大丈夫、1分で環境構築できるから'>
+<meta property='og:url' content='https://snitch0.github.io/p/neovim-kickstart/'>
+<meta property='og:site_name' content='駆け出しバイオインフォマティシャンのtech blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Neovim' /><meta property='article:published_time' content='2023-02-23T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-02-23T00:00:00&#43;00:00'/><meta property='og:image' content='https://snitch0.github.io/img/avatar.png' />
+<meta name="twitter:site" content="@snitch0">
+    <meta name="twitter:creator" content="@snitch0"><meta name="twitter:title" content="nvim-kickstartで2023年のモダンなNeovim開発環境を手軽に作る">
+<meta name="twitter:description" content="大丈夫、1分で環境構築できるから"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://snitch0.github.io/img/avatar.png' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQBVMRWEHP"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZQBVMRWEHP', { 'anonymize_ip': false });
+}
+</script>
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQBVMRWEHP"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZQBVMRWEHP', { 'anonymize_ip': false });
+}
+</script>
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="メニューを開く・閉じる">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+
+                    
+                        
+                        <img src="/img/avatar_hu10b6227cc83a47f8ae030658c6c3875a_295203_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🧬</span>
+                
+            </figure>
+            
+        
+
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">駆け出しバイオインフォマティシャンのtech blog</a></h1>
+            <h2 class="site-description">Python, R, Linux, Genomics, Transcriptomics and Microbiology.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a
+                        href='https://github.com/snitch0'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a
+                        href='https://twitter.com/excel2rlang'
+                        target="_blank"
+                        title="Twitter"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://snitch0.github.io/" selected>日本語</option>
+                        
+                            <option value="https://snitch0.github.io/en/" >English</option>
+                        
+                    </select>
+                </li>
+            
+
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>ダークモード</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/neovim/" >
+                Neovim
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/neovim-kickstart/">nvim-kickstartで2023年のモダンなNeovim開発環境を手軽に作る</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            大丈夫、1分で環境構築できるから
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Feb 23, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    読了時間: 2分
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="ごあいさつ">ごあいさつ</h2>
+<p>公私ともに非常にバタバタした。いやー、本当に忙しかった！更新してなかった間にも色々気になった商品や本などがあるのでいずれ書き記していきたい。</p>
+<p>今回は気になっていたものの一つ、Neovimの開発環境をサクッと作る<code>nvim-kickstart</code>レポジトリを試す。レポジトリのメンテナ、youtubeの解説者はNeovimデベロッパーのTJ DeVries。</p>
+<div class="video-wrapper">
+    <iframe loading="lazy" 
+            src="https://www.youtube.com/embed/stqUbv-5u2s" 
+            allowfullscreen 
+            title="YouTube Video"
+    >
+    </iframe>
+</div>
+
+<h2 id="neovimとnvim-kickstart">Neovimと<code>nvim-kickstart</code></h2>
+<img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Neovim-logo.svg" style = "background-color:white;" />
+<p>Neovimはコンソール上で動作するウルトラ軽量なテキストエディタ。かつてはEmacsとVimとの間でテキストエディタ戦争があったらしいが、Visual Studio Codeが登場したことにより多くの人はVSCodeへ移行し、戦争は終結した。</p>
+<iframe class="hatenablogcard" style="width:100%;height:155px;" src="https://hatenablog-parts.com/embed?url=https%3a%2f%2fjp.quora.com%2fVim%25E3%2581%25A8Emacs%25E3%2581%25A9%25E3%2581%25A1%25E3%2582%2589%25E3%2581%258C%25E3%2582%2588%25E3%2581%2584%25E3%2581%25AE%25E3%2581%25A7%25E3%2581%2597%25E3%2582%2587%25E3%2581%2586%25E3%2581%258B" width="300" height="150" frameborder="0" scrolling="no"></iframe>
+
+<p>しかしVSCodeを使わないとチームでハブられる昨今でも、<strong>マウスやカーソルキーを使うこと無くスピーディーなテキスト編集が可能</strong>なVimエディタは根強い人気があり、コアなユーザーを中心にVimは使われ続けている。</p>
+<p>NeovimはVimからフォークしたプロジェクトであり、VimのほとんどをLuaというプログラミング言語で書き換えたものである。独自のVimscript言語によりカスタマイズ・プラグイン開発をするVimは年々ガラパゴス化しているとの批判があるのに対して、現代的なプログラミング言語のLuaでエディタを自由自在にカスタマイズできるNeovimは柔軟かつスピーディーな開発体制もあって年々人気が高まっている。</p>
+<p>2022年のStack Overflowにおけるアンケート調査ではNeovimが「最もユーザーに愛されているエディタ」になったことも話題になっていた。</p>
+<iframe class="hatenablogcard" style="width:100%;height:155px;" src="https://hatenablog-parts.com/embed?url=https%3a%2f%2fsurvey.stackoverflow.co%2f2022%2f%23section-most-loved-dreaded-and-wanted-integrated-development-environment" width="300" height="150" frameborder="0" scrolling="no"></iframe>
+
+<p><mark>Neovimの最大の特長は<strong>ユーザーの好みに合わせていくらでもカスタマイズできる</strong></mark>点であり、Lua言語で設定ファイルを作るのはさながら波平が盆栽を手入れするかのよう。コーディングを効率化するためにテキストエディタの設定にこだわり休日が溶ける、なんてことはザラである。</p>
+<p>「テキストエディタなんぞに時間をかけるなんて本末転倒じゃないか」と思う人も少なくないが、<code>nvim-kickstart</code>はそんな人のためにあるのかもしれない。このレポジトリではNeovimにLanguage Server Protocol(LSP)やカラースキームなどの小難しい設定がほとんど完了した状態の設定ファイルが配布されている。</p>
+<iframe class="hatenablogcard" style="width:100%;height:155px;" src="https://hatenablog-parts.com/embed?url=https%3a%2f%2fgithub.com%2fnvim-lua%2fkickstart.nvim" width="300" height="150" frameborder="0" scrolling="no"></iframe>
+
+<p>今回はこのレポジトリを使ってサクッとNeovimを導入しつつ、<code>nvim-kickstart</code>のデフォルト設定を眺めていく。</p>
+<p><img src="/p/neovim-kickstart/neovim.png"
+	width="679"
+	height="434"
+	srcset="/p/neovim-kickstart/neovim_hud6504884dea4267414de28dbf413d057_417368_480x0_resize_box_3.png 480w, /p/neovim-kickstart/neovim_hud6504884dea4267414de28dbf413d057_417368_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="こんな感じの完成形になった"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="156"
+		data-flex-basis="375px"
+	
+></p>
+<h3 id="nvim-kickstartのクローンして一瞬で環境構築"><code>nvim-kickstart</code>のクローンして一瞬で環境構築</h3>
+<p>nvimはインストール済みの前提で進める。
+もしインストールしてなかったら<a class="link" href="https://github.com/neovim/neovim/releases/tag/stable"  target="_blank" rel="noopener"
+    >GitHubからnightlyをインストールして好きなところに展開</a>するも良いし、<a class="link" href="https://github.com/MordechaiHadad/bob"  target="_blank" rel="noopener"
+    >bobを入れておけば</a>nightlyのアップデートが楽になるのでよりおすすめ。</p>
+<p>動画では「<code>init.lua</code>をコピペするだけで良い」と言っているが、現在では<code>init.lua</code>以外のファイルもあるのでクローンしてしまった方が良い。</p>
+<p><code>.config/nvim</code>がNeovim設定ファイル置き場なので、そこにクローンする。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> ~/.config
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">git clone git@github.com:nvim-lua/kickstart.nvim.git nvim</span></span></code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+</div>
+<p>クローンが終わったら<code>nvim</code>コマンドでNeovimを立ち上げる。すると早速パッケージマネージャの<code>lazy.nvim</code>とLSP関連のプラグインがDLされる。以上で終わり。</p>
+<p>今までNeovimの設定ファイルを何度も自分で書き直してきたが、LDP関連のところが本当に躓きやすい。
+このレポジトリはクローンしたら立ち所にLSPが使えるようになるので、本当に初心者には良い。</p>
+<h2 id="kickstartの中身を理解する">kickstartの中身を理解する</h2>
+<p>kickstartのコンセプトは<mark>kickstartの中身を理解してから自分なりにアレンジしてね</mark>、ということなので頑張って中身を理解していきたい。</p>
+<p>まずはどういう設定の仕方をしているのかと、デフォルトのキーマップなどから理解しようと思う。</p>
+<h3 id="lazynvimについて">lazy.nvimについて</h3>
+<p>Neovimの醍醐味はプラグインを使って機能を拡張していくことだ。</p>
+<p>以前は<code>packer.nvim</code>というプラグインマネージャーがスタンダードだったが、<code>packer.nvim</code>は6年の歴史があり「そろそろ新しいのが出てきても良いんじゃ無いか」という雰囲気だった。そこに登場したのが<code>lazy.nvim</code>で、これがpackerのインターフェースはそのままに、かゆいところに手が届くもんだから一気に乗り換えが進んでいる。</p>
+<p>&hellip;ということは知ってたが、<code>lazy.nvim</code>は今回初めて使う。</p>
+<iframe class="hatenablogcard" style="width:100%;height:155px;" src="https://hatenablog-parts.com/embed?url=https%3a%2f%2fgithub.com%2ffolke%2flazy.nvim" width="300" height="150" frameborder="0" scrolling="no"></iframe>
+
+<p>基本的な書き方は以下。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-lua" data-lang="lua"><span class="line"><span class="cl"><span class="n">require</span><span class="p">(</span><span class="s2">&#34;lazy&#34;</span><span class="p">).</span><span class="n">setup</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="s1">&#39;nvim-neo-tree/neo-tree.nvim&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">branch</span> <span class="o">=</span> <span class="s1">&#39;v2.x&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">config</span> <span class="o">=</span> <span class="kr">function</span> <span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">require</span><span class="p">(</span><span class="s1">&#39;neo-tree&#39;</span><span class="p">).</span><span class="n">setup</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">    <span class="n">close_if_last_window</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">window</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">width</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>　<span class="err">ｎ</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+</div>
+<p><code>packer.nvim</code>とほとんど同じ使い方だが、微妙に引き数名が違う。<a class="link" href="https://github.com/folke/lazy.nvim#-migration-guide"  target="_blank" rel="noopener"
+    >移行ガイド</a>が参考になる。</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>name</th>
+<th>packer.nvimでの名称</th>
+<th>使いどころ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>init</td>
+<td>setup</td>
+<td>インストール時に実行するコマンド</td>
+</tr>
+<tr>
+<td>dependencies</td>
+<td>requires</td>
+<td>依存プラグイン</td>
+</tr>
+<tr>
+<td>version</td>
+<td>tag</td>
+<td>バージョン指定</td>
+</tr>
+<tr>
+<td>keys</td>
+<td>keybindings</td>
+<td>使い方が違う。</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>keys</code>が特に使いやすい。ここでkey-bindingsを指定しておけば、<code>nnoremap</code>しなくてもよい。
+<strong><code>nvim-kickstart</code>ではwhich-keyが最初から入っているので、キーマップは<leader>キーから始まるものに設定し、<code>desc</code>にもわかりやすい説明文を書いておくと良い。</strong> 勝手にwhich-keyに反映されてくれる。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-lua" data-lang="lua"><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;iamcco/markdown-preview.nvim&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">run</span> <span class="o">=</span> <span class="kr">function</span><span class="p">()</span> <span class="n">vim.fn</span><span class="p">[</span><span class="s1">&#39;mkdp#util#install&#39;</span><span class="p">]()</span> <span class="kr">end</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">event</span> <span class="o">=</span> <span class="s2">&#34;BufRead&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">keys</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span><span class="s2">&#34;&lt;leader&gt;mp&#34;</span><span class="p">,</span> <span class="s2">&#34;&lt;Plug&gt;MarkdownPreview&#34;</span><span class="p">,</span> <span class="n">desc</span> <span class="o">=</span> <span class="s2">&#34;Markdown Preview&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+</div>
+<h3 id="telescopeを使ってneovimを縦横無尽">Telescopeを使ってNeovimを縦横無尽</h3>
+<p><img src="/p/neovim-kickstart/telescope.png"
+	width="1063"
+	height="573"
+	srcset="/p/neovim-kickstart/telescope_hu0d2132616b9e2527af88e053b5012b82_1186630_480x0_resize_box_3.png 480w, /p/neovim-kickstart/telescope_hu0d2132616b9e2527af88e053b5012b82_1186630_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Telescopeが起動したときの画面 ここではgrepモードを起動している"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="185"
+		data-flex-basis="445px"
+	
+></p>
+<p>動画では「キーマップが分からなくなったら<code>:Telescope keymaps</code>で確認できるぜ!」と言われている。これにより確認できるが、癖の無い、使いやすいキーマップをあらかじめセットしてくれている。</p>
+<p><code>Telescope</code>はNeovimにしかないプラグインで、<code>fzf</code>というファジーファインダーと組み合わせることで高速な検索が実現される。検索するのはファイル中の文字、ファイル名、関数名、とにかくなんでもあり。これもセットアップするには<code>Telescope</code>のドキュメントを読む必要があったのだが、kickstartでは環境構築済みである。なんとすばらしい。</p>
+<p><code>init.lua</code>を覗くと以下のキーマップが登録されていた。</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>keymap</th>
+<th>機能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt;leader&gt;&lt;space&gt;</td>
+<td>現在開いているバッファを探す</td>
+</tr>
+<tr>
+<td>&lt;leader&gt;?</td>
+<td>最近開いたファイルを探す</td>
+</tr>
+<tr>
+<td>&lt;leader&gt;/</td>
+<td>現在のファイルでfuzzy search</td>
+</tr>
+<tr>
+<td>&lt;leader&gt;sf</td>
+<td>現在のディレクトリでファイルを探す([S]earch [F]ile)</td>
+</tr>
+<tr>
+<td>&lt;leader&gt;sh</td>
+<td>ヘルプを探す([S]earch [H]elp)</td>
+</tr>
+<tr>
+<td>&lt;leader&gt;sw</td>
+<td>現在カーソルのあっている単語を探す([S]earch [W]ord)</td>
+</tr>
+<tr>
+<td>&lt;leader&gt;sg</td>
+<td>フリーワード検索([S]earch [G]rep)</td>
+</tr>
+<tr>
+<td>&lt;leader&gt;sd</td>
+<td>Diagnosticsを検索([S]earch [D]iagnostics)</td>
+</tr>
+</tbody>
+</table></div>
+<p>なお<mark><code>&lt;leader&gt;</code>キーは<key>space</key>キーに設定されている</mark>。</p>
+<p><code>Telescope</code>を使った拡張はまだまだこんなもんじゃない(はず)なので、良い使い方を見つけたらカスタムしていきたい。</p>
+<h3 id="treesitter">treesitter</h3>
+<p>treesitterは構文解析のプラグインである。「所詮シンタックスハイライトだけだろ?」と思っていたが、kickstartでは実に色々な活用がされていて目から鱗だった。treesitterでできるとは知らずにわざわざ別のプラグインを使ってた節もあったので、treesitterはきちんと勉強しようと思う。</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>keymap</th>
+<th>機能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt;c-space&gt;</td>
+<td>選択範囲を広げる</td>
+</tr>
+<tr>
+<td>&lt;c-s&gt;</td>
+<td>スコープを広げる</td>
+</tr>
+<tr>
+<td>&lt;M-space&gt;</td>
+<td>選択範囲を狭める</td>
+</tr>
+<tr>
+<td>]m</td>
+<td>次の関数</td>
+</tr>
+<tr>
+<td>]m</td>
+<td>次の関数</td>
+</tr>
+<tr>
+<td>]]</td>
+<td>次のclass</td>
+</tr>
+<tr>
+<td>]M</td>
+<td>次の関数(outer)</td>
+</tr>
+<tr>
+<td>[[</td>
+<td>前のclass(outer)</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>前のclass</td>
+</tr>
+<tr>
+<td>[M</td>
+<td>前の関数(outer)</td>
+</tr>
+<tr>
+<td>[[</td>
+<td>前のclass(outer)</td>
+</tr>
+</tbody>
+</table></div>
+<p>以下は<code>c</code>や<code>d</code>などの後に使うサブコマンド。</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>サブコマンド</th>
+<th>機能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>aa</td>
+<td>Around parameter</td>
+</tr>
+<tr>
+<td>ia</td>
+<td>Inner parameter</td>
+</tr>
+<tr>
+<td>af</td>
+<td>Around function</td>
+</tr>
+<tr>
+<td>if</td>
+<td>Inner parameter</td>
+</tr>
+<tr>
+<td>ac</td>
+<td>Around class</td>
+</tr>
+<tr>
+<td>ic</td>
+<td>Inner class</td>
+</tr>
+</tbody>
+</table></div>
+<p>クラスや関数は言語によって扱いやすさが違うと思う。少なくともpythonを書いている間、ビジュアルモードでクラス全体を選択したいケースはあまり発生しない。</p>
+<h3 id="lsp">LSP</h3>
+<p>Language server protocol(LSP)は補完機能のあれ。Neovimをカスタムしまくってる人の画面を見ると良い感じのLSPが動いてたりするが、kickstartのLSPは必要最低限といった感じ。</p>
+<p>ぶっちゃけNeovimでゴリゴリのコーディングをするつもりは最初から無く、VSCode Neovimを使ってVSCode用にNeovimを最適化することが目標なので、LSPまわりをカスタムする気は現状あまりない。</p>
+<p>以下のキーマップが入っていた。</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>keymap</th>
+<th>機能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt;leader&gt;rn</td>
+<td>カーソルの変数・関数名をリネーム</td>
+</tr>
+<tr>
+<td>&lt;leader&gt;ca</td>
+<td>コードアクション(インポートを並び替えたりなど。LSPサーバーによる。)</td>
+</tr>
+<tr>
+<td>gd</td>
+<td>Go to definition</td>
+</tr>
+<tr>
+<td>gr</td>
+<td>Go to reference(Telescopeで立ち上がる)</td>
+</tr>
+<tr>
+<td>gI</td>
+<td>Go to Implementation</td>
+</tr>
+<tr>
+<td>&lt;leader&gt;D</td>
+<td>Type Definition(pythonならクラスの定義に飛ぶ)</td>
+</tr>
+<tr>
+<td>&lt;leader&gt;ds</td>
+<td>Document中のsymbolを全て表示(Telescopeで立ち上がる)</td>
+</tr>
+<tr>
+<td>K</td>
+<td><strong>関数などのドキュメンテーションをホバーで表示</strong></td>
+</tr>
+<tr>
+<td>&lt;c-k&gt;</td>
+<td>↑とほぼ同じ</td>
+</tr>
+<tr>
+<td>gD</td>
+<td>Go to decleration</td>
+</tr>
+<tr>
+<td>&lt;C-d&gt;</td>
+<td>サジェストを下へスクロール</td>
+</tr>
+<tr>
+<td>&lt;C-f&gt;</td>
+<td>サジェストを上へスクロール</td>
+</tr>
+<tr>
+<td>&lt;C-Space&gt;</td>
+<td>サジェストを受け入れて補完する</td>
+</tr>
+<tr>
+<td>&lt;Tab&gt;</td>
+<td>次の候補へ</td>
+</tr>
+<tr>
+<td>&lt;S-Tab&gt;</td>
+<td>前の候補へ</td>
+</tr>
+</tbody>
+</table></div>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>keymap</th>
+<th>機能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt;leader&gt;wa</td>
+<td>ワークスペースにフォルダを作成([W]orkspace [A]dd Folder)</td>
+</tr>
+<tr>
+<td>&lt;leader&gt;wr</td>
+<td>ワークスペースのフォルダを削除([W]orkspace [R]emove Folder)</td>
+</tr>
+<tr>
+<td>&lt;leader&gt;wl</td>
+<td>ワークスペースのフォルダフルパスを表示</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="まとめ">まとめ</h2>
+<p>今回はnvim-kickstartを導入してみて、モダンなNeovim設定に触れてみた。</p>
+<p><code>Lazy.nvim</code>の細かい使い方など、隅々までドキュメンテーション読まないと最新の書き方に追いつけないような部分もしっかり実装されているので、非常にためになった。
+確か2022年暮れ～2023年明けくらいにこのレポジトリが発足したと思うが、継続的にコードはメンテナンスされているので<code>git pull</code>すれば常に最新情報に触れられるかもしれない。</p>
+<p>次回以降はkickstartをカスタムした内容をまとめる予定。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/neovim/">Neovim</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "qu-kechu-shibaioinhuomateishiyannotech-blog" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2023 駆け出しバイオインフォマティシャンのtech blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        テーマ <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> は <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> によって設計されています。
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目次</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#ごあいさつ">ごあいさつ</a></li>
+    <li><a href="#neovimとnvim-kickstart">Neovimと<code>nvim-kickstart</code></a>
+      <ol>
+        <li><a href="#nvim-kickstartのクローンして一瞬で環境構築"><code>nvim-kickstart</code>のクローンして一瞬で環境構築</a></li>
+      </ol>
+    </li>
+    <li><a href="#kickstartの中身を理解する">kickstartの中身を理解する</a>
+      <ol>
+        <li><a href="#lazynvimについて">lazy.nvimについて</a></li>
+        <li><a href="#telescopeを使ってneovimを縦横無尽">Telescopeを使ってNeovimを縦横無尽</a></li>
+        <li><a href="#treesitter">treesitter</a></li>
+        <li><a href="#lsp">LSP</a></li>
+      </ol>
+    </li>
+    <li><a href="#まとめ">まとめ</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

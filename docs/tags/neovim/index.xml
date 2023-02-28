@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Neovim on 駆け出しバイオインフォマティシャンのtech blog</title>
+        <link>https://snitch0.github.io/tags/neovim/</link>
+        <description>Recent content in Neovim on 駆け出しバイオインフォマティシャンのtech blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>ja</language>
+        <lastBuildDate>Thu, 23 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://snitch0.github.io/tags/neovim/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>nvim-kickstartで2023年のモダンなNeovim開発環境を手軽に作る</title>
+        <link>https://snitch0.github.io/p/neovim-kickstart/</link>
+        <pubDate>Thu, 23 Feb 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://snitch0.github.io/p/neovim-kickstart/</guid>
+        <description>&lt;h2 id=&#34;ごあいさつ&#34;&gt;ごあいさつ&lt;/h2&gt;
+&lt;p&gt;公私ともに非常にバタバタした。いやー、本当に忙しかった！更新してなかった間にも色々気になった商品や本などがあるのでいずれ書き記していきたい。&lt;/p&gt;
+&lt;p&gt;今回は気になっていたものの一つ、Neovimの開発環境をサクッと作る&lt;code&gt;nvim-kickstart&lt;/code&gt;レポジトリを試す。レポジトリのメンテナ、youtubeの解説者はNeovimデベロッパーのTJ DeVries。&lt;/p&gt;
+&lt;div class=&#34;video-wrapper&#34;&gt;
+    &lt;iframe loading=&#34;lazy&#34; 
+            src=&#34;https://www.youtube.com/embed/stqUbv-5u2s&#34; 
+            allowfullscreen 
+            title=&#34;YouTube Video&#34;
+    &gt;
+    &lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;neovimとnvim-kickstart&#34;&gt;Neovimと&lt;code&gt;nvim-kickstart&lt;/code&gt;&lt;/h2&gt;
+&lt;img src=&#34;https://upload.wikimedia.org/wikipedia/commons/4/4f/Neovim-logo.svg&#34; style = &#34;background-color:white;&#34; /&gt;
+&lt;p&gt;Neovimはコンソール上で動作するウルトラ軽量なテキストエディタ。かつてはEmacsとVimとの間でテキストエディタ戦争があったらしいが、Visual Studio Codeが登場したことにより多くの人はVSCodeへ移行し、戦争は終結した。&lt;/p&gt;
+&lt;iframe class=&#34;hatenablogcard&#34; style=&#34;width:100%;height:155px;&#34; src=&#34;https://hatenablog-parts.com/embed?url=https%3a%2f%2fjp.quora.com%2fVim%25E3%2581%25A8Emacs%25E3%2581%25A9%25E3%2581%25A1%25E3%2582%2589%25E3%2581%258C%25E3%2582%2588%25E3%2581%2584%25E3%2581%25AE%25E3%2581%25A7%25E3%2581%2597%25E3%2582%2587%25E3%2581%2586%25E3%2581%258B&#34; width=&#34;300&#34; height=&#34;150&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;しかしVSCodeを使わないとチームでハブられる昨今でも、&lt;strong&gt;マウスやカーソルキーを使うこと無くスピーディーなテキスト編集が可能&lt;/strong&gt;なVimエディタは根強い人気があり、コアなユーザーを中心にVimは使われ続けている。&lt;/p&gt;
+&lt;p&gt;NeovimはVimからフォークしたプロジェクトであり、VimのほとんどをLuaというプログラミング言語で書き換えたものである。独自のVimscript言語によりカスタマイズ・プラグイン開発をするVimは年々ガラパゴス化しているとの批判があるのに対して、現代的なプログラミング言語のLuaでエディタを自由自在にカスタマイズできるNeovimは柔軟かつスピーディーな開発体制もあって年々人気が高まっている。&lt;/p&gt;
+&lt;p&gt;2022年のStack Overflowにおけるアンケート調査ではNeovimが「最もユーザーに愛されているエディタ」になったことも話題になっていた。&lt;/p&gt;
+&lt;iframe class=&#34;hatenablogcard&#34; style=&#34;width:100%;height:155px;&#34; src=&#34;https://hatenablog-parts.com/embed?url=https%3a%2f%2fsurvey.stackoverflow.co%2f2022%2f%23section-most-loved-dreaded-and-wanted-integrated-development-environment&#34; width=&#34;300&#34; height=&#34;150&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;&lt;mark&gt;Neovimの最大の特長は&lt;strong&gt;ユーザーの好みに合わせていくらでもカスタマイズできる&lt;/strong&gt;&lt;/mark&gt;点であり、Lua言語で設定ファイルを作るのはさながら波平が盆栽を手入れするかのよう。コーディングを効率化するためにテキストエディタの設定にこだわり休日が溶ける、なんてことはザラである。&lt;/p&gt;
+&lt;p&gt;「テキストエディタなんぞに時間をかけるなんて本末転倒じゃないか」と思う人も少なくないが、&lt;code&gt;nvim-kickstart&lt;/code&gt;はそんな人のためにあるのかもしれない。このレポジトリではNeovimにLanguage Server Protocol(LSP)やカラースキームなどの小難しい設定がほとんど完了した状態の設定ファイルが配布されている。&lt;/p&gt;
+&lt;iframe class=&#34;hatenablogcard&#34; style=&#34;width:100%;height:155px;&#34; src=&#34;https://hatenablog-parts.com/embed?url=https%3a%2f%2fgithub.com%2fnvim-lua%2fkickstart.nvim&#34; width=&#34;300&#34; height=&#34;150&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;今回はこのレポジトリを使ってサクッとNeovimを導入しつつ、&lt;code&gt;nvim-kickstart&lt;/code&gt;のデフォルト設定を眺めていく。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://snitch0.github.io/p/neovim-kickstart/neovim.png&#34;
+	width=&#34;679&#34;
+	height=&#34;434&#34;
+	srcset=&#34;https://snitch0.github.io/p/neovim-kickstart/neovim_hud6504884dea4267414de28dbf413d057_417368_480x0_resize_box_3.png 480w, https://snitch0.github.io/p/neovim-kickstart/neovim_hud6504884dea4267414de28dbf413d057_417368_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;こんな感じの完成形になった&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;156&#34;
+		data-flex-basis=&#34;375px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;nvim-kickstartのクローンして一瞬で環境構築&#34;&gt;&lt;code&gt;nvim-kickstart&lt;/code&gt;のクローンして一瞬で環境構築&lt;/h3&gt;
+&lt;p&gt;nvimはインストール済みの前提で進める。
+もしインストールしてなかったら&lt;a class=&#34;link&#34; href=&#34;https://github.com/neovim/neovim/releases/tag/stable&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;GitHubからnightlyをインストールして好きなところに展開&lt;/a&gt;するも良いし、&lt;a class=&#34;link&#34; href=&#34;https://github.com/MordechaiHadad/bob&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;bobを入れておけば&lt;/a&gt;nightlyのアップデートが楽になるのでよりおすすめ。&lt;/p&gt;
+&lt;p&gt;動画では「&lt;code&gt;init.lua&lt;/code&gt;をコピペするだけで良い」と言っているが、現在では&lt;code&gt;init.lua&lt;/code&gt;以外のファイルもあるのでクローンしてしまった方が良い。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;.config/nvim&lt;/code&gt;がNeovim設定ファイル置き場なので、そこにクローンする。&lt;/p&gt;
+&lt;div&gt;
+    &lt;div class=&#34;codeblock--content&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; ~/.config
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git clone git@github.com:nvim-lua/kickstart.nvim.git nvim&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;クローンが終わったら&lt;code&gt;nvim&lt;/code&gt;コマンドでNeovimを立ち上げる。すると早速パッケージマネージャの&lt;code&gt;lazy.nvim&lt;/code&gt;とLSP関連のプラグインがDLされる。以上で終わり。&lt;/p&gt;
+&lt;p&gt;今までNeovimの設定ファイルを何度も自分で書き直してきたが、LDP関連のところが本当に躓きやすい。
+このレポジトリはクローンしたら立ち所にLSPが使えるようになるので、本当に初心者には良い。&lt;/p&gt;
+&lt;h2 id=&#34;kickstartの中身を理解する&#34;&gt;kickstartの中身を理解する&lt;/h2&gt;
+&lt;p&gt;kickstartのコンセプトは&lt;mark&gt;kickstartの中身を理解してから自分なりにアレンジしてね&lt;/mark&gt;、ということなので頑張って中身を理解していきたい。&lt;/p&gt;
+&lt;p&gt;まずはどういう設定の仕方をしているのかと、デフォルトのキーマップなどから理解しようと思う。&lt;/p&gt;
+&lt;h3 id=&#34;lazynvimについて&#34;&gt;lazy.nvimについて&lt;/h3&gt;
+&lt;p&gt;Neovimの醍醐味はプラグインを使って機能を拡張していくことだ。&lt;/p&gt;
+&lt;p&gt;以前は&lt;code&gt;packer.nvim&lt;/code&gt;というプラグインマネージャーがスタンダードだったが、&lt;code&gt;packer.nvim&lt;/code&gt;は6年の歴史があり「そろそろ新しいのが出てきても良いんじゃ無いか」という雰囲気だった。そこに登場したのが&lt;code&gt;lazy.nvim&lt;/code&gt;で、これがpackerのインターフェースはそのままに、かゆいところに手が届くもんだから一気に乗り換えが進んでいる。&lt;/p&gt;
+&lt;p&gt;&amp;hellip;ということは知ってたが、&lt;code&gt;lazy.nvim&lt;/code&gt;は今回初めて使う。&lt;/p&gt;
+&lt;iframe class=&#34;hatenablogcard&#34; style=&#34;width:100%;height:155px;&#34; src=&#34;https://hatenablog-parts.com/embed?url=https%3a%2f%2fgithub.com%2ffolke%2flazy.nvim&#34; width=&#34;300&#34; height=&#34;150&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;基本的な書き方は以下。&lt;/p&gt;
+&lt;div&gt;
+    &lt;div class=&#34;codeblock--content&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-lua&#34; data-lang=&#34;lua&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;lazy&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;setup&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;s1&#34;&gt;&amp;#39;nvim-neo-tree/neo-tree.nvim&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;branch&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;v2.x&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;config&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kr&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;neo-tree&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;setup&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;({&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;close_if_last_window&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;window&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;n&#34;&gt;width&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;30&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;　&lt;span class=&#34;err&#34;&gt;ｎ&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;packer.nvim&lt;/code&gt;とほとんど同じ使い方だが、微妙に引き数名が違う。&lt;a class=&#34;link&#34; href=&#34;https://github.com/folke/lazy.nvim#-migration-guide&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;移行ガイド&lt;/a&gt;が参考になる。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;name&lt;/th&gt;
+&lt;th&gt;packer.nvimでの名称&lt;/th&gt;
+&lt;th&gt;使いどころ&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;init&lt;/td&gt;
+&lt;td&gt;setup&lt;/td&gt;
+&lt;td&gt;インストール時に実行するコマンド&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;dependencies&lt;/td&gt;
+&lt;td&gt;requires&lt;/td&gt;
+&lt;td&gt;依存プラグイン&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;version&lt;/td&gt;
+&lt;td&gt;tag&lt;/td&gt;
+&lt;td&gt;バージョン指定&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;keys&lt;/td&gt;
+&lt;td&gt;keybindings&lt;/td&gt;
+&lt;td&gt;使い方が違う。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;code&gt;keys&lt;/code&gt;が特に使いやすい。ここでkey-bindingsを指定しておけば、&lt;code&gt;nnoremap&lt;/code&gt;しなくてもよい。
+&lt;strong&gt;&lt;code&gt;nvim-kickstart&lt;/code&gt;ではwhich-keyが最初から入っているので、キーマップは&lt;leader&gt;キーから始まるものに設定し、&lt;code&gt;desc&lt;/code&gt;にもわかりやすい説明文を書いておくと良い。&lt;/strong&gt; 勝手にwhich-keyに反映されてくれる。&lt;/p&gt;
+&lt;div&gt;
+    &lt;div class=&#34;codeblock--content&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-lua&#34; data-lang=&#34;lua&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s1&#34;&gt;&amp;#39;iamcco/markdown-preview.nvim&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;run&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kr&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;vim.fn&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;mkdp#util#install&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]()&lt;/span&gt; &lt;span class=&#34;kr&#34;&gt;end&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;event&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;BufRead&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;keys&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;lt;leader&amp;gt;mp&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;lt;Plug&amp;gt;MarkdownPreview&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;desc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Markdown Preview&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 id=&#34;telescopeを使ってneovimを縦横無尽&#34;&gt;Telescopeを使ってNeovimを縦横無尽&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://snitch0.github.io/p/neovim-kickstart/telescope.png&#34;
+	width=&#34;1063&#34;
+	height=&#34;573&#34;
+	srcset=&#34;https://snitch0.github.io/p/neovim-kickstart/telescope_hu0d2132616b9e2527af88e053b5012b82_1186630_480x0_resize_box_3.png 480w, https://snitch0.github.io/p/neovim-kickstart/telescope_hu0d2132616b9e2527af88e053b5012b82_1186630_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Telescopeが起動したときの画面 ここではgrepモードを起動している&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;185&#34;
+		data-flex-basis=&#34;445px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;動画では「キーマップが分からなくなったら&lt;code&gt;:Telescope keymaps&lt;/code&gt;で確認できるぜ!」と言われている。これにより確認できるが、癖の無い、使いやすいキーマップをあらかじめセットしてくれている。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Telescope&lt;/code&gt;はNeovimにしかないプラグインで、&lt;code&gt;fzf&lt;/code&gt;というファジーファインダーと組み合わせることで高速な検索が実現される。検索するのはファイル中の文字、ファイル名、関数名、とにかくなんでもあり。これもセットアップするには&lt;code&gt;Telescope&lt;/code&gt;のドキュメントを読む必要があったのだが、kickstartでは環境構築済みである。なんとすばらしい。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;init.lua&lt;/code&gt;を覗くと以下のキーマップが登録されていた。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;keymap&lt;/th&gt;
+&lt;th&gt;機能&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;lt;leader&amp;gt;&amp;lt;space&amp;gt;&lt;/td&gt;
+&lt;td&gt;現在開いているバッファを探す&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;lt;leader&amp;gt;?&lt;/td&gt;
+&lt;td&gt;最近開いたファイルを探す&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;lt;leader&amp;gt;/&lt;/td&gt;
+&lt;td&gt;現在のファイルでfuzzy search&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;lt;leader&amp;gt;sf&lt;/td&gt;
+&lt;td&gt;現在のディレクトリでファイルを探す([S]earch [F]ile)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;lt;leader&amp;gt;sh&lt;/td&gt;
+&lt;td&gt;ヘルプを探す([S]earch [H]elp)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;lt;leader&amp;gt;sw&lt;/td&gt;
+&lt;td&gt;現在カーソルのあっている単語を探す([S]earch [W]ord)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;lt;leader&amp;gt;sg&lt;/td&gt;
+&lt;td&gt;フリーワード検索([S]earch [G]rep)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;lt;leader&amp;gt;sd&lt;/td&gt;
+&lt;td&gt;Diagnosticsを検索([S]earch [D]iagnostics)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;なお&lt;mark&gt;&lt;code&gt;&amp;lt;leader&amp;gt;&lt;/code&gt;キーは&lt;key&gt;space&lt;/key&gt;キーに設定されている&lt;/mark&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Telescope&lt;/code&gt;を使った拡張はまだまだこんなもんじゃない(はず)なので、良い使い方を見つけたらカスタムしていきたい。&lt;/p&gt;
+&lt;h3 id=&#34;treesitter&#34;&gt;treesitter&lt;/h3&gt;
+&lt;p&gt;treesitterは構文解析のプラグインである。「所詮シンタックスハイライトだけだろ?」と思っていたが、kickstartでは実に色々な活用がされていて目から鱗だった。treesitterでできるとは知らずにわざわざ別のプラグインを使ってた節もあったので、treesitterはきちんと勉強しようと思う。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;keymap&lt;/th&gt;
+&lt;th&gt;機能&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;lt;c-space&amp;gt;&lt;/td&gt;
+&lt;td&gt;選択範囲を広げる&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;lt;c-s&amp;gt;&lt;/td&gt;
+&lt;td&gt;スコープを広げる&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;lt;M-space&amp;gt;&lt;/td&gt;
+&lt;td&gt;選択範囲を狭める&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;]m&lt;/td&gt;
+&lt;td&gt;次の関数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;]m&lt;/td&gt;
+&lt;td&gt;次の関数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;]]&lt;/td&gt;
+&lt;td&gt;次のclass&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;]M&lt;/td&gt;
+&lt;td&gt;次の関数(outer)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;[[&lt;/td&gt;
+&lt;td&gt;前のclass(outer)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;[]&lt;/td&gt;
+&lt;td&gt;前のclass&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;[M&lt;/td&gt;
+&lt;td&gt;前の関数(outer)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;[[&lt;/td&gt;
+&lt;td&gt;前のclass(outer)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;以下は&lt;code&gt;c&lt;/code&gt;や&lt;code&gt;d&lt;/code&gt;などの後に使うサブコマンド。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;サブコマンド&lt;/th&gt;
+&lt;th&gt;機能&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;aa&lt;/td&gt;
+&lt;td&gt;Around parameter&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ia&lt;/td&gt;
+&lt;td&gt;Inner parameter&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;af&lt;/td&gt;
+&lt;td&gt;Around function&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;if&lt;/td&gt;
+&lt;td&gt;Inner parameter&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ac&lt;/td&gt;
+&lt;td&gt;Around class&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ic&lt;/td&gt;
+&lt;td&gt;Inner class&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;クラスや関数は言語によって扱いやすさが違うと思う。少なくともpythonを書いている間、ビジュアルモードでクラス全体を選択したいケースはあまり発生しない。&lt;/p&gt;
+&lt;h3 id=&#34;lsp&#34;&gt;LSP&lt;/h3&gt;
+&lt;p&gt;Language server protocol(LSP)は補完機能のあれ。Neovimをカスタムしまくってる人の画面を見ると良い感じのLSPが動いてたりするが、kickstartのLSPは必要最低限といった感じ。&lt;/p&gt;
+&lt;p&gt;ぶっちゃけNeovimでゴリゴリのコーディングをするつもりは最初から無く、VSCode Neovimを使ってVSCode用にNeovimを最適化することが目標なので、LSPまわりをカスタムする気は現状あまりない。&lt;/p&gt;
+&lt;p&gt;以下のキーマップが入っていた。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;keymap&lt;/th&gt;
+&lt;th&gt;機能&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;lt;leader&amp;gt;rn&lt;/td&gt;
+&lt;td&gt;カーソルの変数・関数名をリネーム&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;lt;leader&amp;gt;ca&lt;/td&gt;
+&lt;td&gt;コードアクション(インポートを並び替えたりなど。LSPサーバーによる。)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;gd&lt;/td&gt;
+&lt;td&gt;Go to definition&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;gr&lt;/td&gt;
+&lt;td&gt;Go to reference(Telescopeで立ち上がる)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;gI&lt;/td&gt;
+&lt;td&gt;Go to Implementation&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;lt;leader&amp;gt;D&lt;/td&gt;
+&lt;td&gt;Type Definition(pythonならクラスの定義に飛ぶ)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;lt;leader&amp;gt;ds&lt;/td&gt;
+&lt;td&gt;Document中のsymbolを全て表示(Telescopeで立ち上がる)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;K&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;関数などのドキュメンテーションをホバーで表示&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;lt;c-k&amp;gt;&lt;/td&gt;
+&lt;td&gt;↑とほぼ同じ&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;gD&lt;/td&gt;
+&lt;td&gt;Go to decleration&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;lt;C-d&amp;gt;&lt;/td&gt;
+&lt;td&gt;サジェストを下へスクロール&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;lt;C-f&amp;gt;&lt;/td&gt;
+&lt;td&gt;サジェストを上へスクロール&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;lt;C-Space&amp;gt;&lt;/td&gt;
+&lt;td&gt;サジェストを受け入れて補完する&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;lt;Tab&amp;gt;&lt;/td&gt;
+&lt;td&gt;次の候補へ&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;lt;S-Tab&amp;gt;&lt;/td&gt;
+&lt;td&gt;前の候補へ&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;keymap&lt;/th&gt;
+&lt;th&gt;機能&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;lt;leader&amp;gt;wa&lt;/td&gt;
+&lt;td&gt;ワークスペースにフォルダを作成([W]orkspace [A]dd Folder)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;lt;leader&amp;gt;wr&lt;/td&gt;
+&lt;td&gt;ワークスペースのフォルダを削除([W]orkspace [R]emove Folder)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;lt;leader&amp;gt;wl&lt;/td&gt;
+&lt;td&gt;ワークスペースのフォルダフルパスを表示&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;まとめ&#34;&gt;まとめ&lt;/h2&gt;
+&lt;p&gt;今回はnvim-kickstartを導入してみて、モダンなNeovim設定に触れてみた。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Lazy.nvim&lt;/code&gt;の細かい使い方など、隅々までドキュメンテーション読まないと最新の書き方に追いつけないような部分もしっかり実装されているので、非常にためになった。
+確か2022年暮れ～2023年明けくらいにこのレポジトリが発足したと思うが、継続的にコードはメンテナンスされているので&lt;code&gt;git pull&lt;/code&gt;すれば常に最新情報に触れられるかもしれない。&lt;/p&gt;
+&lt;p&gt;次回以降はkickstartをカスタムした内容をまとめる予定。&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

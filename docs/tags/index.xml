@@ -6,7 +6,15 @@
         <description>Recent content in Tags on 駆け出しバイオインフォマティシャンのtech blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Wed, 26 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://snitch0.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 23 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://snitch0.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Neovim</title>
+        <link>https://snitch0.github.io/tags/neovim/</link>
+        <pubDate>Thu, 23 Feb 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://snitch0.github.io/tags/neovim/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>API</title>
         <link>https://snitch0.github.io/tags/api/</link>
         <pubDate>Wed, 26 Oct 2022 00:00:00 +0000</pubDate>
