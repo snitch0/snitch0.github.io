@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="ja" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='意外と複雑な仕様?😈'><title>QuartoでPythonを使うときの注意とか</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='hugoとstack themeのスニペット&#43;自作コードなど'><title>このブログの書き方</title>
 
-<link rel='canonical' href='https://snitch0.github.io/p/python-and-quarto/'>
+<link rel='canonical' href='https://snitch0.github.io/p/hugo-blog-snippets/'>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-<link rel="stylesheet" href="/scss/style.min.1f4572204789d32d87a5c3cdf7d9b49ea7bbcda75d97669a7c076823a1b66cca.css"><meta property='og:title' content='QuartoでPythonを使うときの注意とか'>
-<meta property='og:description' content='意外と複雑な仕様?😈'>
-<meta property='og:url' content='https://snitch0.github.io/p/python-and-quarto/'>
+<link rel="stylesheet" href="/scss/style.min.1f4572204789d32d87a5c3cdf7d9b49ea7bbcda75d97669a7c076823a1b66cca.css"><meta property='og:title' content='このブログの書き方'>
+<meta property='og:description' content='hugoとstack themeのスニペット&#43;自作コードなど'>
+<meta property='og:url' content='https://snitch0.github.io/p/hugo-blog-snippets/'>
 <meta property='og:site_name' content='駆け出しバイオインフォマティシャンのtech blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='quarto' /><meta property='article:tag' content='R' /><meta property='article:tag' content='Python' /><meta property='article:published_time' content='2022-09-11T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-09-11T00:00:00&#43;00:00'/><meta property='og:image' content='https://snitch0.github.io/img/avatar.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='blog' /><meta property='article:tag' content='Hugo' /><meta property='article:published_time' content='2023-03-11T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-03-11T00:00:00&#43;00:00'/><meta property='og:image' content='https://snitch0.github.io/img/avatar.png' />
 <meta name="twitter:site" content="@snitch0">
-    <meta name="twitter:creator" content="@snitch0"><meta name="twitter:title" content="QuartoでPythonを使うときの注意とか">
-<meta name="twitter:description" content="意外と複雑な仕様?😈"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@snitch0"><meta name="twitter:title" content="このブログの書き方">
+<meta name="twitter:description" content="hugoとstack themeのスニペット&#43;自作コードなど"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://snitch0.github.io/img/avatar.png' />
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQBVMRWEHP"></script>
 <script>
@@ -301,24 +301,12 @@ if (!doNotTrack) {
     
     <header class="article-category">
         
-            <a href="/categories/quarto/" >
-                Quarto
+            <a href="/categories/hugo/" >
+                Hugo
             </a>
         
-            <a href="/categories/r/" >
-                R
-            </a>
-        
-            <a href="/categories/python/" >
-                Python
-            </a>
-        
-            <a href="/categories/reticulate/" >
-                Reticulate
-            </a>
-        
-            <a href="/categories/linux/" >
-                Linux
+            <a href="/categories/etc/" >
+                etc
             </a>
         
     </header>
@@ -326,12 +314,12 @@ if (!doNotTrack) {
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/python-and-quarto/">QuartoでPythonを使うときの注意とか</a>
+            <a href="/p/hugo-blog-snippets/">このブログの書き方</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            意外と複雑な仕様?😈
+            hugoとstack themeのスニペット&#43;自作コードなど
         </h3>
         
     </div>
@@ -349,7 +337,7 @@ if (!doNotTrack) {
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Sep 11, 2022</time>
+                <time class="article-time--published">Mar 11, 2023</time>
             </div>
         
 
@@ -378,80 +366,54 @@ if (!doNotTrack) {
     <section class="article-content">
     
     
-    <h2 id="quartoにおけるpythonの仕様">QuartoにおけるPythonの仕様</h2>
-<p>Quartoは以下のようにRでもPythonでも一つのファイルでレンダリングできるのが素晴らしい✨</p>
-<p>しかし、Python単独なら特に難しいことは無いが、RとPythonが共存すると<strong>ある問題</strong>が生じる。</p>
+    <h2 id="この記事は自分のための備忘録です">この記事は自分のための備忘録です</h2>
+<p><a class="link" href="http://excel2rlang.com/"  target="_blank" rel="noopener"
+    >メインブログ</a>は執筆コストが高すぎるので、気軽にかけるこちらのHugoブログへコンテンツを集約しようと画策しています。</p>
+<p>こちらで積極的な記事執筆に従事すべく、<a class="link" href="" ><code>hugo-stack</code>theme</a>にて定義されているスニペットやHugoそのもので定義されているスニペットをまとめておきます。あくまで自分用なので網羅はしていません。</p>
+<p>自分のための備忘録ですが、<code>hugo-stack</code> themeをお使いの方の参考にもなれば。</p>
+<p>ショートコードなどは追加するかもしれないので、随時この記事を更新します。</p>
+<h2 id="hugoで規定されているショートコード">Hugoで規定されているショートコード</h2>
+<h3 id="figurehttpsgohugoiocontent-managementshortcodesfigure"><a class="link" href="https://gohugo.io/content-management/shortcodes/#figure"  target="_blank" rel="noopener"
+    ><code>figure</code></a></h3>
+<div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">{{<span class="p">&lt;</span> <span class="nt">figure</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://d33wubrfki0l68.cloudfront.net/c38c7334cc3f23585738e40334284fddcaf03d5e/2e17c/images/hugo-logo-wide.svg&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Hugo logo&#34;</span> <span class="p">&gt;</span>}}</span></span></code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+</div>
+<figure><img src="https://d33wubrfki0l68.cloudfront.net/c38c7334cc3f23585738e4033284fddcaf03d5e/2e17c/images/hugo-logo-wide.svg"/><figcaption>
+            <h4>Hugo logo</h4>
+        </figcaption>
+</figure>
+
+<p>Markdown記法で事足りることがほとんどなので、<code>figure</code>を使うことは無さそうです。</p>
+<h3 id="gisthttpsgohugoiocontent-managementshortcodesgist"><a class="link" href="https://gohugo.io/content-management/shortcodes/#gist"  target="_blank" rel="noopener"
+    >gist</a></h3>
+<script type="application/javascript" src="https://gist.github.com/snitch0/364146db37e9866f49b0868cea4ca8b6.js"></script>
+
+<p>gistは今回初めて使ったくらいなので、これも使うことは無いかも。使い方は簡単。</p>
+<h3 id="highlight">highlight</h3>
 <div>
     <div class="codeblock--content"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
+</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">result</span> <span class="o">=</span> <span class="nf">lm</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">iris</span><span class="p">,</span> <span class="n">Sepal.Width</span> <span class="o">~</span> <span class="n">Sepal.Length</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nf">summary</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{{&lt; highlight python  &gt;}}
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">{{&lt; /highlight &gt;}}</span></span></code></pre></td></tr></table>
 </div>
 </div>
     </div>
 </div>
-<pre><code>Call:
-lm(formula = Sepal.Width ~ Sepal.Length, data = iris)
-
-Residuals:
-    Min      1Q  Median      3Q     Max
--1.1095 -0.2454 -0.0167  0.2763  1.3338
-
-Coefficients:
-             Estimate Std. Error t value Pr(&gt;|t|)
-(Intercept)   3.41895    0.25356   13.48   &lt;2e-16 ***
-Sepal.Length -0.06188    0.04297   -1.44    0.152
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 0.4343 on 148 degrees of freedom
-Multiple R-squared:  0.01382,   Adjusted R-squared:  0.007159
-F-statistic: 2.074 on 1 and 148 DF,  p-value: 0.1519
-</code></pre>
-<div>
-    <div class="codeblock--content"><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
-</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">linear_model</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">iris</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SepalLength&#39;</span><span class="p">,</span> <span class="s1">&#39;SepalWidth&#39;</span><span class="p">,</span> <span class="s1">&#39;PetalLength&#39;</span><span class="p">,</span> <span class="s1">&#39;PetalWidth&#39;</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="p">[</span><span class="s2">&#34;Name&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">model</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">LinearRegression</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="n">ft</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s2">&#34;SepalLength&#34;</span><span class="p">]],</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&#34;SepalWidth&#34;</span><span class="p">]])</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Intercept: </span><span class="si">{</span><span class="n">ft</span><span class="o">.</span><span class="n">intercept_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.6</span><span class="si">}</span><span class="s2">, Coef: </span><span class="si">{</span><span class="n">ft</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.6</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span></span></span></code></pre></td></tr></table>
-</div>
-</div>
-    </div>
-</div>
-<pre><code>Intercept: 3.41895, Coef: -0.0618848
-</code></pre>
-<h3 id="エンジンにjupyterを使う場合">エンジンにjupyterを使う場合</h3>
-<p>Pythonを使うなら、おそらくこれが一番明快でおすすめの方法になる。</p>
-<p>qmdのyamlヘッダにて<code>engine: jupyter</code>を選択しておく方法。たとえば、以下のようにする。</p>
-<div>
-    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -473,84 +435,270 @@ F-statistic: 2.074 on 1 and 148 DF,  p-value: 0.1519
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;QuartoでPythonを使うときの注意とか&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l">意外と複雑な仕様?😈</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">author</span><span class="p">:</span><span class="w"> </span><span class="l">Snitch</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">date</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;2022-09-11&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">categories</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">Quarto</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">R</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">Python</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">Reticulate</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">Linux</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">tags</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">quarto</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">R</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">Python</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l">hugo</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">slug</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;python-and-quarto&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">jupyter</span><span class="p">:</span><span class="w"> </span><span class="l">python3</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">html-math-method</span><span class="p">:</span><span class="w"> </span><span class="l">webtex</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">bubbleSort</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1"># loop to access each array element</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># loop to compare array elements</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)</span> <span class="o">-</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">      <span class="c1"># compare two adjacent elements</span>
+</span></span><span class="line"><span class="cl">      <span class="c1"># change &gt; to &lt; to sort in descending order</span>
+</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="n">array</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">array</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># swapping elements if elements</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># are not in the intended order</span>
+</span></span><span class="line"><span class="cl">        <span class="n">array</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">array</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">array</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">array</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="o">-</span><span class="mi">9</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">sorted_data</span> <span class="o">=</span> <span class="n">bubbleSort</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sorted Array in Ascending Order:&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">sorted_data</span><span class="p">)</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
-    </div>
-</div>
-<p>一部はhugo関係のものもあるが、<code>jupyter</code>や<code>html-math-method</code>
-の部分はquartoに由来する。(いずれこのヘッダオプションも研究しなければ・・・)</p>
-<p>要は<code>jupyter</code>の<code>python3</code>カーネルを使っているというだけなので、bashカーネルだってRカーネルだって存在さえしてれば使えるということなのだろう。</p>
-<p>このオプションを指定している間に起こる諸問題<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>はjupyter由来のものになると思われるので、対処はしやすそう。しかしipywidgetなどはhugoへのレンダリングは厳しそう。qmdではなくipynbからやる方が無難だろう。</p>
-<p>しかし、このjupyterカーネルでは<mark>単一のカーネルしか指定できない</mark>ので、RとPythonの共存は不可能である･･･。</p>
-<h3 id="エンジンにjupyterを使用しない場合">エンジンにjupyterを使用しない場合</h3>
-<p>jupyterを指定しない場合は<mark>pythonセルがreticulate+knitr経由で実行される</mark>。PythonとR両方を使ったドキュメントを気軽に書くことが出来るのはreticulate様のおかげだったのだ。万歳。</p>
-<p>しかし、reticulateは親切なんだかお節介なんだか分からないが、python実行バイナリのパス指定方法が複数あるせいで設定変更が一発で効かないことがしばしばあり、個人的にそれがreticulateを使う気にならない理由の一つ🐍<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
-<p>そして、reticulateの設定で見事にハマった。</p>
-<p>備忘録も兼ねてこのハマりポイント2つを残しておきたいと思う。</p>
-<h2 id="reticulateのハマりポイント">reticulateのハマりポイント</h2>
-<h3 id="仮想環境には気をつける">仮想環境には気をつける</h3>
-<p>自分は普段pyenvとmambaforgeの二つを主なpythonソースとして使っている。前者は汎用的なコーディング(シェルスクリプト作成など)用で、後者はガッツリバイオインフォ解析する時用で使い分けている。</p>
-<p>今回何も考えずに実行しようとしたら、pyenvがうまく認識されてくれなかった。</p>
-<p>調べてみたところ、<a class="link" href="https://firas.io/post/pyenv_rstudio/"  target="_blank" rel="noopener"
-    >shared libraryを作らないpyenvはそれを必須とするreticulateと相性が悪いらしい</a>。このページに書かれた手順を試してはみたが、やはり同じエラーが出るだけだった。</p>
-<p>諦めてmambaforgeに専用の仮想環境を用意してやったところ、うまく動作した。</p>
+<p>※AIが生成したコードなので間違ってるかもしれません(見た限り合ってるっぽいけど)</p>
+<p>これもmarkdown記法で足りる。本当は行ハイライトなども可能ですが、stackテーマとは相性が悪いのか行番号がずれてしまいます。</p>
+<h3 id="ref">ref</h3>
 <div>
     <div class="codeblock--content"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mamba create -n pyr <span class="nv">python</span><span class="o">=</span>3.10</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[相模原サンキューキャンペーンの時の記事]({{&lt;  ref &#34;2022-10-15-sagamihara-map/index.md&#34;  &gt;}})</span></span></code></pre></td></tr></table>
 </div>
 </div>
     </div>
 </div>
-<h3 id="reticulate_python環境変数に注意する"><code>RETICULATE_PYTHON</code>環境変数に注意する</h3>
-<p>要はこの変数に適切なパスが通っていれば問題ないが、環境変数であるせいか、セッションステータスによっては反映されたりされなかったりするのが面倒だった。</p>
-<p>ネットを見ると色々と対処方法が書いてあり、<code>use_conda()</code>を使うだとか、<code>use_python()</code>を使うとかの情報があるが、``./Renviron`に変数を記入してやるのが一番問題が起きにくかった。根拠が曖昧な経験則でアレだが、reticulateはこういう「なんでうまく行ったのがが分からない」ケースがちょいちょいある。</p>
+<p><a class="link" href="https://snitch0.github.io/p/sagamihara-39-map/" >相模原サンキューキャンペーンの時の記事</a></p>
+<p>サイト内リンクのURLを自動生成してくれるスニペット。</p>
+<p>これ今まで全く活用してなかったけど、便利だし最適解だし使わなきゃだな。</p>
+<p><a class="link" href="https://snitch0.github.io/p/hugo-blog-snippets/#hugoで規定されているショートコード" >ページ内リンク</a>も使ってみたけど、残念ながらうまくジャンプしてくれませんでした。</p>
+<h3 id="tweet">tweet</h3>
 <div>
-    <div class="codeblock--name">.Renviron</div>
-    
     <div class="codeblock--content"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">RETICULATE_PYTHON</span><span class="o">=</span><span class="s2">&#34;~/mambaforge/envs/pyr/bin/python&#34;</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{{&lt; tweet golang 1633151903352627207 &gt;}}</span></span></code></pre></td></tr></table>
 </div>
 </div>
     </div>
 </div>
-<p>他にも<code>.Rprofile</code>に<code>Sys.setenv(RETICULATE_PYTHON=)</code>などと定義してやる方法もあるらしいが、なんとなくOS側で定義されていた方が安心な気がする。</p>
-<div class="footnotes" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn:1">
-<p>matplotlibのplot inlineとか。&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:2">
-<p>ならRstudio使いなさいよみたいな声が聞こえてきそうだが、Rstudioでpythonコーディングは結構キツい。pythonコーディングはVSCodeやPyCharmの方が圧倒的に優れており、めいっぱいPython書く人ならこれに同意してくれると思う。&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-</ol>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">🥳 Go 1.20.2 and 1.19.7 are released!<br><br>🔐 Security: Includes a security fix for crypto/elliptic (CVE-2023-24532).<br><br>🔈 Announcement: <a href="https://t.co/0R5yvEp6JL">https://t.co/0R5yvEp6JL</a><br><br>⬇️ Download: <a href="https://t.co/CxvhilnLor">https://t.co/CxvhilnLor</a><a href="https://twitter.com/hashtag/golang?src=hash&amp;ref_src=twsrc%5Etfw">#golang</a> <a href="https://t.co/xlnHevMUGv">pic.twitter.com/xlnHevMUGv</a></p>&mdash; Go (@golang) <a href="https://twitter.com/golang/status/1633151903352627207?ref_src=twsrc%5Etfw">March 7, 2023</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>ツイート引用もwordpressだと何かと面倒ですが、hugoのショートコードならかなり簡単に。</p>
+<p>このブログで仕様しているstackテーマでは中心寄せのcssになっていなかったので、以下のように少し改変しました。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl">    <span class="p">.</span><span class="nc">twitter-tweet</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">card</span><span class="o">-</span><span class="kc">text</span><span class="o">-</span><span class="kc">color</span><span class="o">-</span><span class="n">main</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">display</span><span class="p">:</span><span class="kc">block</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">margin-left</span><span class="p">:</span><span class="kc">auto</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">margin-right</span><span class="p">:</span><span class="kc">auto</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
+</div>
+    </div>
+</div>
+<p><img src="/p/hugo-blog-snippets/tweet-center.png"
+	width="896"
+	height="471"
+	srcset="/p/hugo-blog-snippets/tweet-center_hu044a26bf84660496dc61aecf594caa1f_84854_480x0_resize_box_3.png 480w, /p/hugo-blog-snippets/tweet-center_hu044a26bf84660496dc61aecf594caa1f_84854_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="css改変前後の比較"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="190"
+		data-flex-basis="456px"
+	
+></p>
+<h3 id="youtube">youtube</h3>
+<div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{{&lt; youtube weLaDoGBlxM &gt;}}</span></span></code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+</div>
+<div class="video-wrapper">
+    <iframe loading="lazy" 
+            src="https://www.youtube.com/embed/weLaDoGBlxM" 
+            allowfullscreen 
+            title="YouTube Video"
+    >
+    </iframe>
+</div>
+
+<p>youtubeもidを入れるだけでページ内ビュワーが作られます。ショート動画は左右に暗幕が出来てしまうので、あまり見栄えが良くないかも。</p>
+<div class="video-wrapper">
+    <iframe loading="lazy" 
+            src="https://www.youtube.com/embed/wZmKzg-LceE" 
+            allowfullscreen 
+            title="YouTube Video"
+    >
+    </iframe>
+</div>
+
+<h2 id="自分で追加したショートコード">自分で追加したショートコード</h2>
+<h3 id="message-box">message box</h3>
+<div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{{% hint info %}}
+</span></span><span class="line"><span class="cl">Info box.
+</span></span><span class="line"><span class="cl">{{% /hint %}}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">{{% hint warning %}}
+</span></span><span class="line"><span class="cl">Warning box.
+</span></span><span class="line"><span class="cl">{{% /hint %}}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">{{% hint danger %}}
+</span></span><span class="line"><span class="cl">Danger box.
+</span></span><span class="line"><span class="cl">{{% /hint %}}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">{{% hint normal %}}
+</span></span><span class="line"><span class="cl">Normal box.
+</span></span><span class="line"><span class="cl">{{% /hint %}}</span></span></code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+</div>
+<blockquote class="md-hint info">
+<p>Info box.P</p>
+</blockquote>
+<blockquote class="md-hint warning">
+<p>Warning box.</p>
+</blockquote>
+<blockquote class="md-hint danger">
+<p>Danger box.</p>
+</blockquote>
+<blockquote class="md-hint normal">
+<p>Normal box.</p>
+</blockquote>
+<h3 id="blog-card">blog-card</h3>
+<div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{{&lt; blog-card url=&#34;https://www.youtube.com&#34; &gt;}}</span></span></code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+</div>
+<iframe class="hatenablogcard" style="width:100%;height:155px;" src="https://hatenablog-parts.com/embed?url=https%3a%2f%2fwww.youtube.com" width="300" height="150" frameborder="0" scrolling="no"></iframe>
+
+<p>オシャンなblogカードが欲しくて過去に作ったもの。はてなのAPIを使って実装しています。</p>
+<h3 id="accordion">accordion</h3>
+<div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{{&lt; accordion title=&#34;クリックで展開&#34; &gt;}}
+</span></span><span class="line"><span class="cl">{{&lt; highlight python&gt;}}
+</span></span><span class="line"><span class="cl">import pandas as pd
+</span></span><span class="line"><span class="cl">{{&lt; /highlight &gt;}}
+</span></span><span class="line"><span class="cl">{{&lt; /accordion &gt;}}</span></span></code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+</div>
+<details>
+    <summary>クリックで展開</summary>
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+
+</details>
+<p><a class="link" href="https://gkzz.dev/posts/accordion-menu-hugo/"  target="_blank" rel="noopener"
+    >gkzz.devさんのブログ</a>を参考にさせていただきました。</p>
+<h2 id="スニペット">スニペット</h2>
+<p>ショートコードの記法とは異なるが、html tagのようなスニペットが使える。</p>
+<h3 id="mark">mark</h3>
+<div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">文章の中でも&lt;mark&gt;**特に強調したい部分**&lt;/mark&gt;をハイライトできる。</span></span></code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+</div>
+<p>文章の中でも<mark><strong>特に強調したい部分</strong></mark>をハイライトできる。</p>
+<h3 id="sub-sup">sub, sup</h3>
+<div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">文章の中で&lt;sub&gt;下付き&lt;/sub&gt;や&lt;sup&gt;上付き&lt;/sup&gt;を使うことが出来る。</span></span></code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+</div>
+<p>文章の中で<sub>下付き</sub>や<sup>上付き</sup>を使うことが出来る。</p>
+<h3 id="kbd">kbd</h3>
+<div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;kbd&gt;Ctrl&lt;/kbd&gt;キーを押しながら&lt;kbd&gt;C&lt;/kbd&gt;を押す</span></span></code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+</div>
+<p><kbd>Ctrl</kbd>キーを押しながら<kbd>C</kbd>を押す</p>
 
 </section>
 
@@ -559,11 +707,9 @@ F-statistic: 2.074 on 1 and 148 DF,  p-value: 0.1519
     
     <section class="article-tags">
         
-            <a href="/tags/quarto/">quarto</a>
+            <a href="/tags/blog/">blog</a>
         
-            <a href="/tags/r/">R</a>
-        
-            <a href="/tags/python/">Python</a>
+            <a href="/tags/hugo/">Hugo</a>
         
     </section>
 
@@ -620,12 +766,12 @@ F-statistic: 2.074 on 1 and 148 DF,  p-value: 0.1519
             
                 
 <article class="">
-    <a href="/p/blog-syntax/">
+    <a href="/p/first-post/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">Quarto(とHugo)のSyntax</h2>
+            <h2 class="article-title">Quartoを使った2ndブログを作ってみた</h2>
         </div>
     </a>
 </article>
@@ -633,12 +779,12 @@ F-statistic: 2.074 on 1 and 148 DF,  p-value: 0.1519
             
                 
 <article class="">
-    <a href="/p/sagamihara-39-map/">
+    <a href="/p/creating-hugo-shortcode/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">pdfファイルの住所情報を抽出してGoogleMapに表示させる</h2>
+            <h2 class="article-title">Hugoのショートコードを作る</h2>
         </div>
     </a>
 </article>
@@ -646,38 +792,12 @@ F-statistic: 2.074 on 1 and 148 DF,  p-value: 0.1519
             
                 
 <article class="">
-    <a href="/p/basic-statistics-6/">
+    <a href="/p/items-22-09/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">宮川公男「基礎統計学」第五版 第六章主な確率分布 練習問題の解法</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/p/r-vscode-conda/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">VSCodeでconda環境のRをradianとともに使う</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/p/python-subprocess/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">subprocessライブラリの使い方って結局何が正解なん</h2>
+            <h2 class="article-title">最近買ったもの(2022-9月)</h2>
         </div>
     </a>
 </article>
@@ -851,16 +971,29 @@ F-statistic: 2.074 on 1 and 148 DF,  p-value: 0.1519
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#quartoにおけるpythonの仕様">QuartoにおけるPythonの仕様</a>
+    <li><a href="#この記事は自分のための備忘録です">この記事は自分のための備忘録です</a></li>
+    <li><a href="#hugoで規定されているショートコード">Hugoで規定されているショートコード</a>
       <ol>
-        <li><a href="#エンジンにjupyterを使う場合">エンジンにjupyterを使う場合</a></li>
-        <li><a href="#エンジンにjupyterを使用しない場合">エンジンにjupyterを使用しない場合</a></li>
+        <li><a href="#figurehttpsgohugoiocontent-managementshortcodesfigure"><a href="https://gohugo.io/content-management/shortcodes/#figure"><code>figure</code></a></a></li>
+        <li><a href="#gisthttpsgohugoiocontent-managementshortcodesgist"><a href="https://gohugo.io/content-management/shortcodes/#gist">gist</a></a></li>
+        <li><a href="#highlight">highlight</a></li>
+        <li><a href="#ref">ref</a></li>
+        <li><a href="#tweet">tweet</a></li>
+        <li><a href="#youtube">youtube</a></li>
       </ol>
     </li>
-    <li><a href="#reticulateのハマりポイント">reticulateのハマりポイント</a>
+    <li><a href="#自分で追加したショートコード">自分で追加したショートコード</a>
       <ol>
-        <li><a href="#仮想環境には気をつける">仮想環境には気をつける</a></li>
-        <li><a href="#reticulate_python環境変数に注意する"><code>RETICULATE_PYTHON</code>環境変数に注意する</a></li>
+        <li><a href="#message-box">message box</a></li>
+        <li><a href="#blog-card">blog-card</a></li>
+        <li><a href="#accordion">accordion</a></li>
+      </ol>
+    </li>
+    <li><a href="#スニペット">スニペット</a>
+      <ol>
+        <li><a href="#mark">mark</a></li>
+        <li><a href="#sub-sup">sub, sup</a></li>
+        <li><a href="#kbd">kbd</a></li>
       </ol>
     </li>
   </ol>
