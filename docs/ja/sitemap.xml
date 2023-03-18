@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://snitch0.github.io/</loc>
-    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+    <lastmod>2023-03-18T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -15,11 +15,17 @@
                 href="https://snitch0.github.io/"
                 />
   </url><url>
-    <loc>https://snitch0.github.io/tags/blog/</loc>
-    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+    <loc>https://snitch0.github.io/tags/ai/</loc>
+    <lastmod>2023-03-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://snitch0.github.io/categories/ai/</loc>
+    <lastmod>2023-03-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://snitch0.github.io/p/ai-translate/</loc>
+    <lastmod>2023-03-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://snitch0.github.io/categories/</loc>
-    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+    <lastmod>2023-03-18T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -31,20 +37,38 @@
                 href="https://snitch0.github.io/categories/"
                 />
   </url><url>
-    <loc>https://snitch0.github.io/categories/etc/</loc>
-    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+    <loc>https://snitch0.github.io/tags/deepl/</loc>
+    <lastmod>2023-03-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://snitch0.github.io/tags/hugo/</loc>
-    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+    <loc>https://snitch0.github.io/categories/deepl/</loc>
+    <lastmod>2023-03-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://snitch0.github.io/categories/hugo/</loc>
-    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+    <loc>https://snitch0.github.io/tags/gpt3/</loc>
+    <lastmod>2023-03-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://snitch0.github.io/tags/gpt3.5/</loc>
+    <lastmod>2023-03-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://snitch0.github.io/categories/gpt3.5/</loc>
+    <lastmod>2023-03-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://snitch0.github.io/tags/notion/</loc>
+    <lastmod>2023-03-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://snitch0.github.io/categories/notion/</loc>
+    <lastmod>2023-03-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://snitch0.github.io/post/</loc>
-    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+    <lastmod>2023-03-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://snitch0.github.io/tags/python/</loc>
+    <lastmod>2023-03-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://snitch0.github.io/categories/python/</loc>
+    <lastmod>2023-03-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://snitch0.github.io/tags/</loc>
-    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+    <lastmod>2023-03-18T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -55,6 +79,18 @@
                 hreflang="ja"
                 href="https://snitch0.github.io/tags/"
                 />
+  </url><url>
+    <loc>https://snitch0.github.io/tags/blog/</loc>
+    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://snitch0.github.io/categories/etc/</loc>
+    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://snitch0.github.io/tags/hugo/</loc>
+    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://snitch0.github.io/categories/hugo/</loc>
+    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://snitch0.github.io/p/hugo-blog-snippets/</loc>
     <lastmod>2023-03-11T00:00:00+00:00</lastmod>
@@ -81,12 +117,6 @@
     <lastmod>2022-10-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://snitch0.github.io/p/sagamihara-39-map/</loc>
-    <lastmod>2022-10-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://snitch0.github.io/tags/python/</loc>
-    <lastmod>2022-10-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://snitch0.github.io/categories/python/</loc>
     <lastmod>2022-10-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://snitch0.github.io/tags/r/</loc>

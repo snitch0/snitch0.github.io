@@ -6,7 +6,55 @@
         <description>Recent content in Tags on 駆け出しバイオインフォマティシャンのtech blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Sat, 11 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://snitch0.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 18 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://snitch0.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>ai</title>
+        <link>https://snitch0.github.io/tags/ai/</link>
+        <pubDate>Sat, 18 Mar 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://snitch0.github.io/tags/ai/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>deepl</title>
+        <link>https://snitch0.github.io/tags/deepl/</link>
+        <pubDate>Sat, 18 Mar 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://snitch0.github.io/tags/deepl/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>gpt3</title>
+        <link>https://snitch0.github.io/tags/gpt3/</link>
+        <pubDate>Sat, 18 Mar 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://snitch0.github.io/tags/gpt3/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>gpt3.5</title>
+        <link>https://snitch0.github.io/tags/gpt3.5/</link>
+        <pubDate>Sat, 18 Mar 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://snitch0.github.io/tags/gpt3.5/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>notion</title>
+        <link>https://snitch0.github.io/tags/notion/</link>
+        <pubDate>Sat, 18 Mar 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://snitch0.github.io/tags/notion/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Python</title>
+        <link>https://snitch0.github.io/tags/python/</link>
+        <pubDate>Sat, 18 Mar 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://snitch0.github.io/tags/python/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>blog</title>
         <link>https://snitch0.github.io/tags/blog/</link>
         <pubDate>Sat, 11 Mar 2023 00:00:00 +0000</pubDate>
@@ -44,14 +92,6 @@
         <pubDate>Wed, 26 Oct 2022 00:00:00 +0000</pubDate>
         
         <guid>https://snitch0.github.io/tags/geocoding/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Python</title>
-        <link>https://snitch0.github.io/tags/python/</link>
-        <pubDate>Wed, 26 Oct 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://snitch0.github.io/tags/python/</guid>
         <description></description>
         </item>
         <item>

@@ -2,7 +2,7 @@
 title: AI新時代の2023年を生き抜くためにAIを学ぶ①
 description: "英文翻訳をDeepL・ChatGPT・NotionAIで比較"
 author: Snitch
-date: "2023-03-19"
+date: "2023-03-18"
 categories:
   - Python
   - AI
@@ -17,7 +17,7 @@ tags:
   - deepl
   - notion
 format: hugo
-slug:
+slug: ai-translate
 jupyter: python3
 html-math-method: webtex
 ---
