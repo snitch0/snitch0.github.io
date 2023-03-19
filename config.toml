@@ -8,7 +8,6 @@ disqusShortname = "qu-kechu-shibaioinhuomateishiyannotech-blog"
 DefaultContentLanguage = "ja"
 hasCJKLanguage = false
 ignoreFiles = [ "\\.qmd$", "\\.ipynb$" ]
-favicon = "/img/favicon.ico"
 googleAnalytics = "G-ZQBVMRWEHP"
 
 [languages.ja]
@@ -29,6 +28,7 @@ page = "/:slug/"
 mainSections = [ "post" ]
 featuredImageField = "image"
 rssFullContent = true
+favicon = "/img/favicon.ico"
 
   [params.footer]
   since = 2_020
