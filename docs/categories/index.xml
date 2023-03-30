@@ -6,12 +6,28 @@
         <description>Recent content in Categories on 駆け出しバイオインフォマティシャンのtech blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Sat, 18 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://snitch0.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 26 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://snitch0.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>AI</title>
         <link>https://snitch0.github.io/categories/ai/</link>
-        <pubDate>Sat, 18 Mar 2023 00:00:00 +0000</pubDate>
+        <pubDate>Sun, 26 Mar 2023 00:00:00 +0000</pubDate>
         
         <guid>https://snitch0.github.io/categories/ai/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>GPT4</title>
+        <link>https://snitch0.github.io/categories/gpt4/</link>
+        <pubDate>Sun, 26 Mar 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://snitch0.github.io/categories/gpt4/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Python</title>
+        <link>https://snitch0.github.io/categories/python/</link>
+        <pubDate>Sun, 26 Mar 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://snitch0.github.io/categories/python/</guid>
         <description></description>
         </item>
         <item>
@@ -36,14 +52,6 @@
         <pubDate>Sat, 18 Mar 2023 00:00:00 +0000</pubDate>
         
         <guid>https://snitch0.github.io/categories/notion/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Python</title>
-        <link>https://snitch0.github.io/categories/python/</link>
-        <pubDate>Sat, 18 Mar 2023 00:00:00 +0000</pubDate>
-        
-        <guid>https://snitch0.github.io/categories/python/</guid>
         <description></description>
         </item>
         <item>

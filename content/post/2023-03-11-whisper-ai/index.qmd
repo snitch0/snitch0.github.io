@@ -1,0 +1,38 @@
+---
+title: AIを使いこなせ！①　APIを使って翻訳してみる
+description: ChatGPTはDeeplの代わりになるのか
+author: Snitch
+date: "2022-0-"
+categories:
+  - Python
+  - AI
+tags:
+  - python
+  - ai
+  - openai
+  - deepl
+format: hugo
+slug: ai1-translate-api
+jupyter: python3
+html-math-method: webtex
+---
+
+### 論文の文字数
+
+たとえば、この記事を執筆している今[Nature communicatoins]()のBiological sciencesに出版されている三つの論文で文字数カウントをしてみます。文字数カウントにはWORD Counterというサービスを使いました。
+
+{{<blog-card https://wordcounter.net/>}}
+
+{{<blog-card https://www.nature.com/articles/s41467-023-37146-z}}
+
+7,815 words
+
+{{<blog-card https://www.nature.com/articles/s41467-023-37121-8}}
+
+7,586 words
+
+{{<blog-card https://www.nature.com/articles/s41467-023-36337-y}}
+
+7,477 words
+
+7,500 wordsだとすると、66本の論文を読んだらFreeの上限に達してしまう計算になります。

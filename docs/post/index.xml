@@ -6,7 +6,189 @@
         <description>Recent content in Posts on 駆け出しバイオインフォマティシャンのtech blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Sat, 18 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://snitch0.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 26 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://snitch0.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>AI新時代の2023年を生き抜くためにAIを学ぶ②</title>
+        <link>https://snitch0.github.io/p/ai-prompting/</link>
+        <pubDate>Sun, 26 Mar 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://snitch0.github.io/p/ai-prompting/</guid>
+        <description>&lt;h2 id=&#34;この記事のテーマ&#34;&gt;この記事のテーマ&lt;/h2&gt;
+&lt;p&gt;ChatGPTの時代が来てるな、と実感してから二週間。&lt;strong&gt;これが活用できないと社会的に死ぬ&lt;/strong&gt;というかなり強い危機感によりAIを活用する方法を調べていました。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;AIを活用することは即ちプロンプティングスキルを伸ばすということ&lt;/strong&gt;です。&lt;/p&gt;
+&lt;p&gt;ブロンプティングとはAIへの命令文のことですが、命令の仕方でAIが用意してくれる情報の質が大きく変わってきます。それゆえ、プロンプティングを学ぶ必要があるのです。&lt;/p&gt;
+&lt;p&gt;そしてこの二週間を様々なサイトでプロンプティングを勉強した末、私が行き着いた答え。それは、&lt;strong&gt;AIが&lt;mark&gt;「全く空気が読めない、お節介だけど、20~30歳くらいの超賢い社会人」&lt;/mark&gt;であると想定して話すこと&lt;/strong&gt;です。&lt;/p&gt;
+&lt;p&gt;今回はプロンプティングについて勉強をして重要だと思ったことを列挙しつつ、私なりのAIとの接し方にどうやって行き着いたのか、まとめてみようと思います。&lt;/p&gt;
+&lt;h2 id=&#34;プロンプティング&#34;&gt;プロンプティング&lt;/h2&gt;
+&lt;h3 id=&#34;プロンプティングとはなんぞや&#34;&gt;プロンプティングとはなんぞや&lt;/h3&gt;
+&lt;p&gt;プロンプティングとはAIに対して指示を出す命令文のことで、AIのパフォーマンスや出力品質に大きく影響します。ChatGPTに「ブログを書いて」とか「メールの返信文を考えて」などという依頼をしている人がそれなりにいると思われますが、&lt;strong&gt;良い指示の出し方をすると目に見えて優れた結果を得られる&lt;/strong&gt;ようになります。&lt;mark&gt;人間と一緒で、言い方が大事です。&lt;/mark&gt;&lt;/p&gt;
+&lt;p&gt;画像生成AIとして有名なMidjourneyを例に取りましょう。たとえばクリスマスツリーを擬人化したいとします。ちなみにこのお題は、妻に「何の画像が欲しい？」と聞いたらでてきた謎のお題です。&lt;/p&gt;
+&lt;p&gt;まず最初にそのまま指令(プロンプト)を投げてみます。&lt;/p&gt;
+&lt;div&gt;
+    &lt;div class=&#34;codeblock--content&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/imagine Anthropomorphic Christmat tree&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://snitch0.github.io/p/ai-prompting/midjourney1.png&#34;
+	width=&#34;585&#34;
+	height=&#34;585&#34;
+	srcset=&#34;https://snitch0.github.io/p/ai-prompting/midjourney1_huba1f880dc5e81226a7b6b22bf0c92d2c_770824_480x0_resize_box_3.png 480w, https://snitch0.github.io/p/ai-prompting/midjourney1_huba1f880dc5e81226a7b6b22bf0c92d2c_770824_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;100&#34;
+		data-flex-basis=&#34;240px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;結構気持ち悪い画像ができあがりました👾私が想像する擬人化クリスマスツリーはかわいい感じのイラスト系だったので、ちょっと違和感があります。今度はプロンプティングを活用しつつ詳しい指示を与えてみます。&lt;/p&gt;
+&lt;div&gt;
+    &lt;div class=&#34;codeblock--content&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/imagine Anthropomorphic Christmat tree, cel anime, manga, cute, friendly, smooth, white background&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&#34;https://snitch0.github.io/p/ai-prompting/midjourney2.png&#34;
+	width=&#34;585&#34;
+	height=&#34;585&#34;
+	srcset=&#34;https://snitch0.github.io/p/ai-prompting/midjourney2_hud1501293f0addee4dafc3f5238baadc4_603817_480x0_resize_box_3.png 480w, https://snitch0.github.io/p/ai-prompting/midjourney2_hud1501293f0addee4dafc3f5238baadc4_603817_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;100&#34;
+		data-flex-basis=&#34;240px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;これだけで何かのコラボキャンペーンのイラストとして使えそうな感じになりました。このように、自分が思う必要な要素をどんどん継ぎ足して理想の画像を作るのがMidjourneyの面白さです。そして、&lt;strong&gt;「これを入れるとこうなる」みたいなイディオムを活用することがプロンプティングに相当します&lt;/strong&gt;。ちなみに、cel animeは日本っぽいアニメのテイストを表現する単語です。&lt;/p&gt;
+&lt;p&gt;ちなみに、Bingとdalleに書かせると以下のようになりました。Bingいいなあ🤔&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://snitch0.github.io/p/ai-prompting/bing.png&#34;
+	width=&#34;759&#34;
+	height=&#34;730&#34;
+	srcset=&#34;https://snitch0.github.io/p/ai-prompting/bing_hu3638693d2c393eb9e10bf03503100601_650297_480x0_resize_box_3.png 480w, https://snitch0.github.io/p/ai-prompting/bing_hu3638693d2c393eb9e10bf03503100601_650297_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Bing&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;103&#34;
+		data-flex-basis=&#34;249px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://snitch0.github.io/p/ai-prompting/dalle.png&#34;
+	width=&#34;1677&#34;
+	height=&#34;413&#34;
+	srcset=&#34;https://snitch0.github.io/p/ai-prompting/dalle_hucc7e591f0e5d6596421f08b45ef08b02_694955_480x0_resize_box_3.png 480w, https://snitch0.github.io/p/ai-prompting/dalle_hucc7e591f0e5d6596421f08b45ef08b02_694955_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;dalle&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;406&#34;
+		data-flex-basis=&#34;974px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;では、ChatGPTではどうか？ChatGPTも昨年末に発表されて以来、たくさんのプロンプティング研究がされています。何を隠そう、ChatGPTの開発元であるOpenAI自身が、このプロンプティングの方法について研究し、論文にまとめているくらいです。&lt;/p&gt;
+&lt;p&gt;今回は以下の3通りのパターンでプロンプティングのコツをまとめてみたいと思います。&lt;/p&gt;
+
+&lt;blockquote class=&#34;md-hint info&#34;&gt;
+
+以下の文章の大半はChatGPTに書かせました。どうやってこれを出したかについても言及します。
+
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;明確な指示&#34;&gt;明確な指示&lt;/h4&gt;
+&lt;p&gt;AIに求めるタスクや回答を具体的に明示することで、曖昧さを減らし、より適切な結果を得ることができます。指示が明確であればあるほど、AIはユーザーの期待に沿った回答を生成しやすくなります。&lt;/p&gt;
+&lt;p&gt;&lt;u&gt;例:&lt;/u&gt;&lt;/p&gt;
+&lt;p&gt;不明確な指示: 「有名な建築物について教えて。」&lt;/p&gt;
+&lt;details&gt;
+    &lt;summary&gt;クリックして開く&lt;/summary&gt;
+    &lt;blockquote&gt;
+&lt;p&gt;世界にはたくさんの有名な建築物があります。ここではいくつかの例を挙げます：&lt;/p&gt;
+&lt;p&gt;エッフェル塔 (フランス) - この象徴的な鉄の塔は、1889年のパリ万博を記念して建てられました。高さは330メートルで、現在もパリのシンボルとして親しまれています。&lt;/p&gt;
+&lt;p&gt;自由の女神像 (アメリカ合衆国) - この巨大な銅像は、フランスがアメリカ合衆国の独立100周年を記念して贈呈したもので、ニューヨーク市のリバティ島に立っています。&lt;/p&gt;
+&lt;p&gt;コロッセオ (イタリア) - ローマ帝国時代に建てられたこの円形闘技場は、古代ローマの建築技術の傑作とされています。現在は観光名所として人気があります。&lt;/p&gt;
+&lt;p&gt;グレートウォール (中国) - この古代の城壁は、中国の北部を東西に横切るように伸びており、その長さは合計で2万キロメートル以上にもなります。防衛目的で建設されましたが、現在は世界遺産として観光客に人気です。&lt;/p&gt;
+&lt;p&gt;ピラミッド (エジプト) - ギザのピラミッドは、古代エジプトの王家の墓として建てられた建築物で、現存する古代世界の七不思議のうちのひとつです。&lt;/p&gt;
+&lt;p&gt;シドニー・オペラハウス (オーストラリア) - オーストラリアのシドニー港に位置するこの建築物は、20世紀の建築の傑作とされており、独特の形状が特徴です。&lt;/p&gt;
+&lt;p&gt;タージ・マハル (インド) - この白い大理石の建築物は、インドのアーグラに位置し、17世紀にムガル皇帝シャー・ジャハーンが妻のために建てた墓所です。&lt;/p&gt;
+&lt;p&gt;これらの他にも、世界各地に様々な有名な建築物が存在しています。建築や歴史に興味があるなら、これらの素晴らしい建築物を訪れることをお勧めします。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;/details&gt;
+&lt;p&gt;明確な指示: 「フランスのエッフェル塔の歴史と建設に関する情報を教えてください。」&lt;/p&gt;
+&lt;details&gt;
+    &lt;summary&gt;クリックして開く&lt;/summary&gt;
+    &lt;blockquote&gt;
+&lt;p&gt;エッフェル塔は、フランスの首都パリにある有名な建築物で、1889年に建設されました。当時、フランスはパリ万博（エクスポ）を開催することが決まっており、その目玉となる斬新な建築物が求められていました。エッフェル塔は、その目的を果たすべく建てられたものです。&lt;/p&gt;
+&lt;p&gt;エッフェル塔の設計者は、フランスの建築家と技術者であるガストン・エッフェルです。彼の設計による塔は、鉄を主材料とした構造物で、全高は約330メートルです。当時、これほどの高さを持つ建築物は他になく、世界最高の建造物として有名になりました。その後、1930年にニューヨークのクライスラービルが完成するまで、エッフェル塔は世界一高い建造物でした。&lt;/p&gt;
+&lt;p&gt;エッフェル塔の建設は、1887年に始まり、1889年に完成しました。建設には約2年と2ヵ月の時間がかかり、7000トンもの鉄と250万本のリベットが使用されました。建設には、300人の労働者が働き、幸いにも建設中の事故は1件しか報告されませんでした。&lt;/p&gt;
+&lt;p&gt;当初、エッフェル塔は一時的な建築物として計画されており、20年後に解体されることが予定されていました。しかし、その後の技術革新により、無線通信のアンテナとして利用されるようになり、解体されることはありませんでした。エッフェル塔はその後も、観光名所や科学研究の場として活用されています。&lt;/p&gt;
+&lt;p&gt;現在、エッフェル塔はフランスやパリの象徴とされ、年間約700万人の観光客が訪れる人気の観光地です。展望台からは、パリ市内の素晴らしい景色を楽しむことができます。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;/details&gt;
+&lt;p&gt;不明確な指示では、AIがどの建築物について情報を提供すべきか分かりません。一方、明確な指示では、具体的な建築物（エッフェル塔）とその情報の範囲（歴史と建設）がはっきりしているため、AIは適切な回答を提供しやすくなります。&lt;/p&gt;
+&lt;p&gt;これは即ち、&lt;mark&gt;&lt;strong&gt;事前に我々がどんな指示を与えるかについて詳細に考えておく必要がある&lt;/strong&gt;ということを意味していると思います&lt;/mark&gt;。&lt;/p&gt;
+&lt;p&gt;資料作成の際には、とりあえずファイルを作り始めてから考えると言うこともありますが、これからの時代、作業時間は大幅に短縮されますので、スタート時点で完成形を詳細にイメージしておく必要があるのではないでしょうか？&lt;/p&gt;
+&lt;h4 id=&#34;思考の連鎖&#34;&gt;思考の連鎖&lt;/h4&gt;
+&lt;p&gt;プロンプトエンジニア達の間では&lt;mark&gt;&lt;strong&gt;COT: Chain of Thought&lt;/strong&gt;&lt;/mark&gt;と呼ばれるやり方があります。&lt;/p&gt;
+&lt;p&gt;この方法ではQ&amp;amp;Aのパターンを例示して見せてやることで、思考を順序だてて行わせる方法です。嘘をつきがちなChatGPTの虚言癖を治し、論理的に正しいことを言わせるには有効な方法です。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://snitch0.github.io/p/ai-prompting/cot.png&#34;
+	width=&#34;1788&#34;
+	height=&#34;900&#34;
+	srcset=&#34;https://snitch0.github.io/p/ai-prompting/cot_hue6b187b757b043bc55d2c61ca00bf6f4_175528_480x0_resize_box_3.png 480w, https://snitch0.github.io/p/ai-prompting/cot_hue6b187b757b043bc55d2c61ca00bf6f4_175528_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;出典: https://learnprompting.org/ja/docs/intermediate/chain_of_thought&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;198&#34;
+		data-flex-basis=&#34;476px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;たとえば、子供に何かを教えようとしたとき、クイズを出したとします。しかし子供はそれにうまく答えることが出来ない。そんなとき、「ばかだなあ」とか「不正解。正しくはこうだ。」と言うのはひどい親だと思います。私だったら「うーん、ちょっと違う。この場合だったらどうだろう？」と別の例を示して、自分で真理にたどり着けるように誘導してやります。&lt;/p&gt;
+&lt;p&gt;AIにそこまで気を遣う必要があるのか？と最初は私も思いましたが、&lt;strong&gt;AIとのプロンプトも一種のコミュニケーションと考えれば納得できるはずです。&lt;/strong&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;ステップバイステップ&#34;&gt;ステップバイステップ&lt;/h4&gt;
+&lt;p&gt;また、2023年3月24日の日経電子版でも「ChatGPTを賢くする呪文」として紹介されていたのが&lt;code&gt;Let&#39;s think step by step&lt;/code&gt;です。これを文末に付けるだけで、結果が改善することがあります。&lt;/p&gt;
+&lt;iframe class=&#34;hatenablogcard&#34; style=&#34;width:100%;height:155px;&#34; src=&#34;https://hatenablog-parts.com/embed?url=https%3a%2f%2fwww.nikkei.com%2farticle%2fDGXZQOUC22BVO0S3A320C2000000%2f&#34; width=&#34;300&#34; height=&#34;150&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;非常にシンプルですが、この呪文はChatGPTが苦手とする算数の計算などで、効果を発揮することが知られています。ChatGPTはなぜか単純な四則演算を頻繁に間違えるのですが、そういった計算を一つ一つのステップごとに分けて論理的に考えさせるのです。&lt;/p&gt;
+&lt;p&gt;この手法は&lt;mark&gt;&lt;strong&gt;Zero Shot Chain of Thought&lt;/strong&gt;&lt;/mark&gt;とも呼ばれます。&lt;/p&gt;
+&lt;p&gt;実務に活かすならば、例えば上司にメールを送りたい時、上司がどういう人物で、私がどういう間柄なのか、そして上司には何を伝えたいのか、どういう背景情報があったのか？ということを事細かに順序を立てて説明する必要があるということです。&lt;/p&gt;
+&lt;p&gt;相手が人間でも同じですよね。&lt;mark&gt;&lt;strong&gt;丁寧すぎるくらいに順序だててお願いをすれば意思疎通に齟齬は起きにくいということです。&lt;/strong&gt;&lt;/mark&gt;&lt;/p&gt;
+&lt;h2 id=&#34;まとめ&#34;&gt;まとめ&lt;/h2&gt;
+&lt;p&gt;というわけで、今回はChatGPTのプロンプティングについて調べました。いろいろなサイトを参考にして調べた結論としては、相手を人間だと思って丁寧にお願いをすることが重要だと思いました。&lt;/p&gt;
+&lt;p&gt;もちろん丁寧というのは丁寧な口調で言えということではなく、順序立てて必要な情報を省略せずに伝えることです。&lt;/p&gt;
+&lt;p&gt;こうして考えてみると、&lt;mark&gt;&lt;strong&gt;ChatGPT対するプロンプティングというのは、人とのコミュニケーションと全く同じ&lt;/strong&gt;&lt;/mark&gt;ということです。相手がAIだと侮って適当な命令をすれば自分の希望道りの結果は得られませんし、相手が大切な人だと思って丁寧に一個ずつ説明すれば、非常に良い結果が返ってくることがあります。&lt;/p&gt;
+&lt;p&gt;&lt;mark&gt;&lt;strong&gt;部下や後輩に対しても同じですよね&lt;/strong&gt;&lt;/mark&gt;。順序立てて説明しないと、そりゃわからないよな、と、なんか反省してしまいました。&lt;/p&gt;
+&lt;p&gt;現状のChatGPTは冒頭で述べたとおり、「全く空気が読めない、お節介だけど、20~30歳くらいの超賢い社会人」っていう感じかなと思いました。これからもChatGPTはどんどん進化していくと思いますが、楽しみな反面、将来どうなってしまうんだろうという不安もありますね。。&lt;/p&gt;
+&lt;h2 id=&#34;参考にしたサイト&#34;&gt;参考にしたサイト&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://learnprompting.org/ja/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Learn Prompting&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;非常に分かりやすくCoTやZero shot Promptingについて説明している。Jail breakingなどのリスクに関する情報も手厚い。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/f/awesome-chatgpt-prompts#prompts&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Awesome ChatGPT Prompts&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;ロール設定に特化したプロンプト紹介レポジトリ。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://writesonic.com/blog/chatgpt-prompts/#chatgpt-prompts-for-data-science&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;215+ ChatGPT Prompts you Can&amp;rsquo;t Miss To Try Out In 2023&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;めっちゃくちゃたくさんのプロンプトパターンを紹介しているが、特段テクニカルではない。
+しかし、データサイエンス用のプロンプトなどは「こういうpythonコードが書けるのか」という発見があった。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>AI新時代の2023年を生き抜くためにAIを学ぶ①</title>
         <link>https://snitch0.github.io/p/ai-translate/</link>
         <pubDate>Sat, 18 Mar 2023 00:00:00 +0000</pubDate>

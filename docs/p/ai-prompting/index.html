@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='プロンプティングを学ぶ'><title>AI新時代の2023年を生き抜くためにAIを学ぶ②</title>
+
+<link rel='canonical' href='https://snitch0.github.io/p/ai-prompting/'>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<link rel="stylesheet" href="/scss/style.min.1f4572204789d32d87a5c3cdf7d9b49ea7bbcda75d97669a7c076823a1b66cca.css"><meta property='og:title' content='AI新時代の2023年を生き抜くためにAIを学ぶ②'>
+<meta property='og:description' content='プロンプティングを学ぶ'>
+<meta property='og:url' content='https://snitch0.github.io/p/ai-prompting/'>
+<meta property='og:site_name' content='駆け出しバイオインフォマティシャンのtech blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='ai' /><meta property='article:tag' content='gpt4' /><meta property='article:published_time' content='2023-03-26T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-03-26T00:00:00&#43;00:00'/><meta property='og:image' content='https://snitch0.github.io/img/avatar.png' />
+<meta name="twitter:site" content="@snitch0">
+    <meta name="twitter:creator" content="@snitch0"><meta name="twitter:title" content="AI新時代の2023年を生き抜くためにAIを学ぶ②">
+<meta name="twitter:description" content="プロンプティングを学ぶ"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://snitch0.github.io/img/avatar.png' />
+    <link rel="shortcut icon" href="img/favicon.ico" />
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQBVMRWEHP"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZQBVMRWEHP', { 'anonymize_ip': false });
+}
+</script>
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQBVMRWEHP"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZQBVMRWEHP', { 'anonymize_ip': false });
+}
+</script>
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="メニューを開く・閉じる">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+
+                    
+                        
+                        <img src="/img/avatar_hu10b6227cc83a47f8ae030658c6c3875a_295203_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🧬</span>
+                
+            </figure>
+            
+        
+
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">駆け出しバイオインフォマティシャンのtech blog</a></h1>
+            <h2 class="site-description">Python, R, Linux, Genomics, Transcriptomics and Microbiology.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a
+                        href='https://github.com/snitch0'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a
+                        href='https://twitter.com/excel2rlang'
+                        target="_blank"
+                        title="Twitter"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://snitch0.github.io/" selected>日本語</option>
+                        
+                            <option value="https://snitch0.github.io/en/" >English</option>
+                        
+                    </select>
+                </li>
+            
+
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>ダークモード</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/python/" >
+                Python
+            </a>
+        
+            <a href="/categories/ai/" >
+                AI
+            </a>
+        
+            <a href="/categories/gpt4/" >
+                GPT4
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/ai-prompting/">AI新時代の2023年を生き抜くためにAIを学ぶ②</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            プロンプティングを学ぶ
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Mar 26, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    読了時間: 1分
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="この記事のテーマ">この記事のテーマ</h2>
+<p>ChatGPTの時代が来てるな、と実感してから二週間。<strong>これが活用できないと社会的に死ぬ</strong>というかなり強い危機感によりAIを活用する方法を調べていました。</p>
+<p><strong>AIを活用することは即ちプロンプティングスキルを伸ばすということ</strong>です。</p>
+<p>ブロンプティングとはAIへの命令文のことですが、命令の仕方でAIが用意してくれる情報の質が大きく変わってきます。それゆえ、プロンプティングを学ぶ必要があるのです。</p>
+<p>そしてこの二週間を様々なサイトでプロンプティングを勉強した末、私が行き着いた答え。それは、<strong>AIが<mark>「全く空気が読めない、お節介だけど、20~30歳くらいの超賢い社会人」</mark>であると想定して話すこと</strong>です。</p>
+<p>今回はプロンプティングについて勉強をして重要だと思ったことを列挙しつつ、私なりのAIとの接し方にどうやって行き着いたのか、まとめてみようと思います。</p>
+<h2 id="プロンプティング">プロンプティング</h2>
+<h3 id="プロンプティングとはなんぞや">プロンプティングとはなんぞや</h3>
+<p>プロンプティングとはAIに対して指示を出す命令文のことで、AIのパフォーマンスや出力品質に大きく影響します。ChatGPTに「ブログを書いて」とか「メールの返信文を考えて」などという依頼をしている人がそれなりにいると思われますが、<strong>良い指示の出し方をすると目に見えて優れた結果を得られる</strong>ようになります。<mark>人間と一緒で、言い方が大事です。</mark></p>
+<p>画像生成AIとして有名なMidjourneyを例に取りましょう。たとえばクリスマスツリーを擬人化したいとします。ちなみにこのお題は、妻に「何の画像が欲しい？」と聞いたらでてきた謎のお題です。</p>
+<p>まず最初にそのまま指令(プロンプト)を投げてみます。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">/imagine Anthropomorphic Christmat tree</span></span></code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+</div>
+<p><img src="/p/ai-prompting/midjourney1.png"
+	width="585"
+	height="585"
+	srcset="/p/ai-prompting/midjourney1_huba1f880dc5e81226a7b6b22bf0c92d2c_770824_480x0_resize_box_3.png 480w, /p/ai-prompting/midjourney1_huba1f880dc5e81226a7b6b22bf0c92d2c_770824_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="100"
+		data-flex-basis="240px"
+	
+></p>
+<p>結構気持ち悪い画像ができあがりました👾私が想像する擬人化クリスマスツリーはかわいい感じのイラスト系だったので、ちょっと違和感があります。今度はプロンプティングを活用しつつ詳しい指示を与えてみます。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">/imagine Anthropomorphic Christmat tree, cel anime, manga, cute, friendly, smooth, white background</span></span></code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+</div>
+<p><img src="/p/ai-prompting/midjourney2.png"
+	width="585"
+	height="585"
+	srcset="/p/ai-prompting/midjourney2_hud1501293f0addee4dafc3f5238baadc4_603817_480x0_resize_box_3.png 480w, /p/ai-prompting/midjourney2_hud1501293f0addee4dafc3f5238baadc4_603817_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="100"
+		data-flex-basis="240px"
+	
+></p>
+<p>これだけで何かのコラボキャンペーンのイラストとして使えそうな感じになりました。このように、自分が思う必要な要素をどんどん継ぎ足して理想の画像を作るのがMidjourneyの面白さです。そして、<strong>「これを入れるとこうなる」みたいなイディオムを活用することがプロンプティングに相当します</strong>。ちなみに、cel animeは日本っぽいアニメのテイストを表現する単語です。</p>
+<p>ちなみに、Bingとdalleに書かせると以下のようになりました。Bingいいなあ🤔</p>
+<p><img src="/p/ai-prompting/bing.png"
+	width="759"
+	height="730"
+	srcset="/p/ai-prompting/bing_hu3638693d2c393eb9e10bf03503100601_650297_480x0_resize_box_3.png 480w, /p/ai-prompting/bing_hu3638693d2c393eb9e10bf03503100601_650297_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Bing"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="103"
+		data-flex-basis="249px"
+	
+></p>
+<p><img src="/p/ai-prompting/dalle.png"
+	width="1677"
+	height="413"
+	srcset="/p/ai-prompting/dalle_hucc7e591f0e5d6596421f08b45ef08b02_694955_480x0_resize_box_3.png 480w, /p/ai-prompting/dalle_hucc7e591f0e5d6596421f08b45ef08b02_694955_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="dalle"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="406"
+		data-flex-basis="974px"
+	
+></p>
+<p>では、ChatGPTではどうか？ChatGPTも昨年末に発表されて以来、たくさんのプロンプティング研究がされています。何を隠そう、ChatGPTの開発元であるOpenAI自身が、このプロンプティングの方法について研究し、論文にまとめているくらいです。</p>
+<p>今回は以下の3通りのパターンでプロンプティングのコツをまとめてみたいと思います。</p>
+
+<blockquote class="md-hint info">
+
+以下の文章の大半はChatGPTに書かせました。どうやってこれを出したかについても言及します。
+
+</blockquote>
+<h4 id="明確な指示">明確な指示</h4>
+<p>AIに求めるタスクや回答を具体的に明示することで、曖昧さを減らし、より適切な結果を得ることができます。指示が明確であればあるほど、AIはユーザーの期待に沿った回答を生成しやすくなります。</p>
+<p><u>例:</u></p>
+<p>不明確な指示: 「有名な建築物について教えて。」</p>
+<details>
+    <summary>クリックして開く</summary>
+    <blockquote>
+<p>世界にはたくさんの有名な建築物があります。ここではいくつかの例を挙げます：</p>
+<p>エッフェル塔 (フランス) - この象徴的な鉄の塔は、1889年のパリ万博を記念して建てられました。高さは330メートルで、現在もパリのシンボルとして親しまれています。</p>
+<p>自由の女神像 (アメリカ合衆国) - この巨大な銅像は、フランスがアメリカ合衆国の独立100周年を記念して贈呈したもので、ニューヨーク市のリバティ島に立っています。</p>
+<p>コロッセオ (イタリア) - ローマ帝国時代に建てられたこの円形闘技場は、古代ローマの建築技術の傑作とされています。現在は観光名所として人気があります。</p>
+<p>グレートウォール (中国) - この古代の城壁は、中国の北部を東西に横切るように伸びており、その長さは合計で2万キロメートル以上にもなります。防衛目的で建設されましたが、現在は世界遺産として観光客に人気です。</p>
+<p>ピラミッド (エジプト) - ギザのピラミッドは、古代エジプトの王家の墓として建てられた建築物で、現存する古代世界の七不思議のうちのひとつです。</p>
+<p>シドニー・オペラハウス (オーストラリア) - オーストラリアのシドニー港に位置するこの建築物は、20世紀の建築の傑作とされており、独特の形状が特徴です。</p>
+<p>タージ・マハル (インド) - この白い大理石の建築物は、インドのアーグラに位置し、17世紀にムガル皇帝シャー・ジャハーンが妻のために建てた墓所です。</p>
+<p>これらの他にも、世界各地に様々な有名な建築物が存在しています。建築や歴史に興味があるなら、これらの素晴らしい建築物を訪れることをお勧めします。</p>
+</blockquote>
+
+</details>
+<p>明確な指示: 「フランスのエッフェル塔の歴史と建設に関する情報を教えてください。」</p>
+<details>
+    <summary>クリックして開く</summary>
+    <blockquote>
+<p>エッフェル塔は、フランスの首都パリにある有名な建築物で、1889年に建設されました。当時、フランスはパリ万博（エクスポ）を開催することが決まっており、その目玉となる斬新な建築物が求められていました。エッフェル塔は、その目的を果たすべく建てられたものです。</p>
+<p>エッフェル塔の設計者は、フランスの建築家と技術者であるガストン・エッフェルです。彼の設計による塔は、鉄を主材料とした構造物で、全高は約330メートルです。当時、これほどの高さを持つ建築物は他になく、世界最高の建造物として有名になりました。その後、1930年にニューヨークのクライスラービルが完成するまで、エッフェル塔は世界一高い建造物でした。</p>
+<p>エッフェル塔の建設は、1887年に始まり、1889年に完成しました。建設には約2年と2ヵ月の時間がかかり、7000トンもの鉄と250万本のリベットが使用されました。建設には、300人の労働者が働き、幸いにも建設中の事故は1件しか報告されませんでした。</p>
+<p>当初、エッフェル塔は一時的な建築物として計画されており、20年後に解体されることが予定されていました。しかし、その後の技術革新により、無線通信のアンテナとして利用されるようになり、解体されることはありませんでした。エッフェル塔はその後も、観光名所や科学研究の場として活用されています。</p>
+<p>現在、エッフェル塔はフランスやパリの象徴とされ、年間約700万人の観光客が訪れる人気の観光地です。展望台からは、パリ市内の素晴らしい景色を楽しむことができます。</p>
+</blockquote>
+
+</details>
+<p>不明確な指示では、AIがどの建築物について情報を提供すべきか分かりません。一方、明確な指示では、具体的な建築物（エッフェル塔）とその情報の範囲（歴史と建設）がはっきりしているため、AIは適切な回答を提供しやすくなります。</p>
+<p>これは即ち、<mark><strong>事前に我々がどんな指示を与えるかについて詳細に考えておく必要がある</strong>ということを意味していると思います</mark>。</p>
+<p>資料作成の際には、とりあえずファイルを作り始めてから考えると言うこともありますが、これからの時代、作業時間は大幅に短縮されますので、スタート時点で完成形を詳細にイメージしておく必要があるのではないでしょうか？</p>
+<h4 id="思考の連鎖">思考の連鎖</h4>
+<p>プロンプトエンジニア達の間では<mark><strong>COT: Chain of Thought</strong></mark>と呼ばれるやり方があります。</p>
+<p>この方法ではQ&amp;Aのパターンを例示して見せてやることで、思考を順序だてて行わせる方法です。嘘をつきがちなChatGPTの虚言癖を治し、論理的に正しいことを言わせるには有効な方法です。</p>
+<p><img src="/p/ai-prompting/cot.png"
+	width="1788"
+	height="900"
+	srcset="/p/ai-prompting/cot_hue6b187b757b043bc55d2c61ca00bf6f4_175528_480x0_resize_box_3.png 480w, /p/ai-prompting/cot_hue6b187b757b043bc55d2c61ca00bf6f4_175528_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="出典: https://learnprompting.org/ja/docs/intermediate/chain_of_thought"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="198"
+		data-flex-basis="476px"
+	
+></p>
+<p>たとえば、子供に何かを教えようとしたとき、クイズを出したとします。しかし子供はそれにうまく答えることが出来ない。そんなとき、「ばかだなあ」とか「不正解。正しくはこうだ。」と言うのはひどい親だと思います。私だったら「うーん、ちょっと違う。この場合だったらどうだろう？」と別の例を示して、自分で真理にたどり着けるように誘導してやります。</p>
+<p>AIにそこまで気を遣う必要があるのか？と最初は私も思いましたが、<strong>AIとのプロンプトも一種のコミュニケーションと考えれば納得できるはずです。</strong>。</p>
+<h4 id="ステップバイステップ">ステップバイステップ</h4>
+<p>また、2023年3月24日の日経電子版でも「ChatGPTを賢くする呪文」として紹介されていたのが<code>Let's think step by step</code>です。これを文末に付けるだけで、結果が改善することがあります。</p>
+<iframe class="hatenablogcard" style="width:100%;height:155px;" src="https://hatenablog-parts.com/embed?url=https%3a%2f%2fwww.nikkei.com%2farticle%2fDGXZQOUC22BVO0S3A320C2000000%2f" width="300" height="150" frameborder="0" scrolling="no"></iframe>
+
+<p>非常にシンプルですが、この呪文はChatGPTが苦手とする算数の計算などで、効果を発揮することが知られています。ChatGPTはなぜか単純な四則演算を頻繁に間違えるのですが、そういった計算を一つ一つのステップごとに分けて論理的に考えさせるのです。</p>
+<p>この手法は<mark><strong>Zero Shot Chain of Thought</strong></mark>とも呼ばれます。</p>
+<p>実務に活かすならば、例えば上司にメールを送りたい時、上司がどういう人物で、私がどういう間柄なのか、そして上司には何を伝えたいのか、どういう背景情報があったのか？ということを事細かに順序を立てて説明する必要があるということです。</p>
+<p>相手が人間でも同じですよね。<mark><strong>丁寧すぎるくらいに順序だててお願いをすれば意思疎通に齟齬は起きにくいということです。</strong></mark></p>
+<h2 id="まとめ">まとめ</h2>
+<p>というわけで、今回はChatGPTのプロンプティングについて調べました。いろいろなサイトを参考にして調べた結論としては、相手を人間だと思って丁寧にお願いをすることが重要だと思いました。</p>
+<p>もちろん丁寧というのは丁寧な口調で言えということではなく、順序立てて必要な情報を省略せずに伝えることです。</p>
+<p>こうして考えてみると、<mark><strong>ChatGPT対するプロンプティングというのは、人とのコミュニケーションと全く同じ</strong></mark>ということです。相手がAIだと侮って適当な命令をすれば自分の希望道りの結果は得られませんし、相手が大切な人だと思って丁寧に一個ずつ説明すれば、非常に良い結果が返ってくることがあります。</p>
+<p><mark><strong>部下や後輩に対しても同じですよね</strong></mark>。順序立てて説明しないと、そりゃわからないよな、と、なんか反省してしまいました。</p>
+<p>現状のChatGPTは冒頭で述べたとおり、「全く空気が読めない、お節介だけど、20~30歳くらいの超賢い社会人」っていう感じかなと思いました。これからもChatGPTはどんどん進化していくと思いますが、楽しみな反面、将来どうなってしまうんだろうという不安もありますね。。</p>
+<h2 id="参考にしたサイト">参考にしたサイト</h2>
+<p><a class="link" href="https://learnprompting.org/ja/"  target="_blank" rel="noopener"
+    >Learn Prompting</a></p>
+<p>非常に分かりやすくCoTやZero shot Promptingについて説明している。Jail breakingなどのリスクに関する情報も手厚い。</p>
+<p><a class="link" href="https://github.com/f/awesome-chatgpt-prompts#prompts"  target="_blank" rel="noopener"
+    >Awesome ChatGPT Prompts</a></p>
+<p>ロール設定に特化したプロンプト紹介レポジトリ。</p>
+<p><a class="link" href="https://writesonic.com/blog/chatgpt-prompts/#chatgpt-prompts-for-data-science"  target="_blank" rel="noopener"
+    >215+ ChatGPT Prompts you Can&rsquo;t Miss To Try Out In 2023</a></p>
+<p>めっちゃくちゃたくさんのプロンプトパターンを紹介しているが、特段テクニカルではない。
+しかし、データサイエンス用のプロンプトなどは「こういうpythonコードが書けるのか」という発見があった。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/ai/">ai</a>
+        
+            <a href="/tags/gpt4/">gpt4</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">関連するコンテンツ</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/ai-translate/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">AI新時代の2023年を生き抜くためにAIを学ぶ①</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/sagamihara-39-map/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">pdfファイルの住所情報を抽出してGoogleMapに表示させる</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/python-linter-formatter/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Pythonのlinterとformatter事情(@VisualStudioCode)</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/python-subprocess/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">subprocessライブラリの使い方って結局何が正解なん</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/blog-syntax/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Quarto(とHugo)のSyntax</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "qu-kechu-shibaioinhuomateishiyannotech-blog" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2023 駆け出しバイオインフォマティシャンのtech blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        テーマ <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> は <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> によって設計されています。
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目次</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#この記事のテーマ">この記事のテーマ</a></li>
+    <li><a href="#プロンプティング">プロンプティング</a>
+      <ol>
+        <li><a href="#プロンプティングとはなんぞや">プロンプティングとはなんぞや</a>
+          <ol>
+            <li><a href="#明確な指示">明確な指示</a></li>
+            <li><a href="#思考の連鎖">思考の連鎖</a></li>
+            <li><a href="#ステップバイステップ">ステップバイステップ</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#まとめ">まとめ</a></li>
+    <li><a href="#参考にしたサイト">参考にしたサイト</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
