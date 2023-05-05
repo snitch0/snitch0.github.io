@@ -11,7 +11,7 @@ tags:
   - ai
   - gpt4
 format: hugo
-draft: true
+draft: false
 slug: ai-post-prompting
 jupyter: python3
 html-math-method: webtex

@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://snitch0.github.io/</loc>
-    <lastmod>2023-03-26T00:00:00+00:00</lastmod>
+    <lastmod>2023-05-04T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -16,16 +16,16 @@
                 />
   </url><url>
     <loc>https://snitch0.github.io/tags/ai/</loc>
-    <lastmod>2023-03-26T00:00:00+00:00</lastmod>
+    <lastmod>2023-05-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://snitch0.github.io/categories/ai/</loc>
-    <lastmod>2023-03-26T00:00:00+00:00</lastmod>
+    <lastmod>2023-05-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://snitch0.github.io/p/ai-prompting/</loc>
-    <lastmod>2023-03-26T00:00:00+00:00</lastmod>
+    <loc>https://snitch0.github.io/p/ai-post-prompting/</loc>
+    <lastmod>2023-05-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://snitch0.github.io/categories/</loc>
-    <lastmod>2023-03-26T00:00:00+00:00</lastmod>
+    <lastmod>2023-05-04T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -38,19 +38,19 @@
                 />
   </url><url>
     <loc>https://snitch0.github.io/tags/gpt4/</loc>
-    <lastmod>2023-03-26T00:00:00+00:00</lastmod>
+    <lastmod>2023-05-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://snitch0.github.io/categories/gpt4/</loc>
-    <lastmod>2023-03-26T00:00:00+00:00</lastmod>
+    <lastmod>2023-05-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://snitch0.github.io/post/</loc>
-    <lastmod>2023-03-26T00:00:00+00:00</lastmod>
+    <lastmod>2023-05-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://snitch0.github.io/categories/python/</loc>
-    <lastmod>2023-03-26T00:00:00+00:00</lastmod>
+    <lastmod>2023-05-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://snitch0.github.io/tags/</loc>
-    <lastmod>2023-03-26T00:00:00+00:00</lastmod>
+    <lastmod>2023-05-04T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -61,6 +61,9 @@
                 hreflang="ja"
                 href="https://snitch0.github.io/tags/"
                 />
+  </url><url>
+    <loc>https://snitch0.github.io/p/ai-prompting/</loc>
+    <lastmod>2023-03-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://snitch0.github.io/p/ai-translate/</loc>
     <lastmod>2023-03-18T00:00:00+00:00</lastmod>

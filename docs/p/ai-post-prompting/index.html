@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='プロンプティングを学んだ先に知るべき事'><title>AI新時代の2023年を生き抜くためにAIを学ぶ③</title>
+
+<link rel='canonical' href='https://snitch0.github.io/p/ai-post-prompting/'>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<link rel="stylesheet" href="/scss/style.min.1f4572204789d32d87a5c3cdf7d9b49ea7bbcda75d97669a7c076823a1b66cca.css"><meta property='og:title' content='AI新時代の2023年を生き抜くためにAIを学ぶ③'>
+<meta property='og:description' content='プロンプティングを学んだ先に知るべき事'>
+<meta property='og:url' content='https://snitch0.github.io/p/ai-post-prompting/'>
+<meta property='og:site_name' content='駆け出しバイオインフォマティシャンのtech blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='ai' /><meta property='article:tag' content='gpt4' /><meta property='article:published_time' content='2023-05-04T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-05-04T00:00:00&#43;00:00'/><meta property='og:image' content='https://snitch0.github.io/img/avatar.png' />
+<meta name="twitter:site" content="@snitch0">
+    <meta name="twitter:creator" content="@snitch0"><meta name="twitter:title" content="AI新時代の2023年を生き抜くためにAIを学ぶ③">
+<meta name="twitter:description" content="プロンプティングを学んだ先に知るべき事"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://snitch0.github.io/img/avatar.png' />
+    <link rel="shortcut icon" href="img/favicon.ico" />
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQBVMRWEHP"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZQBVMRWEHP', { 'anonymize_ip': false });
+}
+</script>
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQBVMRWEHP"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZQBVMRWEHP', { 'anonymize_ip': false });
+}
+</script>
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="メニューを開く・閉じる">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+
+                    
+                        
+                        <img src="/img/avatar_hu10b6227cc83a47f8ae030658c6c3875a_295203_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🧬</span>
+                
+            </figure>
+            
+        
+
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">駆け出しバイオインフォマティシャンのtech blog</a></h1>
+            <h2 class="site-description">Python, R, Linux, Genomics, Transcriptomics and Microbiology.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a
+                        href='https://github.com/snitch0'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a
+                        href='https://twitter.com/excel2rlang'
+                        target="_blank"
+                        title="Twitter"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://snitch0.github.io/" selected>日本語</option>
+                        
+                            <option value="https://snitch0.github.io/en/" >English</option>
+                        
+                    </select>
+                </li>
+            
+
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>ダークモード</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/python/" >
+                Python
+            </a>
+        
+            <a href="/categories/ai/" >
+                AI
+            </a>
+        
+            <a href="/categories/gpt4/" >
+                GPT4
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/ai-post-prompting/">AI新時代の2023年を生き抜くためにAIを学ぶ③</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            プロンプティングを学んだ先に知るべき事
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">May 04, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    読了時間: 3分
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="この記事のテーマ">この記事のテーマ</h2>
+<p>一ヶ月前に書いた前回の記事ではプロンプティングについて調べました。その延長として極端にプロンプティングを極めるとどうなるか、という例もいくつか収集したのにアップするのを忘れていました。その他、ChatGPTに関わるハイレベルな内容もまとめます。</p>
+<p>一ヶ月の間に色々と状況が変わった部分もあるので、適宜補足も加えます。</p>
+<h2 id="プロンプティングスキルを極めた例">プロンプティングスキルを極めた例</h2>
+<h3 id="無数のペルソナを生み出してペルソナ同士で考えさせる">無数のペルソナを生み出して、ペルソナ同士で考えさせる</h3>
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">まじやばい！やった人はスクショ希望！<br><br>目標：献立を考える<br><br>専門家の数： 100…</p>&mdash; Shunsuke Hayashi（林 駿甫） (@HaveShun) <a href="https://twitter.com/HaveShun/status/1638915003452637184?ref_src=twsrc%5Etfw">March 23, 2023</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>ShunsukeさんはLLM(大規模言語モデル, ChatGPTやBardを支えるAI技術)の専門家ではないそうですが、経験的な観点から素晴らしい洞察をChatGPTに与えておられます。</p>
+<p>NewsPicksで落合陽一さんがChatGPTについて語ってらっしゃいましたが、Twitter上で落合さんがShunsukeさんのことべた褒めしてましたね。Shunsukeさんや落合さんらが[変数]などと特定の概念を抽象化するようなプロンプトデザインのやりかたをX-promptと呼ぶそうです。</p>
+<p>Shunsukeさんのめちゃめちゃ長いプロンプトを実行すると、次のようなものができます。</p>
+<details>
+    <summary>クリックでプロンプト全文をみる</summary>
+    <blockquote>
+<p>目標：献立を考える</p>
+<p>専門家の数： 100
+専門家の数に対して専門家のペルソナを設定して専門家を具体的に表現してから専門家を使用してください専門家の表現の仕方は何の専門家であるかを明確に書いてください勝つ名前バックグラウンド覆面全て検討して考えて書いてください</p>
+<p>プロンプト1:</p>
+<p>抽象オブジェクト：[抽象オブジェクトを記述]</p>
+<p>サブオブジェクト：[サブオブジェクト1]、[サブオブジェクト2]、[サブオブジェクト3]&hellip;</p>
+<p>知識：[知識1]、[知識2]、[知識3]&hellip;</p>
+<p>能力：[能力1]、[能力2]、[能力3]&hellip;</p>
+<p>管理オブジェクト：[管理オブジェクト1]、[管理オブジェクト2]、[管理オブジェクト3]&hellip;</p>
+<p>プロンプト2:</p>
+<p>[手順1]
+[手順2]
+[手順3]
+&hellip;
+N. [手順N]
+専門家プロンプト：</p>
+<p>[専門家1のプロンプト1]
+[専門家1のプロンプト2]
+&hellip;
+N. [専門家1のプロンプトN]
+[各専門家に対して上記のプロンプトを提供し、回答を収集します。]</p>
+<p>プロンプトの評価：</p>
+<p>評価基準アウトカム1のスコアアウトカム2のスコア専門家プロンプトのスコア
+明確さ[スコア1][スコア2][専門家プロンプト1のスコア]
+実行可能性[スコア1][スコア2][専門家プロンプト2のスコア]
+網羅性[スコア1][スコア2][専門家プロンプト3のスコア]
+柔軟性[スコア1][スコア2][専門家プロンプト4のスコア]
+目標達成の確率[スコア1][スコア2][専門家プロンプト5のスコア]
+合計スコア[合計スコア1][合計スコア2][合計専門家プロンプトスコア]
+最終アウトカムの選択とプロセス：</p>
+<p>最終的なプロセスは、プロンプト1とプロンプト2のスコアの合計が最も高いものを選択します。また、専門家プロンプトのスコアも考慮に入れ、最終的な決定を下します。ただし、専門家プロンプトのスコアは、プロンプト1とプロンプト2のスコアよりも重要度が低いことに注意してください。</p>
+<p>具体的には、以下の手順を実行します：</p>
+<p>プロンプト1とプロンプト2を使用して、複数の回答を収集します。
+各回答のスコアを評価基準に基づいて計算します。
+各回答の合計スコアを計算します。
+最も高い合計スコアを持つ回答を選択します。
+専門家プロンプトのスコアを考慮に入れ、最終的な決定を下します。
+このプロセスを踏まえて、目標を達成するために必要なアクションプランを策定することができます。また、このプロセスは、複数の専門家の知識や能力を結集し、より正確な結論を導き出すことができます。</p>
+</blockquote>
+
+</details>
+<details>
+    <summary>クリックで全文をみる</summary>
+    <blockquote>
+<p>目標：献立を考える</p>
+<p>抽象オブジェクト：献立</p>
+<p>サブオブジェクト：前菜、主菜、デザート</p>
+<p>知識：栄養バランス、旬の食材、調理方法</p>
+<p>能力：料理の組み合わせ、味のバランス、食材選び</p>
+<p>管理オブジェクト：栄養価、食材コスト、調理時間</p>
+<p>以下は、5名の専門家のペルソナ例です。</p>
+<p>専門家1：山田太郎</p>
+<p>背景：フレンチ料理のシェフ
+知識：フランス料理、旬の食材、ワイン
+能力：フレンチ料理の組み合わせ、味のバランス、食材選び
+専門家2：佐藤花子</p>
+<p>背景：管理栄養士
+知識：栄養学、食材の栄養価、食事バランス
+能力：栄養バランスの良い献立作り、食材選び
+専門家3：鈴木一郎</p>
+<p>背景：イタリア料理のシェフ
+知識：イタリア料理、パスタ、チーズ
+能力：イタリア料理の組み合わせ、味のバランス、食材選び
+専門家4：田中美咲</p>
+<p>背景：和食料理人
+知識：和食、旬の食材、日本の食文化
+能力：和食の組み合わせ、味のバランス、食材選び
+専門家5：高橋健太</p>
+<p>背景：料理研究家
+知識：家庭料理、レシピ開発、食材の保存方法
+能力：簡単で美味しい料理の提案、レシピ開発
+手順1：各専門家に献立案を提案してもらう
+手順2：提案された献立を栄養バランス、食材コスト、調理時間の観点から評価する
+手順3：評価結果を基に最適な献立を選ぶ</p>
+<p>専門家プロンプト：</p>
+<p>専門家1のプロンプト1：フレンチ料理をベースにした献立案を提案してください。
+専門家1のプロンプト2：旬の食材を活かしたフレンチ料理の組み合わせを教えてください。</p>
+<p>専門家2のプロンプト1：栄養バランスが良い献立案を提案してください。
+専門家2のプロンプト2：食材選びのポイントを説明してください。</p>
+<p>専門家3のプロンプト1：イタリア料理をベースにした献立案を提案してください。
+専門家3のプロンプト2：パスタとチーズを活かした料理の組み合わせを教えてください。</p>
+<p>専門家4のプロンプト1：和食をベースにした献立案を提案してください。
+専門家4のプロンプト2：旬の食材を活かした和食の組み合わせを教えてください。</p>
+<p>専門家5のプロンプト1：家庭料理をベースにした献立案を提案してください。
+専門家5のプロンプト2：手軽で美味しい料理の提案を教えてください。</p>
+<p>各専門家からの回答を収集した後、評価基準に従ってスコアを付け、最適な献立を選択します。最終的な決定は、専門家プロンプトのスコアも考慮に入れますが、プロンプト1とプロンプト2のスコアが優先されます。</p>
+<p>各専門家からの献立案を収集する
+評価基準（明確さ、実行可能性、網羅性、柔軟性、目標達成の確率）に基づいて、各献立案にスコアを付ける
+各献立案の合計スコアを計算する
+最も高い合計スコアを持つ献立案を選択する
+専門家プロンプトのスコアを考慮に入れ、最終的な決定を下す
+このプロセスを踏まえて、目標である献立を考えるためのアクションプランを策定することができます。また、このプロセスは、複数の専門家の知識や能力を結集し、より正確な結論を導き出すことができます。</p>
+</blockquote>
+
+</details>
+<p>まだ返答は完成していません。今行われたのは「ゴールを達成するプロセスを理解させ、第一段階として架空の料理人を生み出しただけ」です。</p>
+<p>次に、そのプロセスに従って献立を考えてください。(=ゴールを達成せよ)と命じてみます。</p>
+<details>
+    <summary>クリックで全文をみる</summary>
+    <blockquote>
+<p>専門家1（フレンチ料理）：
+前菜：季節の野菜のサラダ、ビネグレットソース
+主菜：骨付き鶏もも肉のコンフィ、ロースト野菜添え
+デザート：アップルタルト、バニラアイスクリーム</p>
+<p>専門家2（管理栄養士）：
+前菜：ミックスビーンズサラダ、ヨーグルトドレッシング
+主菜：焼き魚、玄米ご飯、ほうれん草のごま和え
+デザート：カットフルーツ</p>
+<p>専門家3（イタリア料理）：
+前菜：カプレーゼサラダ
+主菜：ペンネアラビアータ、ガーリックパン
+デザート：ティラミス</p>
+<p>専門家4（和食料理人）：
+前菜：季節のお浸し、刺身盛り合わせ
+主菜：煮魚、ごはん、味噌汁
+デザート：抹茶アイスクリーム</p>
+<p>専門家5（料理研究家）：
+前菜：コールスローサラダ
+主菜：チキンカレー、ご飯
+デザート：プリン</p>
+<p>評価基準に基づいてスコアをつけた結果は以下の通りです。</p>
+<p>専門家1（フレンチ料理）：
+明確さ：5
+実行可能性：3
+網羅性：4
+柔軟性：3
+目標達成の確率：4
+合計スコア：19</p>
+<p>専門家2（管理栄養士）：
+明確さ：4
+実行可能性：5
+網羅性：5
+柔軟性：4
+目標達成の確率：5
+合計スコア：23</p>
+<p>専門家3（イタリア料理）：
+明確さ：4
+実行可能性：4
+網羅性：3
+柔軟性：3
+目標達成の確率：4
+合計スコア：18</p>
+<p>専門家4（和食料理人）：
+明確さ：4
+実行可能性：4
+網羅性：4
+柔軟性：4
+目標達成の確率：4
+合計スコア：20</p>
+<p>専門家5（料理研究家）：
+明確さ：5
+実行可能性：5
+網羅性：3
+柔軟性：柔軟性：3
+目標達成の確率：4
+合計スコア：20</p>
+<p>評価基準に基づくと、専門家2（管理栄養士）の献立案が最も高い合計スコア（23）を持っています。したがって、この献立案が最も適切な選択となります。</p>
+<p>最終的な献立：</p>
+<p>前菜：ミックスビーンズサラダ、ヨーグルトドレッシング
+主菜：焼き魚、玄米ご飯、ほうれん草のごま和え
+デザート：カットフルーツ</p>
+<p>このプロセスにより、目標である献立を考えるためのアクションプランが策定されました。各専門家の知識や能力を結集し、より正確な結論を導き出すことができました。</p>
+</blockquote>
+
+</details>
+<p>このプロンプトの何がすごいかというと、「今日の献立を考えて」といった<strong>抽象的なゴールを達成するために何を考慮すべきなのかを我々が知らなくても、思考のプロセスを与えるだけでChatGPTが考えてくれる</strong>という点です。</p>
+<p>Shunsukeさんはこれ以外にもゴールシークプロンプトというものを開発されています。ゴールシークプロンプトでは、ゴールを抽象的なものであると定義し、ゴールを達成するために必要なプロセスも曖昧なものであると定義します。その上で、ゴールを達成するために必要なプロセスを一からChatGPTに考えさせることで、step-by-stepで理論を組み立て、最終的にゴールを達成します。</p>
+<p>例えば、ただ「ブログを書いて」とか「本を書いて」という命令は明らかにいい加減なプロンプティングですが、このゴールシークプロンプトを使うと、ChatGPTはプロセスごと何かを創作し提案してくれます。実際にこうして生成されたブログや本が有益かどうかはさておき、<mark><strong>ゴールシークプロンプトは自分が対処できない課題に対してどういうアプローチを取るべきなのかを教わるにはこの上なく良いアプローチになるだろう</strong></mark>と思っています。</p>
+
+<blockquote class="md-hint info">
+
+そんなにこのメソッドが凄いならサービス化すればいいじゃないか、と思っていましたが、数週間前にサービス化されています。GoalGPT:
+
+https://beta.nando.ai/goalgpt.php
+
+</blockquote>
+<h3 id="あなたはプロのです">あなたはプロの**です</h3>
+<p>これは有名な方法ですが、「あなたはプロの何々です」と言ってから本題の命令を与えると格段に精度が上がることがあります。</p>
+<p>たとえば、私はPythonコードをChatGPTに教えて貰うことがあるのですが、普通は以下のようにプロンプトを投げるでしょう。</p>
+<blockquote>
+<p>pythonで以下を実装してください。</p>
+<ul>
+<li>一秒ごとに数字をカウントアップ</li>
+<li>カウントアップする数字はFuzzBizz問題を適用</li>
+<li>GUIで数字とFuzzBizzを美しいUIで表示</li>
+</ul>
+</blockquote>
+<p>結果は以下です。</p>
+<details>
+    <summary>クリックして結果をみる</summary>
+    <blockquote>
+<p>Pythonでは、Tkinterを使ってGUIを作成し、FuzzBizz問題の実装と一秒ごとのカウントアップを行うことができます。以下はその実装例です。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">python</span>
+</span></span><span class="line"><span class="cl"><span class="n">Copy</span> <span class="n">code</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">time</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">fuzz_bizz</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">   <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">       <span class="k">return</span> <span class="s2">&#34;FuzzBizz&#34;</span>
+</span></span><span class="line"><span class="cl">   <span class="k">elif</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">       <span class="k">return</span> <span class="s2">&#34;Fuzz&#34;</span>
+</span></span><span class="line"><span class="cl">   <span class="k">elif</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">       <span class="k">return</span> <span class="s2">&#34;Bizz&#34;</span>
+</span></span><span class="line"><span class="cl">   <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">       <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">update_counter</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">   <span class="k">global</span> <span class="n">counter</span>
+</span></span><span class="line"><span class="cl">   <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">   <span class="n">label_counter</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s2">&#34;カウントアップ: </span><span class="si">{</span><span class="n">counter</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="n">label_fuzz_bizz</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s2">&#34;FuzzBizz: </span><span class="si">{</span><span class="n">fuzz_bizz</span><span class="p">(</span><span class="n">counter</span><span class="p">)</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="n">root</span><span class="o">.</span><span class="n">after</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">update_counter</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&#34;FuzzBizz カウンター&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">label_counter</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s2">&#34;カウントアップ: </span><span class="si">{</span><span class="n">counter</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s2">&#34;Helvetica&#34;</span><span class="p">,</span> <span class="mi">16</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">label_counter</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">label_fuzz_bizz</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s2">&#34;FuzzBizz: </span><span class="si">{</span><span class="n">fuzz_bizz</span><span class="p">(</span><span class="n">counter</span><span class="p">)</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s2">&#34;Helvetica&#34;</span><span class="p">,</span> <span class="mi">16</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">label_fuzz_bizz</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">update_counter</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+</div>
+<p>このコードをPythonファイルに保存して実行すると、一秒ごとにカウントアップし、FuzzBizz問題を適用した結果が表示されるGUIが表示されます。カウントアップはupdate_counter関数で行い、一秒ごとにこの関数が実行されるように設定しています。FuzzBizz問題はfuzz_bizz関数で実装しています。</p>
+</blockquote>
+
+</details>
+<p>まあまあ、最低限うまく実装したなという感じがします。さすがと言うべきか、コードを一切編集せずに実行可能です。</p>
+<p>では次に、ロールを与えてから同じ問題を与えてみましょう。
+ポイントは、説明の仕方やコードの質についての指示</p>
+<blockquote>
+<p>あなたはSenior Python programmerで、WebデザインやUI/UXにも精通しています。あなたの仕事は与えられた命題をPythonや他の言語も利用しながら効率よくスマートに実装することであり、あなたの作成するcodeにはメンテナンスのしやすさや維持のしやすさが重視されている必要があります。そのため、ラインコメントを適宜使用し、後任の人物にもわかりやすいようなコード作成をする必要があります。</p>
+<blockquote>
+<p>以下をpythonで実装し、それを若手の新入社員に説明してください。</p>
+<ul>
+<li>一秒ごとに数字をカウントアップ</li>
+<li>カウントアップする数字はFuzzBizz問題を適用</li>
+<li>GUIで数字とFuzzBizzを美しいUIで表示</li>
+</ul>
+</blockquote>
+</blockquote>
+<details>
+    <summary>クリックして開く</summary>
+    <blockquote>
+<p>まず、PythonでFuzzBizz問題を解決し、一秒ごとに数字をカウントアップするプログラムを作成します。次に、Tkinterを使用してGUIを作成し、カウントアップとFuzzBizzの結果を美しいUIで表示します。以下にコードを示します。</p>
+<div>
+    <div class="codeblock--content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">time</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="o">*</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="n">ttk</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">fizz_buzz</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">   <span class="s2">&#34;&#34;&#34;FuzzBizz問題を解決する関数です。
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">   引数:
+</span></span></span><span class="line"><span class="cl"><span class="s2">       number (int): FuzzBizz問題に適用する整数
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">   戻り値:
+</span></span></span><span class="line"><span class="cl"><span class="s2">       str: FuzzBizz問題の結果
+</span></span></span><span class="line"><span class="cl"><span class="s2">   &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">   <span class="k">if</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">15</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">       <span class="k">return</span> <span class="s2">&#34;FizzBuzz&#34;</span>
+</span></span><span class="line"><span class="cl">   <span class="k">elif</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">       <span class="k">return</span> <span class="s2">&#34;Fizz&#34;</span>
+</span></span><span class="line"><span class="cl">   <span class="k">elif</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">       <span class="k">return</span> <span class="s2">&#34;Buzz&#34;</span>
+</span></span><span class="line"><span class="cl">   <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">       <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">update_count</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">   <span class="s2">&#34;&#34;&#34;カウントアップする数字とFuzzBizzの結果を更新し、ラベルに表示します。&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">   <span class="k">global</span> <span class="n">count</span>
+</span></span><span class="line"><span class="cl">   <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">   <span class="n">count_label</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">count</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">   <span class="n">fizz_buzz_result</span> <span class="o">=</span> <span class="n">fizz_buzz</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="n">fizz_buzz_label</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">fizz_buzz_result</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="n">root</span><span class="o">.</span><span class="n">after</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">update_count</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># GUIの作成</span>
+</span></span><span class="line"><span class="cl"><span class="n">root</span> <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&#34;FizzBuzzカウンター&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">frame</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s2">&#34;30 15&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">frame</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">S</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">count_label</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">count</span><span class="p">),</span> <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s2">&#34;Helvetica&#34;</span><span class="p">,</span> <span class="mi">24</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">count_label</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">fizz_buzz_label</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&#34;&#34;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s2">&#34;Helvetica&#34;</span><span class="p">,</span> <span class="mi">24</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">fizz_buzz_label</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># カウントアップとFuzzBizzの結果を更新</span>
+</span></span><span class="line"><span class="cl"><span class="n">root</span><span class="o">.</span><span class="n">after</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">update_count</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+</div>
+<p>このコードを新入社員に説明します。</p>
+<ol>
+<li>まず、<code>fizz_buzz</code>関数はFuzzBizz問題を解決するために作成されました。引数として整数を受け取り、FizzBuzzのルールに従って結果を返します。</li>
+<li><code>update_count</code>関数は、カウントアップの数字を更新し、FuzzBizzの結果を計算してGUI上に表示するために使用されます。</li>
+<li>Tkinterを使用して、メインウィンドウとラベルを作成しています。<code>frame</code>はレイアウトを整えるために使用されています。</li>
+<li><code>root.after(1000, update_count)</code>を使って、1秒ごとに<code>update_count</code>関数が実行されるようにしています。これにより、カウントアップが実現されます。</li>
+<li>最後に<code>root.mainloop()</code>でGUIが表示され、プログラムが実行されます。</li>
+</ol>
+<p>このコードを実行すると、数字が1秒ごとにカウントアップされ、FuzzBBuzzの結果が&gt;GUI上に表示されます。このプログラムは、簡潔かつ効率的にFizzBuzz問題とカウントアップの結果を扱っています。また、コメントを適宜使用してコードの可読性を向上させています。これにより、後任の人物がコードを理解しやすくなります。</p>
+</blockquote>
+<p>新入社員に以下の点を強調して説明します。&gt;</p>
+<blockquote>
+</blockquote>
+<p>関数の役割とパラメータ: fizz_buzzとupdate_count関数は、それぞれ何をするために&gt;存在し、どのような引数を受け取るのかを理解することが重要です。また、各関数がどのような値を返すかも説明しておきます。</p>
+<blockquote>
+</blockquote>
+<p>グローバル変数の使用: このプログラムでは、countをグローバル変数として使用しています。countはカウントアップの数字を保持し、関数内で更新されます。グローバル変数は適切に使用することで、プログラムの状態を管理しやすくなりますが、過度な使用は避けるべきです。</p>
+<blockquote>
+</blockquote>
+<p>Tkinterの基本: Tkinterは、Pythonの標準ライブラリでGUIアプリケーションを作成するためのものです。ウィジェット（ラベルやボタンなど）の作成と配置、イベントの管理など、Tkinterを使用する際の基本的な概念を説明します。</p>
+<blockquote>
+</blockquote>
+<p>イベント駆動プログラミング: root.after(1000, update_count)は、イベント駆動プロ&gt;グラミングの一例です。このコードにより、1000ミリ秒（1秒）ごとにupdate_count関数が呼び出されます。イベント駆動プログラミングは、特定のイベント（時間経過、ボタンクリックなど）が発生したときに関数を実行する方法で、GUIアプリケーションにおいて一般的に使用されます。</p>
+<blockquote>
+</blockquote>
+<p>以上の説明を行い、新入社員がコードの構造と仕組みを理解できるようにサポートします。また、質問があれば適宜対応し、理解を深めることができるように助けます。</p>
+
+</details>
+<p>今回は劇的にコードの質が上がったわけではないですが、思った通りにdocstringsなどを書き加えてくれました。何度か試すと分かるのですが、ChatGPTは必ずしも思ったとおりの実装をしてくれるわけではありません。これがロール付与で解決するケースが多い気がするという感じ。</p>
+<p>ちなみに、<a class="link" href="https://github.com/f/awesome-chatgpt-prompts#prompts"  target="_blank" rel="noopener"
+    >Awesome ChatGPT Prompts</a>では<strong>Linuxターミナル</strong>や<strong>Japanese Kanji quiz machine</strong>などの変なロールを与える例についても紹介されています。</p>
+<iframe class="hatenablogcard" style="width:100%;height:155px;" src="https://hatenablog-parts.com/embed?url=https%3a%2f%2fgithub.com%2ff%2fawesome-chatgpt-prompts%23prompts" width="300" height="150" frameborder="0" scrolling="no"></iframe>
+
+<h2 id="chatgptで気をつけたい話題">ChatGPTで気をつけたい話題</h2>
+<h3 id="嘘つき">嘘つき</h3>
+<p>有名な話ですが、ChatGPTは事実では無いことやChatGPTが知らない事に関して、知ったかぶりをします。この現象はhallucinationと言われています。ChatGPT3.5ではそれが露骨だったのですが、GPT4ではかなりの部分で改善しているそうです。</p>
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">ChatGPTには極めて深刻な問題、Hallucinationを抱えています。Hallucinationは噛み砕いていうと、しれっと嘘をつく現象です。ユーザーがこの嘘を嘘と見抜けない領域にChatGPTを適用するのは誤った理解を促す可能性があります。これはインターネット黎明期に似ています。<a href="https://t.co/3hQmbyVpRw">https://t.co/3hQmbyVpRw</a></p>&mdash; あるふ (@alfredplpl) <a href="https://twitter.com/alfredplpl/status/1639871504870699009?ref_src=twsrc%5Etfw">March 26, 2023</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>また、現在クローズドベータテスト中の機能でWebGPTという検索機能を含むChatGPTもあるそうです。GPT4を搭載しかつ検索にもチューニングされたモデルとしてはBing検索も質が高いですね。検索情報を引用しつつ回答を作成してくれるAIなら多少信用度が増します。</p>
+<p>以前からあるものとしては<a class="link" href="https://www.perplexity.ai/"  target="_blank" rel="noopener"
+    >perplexity.ai</a>も非常に良いです。</p>
+<p>これらのように検索エンジンを使い、出典を明記してくれるなら信用度は格段に上がります。</p>
+
+<blockquote class="md-hint warning">
+
+とは言えネットの情報がデマである可能性を忘れてはなりません。いくら出典が添付されていても真実は自分で読んで確かめるのが一番です。
+
+</blockquote>
+<h3 id="勢力争い">勢力争い</h3>
+<p>GoogleのBardだけではなく、様々なAIが登場してきています。とりわけChatGPTを開発しているOpenAIはマイクロソフトの資金提供を受けていますから、マイクロソフト社の製品に次々とChatGPTが組み込まれています。BaiduやGoogleなどの他の営利企業は、この情況を良く思っておらず非常に焦っている姿が伺えます。</p>
+<p>OpenAIの共同創業者でもあったイーロンマスクは、最早OpenAIが非営利企業ではなく、営利企業のマイクロソフトのための犬になってしまっていると批判しています。</p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">OpenAI was created as an open source (which is why I named it “Open” AI), non-profit company to serve as a counterweight to Google, but now it has become a closed source, maximum-profit company effectively controlled by Microsoft.<br><br>Not what I intended at all.</p>&mdash; Elon Musk (@elonmusk) <a href="https://twitter.com/elonmusk/status/1626516035863212034?ref_src=twsrc%5Etfw">February 17, 2023</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<blockquote class="md-hint info">
+
+結局BaiduもLLMモデルを発表しました。しかし内部の噂によると、完成したモデルは中国の諺をあまり知らないのだとか。情報統制下の国ではたとえ自国の言語でも良いクオリティのモデルは作れないのかもしれません。
+
+<blockquote class="md-hint %!s(<nil>)">
+
+
+### 倫理的問題
+
+ChatGPTはあまりに凄すぎたのか、倫理的な問題から法整備等の準備をすべきだという声が上がっています。イーロンマスクやAI研究者達が[今日から6ヶ月間AI研究を完全停止して、AIの使い方について議論すべきだという署名を開始したりもしています](https://time.com/6266679/musk-ai-open-letter/)。(私はこの運動には懐疑的です)
+
+
+<blockquote class="md-hint info">
+
+結局イーロンはTruthGPTなるものを開発すると発表しました。この署名は本当にくだらないもので、ChatGPTに先を越された人たちの負け惜しみでしかなかったようです。
+
+</blockquote>
+
+また、解決されつつありますが、InjectionやJail breakといった手法でChatGPTがハックされてしまう可能性があります。GPT4でアプリ開発をしている人たちは要注意です。
+
+あと、DeeplやChatGPTは入力した内容を学習に使用します。個人情報などは絶対に入力してはいけません。・・・といっても入力する人が絶対いるので、これもリスクでしょうね。APIなら収集していないようです。
+
+また、古典的なステレオタイプに基づいてものを言う癖がある点も海外では問題視されています。試しにBingなどで日本人の画像を生成してみてください。とんでもないアジア人への偏見だなって思うような、細くつり上がった目・飛び出た頬骨・ふっくらした輪郭と体型になります。
+
+<iframe class="hatenablogcard" style="width:100%;height:155px;" src="https://hatenablog-parts.com/embed?url=https%3a%2f%2fwww.technologyreview.jp%2fs%2f302564%2fwhat-if-we-could-just-ask-ai-to-be-less-biased%2f" width="300" height="150" frameborder="0" scrolling="no"></iframe>
+
+
+他にも倫理的問題を挙げればキリが無いと思いますが、**「AIがヒトを支配する」とかいった、いつ起こるか予想できないほど遠い未来の話と、Hallucinationのような現実的な話は切り離して考える必要があります。**この辺をごっちゃにして考えてしまっている人をSNSでよく見かけます。
+
+## 最後に
+
+一ヶ月前に書いた文章をかき集めたので無いようがとっちらかってしまいました。
+
+最近、色々な方からChatGPTに関して質問をされますが、<mark>あ～まだChatGPTへの誤解は大きいな～と思うことが多い</mark>ので、いずれ包括的な解説記事も書こうと思っています。
+
+ではまた！
+</blockquote>
+</blockquote>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/ai/">ai</a>
+        
+            <a href="/tags/gpt4/">gpt4</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">関連するコンテンツ</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/ai-prompting/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">AI新時代の2023年を生き抜くためにAIを学ぶ②</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/ai-translate/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">AI新時代の2023年を生き抜くためにAIを学ぶ①</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/sagamihara-39-map/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">pdfファイルの住所情報を抽出してGoogleMapに表示させる</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/python-linter-formatter/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Pythonのlinterとformatter事情(@VisualStudioCode)</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/python-subprocess/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">subprocessライブラリの使い方って結局何が正解なん</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "qu-kechu-shibaioinhuomateishiyannotech-blog" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2023 駆け出しバイオインフォマティシャンのtech blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        テーマ <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> は <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> によって設計されています。
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目次</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#この記事のテーマ">この記事のテーマ</a></li>
+    <li><a href="#プロンプティングスキルを極めた例">プロンプティングスキルを極めた例</a>
+      <ol>
+        <li><a href="#無数のペルソナを生み出してペルソナ同士で考えさせる">無数のペルソナを生み出して、ペルソナ同士で考えさせる</a></li>
+        <li><a href="#あなたはプロのです">あなたはプロの**です</a></li>
+      </ol>
+    </li>
+    <li><a href="#chatgptで気をつけたい話題">ChatGPTで気をつけたい話題</a>
+      <ol>
+        <li><a href="#嘘つき">嘘つき</a></li>
+        <li><a href="#勢力争い">勢力争い</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

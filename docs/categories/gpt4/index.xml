@@ -6,7 +6,533 @@
         <description>Recent content in GPT4 on 駆け出しバイオインフォマティシャンのtech blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Sun, 26 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://snitch0.github.io/categories/gpt4/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 04 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://snitch0.github.io/categories/gpt4/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>AI新時代の2023年を生き抜くためにAIを学ぶ③</title>
+        <link>https://snitch0.github.io/p/ai-post-prompting/</link>
+        <pubDate>Thu, 04 May 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://snitch0.github.io/p/ai-post-prompting/</guid>
+        <description>&lt;h2 id=&#34;この記事のテーマ&#34;&gt;この記事のテーマ&lt;/h2&gt;
+&lt;p&gt;一ヶ月前に書いた前回の記事ではプロンプティングについて調べました。その延長として極端にプロンプティングを極めるとどうなるか、という例もいくつか収集したのにアップするのを忘れていました。その他、ChatGPTに関わるハイレベルな内容もまとめます。&lt;/p&gt;
+&lt;p&gt;一ヶ月の間に色々と状況が変わった部分もあるので、適宜補足も加えます。&lt;/p&gt;
+&lt;h2 id=&#34;プロンプティングスキルを極めた例&#34;&gt;プロンプティングスキルを極めた例&lt;/h2&gt;
+&lt;h3 id=&#34;無数のペルソナを生み出してペルソナ同士で考えさせる&#34;&gt;無数のペルソナを生み出して、ペルソナ同士で考えさせる&lt;/h3&gt;
+&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;ja&#34; dir=&#34;ltr&#34;&gt;まじやばい！やった人はスクショ希望！&lt;br&gt;&lt;br&gt;目標：献立を考える&lt;br&gt;&lt;br&gt;専門家の数： 100…&lt;/p&gt;&amp;mdash; Shunsuke Hayashi（林 駿甫） (@HaveShun) &lt;a href=&#34;https://twitter.com/HaveShun/status/1638915003452637184?ref_src=twsrc%5Etfw&#34;&gt;March 23, 2023&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;ShunsukeさんはLLM(大規模言語モデル, ChatGPTやBardを支えるAI技術)の専門家ではないそうですが、経験的な観点から素晴らしい洞察をChatGPTに与えておられます。&lt;/p&gt;
+&lt;p&gt;NewsPicksで落合陽一さんがChatGPTについて語ってらっしゃいましたが、Twitter上で落合さんがShunsukeさんのことべた褒めしてましたね。Shunsukeさんや落合さんらが[変数]などと特定の概念を抽象化するようなプロンプトデザインのやりかたをX-promptと呼ぶそうです。&lt;/p&gt;
+&lt;p&gt;Shunsukeさんのめちゃめちゃ長いプロンプトを実行すると、次のようなものができます。&lt;/p&gt;
+&lt;details&gt;
+    &lt;summary&gt;クリックでプロンプト全文をみる&lt;/summary&gt;
+    &lt;blockquote&gt;
+&lt;p&gt;目標：献立を考える&lt;/p&gt;
+&lt;p&gt;専門家の数： 100
+専門家の数に対して専門家のペルソナを設定して専門家を具体的に表現してから専門家を使用してください専門家の表現の仕方は何の専門家であるかを明確に書いてください勝つ名前バックグラウンド覆面全て検討して考えて書いてください&lt;/p&gt;
+&lt;p&gt;プロンプト1:&lt;/p&gt;
+&lt;p&gt;抽象オブジェクト：[抽象オブジェクトを記述]&lt;/p&gt;
+&lt;p&gt;サブオブジェクト：[サブオブジェクト1]、[サブオブジェクト2]、[サブオブジェクト3]&amp;hellip;&lt;/p&gt;
+&lt;p&gt;知識：[知識1]、[知識2]、[知識3]&amp;hellip;&lt;/p&gt;
+&lt;p&gt;能力：[能力1]、[能力2]、[能力3]&amp;hellip;&lt;/p&gt;
+&lt;p&gt;管理オブジェクト：[管理オブジェクト1]、[管理オブジェクト2]、[管理オブジェクト3]&amp;hellip;&lt;/p&gt;
+&lt;p&gt;プロンプト2:&lt;/p&gt;
+&lt;p&gt;[手順1]
+[手順2]
+[手順3]
+&amp;hellip;
+N. [手順N]
+専門家プロンプト：&lt;/p&gt;
+&lt;p&gt;[専門家1のプロンプト1]
+[専門家1のプロンプト2]
+&amp;hellip;
+N. [専門家1のプロンプトN]
+[各専門家に対して上記のプロンプトを提供し、回答を収集します。]&lt;/p&gt;
+&lt;p&gt;プロンプトの評価：&lt;/p&gt;
+&lt;p&gt;評価基準アウトカム1のスコアアウトカム2のスコア専門家プロンプトのスコア
+明確さ[スコア1][スコア2][専門家プロンプト1のスコア]
+実行可能性[スコア1][スコア2][専門家プロンプト2のスコア]
+網羅性[スコア1][スコア2][専門家プロンプト3のスコア]
+柔軟性[スコア1][スコア2][専門家プロンプト4のスコア]
+目標達成の確率[スコア1][スコア2][専門家プロンプト5のスコア]
+合計スコア[合計スコア1][合計スコア2][合計専門家プロンプトスコア]
+最終アウトカムの選択とプロセス：&lt;/p&gt;
+&lt;p&gt;最終的なプロセスは、プロンプト1とプロンプト2のスコアの合計が最も高いものを選択します。また、専門家プロンプトのスコアも考慮に入れ、最終的な決定を下します。ただし、専門家プロンプトのスコアは、プロンプト1とプロンプト2のスコアよりも重要度が低いことに注意してください。&lt;/p&gt;
+&lt;p&gt;具体的には、以下の手順を実行します：&lt;/p&gt;
+&lt;p&gt;プロンプト1とプロンプト2を使用して、複数の回答を収集します。
+各回答のスコアを評価基準に基づいて計算します。
+各回答の合計スコアを計算します。
+最も高い合計スコアを持つ回答を選択します。
+専門家プロンプトのスコアを考慮に入れ、最終的な決定を下します。
+このプロセスを踏まえて、目標を達成するために必要なアクションプランを策定することができます。また、このプロセスは、複数の専門家の知識や能力を結集し、より正確な結論を導き出すことができます。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;/details&gt;
+&lt;details&gt;
+    &lt;summary&gt;クリックで全文をみる&lt;/summary&gt;
+    &lt;blockquote&gt;
+&lt;p&gt;目標：献立を考える&lt;/p&gt;
+&lt;p&gt;抽象オブジェクト：献立&lt;/p&gt;
+&lt;p&gt;サブオブジェクト：前菜、主菜、デザート&lt;/p&gt;
+&lt;p&gt;知識：栄養バランス、旬の食材、調理方法&lt;/p&gt;
+&lt;p&gt;能力：料理の組み合わせ、味のバランス、食材選び&lt;/p&gt;
+&lt;p&gt;管理オブジェクト：栄養価、食材コスト、調理時間&lt;/p&gt;
+&lt;p&gt;以下は、5名の専門家のペルソナ例です。&lt;/p&gt;
+&lt;p&gt;専門家1：山田太郎&lt;/p&gt;
+&lt;p&gt;背景：フレンチ料理のシェフ
+知識：フランス料理、旬の食材、ワイン
+能力：フレンチ料理の組み合わせ、味のバランス、食材選び
+専門家2：佐藤花子&lt;/p&gt;
+&lt;p&gt;背景：管理栄養士
+知識：栄養学、食材の栄養価、食事バランス
+能力：栄養バランスの良い献立作り、食材選び
+専門家3：鈴木一郎&lt;/p&gt;
+&lt;p&gt;背景：イタリア料理のシェフ
+知識：イタリア料理、パスタ、チーズ
+能力：イタリア料理の組み合わせ、味のバランス、食材選び
+専門家4：田中美咲&lt;/p&gt;
+&lt;p&gt;背景：和食料理人
+知識：和食、旬の食材、日本の食文化
+能力：和食の組み合わせ、味のバランス、食材選び
+専門家5：高橋健太&lt;/p&gt;
+&lt;p&gt;背景：料理研究家
+知識：家庭料理、レシピ開発、食材の保存方法
+能力：簡単で美味しい料理の提案、レシピ開発
+手順1：各専門家に献立案を提案してもらう
+手順2：提案された献立を栄養バランス、食材コスト、調理時間の観点から評価する
+手順3：評価結果を基に最適な献立を選ぶ&lt;/p&gt;
+&lt;p&gt;専門家プロンプト：&lt;/p&gt;
+&lt;p&gt;専門家1のプロンプト1：フレンチ料理をベースにした献立案を提案してください。
+専門家1のプロンプト2：旬の食材を活かしたフレンチ料理の組み合わせを教えてください。&lt;/p&gt;
+&lt;p&gt;専門家2のプロンプト1：栄養バランスが良い献立案を提案してください。
+専門家2のプロンプト2：食材選びのポイントを説明してください。&lt;/p&gt;
+&lt;p&gt;専門家3のプロンプト1：イタリア料理をベースにした献立案を提案してください。
+専門家3のプロンプト2：パスタとチーズを活かした料理の組み合わせを教えてください。&lt;/p&gt;
+&lt;p&gt;専門家4のプロンプト1：和食をベースにした献立案を提案してください。
+専門家4のプロンプト2：旬の食材を活かした和食の組み合わせを教えてください。&lt;/p&gt;
+&lt;p&gt;専門家5のプロンプト1：家庭料理をベースにした献立案を提案してください。
+専門家5のプロンプト2：手軽で美味しい料理の提案を教えてください。&lt;/p&gt;
+&lt;p&gt;各専門家からの回答を収集した後、評価基準に従ってスコアを付け、最適な献立を選択します。最終的な決定は、専門家プロンプトのスコアも考慮に入れますが、プロンプト1とプロンプト2のスコアが優先されます。&lt;/p&gt;
+&lt;p&gt;各専門家からの献立案を収集する
+評価基準（明確さ、実行可能性、網羅性、柔軟性、目標達成の確率）に基づいて、各献立案にスコアを付ける
+各献立案の合計スコアを計算する
+最も高い合計スコアを持つ献立案を選択する
+専門家プロンプトのスコアを考慮に入れ、最終的な決定を下す
+このプロセスを踏まえて、目標である献立を考えるためのアクションプランを策定することができます。また、このプロセスは、複数の専門家の知識や能力を結集し、より正確な結論を導き出すことができます。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;/details&gt;
+&lt;p&gt;まだ返答は完成していません。今行われたのは「ゴールを達成するプロセスを理解させ、第一段階として架空の料理人を生み出しただけ」です。&lt;/p&gt;
+&lt;p&gt;次に、そのプロセスに従って献立を考えてください。(=ゴールを達成せよ)と命じてみます。&lt;/p&gt;
+&lt;details&gt;
+    &lt;summary&gt;クリックで全文をみる&lt;/summary&gt;
+    &lt;blockquote&gt;
+&lt;p&gt;専門家1（フレンチ料理）：
+前菜：季節の野菜のサラダ、ビネグレットソース
+主菜：骨付き鶏もも肉のコンフィ、ロースト野菜添え
+デザート：アップルタルト、バニラアイスクリーム&lt;/p&gt;
+&lt;p&gt;専門家2（管理栄養士）：
+前菜：ミックスビーンズサラダ、ヨーグルトドレッシング
+主菜：焼き魚、玄米ご飯、ほうれん草のごま和え
+デザート：カットフルーツ&lt;/p&gt;
+&lt;p&gt;専門家3（イタリア料理）：
+前菜：カプレーゼサラダ
+主菜：ペンネアラビアータ、ガーリックパン
+デザート：ティラミス&lt;/p&gt;
+&lt;p&gt;専門家4（和食料理人）：
+前菜：季節のお浸し、刺身盛り合わせ
+主菜：煮魚、ごはん、味噌汁
+デザート：抹茶アイスクリーム&lt;/p&gt;
+&lt;p&gt;専門家5（料理研究家）：
+前菜：コールスローサラダ
+主菜：チキンカレー、ご飯
+デザート：プリン&lt;/p&gt;
+&lt;p&gt;評価基準に基づいてスコアをつけた結果は以下の通りです。&lt;/p&gt;
+&lt;p&gt;専門家1（フレンチ料理）：
+明確さ：5
+実行可能性：3
+網羅性：4
+柔軟性：3
+目標達成の確率：4
+合計スコア：19&lt;/p&gt;
+&lt;p&gt;専門家2（管理栄養士）：
+明確さ：4
+実行可能性：5
+網羅性：5
+柔軟性：4
+目標達成の確率：5
+合計スコア：23&lt;/p&gt;
+&lt;p&gt;専門家3（イタリア料理）：
+明確さ：4
+実行可能性：4
+網羅性：3
+柔軟性：3
+目標達成の確率：4
+合計スコア：18&lt;/p&gt;
+&lt;p&gt;専門家4（和食料理人）：
+明確さ：4
+実行可能性：4
+網羅性：4
+柔軟性：4
+目標達成の確率：4
+合計スコア：20&lt;/p&gt;
+&lt;p&gt;専門家5（料理研究家）：
+明確さ：5
+実行可能性：5
+網羅性：3
+柔軟性：柔軟性：3
+目標達成の確率：4
+合計スコア：20&lt;/p&gt;
+&lt;p&gt;評価基準に基づくと、専門家2（管理栄養士）の献立案が最も高い合計スコア（23）を持っています。したがって、この献立案が最も適切な選択となります。&lt;/p&gt;
+&lt;p&gt;最終的な献立：&lt;/p&gt;
+&lt;p&gt;前菜：ミックスビーンズサラダ、ヨーグルトドレッシング
+主菜：焼き魚、玄米ご飯、ほうれん草のごま和え
+デザート：カットフルーツ&lt;/p&gt;
+&lt;p&gt;このプロセスにより、目標である献立を考えるためのアクションプランが策定されました。各専門家の知識や能力を結集し、より正確な結論を導き出すことができました。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;/details&gt;
+&lt;p&gt;このプロンプトの何がすごいかというと、「今日の献立を考えて」といった&lt;strong&gt;抽象的なゴールを達成するために何を考慮すべきなのかを我々が知らなくても、思考のプロセスを与えるだけでChatGPTが考えてくれる&lt;/strong&gt;という点です。&lt;/p&gt;
+&lt;p&gt;Shunsukeさんはこれ以外にもゴールシークプロンプトというものを開発されています。ゴールシークプロンプトでは、ゴールを抽象的なものであると定義し、ゴールを達成するために必要なプロセスも曖昧なものであると定義します。その上で、ゴールを達成するために必要なプロセスを一からChatGPTに考えさせることで、step-by-stepで理論を組み立て、最終的にゴールを達成します。&lt;/p&gt;
+&lt;p&gt;例えば、ただ「ブログを書いて」とか「本を書いて」という命令は明らかにいい加減なプロンプティングですが、このゴールシークプロンプトを使うと、ChatGPTはプロセスごと何かを創作し提案してくれます。実際にこうして生成されたブログや本が有益かどうかはさておき、&lt;mark&gt;&lt;strong&gt;ゴールシークプロンプトは自分が対処できない課題に対してどういうアプローチを取るべきなのかを教わるにはこの上なく良いアプローチになるだろう&lt;/strong&gt;&lt;/mark&gt;と思っています。&lt;/p&gt;
+
+&lt;blockquote class=&#34;md-hint info&#34;&gt;
+
+そんなにこのメソッドが凄いならサービス化すればいいじゃないか、と思っていましたが、数週間前にサービス化されています。GoalGPT:
+
+https://beta.nando.ai/goalgpt.php
+
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;あなたはプロのです&#34;&gt;あなたはプロの**です&lt;/h3&gt;
+&lt;p&gt;これは有名な方法ですが、「あなたはプロの何々です」と言ってから本題の命令を与えると格段に精度が上がることがあります。&lt;/p&gt;
+&lt;p&gt;たとえば、私はPythonコードをChatGPTに教えて貰うことがあるのですが、普通は以下のようにプロンプトを投げるでしょう。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;pythonで以下を実装してください。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一秒ごとに数字をカウントアップ&lt;/li&gt;
+&lt;li&gt;カウントアップする数字はFuzzBizz問題を適用&lt;/li&gt;
+&lt;li&gt;GUIで数字とFuzzBizzを美しいUIで表示&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;結果は以下です。&lt;/p&gt;
+&lt;details&gt;
+    &lt;summary&gt;クリックして結果をみる&lt;/summary&gt;
+    &lt;blockquote&gt;
+&lt;p&gt;Pythonでは、Tkinterを使ってGUIを作成し、FuzzBizz問題の実装と一秒ごとのカウントアップを行うことができます。以下はその実装例です。&lt;/p&gt;
+&lt;div&gt;
+    &lt;div class=&#34;codeblock--content&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;python&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Copy&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;code&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;tkinter&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;tk&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;time&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;fuzz_bizz&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;and&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;       &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;FuzzBizz&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;elif&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;       &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Fuzz&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;elif&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;       &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Bizz&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;       &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;update_counter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;():&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;global&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;counter&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;n&#34;&gt;counter&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;n&#34;&gt;label_counter&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;config&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;text&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;カウントアップ: &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;counter&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;n&#34;&gt;label_fuzz_bizz&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;config&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;text&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;FuzzBizz: &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fuzz_bizz&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;counter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;n&#34;&gt;root&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;after&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;update_counter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;counter&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;root&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tk&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Tk&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;root&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;FuzzBizz カウンター&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;label_counter&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tk&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Label&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;root&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;text&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;カウントアップ: &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;counter&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;font&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Helvetica&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;16&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;label_counter&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pack&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pady&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;label_fuzz_bizz&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tk&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Label&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;root&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;text&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;FuzzBizz: &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fuzz_bizz&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;counter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;font&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Helvetica&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;16&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;label_fuzz_bizz&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pack&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pady&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;update_counter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;root&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mainloop&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;このコードをPythonファイルに保存して実行すると、一秒ごとにカウントアップし、FuzzBizz問題を適用した結果が表示されるGUIが表示されます。カウントアップはupdate_counter関数で行い、一秒ごとにこの関数が実行されるように設定しています。FuzzBizz問題はfuzz_bizz関数で実装しています。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;/details&gt;
+&lt;p&gt;まあまあ、最低限うまく実装したなという感じがします。さすがと言うべきか、コードを一切編集せずに実行可能です。&lt;/p&gt;
+&lt;p&gt;では次に、ロールを与えてから同じ問題を与えてみましょう。
+ポイントは、説明の仕方やコードの質についての指示&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;あなたはSenior Python programmerで、WebデザインやUI/UXにも精通しています。あなたの仕事は与えられた命題をPythonや他の言語も利用しながら効率よくスマートに実装することであり、あなたの作成するcodeにはメンテナンスのしやすさや維持のしやすさが重視されている必要があります。そのため、ラインコメントを適宜使用し、後任の人物にもわかりやすいようなコード作成をする必要があります。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;以下をpythonで実装し、それを若手の新入社員に説明してください。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一秒ごとに数字をカウントアップ&lt;/li&gt;
+&lt;li&gt;カウントアップする数字はFuzzBizz問題を適用&lt;/li&gt;
+&lt;li&gt;GUIで数字とFuzzBizzを美しいUIで表示&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;details&gt;
+    &lt;summary&gt;クリックして開く&lt;/summary&gt;
+    &lt;blockquote&gt;
+&lt;p&gt;まず、PythonでFuzzBizz問題を解決し、一秒ごとに数字をカウントアップするプログラムを作成します。次に、Tkinterを使用してGUIを作成し、カウントアップとFuzzBizzの結果を美しいUIで表示します。以下にコードを示します。&lt;/p&gt;
+&lt;div&gt;
+    &lt;div class=&#34;codeblock--content&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;40
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;41
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;42
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;43
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;44
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;45
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;46
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;47
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;48
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;49
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;50
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;51
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;52
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;53
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;time&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;tkinter&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;tkinter&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ttk&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;fizz_buzz&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&amp;#34;FuzzBizz問題を解決する関数です。
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;   引数:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;       number (int): FuzzBizz問題に適用する整数
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;   戻り値:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;       str: FuzzBizz問題の結果
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;   &amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;number&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;15&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;       &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;FizzBuzz&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;elif&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;number&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;       &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Fizz&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;elif&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;number&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;       &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Buzz&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;       &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;update_count&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;():&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&amp;#34;カウントアップする数字とFuzzBizzの結果を更新し、ラベルに表示します。&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;global&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;count&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;n&#34;&gt;count&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;n&#34;&gt;count_label&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;config&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;text&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;count&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;n&#34;&gt;fizz_buzz_result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fizz_buzz&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;count&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;n&#34;&gt;fizz_buzz_label&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;config&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;text&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fizz_buzz_result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;n&#34;&gt;root&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;after&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;update_count&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;count&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# GUIの作成&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;root&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Tk&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;root&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;FizzBuzzカウンター&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;frame&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ttk&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Frame&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;root&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;padding&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;30 15&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;frame&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;grid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;row&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;column&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sticky&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;W&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;E&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;N&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;S&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;count_label&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ttk&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Label&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;frame&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;text&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;count&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;font&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Helvetica&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;24&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;count_label&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;grid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;row&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;column&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pady&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;fizz_buzz_label&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ttk&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Label&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;frame&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;text&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;font&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Helvetica&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;24&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;fizz_buzz_label&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;grid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;row&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;column&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pady&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# カウントアップとFuzzBizzの結果を更新&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;root&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;after&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;update_count&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;root&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mainloop&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;このコードを新入社員に説明します。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;まず、&lt;code&gt;fizz_buzz&lt;/code&gt;関数はFuzzBizz問題を解決するために作成されました。引数として整数を受け取り、FizzBuzzのルールに従って結果を返します。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;update_count&lt;/code&gt;関数は、カウントアップの数字を更新し、FuzzBizzの結果を計算してGUI上に表示するために使用されます。&lt;/li&gt;
+&lt;li&gt;Tkinterを使用して、メインウィンドウとラベルを作成しています。&lt;code&gt;frame&lt;/code&gt;はレイアウトを整えるために使用されています。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;root.after(1000, update_count)&lt;/code&gt;を使って、1秒ごとに&lt;code&gt;update_count&lt;/code&gt;関数が実行されるようにしています。これにより、カウントアップが実現されます。&lt;/li&gt;
+&lt;li&gt;最後に&lt;code&gt;root.mainloop()&lt;/code&gt;でGUIが表示され、プログラムが実行されます。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;このコードを実行すると、数字が1秒ごとにカウントアップされ、FuzzBBuzzの結果が&amp;gt;GUI上に表示されます。このプログラムは、簡潔かつ効率的にFizzBuzz問題とカウントアップの結果を扱っています。また、コメントを適宜使用してコードの可読性を向上させています。これにより、後任の人物がコードを理解しやすくなります。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;新入社員に以下の点を強調して説明します。&amp;gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;関数の役割とパラメータ: fizz_buzzとupdate_count関数は、それぞれ何をするために&amp;gt;存在し、どのような引数を受け取るのかを理解することが重要です。また、各関数がどのような値を返すかも説明しておきます。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;グローバル変数の使用: このプログラムでは、countをグローバル変数として使用しています。countはカウントアップの数字を保持し、関数内で更新されます。グローバル変数は適切に使用することで、プログラムの状態を管理しやすくなりますが、過度な使用は避けるべきです。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Tkinterの基本: Tkinterは、Pythonの標準ライブラリでGUIアプリケーションを作成するためのものです。ウィジェット（ラベルやボタンなど）の作成と配置、イベントの管理など、Tkinterを使用する際の基本的な概念を説明します。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;イベント駆動プログラミング: root.after(1000, update_count)は、イベント駆動プロ&amp;gt;グラミングの一例です。このコードにより、1000ミリ秒（1秒）ごとにupdate_count関数が呼び出されます。イベント駆動プログラミングは、特定のイベント（時間経過、ボタンクリックなど）が発生したときに関数を実行する方法で、GUIアプリケーションにおいて一般的に使用されます。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;以上の説明を行い、新入社員がコードの構造と仕組みを理解できるようにサポートします。また、質問があれば適宜対応し、理解を深めることができるように助けます。&lt;/p&gt;
+
+&lt;/details&gt;
+&lt;p&gt;今回は劇的にコードの質が上がったわけではないですが、思った通りにdocstringsなどを書き加えてくれました。何度か試すと分かるのですが、ChatGPTは必ずしも思ったとおりの実装をしてくれるわけではありません。これがロール付与で解決するケースが多い気がするという感じ。&lt;/p&gt;
+&lt;p&gt;ちなみに、&lt;a class=&#34;link&#34; href=&#34;https://github.com/f/awesome-chatgpt-prompts#prompts&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Awesome ChatGPT Prompts&lt;/a&gt;では&lt;strong&gt;Linuxターミナル&lt;/strong&gt;や&lt;strong&gt;Japanese Kanji quiz machine&lt;/strong&gt;などの変なロールを与える例についても紹介されています。&lt;/p&gt;
+&lt;iframe class=&#34;hatenablogcard&#34; style=&#34;width:100%;height:155px;&#34; src=&#34;https://hatenablog-parts.com/embed?url=https%3a%2f%2fgithub.com%2ff%2fawesome-chatgpt-prompts%23prompts&#34; width=&#34;300&#34; height=&#34;150&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34;&gt;&lt;/iframe&gt;
+
+&lt;h2 id=&#34;chatgptで気をつけたい話題&#34;&gt;ChatGPTで気をつけたい話題&lt;/h2&gt;
+&lt;h3 id=&#34;嘘つき&#34;&gt;嘘つき&lt;/h3&gt;
+&lt;p&gt;有名な話ですが、ChatGPTは事実では無いことやChatGPTが知らない事に関して、知ったかぶりをします。この現象はhallucinationと言われています。ChatGPT3.5ではそれが露骨だったのですが、GPT4ではかなりの部分で改善しているそうです。&lt;/p&gt;
+&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;ja&#34; dir=&#34;ltr&#34;&gt;ChatGPTには極めて深刻な問題、Hallucinationを抱えています。Hallucinationは噛み砕いていうと、しれっと嘘をつく現象です。ユーザーがこの嘘を嘘と見抜けない領域にChatGPTを適用するのは誤った理解を促す可能性があります。これはインターネット黎明期に似ています。&lt;a href=&#34;https://t.co/3hQmbyVpRw&#34;&gt;https://t.co/3hQmbyVpRw&lt;/a&gt;&lt;/p&gt;&amp;mdash; あるふ (@alfredplpl) &lt;a href=&#34;https://twitter.com/alfredplpl/status/1639871504870699009?ref_src=twsrc%5Etfw&#34;&gt;March 26, 2023&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;また、現在クローズドベータテスト中の機能でWebGPTという検索機能を含むChatGPTもあるそうです。GPT4を搭載しかつ検索にもチューニングされたモデルとしてはBing検索も質が高いですね。検索情報を引用しつつ回答を作成してくれるAIなら多少信用度が増します。&lt;/p&gt;
+&lt;p&gt;以前からあるものとしては&lt;a class=&#34;link&#34; href=&#34;https://www.perplexity.ai/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;perplexity.ai&lt;/a&gt;も非常に良いです。&lt;/p&gt;
+&lt;p&gt;これらのように検索エンジンを使い、出典を明記してくれるなら信用度は格段に上がります。&lt;/p&gt;
+
+&lt;blockquote class=&#34;md-hint warning&#34;&gt;
+
+とは言えネットの情報がデマである可能性を忘れてはなりません。いくら出典が添付されていても真実は自分で読んで確かめるのが一番です。
+
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;勢力争い&#34;&gt;勢力争い&lt;/h3&gt;
+&lt;p&gt;GoogleのBardだけではなく、様々なAIが登場してきています。とりわけChatGPTを開発しているOpenAIはマイクロソフトの資金提供を受けていますから、マイクロソフト社の製品に次々とChatGPTが組み込まれています。BaiduやGoogleなどの他の営利企業は、この情況を良く思っておらず非常に焦っている姿が伺えます。&lt;/p&gt;
+&lt;p&gt;OpenAIの共同創業者でもあったイーロンマスクは、最早OpenAIが非営利企業ではなく、営利企業のマイクロソフトのための犬になってしまっていると批判しています。&lt;/p&gt;
+&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;OpenAI was created as an open source (which is why I named it “Open” AI), non-profit company to serve as a counterweight to Google, but now it has become a closed source, maximum-profit company effectively controlled by Microsoft.&lt;br&gt;&lt;br&gt;Not what I intended at all.&lt;/p&gt;&amp;mdash; Elon Musk (@elonmusk) &lt;a href=&#34;https://twitter.com/elonmusk/status/1626516035863212034?ref_src=twsrc%5Etfw&#34;&gt;February 17, 2023&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
+
+
+&lt;blockquote class=&#34;md-hint info&#34;&gt;
+
+結局BaiduもLLMモデルを発表しました。しかし内部の噂によると、完成したモデルは中国の諺をあまり知らないのだとか。情報統制下の国ではたとえ自国の言語でも良いクオリティのモデルは作れないのかもしれません。
+
+&lt;blockquote class=&#34;md-hint %!s(&lt;nil&gt;)&#34;&gt;
+
+
+### 倫理的問題
+
+ChatGPTはあまりに凄すぎたのか、倫理的な問題から法整備等の準備をすべきだという声が上がっています。イーロンマスクやAI研究者達が[今日から6ヶ月間AI研究を完全停止して、AIの使い方について議論すべきだという署名を開始したりもしています](https://time.com/6266679/musk-ai-open-letter/)。(私はこの運動には懐疑的です)
+
+
+&lt;blockquote class=&#34;md-hint info&#34;&gt;
+
+結局イーロンはTruthGPTなるものを開発すると発表しました。この署名は本当にくだらないもので、ChatGPTに先を越された人たちの負け惜しみでしかなかったようです。
+
+&lt;/blockquote&gt;
+
+また、解決されつつありますが、InjectionやJail breakといった手法でChatGPTがハックされてしまう可能性があります。GPT4でアプリ開発をしている人たちは要注意です。
+
+あと、DeeplやChatGPTは入力した内容を学習に使用します。個人情報などは絶対に入力してはいけません。・・・といっても入力する人が絶対いるので、これもリスクでしょうね。APIなら収集していないようです。
+
+また、古典的なステレオタイプに基づいてものを言う癖がある点も海外では問題視されています。試しにBingなどで日本人の画像を生成してみてください。とんでもないアジア人への偏見だなって思うような、細くつり上がった目・飛び出た頬骨・ふっくらした輪郭と体型になります。
+
+&lt;iframe class=&#34;hatenablogcard&#34; style=&#34;width:100%;height:155px;&#34; src=&#34;https://hatenablog-parts.com/embed?url=https%3a%2f%2fwww.technologyreview.jp%2fs%2f302564%2fwhat-if-we-could-just-ask-ai-to-be-less-biased%2f&#34; width=&#34;300&#34; height=&#34;150&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34;&gt;&lt;/iframe&gt;
+
+
+他にも倫理的問題を挙げればキリが無いと思いますが、**「AIがヒトを支配する」とかいった、いつ起こるか予想できないほど遠い未来の話と、Hallucinationのような現実的な話は切り離して考える必要があります。**この辺をごっちゃにして考えてしまっている人をSNSでよく見かけます。
+
+## 最後に
+
+一ヶ月前に書いた文章をかき集めたので無いようがとっちらかってしまいました。
+
+最近、色々な方からChatGPTに関して質問をされますが、&lt;mark&gt;あ～まだChatGPTへの誤解は大きいな～と思うことが多い&lt;/mark&gt;ので、いずれ包括的な解説記事も書こうと思っています。
+
+ではまた！
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+</description>
+        </item>
+        <item>
         <title>AI新時代の2023年を生き抜くためにAIを学ぶ②</title>
         <link>https://snitch0.github.io/p/ai-prompting/</link>
         <pubDate>Sun, 26 Mar 2023 00:00:00 +0000</pubDate>
