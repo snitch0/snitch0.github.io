@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>deepl on 駆け出しバイオインフォマティシャンのtech blog</title>
+        <title>deepl on バイオベンチャーBIのtech blog</title>
         <link>https://snitch0.github.io/tags/deepl/</link>
-        <description>Recent content in deepl on 駆け出しバイオインフォマティシャンのtech blog</description>
+        <description>Recent content in deepl on バイオベンチャーBIのtech blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
         <lastBuildDate>Sat, 18 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://snitch0.github.io/tags/deepl/index.xml" rel="self" type="application/rss+xml" /><item>
@@ -426,6 +426,253 @@ NotionはProアカウントにアップグレードすることで無制限に�
 &lt;p&gt;DeepLは読みやすいし、内容がすらすら頭に入ってくる。それ以外は読んでいくと途中でつまづくような、そんな違和感がありました。&lt;/p&gt;
 &lt;p&gt;OpenAIのAPIも今回初めて使ってみましたが、意外にお金がかかることに気がつきました。本格的に業務利用するまでは控えておこう。&lt;/p&gt;
 &lt;p&gt;今度はDeepLAPIでInoreaderのヘッドラインを自動翻訳する仕組みを作りたい。&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>生物系研究者のためのChatGPT入門</title>
+        <link>https://snitch0.github.io/p/ai-translate/</link>
+        <pubDate>Sat, 18 Mar 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://snitch0.github.io/p/ai-translate/</guid>
+        <description>&lt;h2 id=&#34;この記事ではchatgptに関する誤解を解きます&#34;&gt;この記事ではChatGPTに関する誤解を解きます&lt;/h2&gt;
+&lt;p&gt;2022年末にChatGPTが一般向けにリリースされた時はエンジニア界隈と機械学習界隈が盛り上がるだけでしたが、GPT4をベースにしたChatGPTがリリースされた2023年3月以降はテレビや新聞でも大々的に取り上げられるようになり、世界中の人たちが汎用AIに注目するようになりましたね。そもそも機械学習の原理に明るくない人からすると突然人間に取って代わるようなAIが登場したので、ターミネーターのスカイネット・マトリックスの機械世界のような未来がすぐそばまで来ているのではないか？といった漠然とした恐怖が広がっている節があるように思います。&lt;/p&gt;
+&lt;p&gt;また、ChatGPTはよく分からんけど凄い！という文脈でもChatGPTを過大評価しているようなケースも多く見受けられます。特に、以前述べたHallucination&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;の危険性を知らずに「この利用法はスゲーだろ！」と声高らかにTwitterでシェアしている方がちらほら見受けられることに危険性を感じます。さらに怖いのは、かつてのWeb3信者のような盲信的サポーターがこうしたデマを無条件に信じてしまっていることです。&lt;/p&gt;
+&lt;p&gt;Twitterの世直しは私には荷が重すぎるので、少なくとも私の周囲の方々がChatGPTを上手に扱うお手伝いができれば良いな、と思ってこの記事を作成しています。&lt;/p&gt;
+&lt;h3 id=&#34;この記事を読むとこんなことが分かる&#34;&gt;この記事を読むとこんなことが分かる&lt;/h3&gt;
+&lt;p&gt;この記事では以下の内容を深掘りしていこうと思います。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ChatGPTとGPT、、、って何？&lt;/li&gt;
+&lt;li&gt;GPTは&amp;quot;思考&amp;quot;をしない、ただの確率モデルである&lt;/li&gt;
+&lt;li&gt;ChatGPTは事実ではないことを、さも事実かのように述べる&lt;/li&gt;
+&lt;li&gt;ChatGPTは2021年以降の事を知らない&lt;/li&gt;
+&lt;li&gt;ChatGPTは計算ができない&lt;/li&gt;
+&lt;li&gt;個人情報は入力しちゃ絶対だめ！&lt;/li&gt;
+&lt;li&gt;ChatGPTが得意なことは作文とプログラミング&lt;/li&gt;
+&lt;li&gt;GPTは近い将来あらゆるアプリに組み込まれる&lt;/li&gt;
+&lt;li&gt;生物系研究者はAIをどう活用すべきか&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote class=&#34;md-hint danger&#34;&gt;
+
+この記事の執筆者は深層学習やLLMの研究の専門家ではなく、機械学習やゲノム解析を専門とする生物情報学の研究者です。
+GPTに関して間違った説明をしていたら教えていただけますと幸いです。
+
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;chatgptとgptって何&#34;&gt;ChatGPTとGPT、、、って何？&lt;/h2&gt;
+&lt;p&gt;ChatGPTはGPTという言語モデルを使ったサービスの名前です。GPTとは、Generalized Pretrained Transformerの略で、Transformerという言語モデルをベースに汎用AIとして深層学習させた言語モデルの一種です。&lt;/p&gt;
+&lt;p&gt;いきなり難しい言葉が沢山でてきましたね。まずは深層学習から始めて、一つずつ説明していきます。&lt;/p&gt;
+&lt;h3 id=&#34;深層学習とは&#34;&gt;深層学習とは&lt;/h3&gt;
+&lt;p&gt;深層学習とは、ニューラルネットワークを祖とする機械学習モデルの一種です。機械学習と聞くと難しそうな雰囲気がしますが、最小自乗法の線形回帰だって機械学習です。要は数式を枠組みとして用意しておいて、データをうまく説明出来るように係数を推定しているのです。ニューラルネットワーク以前は本当にシンプルな数式ですべての自然現象を説明しようと頑張っていました。多項式回帰や重回帰、ランダムフォレストなどがこの分野に該当します。&lt;/p&gt;
+&lt;p&gt;ニューラルネットワークは文字通り生物の神経組織を模したもので、これまた機械学習の一種です。複数のニューロンが複数のニューロンから情報を受け取り、時にはその情報信号を増強したり抑制したりしながらこねくり回しつつ、最後にはシンプルな結果を出力するというものです。データをうまく説明できるように学習させる際には、この情報の増強/抑制の程度を推定します。深層学習はニューラルネットワークの層を増やして、深くしたものと考えておけば良いと思います。画像処理や言語処理など様々な分野において、深層学習はものの数年でそれまでの研究史を塗り替えるような高い精度の予測モデルを実現してきたため、2010年代後半のAIブームを支えてきました。&lt;/p&gt;
+&lt;p&gt;もう一度ChatGPTに話を戻すと、ChatGPTはこの深層学習がベースになっています。機械学習を通じて、文字列情報を入力として受け取り、情報を多層のニューラルネットワークに通して、なんらかの文字列情報を出力する確率モデルを作り出しています。機械学習によって作り出された確率モデルがGPT-3.5やGPT-4です。&lt;/p&gt;
+&lt;p&gt;確率モデルの話はこの後の「GPTは&amp;quot;思考&amp;quot;をしない、ただの確率モデルである」にて説明します。&lt;/p&gt;
+&lt;h3 id=&#34;gptはどういう経緯で生まれたか&#34;&gt;GPTはどういう経緯で生まれたか&lt;/h3&gt;
+&lt;p&gt;ニューラルネットワークの発想はアラン・チューリングが&amp;quot;On Computable Numbers&amp;quot;(1937)で既に述べており、ジョンフォンノイマンらがその応用方法などについても示していましたが、今ほどは流行っていませんでした。その理由は単純で、当時の機械学習モデルは精度が良くなかったのです。&lt;/p&gt;
+&lt;p&gt;今のAIブームは&lt;a class=&#34;link&#34; href=&#34;https://dl.acm.org/doi/10.1145/3065386&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;2012年に発表されたジェフェリー・ヒントンらの論文&lt;/a&gt;がきっかけになっています。この論文はImageNet Large Scale Visual Recognition Challengeというコンペで彼らが優勝したときの手法を述べたもので、深層学習を使っていました。ポイントは畳み込み層というものを用意したことや、情報の増幅/抑制にReLU関数というものを導入したことでした。また、膨大な計算をGPUで高速に処理できるよう実装したことも現代的な深層学習にも通ずるポイントです。実のところジェフェリー・ヒントンらのモデルの精度を上回るものが翌年には出てきたため、つかの間のベスト精度だったわけですが、畳み込みニューラルネットワークをベースとして、活性化関数にReLU関数に採用するだけで、様々な画像認識タスクでいとも簡単に良い精度のモデルが作れるようになりました。ここから爆発的にAIブームが始まったと言われています。この時代はCNN(Convolutional Neural Network)の時代だと言われます。&lt;/p&gt;
+&lt;p&gt;CNNは言語モデルにおいてはあまり役に立たないのですが、短期的な記憶能力を実装したRNN(Recurrent Neural Network)を使うことで自然言語タスクでも深層学習が活躍するようになります。しかし、RNNを使った言語モデルは長文に対応できないなどの致命的な欠点がありました。ブレイクスルーは&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/abs/1409.0473&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;2014年のAttention機構&lt;/a&gt;とXX年のTransformerモデルの発表です。Attension機構は人間の認知科学を参考にしたもので、重要な部分のパラメーターを重くすることでデータの一部分に注目し、データ全体を的確に捉えようとするものです。XX年にGoogleから発表されたTransformerモデルは現在のGPT、GoogleのBardなど、昨今の全ての言語モデルの礎となった極めて重要なモデルです。Transformerモデルを発表した論文のタイトルはズバリ&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/abs/1706.03762&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;&amp;ldquo;Attention Is All You Need&amp;rdquo;&lt;/a&gt;。RNN層などは使わず、当時はサポーティブな技術だったAttetion機構をメインに採用した、画期的なモデルでした。&lt;/p&gt;
+&lt;p&gt;Transformerは翻訳タスクにおいて非常に良い性能を発揮しました。どれくらい良い性能だったかと言うと、未知単語は無いという条件のもとでは数十年かけて構築されてきた過去の言語モデルに匹敵する精度だったのです。Transformerモデルはこれまでの言語モデルの欠点を解決したモデルです。このモデルをベースに、Google、Meta、OpenAIなどが独自の学習データを用意し、独自のモデルを作るようになっていきます。&lt;/p&gt;
+&lt;p&gt;Meta(旧Facebook)が作ったのはBERT(2018)という機械学習手法で、しばらくの間はBERTがこの業界のメインストリームでした。この頃、私の知人がBERTを使ったSNSのデータ分析をやりたがっていたのを覚えています。OpenAIはその間にMicrosoftの出資を受けながら現在のGPTを開発していました。その成果が今になって結実したということになります。&lt;/p&gt;
+
+&lt;blockquote class=&#34;md-hint info&#34;&gt;
+
+当時のAI開発は基本的にオープンソース(内部のプログラム等を全て公開する)で進められており、GAFAがバチバチと競争するような状況ではありませんでした。そのため、Transformerモデルのような画期的な発明でもプレプリントにサクッと公開してしまっていました。個人的には「協力して集合知で最強のAIを作ろうぜ！」という当時の雰囲気は結構好きでしたが、ChatGPT以降はクローズドソースも増えてきてしまいました。。
+
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;巨大テック企業のai軍拡競争はなぜ起きたか&#34;&gt;巨大テック企業のAI軍拡競争はなぜ起きたか&lt;/h3&gt;
+&lt;p&gt;元はといえばTransformerモデルはGoogleがオープンソースで発表したもの。しかし2023年現在ではOpenAIとMicrosoftがChatGPTで世界中の注目を集め、BaiduやGoogleがそれに追従する形になっています。なぜ他の企業が参入できないのでしょうか？&lt;/p&gt;
+&lt;p&gt;その理由はTransformerが持つ重要な性質である、&amp;ldquo;Scaling-law&amp;quot;にあると思います。&lt;/p&gt;
+&lt;p&gt;Scaling-lawはOpenAIが発見し、&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/abs/2001.08361&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;2020年に報告しました&lt;/a&gt;。Scaling-lawを一言で説明するなら、「金をかければかけるほど、データを増やせば増やすほど、Transformerモデルの性能は青天井に向上する」ということです。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://snitch0.github.io/p/ai-translate/scalinglaw.png&#34;
+	width=&#34;775&#34;
+	height=&#34;335&#34;
+	srcset=&#34;https://snitch0.github.io/p/ai-translate/scalinglaw_hu7455cdfd3a32976f4caefc4328110947_76019_480x0_resize_box_3.png 480w, https://snitch0.github.io/p/ai-translate/scalinglaw_hu7455cdfd3a32976f4caefc4328110947_76019_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;見れば分かるきれいな線形回帰やん。奇妙なほど線形性があります。&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;231&#34;
+		data-flex-basis=&#34;555px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;通常こんなことは考えにくいのです。なぜなら、どんな機械学習だって普通は過学習(over-fitting)が起き、どこかで性能の限界が来るからです。過学習とは、簡単に言えば学習データに最適化しすぎて未知の問題をうまく答えられなくなる現象のことです。小テストばっかり勉強しすぎて本番のテストにうまく答えられない、みたいな感じです。この過学習はいかなる機械学習でも起きうるので、通常は学習データを増やしすぎると性能がかえって低下するものです。&lt;/p&gt;
+&lt;p&gt;もちろんいつかTransformerの限界は来るのかもしれませんが、少なくともまだ限界は見えていません。この重要な性質があるため、私たちのような持たぬ者は彼らに対抗できないのです。GAFAが巨額の資金を投入して作ったモデルに我々が勝てる見込みは無く、しかもお金をかければかけるほど性能が上がるわけです。&lt;/p&gt;
+&lt;p&gt;ちなみに、GAFAがどうやって機械学習を行っているかですが、&lt;a class=&#34;link&#34; href=&#34;https://cloud.google.com/tpu?hl=ja&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Googleは深層学習専用のプロセッサであるTPUを開発&lt;/a&gt;し、独自に大量の計算機を用意してBardを作りました。Metaは&lt;a class=&#34;link&#34; href=&#34;https://appmaster.io/ja/news/meta-aws-patonashitsupu-ai-risachi-pytorch-sapoto&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Amazonと提携&lt;/a&gt;し、AWSを使って研究を行っているものと推定されます。OpenAIは言わずもがな、MicrosoftのAzureが使えるでしょう。&lt;/p&gt;
+&lt;h3 id=&#34;ここまでのまとめ&#34;&gt;ここまでのまとめ&lt;/h3&gt;
+&lt;p&gt;専門用語がたくさん出てきたので理解が難しかったかもしれませんが、一度GPTについてまとめておきます。&lt;/p&gt;
+&lt;p&gt;まず、GPTとは、Googleが発明したTransformerというモデルをベースに、OpenAIが開発した深層学習モデルのことでした。&lt;/p&gt;
+&lt;p&gt;Transformerは言語処理に適した、画期的なモデルです。&amp;ldquo;Scaling-law&amp;quot;という特徴により、Transformerモデルはお金をかければかけるほど性能が向上し、2023年現在も「より大量のデータで、より性能の高いモデル」を作るべくGAFA(+α)が鎬を削っている状況です。&lt;/p&gt;
+&lt;h2 id=&#34;gptは思考をしないただの確率モデルである&#34;&gt;GPTは&amp;quot;思考&amp;quot;をしない、ただの確率モデルである&lt;/h2&gt;
+&lt;p&gt;ChatGPTを使っていると、あまりにもこちらの命令を的確に理解している(ように見える)ので、「GPTは賢い」とか「AIはなんでもできる」と思えますよね。しかし、GPTをはじめとする言語モデルはただ確率の高い文字を並べているだけなので、思考などはしていません。魂も脳も無い、ただの確率モデルに過ぎません。&lt;/p&gt;
+&lt;p&gt;これはGPTがどのように作られたかを知ると分かりやすいかもしれません。&lt;/p&gt;
+&lt;h3 id=&#34;gptの学習方法&#34;&gt;GPTの学習方法&lt;/h3&gt;
+&lt;p&gt;ここまでの説明で、GPTが大量の文字列データを学習している事がお分かりかと思いますが、では学習とは具体的に何をしているのでしょうか？&lt;/p&gt;
+&lt;p&gt;それは、虫食い問題をひたすら覚えているのです。「イギリスの首都は□□である。」が問い、正解データは「ロンドン」と言ったように、虫食いの文章を大量に覚えているのです。ベースとなる文章には世界中のWebサイトからクロール&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;してきた文章で、おそらく大量のデータを使用しています。GPTはクローズドソースのため、詳細は明らかにされていません。&lt;/p&gt;
+&lt;h3 id=&#34;確率的言語モデル&#34;&gt;確率的言語モデル&lt;/h3&gt;
+&lt;p&gt;結果として完成したモデルは、以下のように「我輩」に続く言葉を一つずつ確率的に導いています。ある種のメタファーで「GPTは夏目漱石を知っている」と捉えることもできますが、実際には最も確率の高い言葉を並べているだけです。&lt;/p&gt;
+&lt;p&gt;ChatGPTでは文末に「英語から日本語に翻訳してください」と付ければ英語を日本語へ翻訳することが可能ですが、確率的に日本語が続きやすいという性質が反映されているだけなのです。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://snitch0.github.io/&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;NTTデータさんの分かりやすい例　出典:https://www.intellilink.co.jp/column/ai/2022/072800.aspx&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;iframe class=&#34;hatenablogcard&#34; style=&#34;width:100%;height:155px;&#34; src=&#34;https://hatenablog-parts.com/embed?url=https%3a%2f%2fwww.intellilink.co.jp%2fcolumn%2fai%2f2022%2f072800.aspx&#34; width=&#34;300&#34; height=&#34;150&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;このように考えると、ChatGPTに関する多くの漠然とした不安は解消されるのではないでしょうか。ChatGPTは何も思考していません。ただ確率的に単語を並べて見せているだけです。ChatGPTは人間を支配しようとはしていません。ChatGPTに意思などそもそも無い(はず)なのですから。&lt;/p&gt;
+&lt;h2 id=&#34;chatgptは事実ではないことをさも事実かのように述べる&#34;&gt;ChatGPTは事実ではないことを、さも事実かのように述べる&lt;/h2&gt;
+&lt;h3 id=&#34;hallucinationとは&#34;&gt;Hallucinationとは&lt;/h3&gt;
+&lt;p&gt;AIが事実に即していない情報を自信満々に語る現象のことをHallucinationと呼びます。(&lt;a class=&#34;link&#34; href=&#34;https://ja.wikipedia.org/wiki/%E5%B9%BB%E8%A6%9A_%28%E4%BA%BA%E5%B7%A5%E7%9F%A5%E8%83%BD%29&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Wikipedia: 幻覚(人工知能)&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;特にChatGPTのGPT-3.5(2022年末に公開され、現在フリー版として公開されているモデル)ではしばしばHallucinationが観察されており、人々はこれを「嘘つきだ」と言っています。&lt;/p&gt;
+&lt;p&gt;これは結構難しい問題で、OpenAIはもちろん、各社がHallucinationが起きないような入力方法を検討したり、そもそもHallucinationしないようにファインチューニングした新しいモデルを作成しています。ちなみに、GPT-4はGPT-3.5よりもHallucinationが起きにくくなっているそうで、私も使っている限りかなり改善しているように思います。&lt;/p&gt;
+&lt;iframe class=&#34;hatenablogcard&#34; style=&#34;width:100%;height:155px;&#34; src=&#34;https://hatenablog-parts.com/embed?url=https%3a%2f%2fwww.yomiuri.co.jp%2fnational%2f20230506-OYT1T50064%2f&#34; width=&#34;300&#34; height=&#34;150&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34;&gt;&lt;/iframe&gt;
+
+&lt;iframe class=&#34;hatenablogcard&#34; style=&#34;width:100%;height:155px;&#34; src=&#34;https://hatenablog-parts.com/embed?url=https%3a%2f%2fpresident.jp%2farticles%2f-%2f68667%3fpage%3d1&#34; width=&#34;300&#34; height=&#34;150&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34;&gt;&lt;/iframe&gt;
+
+&lt;iframe class=&#34;hatenablogcard&#34; style=&#34;width:100%;height:155px;&#34; src=&#34;https://hatenablog-parts.com/embed?url=https%3a%2f%2ftwitter.com%2fsearch%3fq%3dChatGPT%2520%25E3%2580%2580%25E5%2598%2598%26src%3dtyped_query&#34; width=&#34;300&#34; height=&#34;150&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34;&gt;&lt;/iframe&gt;
+
+&lt;h3 id=&#34;hallucination対策はどうしたらよいか&#34;&gt;Hallucination対策はどうしたらよいか？&lt;/h3&gt;
+&lt;p&gt;後述の別サービスを使うことが第一です。PerplexityやBingは出典情報を添付するため、ChatGPTよりはHallucinationが起きにくくなっています。&lt;/p&gt;
+&lt;p&gt;第二に、適切なプロンプティングをすることです。プロンプティングとは、GhatGPTへの入力のことです。ChatGPTは「～～してください」という指令だけでプログラミング・作文・メール作成などあらゆるタスクをこなすことが出来るため、ChatGPTへの入力方法が様々検討されています。プロンプティングについては&lt;a class=&#34;link&#34; href=&#34;&#34; &gt;記事を作成しています&lt;/a&gt;ので、詳しくはそちらをご覧ください。&lt;/p&gt;
+&lt;iframe class=&#34;hatenablogcard&#34; style=&#34;width:100%;height:155px;&#34; src=&#34;https://hatenablog-parts.com/embed?url=https%3a%2f%2ftwitter.com%2fsearch%3fq%3dChatGPT%2520%25E3%2580%2580%25E5%2598%2598%26src%3dtyped_query&#34; width=&#34;300&#34; height=&#34;150&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34;&gt;&lt;/iframe&gt;
+
+&lt;h2 id=&#34;chatgptは2021年以降の事を知らない&#34;&gt;ChatGPTは2021年以降の事を知らない&lt;/h2&gt;
+&lt;p&gt;そもそもGhatGPT-3.5は2019年まで、GPT-4は2021年までの情報を使って機械学習が行われています。2022年以降に現実世界で起きたことは何一つ知らないのです。&lt;/p&gt;
+&lt;p&gt;一見それっぽいこと(例えば、論文を紹介してくるなど)を返答してくることがあっても、ファクトチェックをすれば今年の出来事は全てHallucinationで満たされているはずです。&lt;/p&gt;
+&lt;h3 id=&#34;最新情報はchatgptに聞いてはならない&#34;&gt;最新情報はChatGPTに聞いてはならない&lt;/h3&gt;
+&lt;p&gt;以上の理由から、2021年以降の事はChatGPTに聞いたところで、嘘の情報が返ってくる可能性大です。この現象はどうしようもないので、後述の別サービスを使う方が良いでしょう。&lt;/p&gt;
+&lt;h3 id=&#34;bardもたまにhallucinationする&#34;&gt;BardもたまにHallucinationする&lt;/h3&gt;
+&lt;p&gt;Bardは検索エンジンを&lt;/p&gt;
+&lt;h2 id=&#34;chatgptは計算ができない&#34;&gt;ChatGPTは計算ができない&lt;/h2&gt;
+&lt;p&gt;やってみれば分かりますが、ChatGPTは計算が苦手です。以下の文章題では明らかに13個が正解なのですが、堂々と計算式まで出しておきながら間違えています。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://snitch0.github.io/p/ai-translate/calc1.png&#34;
+	width=&#34;820&#34;
+	height=&#34;353&#34;
+	srcset=&#34;https://snitch0.github.io/p/ai-translate/calc1_hue9643377d41d1a0555eb6c80b7f897da_44243_480x0_resize_box_3.png 480w, https://snitch0.github.io/p/ai-translate/calc1_hue9643377d41d1a0555eb6c80b7f897da_44243_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;簡単な算数もできないGPT3.5&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;232&#34;
+		data-flex-basis=&#34;557px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;これもHallucinationと同じくOpenAIが以前から認識していた問題で、GPT4では改善しているそうです。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://snitch0.github.io/p/ai-translate/calc2.png&#34;
+	width=&#34;763&#34;
+	height=&#34;364&#34;
+	srcset=&#34;https://snitch0.github.io/p/ai-translate/calc2_hu17550536d89a358f26990336e8e7515c_45029_480x0_resize_box_3.png 480w, https://snitch0.github.io/p/ai-translate/calc2_hu17550536d89a358f26990336e8e7515c_45029_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;GPT4ならこの問題に正解できる&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;209&#34;
+		data-flex-basis=&#34;503px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;以前紹介したプロンプティングの&lt;a class=&#34;link&#34; href=&#34;https://qiita.com/kujirahand/items/aed18c8298bb9bd41934&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;few shotsなどを使えば改善する&lt;/a&gt;ことはよく知られていて、様々なプロンプティング解説サイトに書いてあります。とはいえ･･･計算問題はあまりChatGPTに任せない方が良いと考えた方が良いのではないでしょうか。&lt;/p&gt;
+&lt;p&gt;最近見た話では、pythonプログラムとして目的の計算を実装させれば複雑な計算も可能だと聞きました。&lt;/p&gt;
+&lt;iframe class=&#34;hatenablogcard&#34; style=&#34;width:100%;height:155px;&#34; src=&#34;https://hatenablog-parts.com/embed?url=https%3a%2f%2fnote.com%2fkaramanium%2fn%2fnde6c61c0afae&#34; width=&#34;300&#34; height=&#34;150&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34;&gt;&lt;/iframe&gt;
+
+&lt;h2 id=&#34;個人情報は入力しちゃ絶対だめ&#34;&gt;個人情報は入力しちゃ絶対だめ！&lt;/h2&gt;
+&lt;p&gt;これは非常に重要な注意事項なのですが、ChatGPTで行われた会話はOpenAIの学習データに転用される可能性があります。実際に&lt;a class=&#34;link&#34; href=&#34;https://www.businessinsider.jp/post-264782&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Amazonで入力された機密情報がChatGPTの出力から出てきてしまった&lt;/a&gt;こともあったらしく、要注意です。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://snitch0.github.io/p/ai-translate/warning.png&#34;
+	width=&#34;499&#34;
+	height=&#34;432&#34;
+	srcset=&#34;https://snitch0.github.io/p/ai-translate/warning_hufda71a518df3491e9aa6a5223ef40c41_11603_480x0_resize_box_3.png 480w, https://snitch0.github.io/p/ai-translate/warning_hufda71a518df3491e9aa6a5223ef40c41_11603_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;ほとんどの人は忘れているかもしれないが、一応最初に注意がでます&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;115&#34;
+		data-flex-basis=&#34;277px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;GPT-3.5、GPT-4のAPI版&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;であればデータを学習データに使われることはありません。また、つい&lt;a class=&#34;link&#34; href=&#34;https://www.itmedia.co.jp/news/articles/2304/26/news075.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;先日ヒストリーを記録できない代わりに学習データには使わないモードが実装されました&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://snitch0.github.io/p/ai-translate/setting.png&#34;
+	width=&#34;663&#34;
+	height=&#34;394&#34;
+	srcset=&#34;https://snitch0.github.io/p/ai-translate/setting_huc9e133f5200afbfc134463075386a954_13974_480x0_resize_box_3.png 480w, https://snitch0.github.io/p/ai-translate/setting_huc9e133f5200afbfc134463075386a954_13974_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;左下のユーザーアイコンから設定を変えることが出来ます&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;168&#34;
+		data-flex-basis=&#34;403px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;chatgptが得意なことは作文とプログラミング&#34;&gt;ChatGPTが得意なことは作文とプログラミング&lt;/h2&gt;
+&lt;p&gt;計算が苦手なら何が得意か？個人的に私が安全に活用できると思っているのは作文とプログラミングです。&lt;/p&gt;
+&lt;p&gt;たとえば、会社のお偉いさんに送るメールは失礼のないよう、数十分時間をかけて書いていた時期が私にもありました(しかもそれを上司が添削したりする)が、そういったことはChatGPTにやらせた方が良いです。また、倫理的にどうかは別として、読書感想文を作らせることも得意だと思います。いずれにせよ、何かしらのテーマで作文をさせる分にはChatGPTは余計なこともしないし、良い文章を作ってくれるはずです。論文を書くのにも役立つかもしれませんね。&lt;/p&gt;
+&lt;p&gt;ChatGPTはプログラミングもかなり得意です。たとえば、ChatGPTでは「matplotlibを使って棒グラフを作りたい」とか「argparseを使ってコマンドライン引数をとるプログラムを作りたい」といったように、使い慣れないフレームワークに関してミニマムなコードをサクッと作成することができます。仮にエラーが出ても、エラー文ごとコピペ、修正を要求すれば正しいコードになって返ってきます。Step by Stepでコードを修正していけば、複雑な操作もちゃんとしたコードに落とし込んでくれるでしょう。&lt;/p&gt;
+&lt;p&gt;ただ、たまにどうやっても動作しないようなコードを書いてくることもあります。pandasとpolarsを使い分けたりなど、新しめのフレームワークに関する細かい情報は当然知らないので、でたらめのコードでっち上げてくることがあります。プログラミングの場合は動作確認をしないわけがないので、すぐにファクトチェックされますけどね。&lt;/p&gt;
+&lt;h2 id=&#34;gptは近い将来あらゆるアプリに組み込まれる&#34;&gt;GPTは近い将来あらゆるアプリに組み込まれる&lt;/h2&gt;
+&lt;p&gt;前述のAPIが既に公開されているため、非常に多くのサービスがChatGPTを使ったサービスを展開しています。Powered by GPTで検索するとどんなサービスがあるか見つけられるでしょうが、サイトを読み込ませたらそのサイトについて教えてくれるチャットボットを作成するSiteGPTや、デザイン込みでレジュメを自動作成してくれるkickresumeなどがあります。&lt;/p&gt;
+&lt;p&gt;APIに加えて、GPT-4を他のサービスとボタン一つで連携可能な&lt;a class=&#34;link&#34; href=&#34;https://openai.com/blog/chatgpt-plugins&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Plugin機能も公開予定であると発表されています&lt;/a&gt;。現状APIをうまく活用できるエンジニアだけが創意工夫で自由にサービスをローンチできる状況ですが、今後はAIを誰もが活用する時代が来るのでは無いかと考えられています。技術的な障壁はどんどん無くなっていくでしょう。&lt;/p&gt;
+&lt;h2 id=&#34;生物系研究者はaiをどう活用すべきか&#34;&gt;生物系研究者はAIをどう活用すべきか&lt;/h2&gt;
+&lt;p&gt;では最後に、生物系研究者がChatGPTを始めとするサービスを研究にどう活かしたら良いか、解説したいと思います。&lt;/p&gt;
+&lt;h3 id=&#34;とにもかくにもgpt-35ではなくgpt-4を使いましょう&#34;&gt;とにもかくにもGPT-3.5ではなくGPT-4を使いましょう&lt;/h3&gt;
+&lt;p&gt;GPT-3.5とGPT-4の差はかなり大きいです。通常GPT-4は月に$20も払わないといけないと使えないのですが、「それくらいなら安い」と思ったなら迷わず課金してください。$20で高校生くらいの頭脳を持ったAIが雇えるなら安いものだと私は考えています。&lt;/p&gt;
+&lt;p&gt;別の方法としては、Edgeブラウザーに搭載されているBingを使う方法が挙げられます。EdgeはMicrosoftが開発しているブラウザで、Chromeみたいなものです。MicrosoftはGoogleが持つ検索エンジンとブラウザのシェアを奪うため、GPT-4をBingとしてEdgeに搭載しました。この中身がGPT-4で動いているため、課金しなくてもGPT-4を使うことが出来ます。&lt;/p&gt;
+&lt;p&gt;EdgeのBingには以下のようなメリットがあります。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;GPT-4を無料で使える&lt;/li&gt;
+&lt;li&gt;Bingは検索エンジンとインテグレートされているので、出典が必ず記載される&lt;/li&gt;
+&lt;li&gt;ChatGPTに存在する文字数制限が無い(が、全ての入力が反映されていない気もする)&lt;/li&gt;
+&lt;li&gt;Webページ要約機能がある(Summarize current web pageなどとプロンプティングする)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一方デメリットはUIが若干見づらかったり、履歴が保存できないことです。また、性能的にChatGPTと同等なのかは割と謎です。あまり検証されていません。&lt;/p&gt;
+&lt;h3 id=&#34;調べ物ならperplexityを使いましょう&#34;&gt;調べ物ならPerplexityを使いましょう&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.perplexity.ai/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Perplexity.ai&lt;/a&gt;はChatGPTとも異なるセクターのサービスで、GPT-4やBingが発表される前から出典を添付してくれるチャットボットサービスとして公開されていました。GPT-4とどっちが賢いのかはあまりよく分かりませんが、調べ物をする上では極めて有用です。この数ヶ月私はめちゃめちゃ使っています。つい最近スマホアプリ版もリリースされました。&lt;/p&gt;
+&lt;p&gt;また、この記事を書いているさなかにSerach-GPTなるサービスがOpenAIから発表されましたので、Perplexityに似たサービスがOpenAIからも出てくると思われます。&lt;/p&gt;
+&lt;h3 id=&#34;chatgptはお役所仕事の時に使うのが良い&#34;&gt;ChatGPTはお役所仕事の時に使うのが良い&lt;/h3&gt;
+&lt;p&gt;これは完全に私の個人的見解ですが、ChatGPTは手紙の書き出しや会社のお偉いさんへの形式張ったメール、科研費の申請など、表面上取り繕うことが重要なお役所的作文には適任だと思っています。シチュエーションや文面の内容、伝えてほしい細かいニュアンスなどを指示すれば、あなた好みで失礼の無い文面が簡単にできるはずです。&lt;/p&gt;
+&lt;h3 id=&#34;ちょっとしたプログラミングには良い&#34;&gt;ちょっとしたプログラミングには良い&lt;/h3&gt;
+&lt;p&gt;ChatGPTなどのAIサービスはプログラミングが得意ですが、まだまだ大きいサービスを一からプログラミングすることはできません。いずれ出来るようになるかもしれませんが、結局プログラマーやエンジニアの仕事がAIに奪われることはおそらく無いと思います。&lt;/p&gt;
+&lt;p&gt;これからの時代は義務教育でプログラミングを学び、ちょっとしたプログラミングならすぐに実行できる人たちが社会に出てくるのだろうと思いますが、そういった方々はAIにミニマルなコードを書かせて業務効率化するような未来が最も現実的だと思います。少しだけPythonが書ける、C++が実行できる、といった環境構築だけしておけば、様々な場面でChatGPT製コードによる業務効率化が図れることでしょう。&lt;/p&gt;
+&lt;h3 id=&#34;アイデアを想起する&#34;&gt;アイデアを想起する&lt;/h3&gt;
+&lt;p&gt;GPT-4はただの確率的言語モデルには違いないのですが、このままいくと人間の思考力を凌駕すると可能性があると言われています。このまま学習データを大きくすれば確実に人間の思考力を超えるので、近い将来に起きることです。私はこれがある種神秘的な現象だと思っていて、「人間の神経細胞を模した計算機を用意して、虫食いの文章を覚えまくれば、内部の構造は理解できなくとも思考するロボットが完成する」ことを意味していると思います。つまり、哲学や善悪の判断、期待、愛情、、、人間の専売特許だと思われていた思考、魂とも呼称されるモノはTransformerモデルにより再現可能かもしれず、人類は脳科学の真理にたどり着いたのではないかと私は思うわけです。&lt;/p&gt;
+&lt;p&gt;ではそれを前提として、倫理的にどうこれを扱うかは今まさに欧州各国などの有識者に任せるとして、我々はメリットデメリットを把握した上でうまく使いこなすことが重要なのではないでしょうか。ここまでに提案してきたChatGPTの使い方は表面的なものでしたが、Transformerモデルが人間に近い思考力を見せているとするならば、自分には思いつかなかったアイデアをAIに求めることもできるのではないでしょうか？&lt;/p&gt;
+&lt;p&gt;現に、AIにより作成された絵画&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;ChatGPTがでまかせを述べてしまう現象のこと。既知の問題としてOpenAIも認識しています。&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;
+&lt;p&gt;スクレイピング等の技術を使ってプログラムによりデータを自動収集する手法のこと。クロール禁止の規定を用意しているサイトも多いが、人間がウェブアクセスしたかのように見せる方法もあるので防ぎようが無い。&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34;&gt;
+&lt;p&gt;プログラムからWebサービスを実行するための仕組みです。ChatGPTのようなWebアプリとしてのUIがありませんが、自作のアプリなどにGPTを組み込むなどの応用が可能になります。APIは従量課金制ですが、随分安い利用料設定になっていることも一時話題になっていました。&amp;#160;&lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
 </description>
         </item>
         

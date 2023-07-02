@@ -12,7 +12,7 @@ googleAnalytics = "G-ZQBVMRWEHP"
 
 [languages.ja]
 languageName = "日本語"
-title = "駆け出しバイオインフォマティシャンのtech blog"
+title = "バイオベンチャーBIのtech blog"
 weight = 1
 
 [languages.en]
